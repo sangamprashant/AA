@@ -1,19 +1,67 @@
-// server.js
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const mongoose = require("mongoose");
+const path = require("path");
+const helmet = require("helmet");
+const cors = require("cors");
+const mongoSanitize = require("express-mongo-sanitize");
+const rateLimit = require("express-rate-limit");
+const cookieParser = require("cookie-parser");
+const config = require("./server/config");
+const authenticateToken = require("./server/middlewares/authMiddleware");
+
+// console.log(config);
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const corsOptions = {
+  origin: config.FRONTEND_DOMAIN,
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'frontend/dist')));
+app.use(cors(corsOptions));
+app.use(mongoSanitize());
+app.use(express.json());
+app.use(cookieParser());
 
-// Endpoint to serve the React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
+app.use(limiter);
+
+const PORT = config.PORT || 5000;
+const MONGODB_URI = config.MONGODB_URI;
+
+// Connect to MongoDB
+mongoose.connect(MONGODB_URI, {
+  dbName: config.MONGODB_DB,
+});
+mongoose.connection.on("connected", () => {
+  console.log("Connected to MongoDB");
+});
+mongoose.connection.on("error", (err) => {
+  console.error("MongoDB connection error:", err);
 });
 
-// Start the server
+// routes
+app.use("/api/v1/user", require("./server/Routers/user"));
+app.use("/api/v1/booking", require("./server/Routers/booking"));
+
+app.get("/protected", authenticateToken, (req, res) => {
+  res
+    .status(200)
+    .json({
+      message: "You have access to this protected route.",
+      user: req.user,
+    });
+});
+
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
