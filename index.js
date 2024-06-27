@@ -9,9 +9,8 @@ const cookieParser = require("cookie-parser");
 const config = require("./server/config");
 const authenticateToken = require("./server/middlewares/authMiddleware");
 
-// console.log(config);
-
 const app = express();
+
 const corsOptions = {
   origin: config.FRONTEND_DOMAIN,
   credentials: true,
@@ -48,13 +47,12 @@ mongoose.connection.on("error", (err) => {
 app.use("/api/v1/user", require("./server/Routers/user"));
 app.use("/api/v1/booking", require("./server/Routers/booking"));
 
-app.get("/protected", authenticateToken, (req, res) => {
-  res
-    .status(200)
-    .json({
-      message: "You have access to this protected route.",
-      user: req.user,
-    });
+app.get("/api/v1/protected", authenticateToken, (req, res) => {
+  res.status(200).json({
+    message: "You have access to this protected route.",
+    user: req.user,
+    success: true,
+  });
 });
 
 app.use(express.static(path.join(__dirname, "frontend/dist")));
