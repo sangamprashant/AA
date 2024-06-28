@@ -44,19 +44,21 @@ const viewBookings = async (req, res) => {
     const { status } = req.params;
     let query = {};
 
-    if (status === "viewed") {
+    if (status === "verified") {
       query.checked = true;
-    } else if (status === "unviewed") {
+    } else if (status === "unverified") {
       query.checked = false;
     } else {
-      return res.status(400).json({ message: "Invalid status parameter" });
+      return res
+        .status(400)
+        .json({ message: "Invalid status parameter", success: false });
     }
 
     const bookings = await Booking.find(query);
-    res.status(200).json({ bookings });
+    res.status(200).json({ bookings, success: true });
   } catch (error) {
     console.error("Error retrieving bookings:", error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error", success: false });
   }
 };
 
@@ -73,10 +75,7 @@ const updateBooking = async (req, res) => {
     booking.doc = updateData.doc || booking.doc;
     booking.checked = true;
 
-    await Promise.all([
-      await booking.save(),
-      sendBookingUpdateEmail(booking),
-    ]);
+    await Promise.all([await booking.save(), sendBookingUpdateEmail(booking)]);
     res.status(200).json({ message: "Booking updated successfully", booking });
   } catch (error) {
     console.error("Error updating booking:", error);
