@@ -1,0 +1,8 @@
+#login-container {
+  background: rgb(233, 254, 255);
+  background: radial-gradient(
+    circle,
+    rgba(233, 254, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
