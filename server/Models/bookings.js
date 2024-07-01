@@ -25,8 +25,11 @@ const bookingSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  time: {
+    type: String,
+    required: false,
+  },
   doc: {
-    // date of class conduction
     type: Date,
     required: true,
   },

@@ -69,17 +69,24 @@ const updateBooking = async (req, res) => {
   try {
     const booking = await Booking.findById(id);
     if (!booking) {
-      return res.status(404).json({ message: "Booking not found" });
+      return res
+        .status(404)
+        .json({ message: "Booking not found", success: false });
     }
 
     booking.doc = updateData.doc || booking.doc;
+    booking.time = updateData.time;
     booking.checked = true;
 
     await Promise.all([await booking.save(), sendBookingUpdateEmail(booking)]);
-    res.status(200).json({ message: "Booking updated successfully", booking });
+    res.status(200).json({
+      message: "Booking updated successfully",
+      booking,
+      success: true,
+    });
   } catch (error) {
     console.error("Error updating booking:", error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error", success: false });
   }
 };
 

@@ -33,6 +33,7 @@ const sendBookingUpdateEmail = async (bookingDetails) => {
                       <p><b>Country:</b> ${bookingDetails.country}</p>
                       <p><b>Phone Number:</b> ${bookingDetails.phoneNumber}</p>
                       <p><b>Selected Class:</b> ${bookingDetails.selectedClass}</p>
+                      <p><b>Time of Class:</b> ${bookingDetails.time}</p>
                       <p><b>Date of Class:</b> ${new Date(bookingDetails.doc).toDateString()}</p>
                   </div>
                   <p>If you have any questions or need to make changes to your booking, please feel free to contact us.</p>

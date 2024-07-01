@@ -1,7 +1,6 @@
-import { Table } from "antd";
+import { Modal, Table, TimePicker, TimePickerProps } from "antd";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Fragment, useEffect, useState } from "react";
 import { config } from "../../../../../config";
 
 interface BookingTableProps {
@@ -9,6 +8,7 @@ interface BookingTableProps {
 }
 
 interface dataSourceProps {
+  _id: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -20,13 +20,25 @@ interface dataSourceProps {
 }
 
 const BookingTable = ({ type }: BookingTableProps) => {
-  const [dataSource, setDataSource] = useState<dataSourceProps[] | undefined>(
+  const [dataSource, setDataSource] = useState<dataSourceProps[]>([]);
+  const [selectedData, setSelectedData] = useState<dataSourceProps | undefined>(
     undefined
   );
+  const [modal2Open, setModal2Open] = useState<boolean>(false);
+  const [date, setDate] = useState<string | null>(null);
+  const [time, setTime] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     fetchBookings(type);
   }, [type]);
+
+  const verifiedHasExtra = [
+    {
+      title: "Time Alloted",
+      dataIndex: "time",
+      key: "time",
+    },
+  ];
 
   const columns = [
     {
@@ -35,7 +47,7 @@ const BookingTable = ({ type }: BookingTableProps) => {
       key: "firstName",
     },
     {
-      title: "Second Name",
+      title: "Last Name",
       dataIndex: "lastName",
       key: "lastName",
     },
@@ -63,31 +75,103 @@ const BookingTable = ({ type }: BookingTableProps) => {
       title: "Date of Class",
       dataIndex: "doc",
       key: "doc",
+      render: (date: string) => new Date(date).toLocaleDateString(),
     },
-
     {
       title: "Action",
       key: "action",
-      dataIndex: "_id",
-      render: (id: string) => (
-        <Link
+      render: (data: dataSourceProps) => (
+        <button
           className={`btn ${
             type === "unverified" ? "theme-btn" : "btn-danger p-2"
           }`}
-          to={`/admin/contact/reply/${id}`}
+          onClick={() => handleData(data)}
         >
           {type === "unverified" ? "View" : "Delete"}
-        </Link>
+        </button>
       ),
     },
   ];
 
+  const timePickerChange: TimePickerProps["onChange"] = (time, timeString) => {
+    console.log({ time });
+    console.log({ timeString });
+    if (typeof timeString === "string") {
+      setTime(timeString);
+    } else if (Array.isArray(timeString)) {
+      setTime(timeString.join(", "));
+    }
+  };
+
   return (
-    <Table
-      columns={columns}
-      dataSource={dataSource}
-      className="table-responsive"
-    />
+    <>
+      <Table
+        columns={
+          type === "unverified" ? columns : [...columns, ...verifiedHasExtra]
+        }
+        dataSource={dataSource}
+        className="table-responsive"
+      />
+      <Modal
+        title="Confirm/Update the booking"
+        centered
+        open={modal2Open}
+        onOk={bookingUpdated}
+        onCancel={() => setModal2Open(false)}
+      >
+        {selectedData && (
+          <Fragment>
+            {type === "unverified" ? (
+              <Fragment>
+                <p className="p-0 m-0">
+                  <strong>Name:</strong> {selectedData.firstName}{" "}
+                  {selectedData.lastName}
+                </p>
+                <p className="p-0 m-0">
+                  <strong>Email:</strong> {selectedData.email}
+                </p>
+                <p className="p-0 m-0">
+                  <strong>Phone:</strong> {selectedData.country}{" "}
+                  {selectedData.phoneNumber}
+                </p>
+                <p className="p-0 m-0">
+                  <strong>Date:</strong>{" "}
+                  {new Date(selectedData.doc).toLocaleDateString()}
+                </p>
+                <form className="mt-2">
+                  <div className="form-group">
+                    <label htmlFor="updateDoc">
+                      <strong>Update the Date if required.</strong>
+                    </label>
+                    <input
+                      type="date"
+                      value={date || ""}
+                      onChange={(e) => {
+                        setDate(e.target.value);
+                      }}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="updateTime">
+                      <strong>Select a Time for the class</strong>
+                    </label>
+                    <TimePicker
+                      className="form-control"
+                      use12Hours
+                      format="h:mm a"
+                      onChange={timePickerChange}
+                    />
+                  </div>
+                </form>
+              </Fragment>
+            ) : (
+              <Fragment>Delete</Fragment>
+            )}
+          </Fragment>
+        )}
+      </Modal>
+    </>
   );
 
   async function fetchBookings(state: string) {
@@ -102,8 +186,40 @@ const BookingTable = ({ type }: BookingTableProps) => {
         setDataSource(response.data.bookings);
       }
     } catch (error) {
-      console.log("failed to fetch the bookings:", error);
+      console.log("Failed to fetch the bookings:", error);
     }
+  }
+
+  function handleData(data: dataSourceProps) {
+    setSelectedData(data);
+    setDate(new Date(data.doc).toISOString().split("T")[0]);
+    setTime(undefined);
+    setModal2Open(true);
+  }
+
+  async function bookingUpdated() {
+    try {
+      const reqBody = {
+        time,
+        doc: date,
+      };
+
+      const response = await axios.put(
+        `${config.SERVER}/booking/update/${selectedData?._id}`,
+        reqBody,
+        {
+          withCredentials: true,
+        }
+      );
+
+      console.log({ response });
+    } catch (error) {
+      console.warn({ error });
+    } finally {
+      setModal2Open(false);
+    }
+    // console.log({ time });
+    // console.log({ date });
   }
 };
 
