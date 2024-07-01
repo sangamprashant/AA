@@ -34,7 +34,7 @@ const ClassList = ({ classNumber }: ClassListProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <p className="text-start p-0 m-0">
+            <p className="text-start p-2 m-0">
               <b>Class {classNumber}</b>
             </p>
           </motion.div>

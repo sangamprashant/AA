@@ -41,15 +41,17 @@ const ParentsTrust: React.FC = () => {
         <header>
           <h1 className="text-center display-4">Why Parents Trust Us</h1>
         </header>
-        <main className="parent-trust-container">
+        <main className="row">
           {trustReasons.map((reason, index) => (
-            <div className="parent-trust-card" key={index}>
-              <div className="icon">
-                <img src={reason.icon} alt="" width={80} />
-              </div>
-              <div className="text-container">
-                <h5 className=" display-6">{reason.title}</h5>
-                <p>{reason.description}</p>
+            <div className=" col-md-6 text-center p-2" key={index}>
+              <div className="parent-trust-card">
+                <div className="icon">
+                  <img src={reason.icon} alt="" width={80} />
+                </div>
+                <div className="text-container">
+                  <h5 className=" display-6">{reason.title}</h5>
+                  <p>{reason.description}</p>
+                </div>
               </div>
             </div>
           ))}

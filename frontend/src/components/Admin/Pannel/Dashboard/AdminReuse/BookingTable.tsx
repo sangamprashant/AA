@@ -1,7 +1,17 @@
-import { Modal, Table, TimePicker, TimePickerProps } from "antd";
+import {
+  Alert,
+  Modal,
+  NotificationArgsProps,
+  Table,
+  TimePicker,
+  TimePickerProps,
+  notification,
+} from "antd";
 import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
 import { config } from "../../../../../config";
+
+type NotificationPlacement = NotificationArgsProps["placement"];
 
 interface BookingTableProps {
   type: "unverified" | "verified";
@@ -27,6 +37,8 @@ const BookingTable = ({ type }: BookingTableProps) => {
   const [modal2Open, setModal2Open] = useState<boolean>(false);
   const [date, setDate] = useState<string | null>(null);
   const [time, setTime] = useState<string | undefined>(undefined);
+  const [api, contextHolder] = notification.useNotification();
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
     fetchBookings(type);
@@ -95,7 +107,6 @@ const BookingTable = ({ type }: BookingTableProps) => {
 
   const timePickerChange: TimePickerProps["onChange"] = (time, timeString) => {
     console.log({ time });
-    console.log({ timeString });
     if (typeof timeString === "string") {
       setTime(timeString);
     } else if (Array.isArray(timeString)) {
@@ -105,6 +116,7 @@ const BookingTable = ({ type }: BookingTableProps) => {
 
   return (
     <>
+      {contextHolder}
       <Table
         columns={
           type === "unverified" ? columns : [...columns, ...verifiedHasExtra]
@@ -113,60 +125,65 @@ const BookingTable = ({ type }: BookingTableProps) => {
         className="table-responsive"
       />
       <Modal
-        title="Confirm/Update the booking"
+        title={`${
+          type === "unverified" ? "Confirm/Update" : "Delete"
+        } the booking`}
         centered
         open={modal2Open}
-        onOk={bookingUpdated}
+        onOk={type === "unverified" ? bookingUpdated : handleDelete}
         onCancel={() => setModal2Open(false)}
       >
         {selectedData && (
           <Fragment>
+            <p className="p-0 m-0">
+              <strong>Name:</strong> {selectedData.firstName}{" "}
+              {selectedData.lastName}
+            </p>
+            <p className="p-0 m-0">
+              <strong>Email:</strong> {selectedData.email}
+            </p>
+            <p className="p-0 m-0">
+              <strong>Phone:</strong> {selectedData.country}{" "}
+              {selectedData.phoneNumber}
+            </p>
+            <p className="p-0 m-0">
+              <strong>Date:</strong>{" "}
+              {new Date(selectedData.doc).toLocaleDateString()}
+            </p>
             {type === "unverified" ? (
-              <Fragment>
-                <p className="p-0 m-0">
-                  <strong>Name:</strong> {selectedData.firstName}{" "}
-                  {selectedData.lastName}
-                </p>
-                <p className="p-0 m-0">
-                  <strong>Email:</strong> {selectedData.email}
-                </p>
-                <p className="p-0 m-0">
-                  <strong>Phone:</strong> {selectedData.country}{" "}
-                  {selectedData.phoneNumber}
-                </p>
-                <p className="p-0 m-0">
-                  <strong>Date:</strong>{" "}
-                  {new Date(selectedData.doc).toLocaleDateString()}
-                </p>
-                <form className="mt-2">
-                  <div className="form-group">
-                    <label htmlFor="updateDoc">
-                      <strong>Update the Date if required.</strong>
-                    </label>
-                    <input
-                      type="date"
-                      value={date || ""}
-                      onChange={(e) => {
-                        setDate(e.target.value);
-                      }}
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="updateTime">
-                      <strong>Select a Time for the class</strong>
-                    </label>
-                    <TimePicker
-                      className="form-control"
-                      use12Hours
-                      format="h:mm a"
-                      onChange={timePickerChange}
-                    />
-                  </div>
-                </form>
-              </Fragment>
+              <form className="mt-2">
+                <div className="form-group">
+                  <label htmlFor="updateDoc">
+                    <strong>Update the Date if required.</strong>
+                  </label>
+                  <input
+                    type="date"
+                    value={date || ""}
+                    onChange={(e) => {
+                      setDate(e.target.value);
+                    }}
+                    className="form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="updateTime">
+                    <strong>Select a Time for the class</strong>
+                  </label>
+                  <TimePicker
+                    className="form-control"
+                    use12Hours
+                    format="h:mm a"
+                    onChange={timePickerChange}
+                  />
+                  <Alert
+                    type="warning"
+                    message={errorMsg}
+                    className={`mt-2 opacity-${errorMsg ? "100" : "0"}`}
+                  />
+                </div>
+              </form>
             ) : (
-              <Fragment>Delete</Fragment>
+              <p className="text-danger">Do you want to delete the booking?</p>
             )}
           </Fragment>
         )}
@@ -198,6 +215,10 @@ const BookingTable = ({ type }: BookingTableProps) => {
   }
 
   async function bookingUpdated() {
+    if (!time) {
+      setErrorMsg("Time is required.");
+      return;
+    }
     try {
       const reqBody = {
         time,
@@ -211,15 +232,50 @@ const BookingTable = ({ type }: BookingTableProps) => {
           withCredentials: true,
         }
       );
+      if (response.data.success) {
+        setDataSource((prev) =>
+          prev.filter((item) => item._id !== selectedData?._id)
+        );
+        setSelectedData(undefined);
+        openNotification("Booking confirmed");
+      }
+    } catch (error) {
+      console.warn({ error });
+      setErrorMsg("Something went wrong, please try later.");
+    } finally {
+      setModal2Open(false);
+    }
+  }
 
-      console.log({ response });
+  async function handleDelete() {
+    try {
+      const response = await axios.delete(
+        `${config.SERVER}/booking/delete/${selectedData?._id}`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      if (response.data.success) {
+        setDataSource((prev) =>
+          prev.filter((item) => item._id !== selectedData?._id)
+        );
+        setSelectedData(undefined);
+        openNotification("Booking deleted");
+      }
     } catch (error) {
       console.warn({ error });
     } finally {
       setModal2Open(false);
     }
-    // console.log({ time });
-    // console.log({ date });
+  }
+
+  function openNotification(message: string) {
+    api.success({
+      message: "Operation Successful",
+      description: message,
+      placement: "bottomRight" as NotificationPlacement,
+    });
   }
 };
 

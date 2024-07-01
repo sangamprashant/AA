@@ -15,16 +15,13 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #f8fdff;
 }
-
+h1,
+h2,
 h3,
 h4,
 h5,
 h6 {
   font-family: "Volkhov", serif; /* Apply Volkhov to headings */
-}
-h1,
-h2 {
-  font-family: "Dancing Script", cursive;
 }
 /* Reset default list styles */
 ul,
@@ -84,7 +81,7 @@ a {
 .theme-btn::after {
   transition: width 01s ease;
 }
-.theme-color{
+.theme-color {
   color: var(--theme-color);
 }
 h1 span {

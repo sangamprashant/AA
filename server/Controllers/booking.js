@@ -90,4 +90,27 @@ const updateBooking = async (req, res) => {
   }
 };
 
-module.exports = { userCreateBooking, viewBookings, updateBooking };
+const deleteBooking = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const booking = await Booking.findByIdAndDelete(id);
+    if (!booking) {
+      return res
+        .status(404)
+        .json({ message: "Booking not found", success: false });
+    }
+    res.status(200).json({
+      success: true,
+    });
+  } catch (error) {
+    console.error("Error deleting booking:", error);
+    res.status(500).json({ message: "Server error", success: false });
+  }
+};
+
+module.exports = {
+  userCreateBooking,
+  viewBookings,
+  updateBooking,
+  deleteBooking,
+};

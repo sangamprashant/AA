@@ -8,6 +8,11 @@ import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FormEvent, useState } from "react";
 import Section from "../../Reuse/Section";
+import { Alert, NotificationArgsProps, notification } from "antd";
+import axios from "axios";
+import { config } from "../../../config";
+
+type NotificationPlacement = NotificationArgsProps["placement"];
 
 const socialLinks = [
   {
@@ -27,15 +32,19 @@ const socialLinks = [
     text: "Join the conversation on Twitter for real-time updates and community interaction.",
   },
 ];
+const initialValue = {
+  fname: "",
+  lname: "",
+  phone: "",
+  email: "",
+  message: "",
+};
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    fname: "",
-    lname: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
+  const [api, contextHolder] = notification.useNotification();
+  const [formData, setFormData] = useState(initialValue);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -44,14 +53,9 @@ const ContactForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    // Implement your form submission logic here
-    console.log("Form submitted!", formData);
-  };
-
   return (
     <Section className="py-5 mt-4">
+      {contextHolder}
       <div className="page-spacer clearfix">
         <div className="container">
           <div className="row align-stretch">
@@ -88,7 +92,7 @@ const ContactForm = () => {
                 </div>
                 <div className="mb-3">
                   <input
-                    type="tel"
+                    type="number"
                     className="form-control"
                     id="phone"
                     name="phone"
@@ -120,9 +124,18 @@ const ContactForm = () => {
                     onChange={handleChange}
                   ></textarea>
                 </div>
+                <Alert
+                  type="error"
+                  message={errorMsg}
+                  className={`my-2 opacity-${errorMsg ? "100" : "0"}`}
+                />
                 <div className="mb-3 text-end">
-                  <button type="submit" className="btn theme-btn">
-                    Submit Now
+                  <button
+                    type="submit"
+                    className="btn theme-btn"
+                    disabled={loading}
+                  >
+                    {loading ? "Plaese Wait.." : "Submit Now"}
                   </button>
                 </div>
               </form>
@@ -178,6 +191,51 @@ const ContactForm = () => {
       </div>
     </Section>
   );
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (
+      !formData.email.trim() ||
+      !formData.fname.trim() ||
+      !formData.lname.trim() ||
+      !formData.message.trim() ||
+      !formData.phone.trim()
+    ) {
+      setErrorMsg("All fields are required!");
+      return;
+    }
+    const reqBody = {
+      firstName: formData.fname.trim(),
+      lastName: formData.lname.trim(),
+      email: formData.email.trim(),
+      phoneNumber: formData.phone.trim(),
+      message: formData.message.trim(),
+    };
+    try {
+      setLoading(true);
+      const response = await axios.post(`${config.SERVER}/contact`, reqBody);
+      if (response.data.success) {
+        setFormData(initialValue);
+        openNotification(
+          "Your contact details have been successfully submitted."
+        );
+        setErrorMsg(null);
+      }
+    } catch (error) {
+      console.log({ error });
+      setErrorMsg("Something went wrong, please try again later!");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function openNotification(message: string) {
+    api.success({
+      message: "Form Submitted Successfully",
+      description: message,
+      placement: "bottomRight" as NotificationPlacement,
+    });
+  }
 };
 
 export default ContactForm;

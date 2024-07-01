@@ -86,7 +86,7 @@ const Try = () => {
             />
           )}
           <video
-            src="video.mp4"
+            src="/video.mp4"
             autoPlay
             muted
             loop

@@ -3,6 +3,7 @@ const {
   userCreateBooking,
   viewBookings,
   updateBooking,
+  deleteBooking,
 } = require("../Controllers/booking");
 const { check } = require("express-validator");
 const authenticateToken = require("../middlewares/authMiddleware");
@@ -55,5 +56,6 @@ router.post("/", validateBooking, userCreateBooking);
 // for admin
 router.get("/by-status/:status", authenticateToken, viewBookings);
 router.put("/update/:id", authenticateToken, updateBooking);
+router.delete("/delete/:id", authenticateToken, deleteBooking);
 
 module.exports = router;

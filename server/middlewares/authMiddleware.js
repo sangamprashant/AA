@@ -1,19 +1,21 @@
-const jwt = require('jsonwebtoken');
-const config = require('../config');
+const jwt = require("jsonwebtoken");
+const config = require("../config");
 
 const authenticateToken = (req, res, next) => {
-  const token = req.cookies.token; // Extract the token from the cookies
+  const token = req.cookies.token;
 
   if (!token) {
-    return res.status(401).json({ message: 'Access denied. No token provided.' });
+    return res
+      .status(401)
+      .json({ message: "Access denied. No token provided." });
   }
 
   try {
-    const decoded = jwt.verify(token, config.JWT_SECRET); // Verify the token
-    req.user = decoded; // Store the decoded token in the request object
-    next(); // Call the next middleware or route handler
+    const decoded = jwt.verify(token, config.JWT_SECRET);
+    req.user = decoded;
+    next();
   } catch (error) {
-    res.status(400).json({ message: 'Invalid token.' });
+    res.status(400).json({ message: "Invalid token." });
   }
 };
 
