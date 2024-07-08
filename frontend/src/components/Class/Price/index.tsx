@@ -1,11 +1,18 @@
+import { useContext } from "react";
 import Section from "../../Reuse/Section";
 import { useClassContext } from "../ClassContext";
 import MobilePrice from "./MobilePrice";
 import PriceChart from "./PriceChart";
 import "./price.css";
+import { AppContext } from "../../../AppProvider";
 
 const Price = () => {
+  const appContext = useContext(AppContext);
   const { classId } = useClassContext();
+
+  if (!appContext) return null;
+  const { showPayment } = appContext;
+
 
   const getClassSpecificPrice = (
     classId: string,
@@ -248,6 +255,11 @@ const Price = () => {
               ))}
             </div>
           </div>
+        </div>
+        <div className="d-flex justify-content-center mt-5">
+          <button className="btn theme-btn" onClick={showPayment}>
+            Fill Form to Pay Now
+          </button>
         </div>
       </div>
     </Section>

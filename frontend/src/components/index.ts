@@ -7,6 +7,7 @@ import Price from "./Class/Price";
 import PageNotFound from "./PageNotFound";
 import Contact from "./pages/Contact/Contact";
 import AboutUs from "./pages/AboutUs";
+import Payment from "./pages/Payment";
 export {
   Navbar,
   Hero,
@@ -17,4 +18,5 @@ export {
   PageNotFound,
   Contact,
   AboutUs,
+  Payment,
 };

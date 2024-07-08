@@ -8,15 +8,25 @@ import {
   Home,
   Navbar,
   PageNotFound,
+  Payment,
 } from "./components";
+import {
+  Admin404,
+  AdminBooking,
+  AdminFormReceiveContact,
+  AdminLogin,
+  AdminPanel,
+  Dashboard,
+} from "./components/Admin";
 import { AuthContext } from "./components/Admin/Auth/AuthProvider";
 import FloatButtonComponent from "./components/Reuse/FloatButton";
-import { Admin404, AdminBooking, AdminFormReceiveContact, AdminLogin, AdminPanel, Dashboard } from "./components/Admin";
+import { AppContext } from "./AppProvider";
 
 function App() {
   const authContext = useContext(AuthContext);
+  const appContext = useContext(AppContext);
 
-  if (!authContext) {
+  if (!authContext || !appContext) {
     return <LoadingUI />;
   }
   const { loading, isLoggedIn } = authContext;
@@ -33,7 +43,10 @@ function App() {
             <AdminPanel>
               <Routes>
                 <Route path="/admin/dashboard" element={<Dashboard />} />
-                <Route path="/admin/contact" element={<AdminFormReceiveContact />} />
+                <Route
+                  path="/admin/contact"
+                  element={<AdminFormReceiveContact />}
+                />
                 <Route path="/admin/booking" element={<AdminBooking />} />
                 <Route path="*" element={<Admin404 />} />
               </Routes>
@@ -53,6 +66,7 @@ function App() {
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
             </div>
+            <Payment />
             <FloatButtonComponent />
           </React.Fragment>
         )}

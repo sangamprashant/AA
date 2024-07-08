@@ -99,10 +99,10 @@ const Navbar = () => {
               >
                 <Link
                   className="nav-link btn theme-btn"
-                  to="tel:+919984539509"
+                  to="tel:+919140399023"
                   onClick={handleNavItemClick}
                 >
-                  +91 9984529509
+                  +91 9140399023
                 </Link>
               </motion.li>
               <motion.li
@@ -115,10 +115,10 @@ const Navbar = () => {
               >
                 <Link
                   className="nav-link btn theme-btn"
-                  to="mailto:srivastavp891@gmail.com"
+                  to="mailto:princeujjawal.uk@gamil.com"
                   onClick={handleNavItemClick}
                 >
-                  srivastavp891@gmail.com
+                  princeujjawal.uk@gamil.com
                 </Link>
               </motion.li>
             </ul>
