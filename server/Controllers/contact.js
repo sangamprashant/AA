@@ -1,5 +1,5 @@
 const { validationResult, check } = require("express-validator");
-const Contact = require("../models/Contact");
+const Contact = require("../models/contact");
 const sendAdminNotificationEmail = require("../Mail/sendAdminNotification");
 const sendContactEmail = require("../Mail/createContact");
 const sendContactResponse = require("../Mail/sendContactResponse");
