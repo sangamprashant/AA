@@ -5,14 +5,28 @@ import MobilePrice from "./MobilePrice";
 import PriceChart from "./PriceChart";
 import "./price.css";
 import { AppContext } from "../../../AppProvider";
+import { AuthContext } from "../../Admin/Auth/AuthProvider";
+import { LoadingUI } from "../../../App";
+import { Link } from "react-router-dom";
 
 const Price = () => {
   const appContext = useContext(AppContext);
   const { classId } = useClassContext();
 
+  // dummy
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    return <LoadingUI />;
+  }
+  const { loading, dummyLogin, isDummyLogin } = authContext;
+  if (loading) {
+    return <LoadingUI />;
+  }
+  // dummy
+
   if (!appContext) return null;
   const { showPayment } = appContext;
-
 
   const getClassSpecificPrice = (
     classId: string,
@@ -257,9 +271,16 @@ const Price = () => {
           </div>
         </div>
         <div className="d-flex justify-content-center mt-5">
-          <button className="btn theme-btn" onClick={showPayment}>
-            Fill Form to Pay Now
-          </button>
+          {isDummyLogin ? (
+            <button className="btn theme-btn" onClick={showPayment}>
+              Fill Form to Pay Now
+            </button>
+          ) : (
+            <Link to="/login" className="btn theme-btn">
+              {" "}
+              Login to make a payment
+            </Link>
+          )}
         </div>
       </div>
     </Section>

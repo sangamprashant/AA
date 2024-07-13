@@ -8,6 +8,8 @@ import PageNotFound from "./PageNotFound";
 import Contact from "./pages/Contact/Contact";
 import AboutUs from "./pages/AboutUs";
 import Payment from "./pages/Payment";
+import Login from "./dummy/Login";
+
 export {
   Navbar,
   Hero,
@@ -19,4 +21,5 @@ export {
   Contact,
   AboutUs,
   Payment,
+  Login
 };

@@ -21,6 +21,9 @@ interface AuthContextType {
   isLoggedIn: boolean;
   forButtonLoading: boolean;
   loginError: string | null;
+  dummyLogin: (email: string, password: string, name?: string) => Promise<void>;
+  isDummyLogin: boolean;
+  dummyLogout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -35,9 +38,18 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [forButtonLoading, setForButtonLoading] = React.useState(false);
   const [loginError, setLoginError] = React.useState<string | null>("");
+  const [isDummyLogin, setIsDummyLogin] = React.useState<boolean>(false);
 
   useEffect(() => {
     handleFetchProtectedData();
+
+    const ftechDummyData = () => {
+      if (localStorage.getItem("email")) {
+        setIsDummyLogin(true);
+      }
+    };
+
+    ftechDummyData();
   }, []);
 
   const handleFetchProtectedData = async (): Promise<void> => {
@@ -107,6 +119,24 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const dummyLogin = async (
+    email: string,
+    password: string,
+    name?: string
+  ): Promise<void> => {
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
+    if (name) {
+      localStorage.setItem("name", name);
+    }
+    setIsDummyLogin(true);
+  };
+
+  const dummyLogout = async (): Promise<void> => {
+    localStorage.clear();
+    setIsDummyLogin(false);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -117,6 +147,9 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         isLoggedIn,
         forButtonLoading,
         loginError,
+        dummyLogin,
+        isDummyLogin,
+        dummyLogout,
       }}
     >
       {children}
@@ -125,4 +158,3 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
-

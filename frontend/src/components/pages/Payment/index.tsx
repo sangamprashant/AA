@@ -20,7 +20,6 @@ const Payment = () => {
     const paymentData = { name, mobileNumber, email, purpose, amount };
     console.log("Payment Data:", paymentData);
 
-    // Simulate form submission and sending email
     setTimeout(() => {
       setSubmissionStatus("success");
     }, 1000);
@@ -74,6 +73,7 @@ const Payment = () => {
           </div>
           <div className="form-group mt-1">
             <label htmlFor="mobileNumber">Mobile Number</label>
+            <sub>paymant will be verified using mobile number</sub>
             <input
               type="text"
               className="form-control"
@@ -84,7 +84,8 @@ const Payment = () => {
             />
           </div>
           <div className="form-group mt-1">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email</label>{" "}
+            <sub>paymant will be verified using email</sub>
             <input
               type="email"
               className="form-control"
@@ -106,6 +107,24 @@ const Payment = () => {
               onChange={(e) => setPurpose(e.target.value)}
               required
             />
+          </div>
+          <div className="form-group mt-1">
+            <label htmlFor="purpose">Select a class to make payment</label>
+            <select name="" id="" className="form-control">
+              <option value="">Select a class</option>
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
+              <option value="">4</option>
+              <option value="">5</option>
+              <option value="">6</option>
+              <option value="">7</option>
+              <option value="">8</option>
+              <option value="">9</option>
+              <option value="">10</option>
+              <option value="">11</option>
+              <option value="">12</option>
+            </select>
           </div>
           <div className="form-group mt-1">
             <label htmlFor="amount">Amount</label>
