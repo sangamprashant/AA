@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google-pay/button-react": "^3.1.0",
     "axios": "^1.7.2",
     "jquery": "^3.7.1",
     "js-cookie": "^3.0.5",
@@ -27,6 +28,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
+    "@types/googlepay": "^0.7.6",
     "@types/jquery": "^3.5.30",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.66",
