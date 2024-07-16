@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Section</title>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+      .hero {
+        display: flex;
+        flex-direction: column;
+        height: 70vh;
+        align-items: center;
+        background: #f0f4f8;
+  
+      }
+      .hero .left,
+      .hero .right {
+        width: 100%;
+        height: 100%;
+        position: relative;
+       
+      }
+            .hero .left{
+display:flex;
+align-items: center;
+justify-content: start;
+min-height: 400px;
+      }
+      .header {
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+        color: #000;
+      }
+      .header h1 {
+        font-size: 2em;
+        margin: 0;
+      }
+      .header p {
+        font-size: 1em;
+        margin-top: 10px;
+      }
+      .design {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: 0;
+      }
+      .design div {
+        position: absolute;
+        border-radius: 50%;
+      }
+      .ellipse55 { width: 6px; height: 6px; left: 305px; top: 170px; background: #3eb2f0; }
+      .ellipse62 { width: 8px; height: 8px; left: 417px; top: 43px; background: #4d4d4d; }
+      .ellipse59 { width: 14px; height: 14px; left: 96px; top: 110px; background: #0047ff; }
+      .ellipse72 { width: 14px; height: 14px; left: 566px; top: 16px; background: #0047ff; }
+      .ellipse60 { width: 6px; height: 6px; left: 89px; top: 40px; background: #0047ff; }
+      .ellipse61 { width: 14px; height: 14px; left: 0px; top: 50px; background: #3eb2f0; }
+      .ellipse56 { width: 14px; height: 14px; left: 377px; top: 107px; background: #3eb2f0; }
+      .ellipse57 { width: 14px; height: 14px; left: 370px; top: 239px; background: #0047ff; }
+      .ellipse64 { width: 14px; height: 14px; left: 498px; top: 246px; background: #3eb2f0; }
+      .ellipse58 { width: 6px; height: 6px; left: 445px; top: 200px; background: #0047ff; }
+      .ellipse71 { width: 6px; height: 6px; left: 302px; top: 0px; background: #0047ff; }
+      .ellipse63 { width: 14px; height: 14px; left: 528px; top: 172px; background: #2278d4; }
+      .group9079 { width: 142px; height: 107px; left: 58px; top: 300px; }
+      .group9079 .ellipse65 { width: 6px; height: 6px; left: 11px; top: 0px; background: #3eb2f0; }
+      .group9079 .ellipse67 { width: 14px; height: 14px; left: 0px; top: 86px; background: #0047ff; }
+      .group9079 .ellipse68 { width: 14px; height: 14px; left: 128px; top: 93px; background: #3eb2f0; }
+      .group9079 .ellipse69 { width: 6px; height: 6px; left: 75px; top: 47px; background: #0047ff; }
+      .group9079 .ellipse70 { width: 14px; height: 14px; left: 81px; top: 6px; background: #2278d4; }
+      .right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      @media (min-width: 972px) {
+        .hero {
+          flex-direction: row;
+        }
+        .hero .left{
+           
+        }
+        .hero .left,
+        .hero .right {
+          width: 50%;
+        }
+        .header h1 {
+          font-size: 3em;
+        }
+        .header p {
+          font-size: 1.2em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="left">
+        <div class="design">
+          <div class="ellipse55"></div>
+          <div class="ellipse62"></div>
+          <div class="ellipse59"></div>
+          <div class="ellipse72"></div>
+          <div class="ellipse60"></div>
+          <div class="ellipse61"></div>
+          <div class="ellipse56"></div>
+          <div class="ellipse57"></div>
+          <div class="ellipse64"></div>
+          <div class="ellipse58"></div>
+          <div class="ellipse71"></div>
+          <div class="ellipse63"></div>
+          <div class="group9079">
+            <div class="ellipse65"></div>
+            <div class="ellipse67"></div>
+            <div class="ellipse68"></div>
+            <div class="ellipse69"></div>
+            <div class="ellipse70"></div>
+          </div>
+        </div>
+        <div class="header">
+          <h1>Hero Section</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
+            commodi alias reprehenderit, optio consequuntur excepturi inventore
+            harum vero, officia similique sequi a quia, repudiandae deserunt
+            molestias. Cumque blanditiis cum autem?
+          </p>
+        </div>
+      </div>
+      <div class="right">
+        <img src="https://avatars.githubusercontent.com/u/93257774?v=4" alt="Hero Image" />
+      </div>
+    </section>
+  </body>
+</html>

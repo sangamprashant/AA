@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Admin/Auth/AuthProvider";
 import { LoadingUI } from "../../App";
 import PersonIcon from "@mui/icons-material/Person";
+import { phone } from "../Strings";
 
 const Navbar = () => {
   const navbarCollapseRef = React.useRef<HTMLDivElement>(null);
@@ -135,10 +136,10 @@ const Navbar = () => {
               >
                 <Link
                   className="nav-link btn theme-btn"
-                  to="tel:+919140399023"
+                  to={`tel:+91${phone}`}
                   onClick={handleNavItemClick}
                 >
-                  +91 9140399023
+                  +91 {phone}
                 </Link>
               </motion.li>
               <motion.li

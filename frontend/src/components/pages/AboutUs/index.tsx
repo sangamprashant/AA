@@ -33,13 +33,13 @@ const AboutUs: React.FC = () => {
     <>
       <PageHeaders
         title="ABOUT US"
-        description="Get Everything You Want to Know about A to Z Classes"
+        description="Get Everything You Want to Know about The A to Z Classes"
       />
       <Section className="py-5">
         <article>
           <h1 className="text-center">Who We Are</h1>
           <p>
-            At A to Z Classes, we are passionate about helping students excel in
+            At The A to Z Classes, we are passionate about helping students excel in
             math. With years of experience in education, our team is dedicated
             to providing high-quality math instruction tailored to meet the
             needs of each student. We believe in the power of personalized
@@ -61,11 +61,11 @@ const AboutUs: React.FC = () => {
           <h1 className="text-center">What We Do</h1>
           <div className="row">
             <div className="col-md-6">
-              <img src="/contactus/expert.webp" width="100%" alt="Expert" />
+              <img src="/aboutus/teacher1.jpg" width="100%" alt="Expert" />
             </div>
             <div className="col-md-6">
               <p>
-                At A to Z Classes, we offer a range of math courses designed to
+                At The A to Z Classes, we offer a range of math courses designed to
                 meet the needs of students at all levels. From foundational
                 concepts to advanced topics, our curriculum is comprehensive and
                 designed to foster deep understanding and proficiency in math.
@@ -120,7 +120,7 @@ const AboutUs: React.FC = () => {
               </p>
             </div>
             <div className="col-md-6">
-              <img src="/contactus/expert.webp" width="100%" alt="Expert" />
+              <img src="/aboutus/teacher2.jpg" width="100%" alt="Expert" />
             </div>
           </div>
         </article>
@@ -128,7 +128,7 @@ const AboutUs: React.FC = () => {
 
       <Section className="py-5">
         <article>
-          <h1 className="text-center">A to Z Classes by the Numbers</h1>
+          <h1 className="text-center">The A to Z Classes by the Numbers</h1>
           <div className="about-us-count-container mt-5">
             {featuresData.map((data, index) => {
               return (

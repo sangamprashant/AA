@@ -154,7 +154,7 @@ const Faq = () => {
             initial={{ opacity: 0, y: -50, x: -100 }}
             whileInView={{ opacity: 1, y: 0, x: 0 }}
             transition={{ duration: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
           >
             We love solving doubts!
           </motion.h2>
@@ -163,7 +163,7 @@ const Faq = () => {
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0, x: 0 }}
             transition={{ duration: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
           >
             Our team will connect you with the Best Tutors
           </motion.p>
@@ -174,7 +174,7 @@ const Faq = () => {
               initial={{ opacity: 0, y: -50 }}
               whileInView={{ opacity: 1, y: 0, x: 0 }}
               transition={{ duration: 1 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               key={item.data[0].key}
             >
               <Collapse

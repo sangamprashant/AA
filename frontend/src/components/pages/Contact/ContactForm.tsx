@@ -4,13 +4,19 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLocationDot,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { FormEvent, useState } from "react";
-import Section from "../../Reuse/Section";
 import { Alert, NotificationArgsProps, notification } from "antd";
 import axios from "axios";
+import React, { FormEvent, useState } from "react";
 import { config } from "../../../config";
+import Section from "../../Reuse/Section";
+import { Link } from "react-router-dom";
+import { address, phone, socialLinks as SocialLink } from "../../Strings";
 
 type NotificationPlacement = NotificationArgsProps["placement"];
 
@@ -18,18 +24,22 @@ const socialLinks = [
   {
     icon: faFacebook,
     text: "Be the first on your block to get product updates, announcements, news and lots of really good content, like us on Facebook today!",
+    link: SocialLink.facebook,
   },
   {
     icon: faInstagram,
     text: "Follow us on Instagram for the latest photos and videos from our events and projects.",
+    link: SocialLink.instagram,
   },
   {
     icon: faLinkedin,
     text: "Connect with us on LinkedIn to stay updated with our professional journey and opportunities.",
+    link: SocialLink.linkedin,
   },
   {
     icon: faTwitter,
     text: "Join the conversation on Twitter for real-time updates and community interaction.",
+    link: SocialLink.twitter,
   },
 ];
 const initialValue = {
@@ -145,26 +155,33 @@ const ContactForm = () => {
               <div className="row">
                 <div className="col-xs-12 col-sm-6">
                   <h2 className=" ">Education Press</h2>
-                  <p className="address">
-                    <FontAwesomeIcon icon={faLocationDot} /> Lorem ipsum dolor
-                    sit, amet consectetur adipisicing elit. Tempora sequi
-                    accusamus facere.
+                  <p className="address d-flex gap-2">
+                    <FontAwesomeIcon icon={faLocationDot} />{" "}
+                    <span> {address}</span>
                   </p>
                 </div>
 
                 <div className="col-xs-12 col-sm-6">
                   <h2 className="head-border-default">Customer Support</h2>
                   <p className="phone">
-                    <FontAwesomeIcon icon={faPhone} /> 731-234-5678
+                    <FontAwesomeIcon icon={faPhone} /> +91 {phone}
+                  </p>
+                  <p className="phone">
+                    <FontAwesomeIcon icon={faEnvelope} />{" "}
+                    connect@theatozclasses.com
                   </p>
                 </div>
                 <h2 className="p-0 m-0">Others ways to connect</h2>
                 <div className="social-links-contact">
                   {socialLinks.map((link, index) => (
                     <div className="d-flex gap-3 mb-3" key={index}>
-                      <div className="social-link">
+                      <Link
+                        to={link.link}
+                        className="social-link"
+                        target="_blank"
+                      >
                         <FontAwesomeIcon icon={link.icon} />
-                      </div>
+                      </Link>
                       <div className="social-link-content">
                         <p>{link.text}</p>
                       </div>
@@ -183,7 +200,7 @@ const ContactForm = () => {
           height="100%"
           title="map"
           scrolling="no"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.364871941983!2d81.07030757508787!3d26.891912976659526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399958aa9da50cb7%3A0x8f5a1f4d75d0d691!2sShri%20Ramswaroop%20College%20Of%20Engineering%20and%20Management!5e0!3m2!1sen!2sus!4v1719218134322!5m2!1sen!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.614677130728!2d80.88761957508635!3d26.852205376683294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bffc1f66683a1%3A0x27015bc5a83b6e6d!2sTikait%20Rai%20Talab%20Colony!5e0!3m2!1sen!2sin!4v1721164640438!5m2!1sen!2sin"
           style={{
             filter: "grayscale(0) contrast(1.2) opacity(0.8)",
           }}

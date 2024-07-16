@@ -15,7 +15,7 @@ const ContactHome = () => {
           />
         </div>
         <div className="col-md-7 flex-1">
-          <div className="d-flex flex-column  align-items-start h-100">
+          <div className="d-flex flex-column  align-items-start h-100 justify-content-between">
             <div>
               <h3>Have Any Question?</h3>
               <p>

@@ -2,36 +2,61 @@ import {
   faFacebook,
   faInstagram,
   faLinkedin,
-  faXTwitter,
+  faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
+import { socialLinks } from "../Strings";
+import { Link } from "react-router-dom";
+
+const socialMediaLinks = [
+  {
+    platform: "Facebook",
+    icon: faFacebook,
+    className: "facebook",
+    link: socialLinks.facebook,
+  },
+  {
+    platform: "Instagram",
+    icon: faInstagram,
+    className: "instagram",
+    link: socialLinks.instagram,
+  },
+  {
+    platform: "Twitter",
+    icon: faTwitter,
+    className: "twitter",
+    link: socialLinks.twitter,
+  },
+  {
+    platform: "LinkedIn",
+    icon: faLinkedin,
+    className: "linkedin",
+    link: socialLinks.linkedin,
+  },
+  {
+    platform: "YouTube",
+    icon: faYoutube,
+    className: "youtube",
+    link: socialLinks.youtube,
+  },
+];
 
 const SocialLinks = () => {
   return (
     <motion.div
       className="social-buttons mt-3"
-      initial={{ opacity: 0, scale:.9 }}
-      whileInView={{ opacity: 1, scale:1 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1 }}
-      viewport={{ once: false }}
+      viewport={{ once: true }}
     >
-      <button className="btn facebook">
-        <FontAwesomeIcon icon={faFacebook} /> <span>Facebook</span>
-      </button>
-      <button className="btn instagram">
-        <FontAwesomeIcon icon={faInstagram} /> <span>Instagram</span>
-      </button>
-      <button className="btn twitter">
-        <FontAwesomeIcon icon={faXTwitter} /> <span>Twitter</span>
-      </button>
-      <button className="btn linkedin">
-        <FontAwesomeIcon icon={faLinkedin} /> <span>LinkedIn</span>
-      </button>
-      <button className="btn youtube">
-        <FontAwesomeIcon icon={faYoutube} /> <span>YouTube</span>
-      </button>
+      {socialMediaLinks.map((link, index) => (
+        <Link key={index} className={`btn ${link.className}`} to={link.link}>
+          <FontAwesomeIcon icon={link.icon} /> <span>{link.platform}</span>
+        </Link>
+      ))}
     </motion.div>
   );
 };

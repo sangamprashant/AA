@@ -98,35 +98,18 @@ const BookClass = () => {
         <div className="py-5">
           <div className="row align-items-center">
             <motion.div className="col-md-7">
-              <motion.h1
-                className="bold-text"
-                initial={{ opacity: 0, y: 100, x: -100 }}
-                whileInView={{ opacity: 1, y: 0, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
+              <motion.h1 className="bold-text">
                 Speak with the{" "}
                 <span className="text-warning">The A to Z Classes </span>
                 Parents Coach
               </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
-              >
+              <motion.p>
                 Get ready for an amazing journey with best mentors who turn
                 every challenge into chance to boost your career
               </motion.p>
               <motion.form onSubmit={handleSubmit}>
                 <div className="row">
-                  <motion.div
-                    className="col-md-6 mt-3"
-                    initial={{ opacity: 0, y: 100 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    viewport={{ once: true }}
-                  >
+                  <motion.div className="col-md-6 mt-3">
                     <input
                       type="text"
                       className="form-control"
@@ -137,13 +120,7 @@ const BookClass = () => {
                       placeholder="Enter First Name"
                     />
                   </motion.div>
-                  <motion.div
-                    className="col-md-6 mt-3"
-                    initial={{ opacity: 0, y: 100 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    viewport={{ once: true }}
-                  >
+                  <motion.div className="col-md-6 mt-3">
                     <input
                       type="text"
                       className="form-control"
@@ -154,13 +131,7 @@ const BookClass = () => {
                       required
                     />
                   </motion.div>
-                  <motion.div
-                    className="col-md-12 mt-3"
-                    initial={{ opacity: 0, y: 100 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.9 }}
-                    viewport={{ once: true }}
-                  >
+                  <motion.div className="col-md-12 mt-3">
                     <input
                       type="email"
                       className="form-control"
@@ -171,13 +142,7 @@ const BookClass = () => {
                       required
                     />
                   </motion.div>
-                  <motion.div
-                    className="col-md-12 mt-3"
-                    initial={{ opacity: 0, y: 100 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 1.2 }}
-                    viewport={{ once: true }}
-                  >
+                  <motion.div className="col-md-12 mt-3">
                     <div className="input-container">
                       <select
                         className="country-select form-control"
@@ -208,13 +173,7 @@ const BookClass = () => {
                       />
                     </div>
                   </motion.div>
-                  <motion.div
-                    className="col-md-6 mt-3"
-                    initial={{ opacity: 0, y: 100 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.9 }}
-                    viewport={{ once: true }}
-                  >
+                  <motion.div className="col-md-6 mt-3">
                     <select
                       name="selectedClass"
                       id="selectedClass"
@@ -233,13 +192,7 @@ const BookClass = () => {
                       ))}
                     </select>
                   </motion.div>
-                  <motion.div
-                    className="col-md-6 mt-3"
-                    initial={{ opacity: 0, y: 100 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.9 }}
-                    viewport={{ once: true }}
-                  >
+                  <motion.div className="col-md-6 mt-3">
                     <input
                       type="date"
                       className="form-control"
@@ -265,11 +218,6 @@ const BookClass = () => {
                       type="submit"
                       className="btn theme-btn mt-4"
                       whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, y: 100 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 1.2 }}
-                      viewport={{ once: true }}
                     >
                       Book Now
                     </motion.button>

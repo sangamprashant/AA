@@ -6,22 +6,23 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SocialLinks from "./SocialLinks";
 import { Link } from "react-router-dom";
+import { address, phone } from "../Strings";
 
 const contactDetails = [
   {
     icon: faLocationDot,
-    text: "JeetPur Birdpur No13, Siddharth Nagar",
+    text: address,
     href: "#",
   },
   {
     icon: faPhone,
-    text: "Call +01 1234567890",
-    href: "tel:+011234567890",
+    text: `Call +91 ${phone}`,
+    href: `tel:+91${phone}`,
   },
   {
     icon: faEnvelope,
-    text: "demo@gmail.com",
-    href: "mailto:demo@gmail.com",
+    text: "connect@theatozclasses.com",
+    href: "mailto:connect@theatozclasses.com",
   },
 ];
 
@@ -60,21 +61,23 @@ const Footer = () => {
           </div>
           <div className="col-md-4 footer-col">
             <div className="footer_detail">
-              <a href="#" className="footer-logo text-decoration-none">
+              <a href="/" className="footer-logo text-decoration-none">
                 The A to Z Classes
               </a>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
-                optio iure a possimus, reprehenderit dolor maiores cumque
-                repudiandae voluptas error vitae fugit similique magnam iste
-                placeat veniam aliquam. Suscipit, tenetur.
+                At The A to Z Classes, we are dedicated to providing
+                comprehensive and personalized education to our students. Our
+                experienced instructors, up-to-date curriculum, and interactive
+                teaching methods ensure a high level of student achievement and
+                satisfaction. Join us to excel in your academic journey and
+                beyond.
               </p>
               <SocialLinks />
             </div>
           </div>
           <div className="col-md-4 footer-col">
             <div className="footer_contact">
-              <h4>Important links</h4>
+              <h4>Important Links</h4>
               <div className="contact_link_box">
                 {impLinks.map((contact, index) => (
                   <Link key={index} to={contact.link}>
@@ -85,24 +88,14 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="footer-info text-center mt-3">
-          <p>
+        <div className="footer-info text-center mt-0">
+          <sup>
             &copy; <span id="displayYear">{new Date().getFullYear()}</span> All
             Rights Reserved By{" "}
-            <a href="/" className="text-primary">
-              The A to Z Classes
+            <a href="/" className="text-white">
+              true A to Z Classes
             </a>
-          </p>
-          <sub>
-            Designed By{" "}
-            <a
-              href="https://github.com/sangamprashant"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Prashant Srivastav
-            </a>
-          </sub>
+          </sup>
         </div>
       </div>
     </footer>

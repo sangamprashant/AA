@@ -270,4 +270,17 @@ const CountryOption: CountryOption[] = [
   { label: "Zimbabwe (+263)", value: "ZW", phoneCode: "+263" },
 ];
 
-export { Hero_Data, CountryOption };
+const socialLinks = {
+  facebook:
+    "https://www.facebook.com/people/Theatoz-Classes/61560106029558/?mibextid=ZbWKwL",
+  twitter: "https://x.com/theatozclasses",
+  instagram: "https://www.instagram.com/theatozclasses",
+  linkedin: "https://www.linkedin.com/company/theatozclasses/",
+  youtube: "https://www.youtube.com/@theatozclasses",
+};
+
+const address = "HIG-A-373/ll rajajipuram, Lucknow Uttar Pradesh -226017";
+
+const phone = "9454509368";
+
+export { Hero_Data, CountryOption, socialLinks, address, phone };
