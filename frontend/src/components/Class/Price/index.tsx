@@ -19,7 +19,7 @@ const Price = () => {
   if (!authContext) {
     return <LoadingUI />;
   }
-  const { loading, dummyLogin, isDummyLogin } = authContext;
+  const { loading,  isDummyLogin } = authContext;
   if (loading) {
     return <LoadingUI />;
   }
