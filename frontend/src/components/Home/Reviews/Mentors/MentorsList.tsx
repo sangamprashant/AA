@@ -21,7 +21,7 @@ const mentors = [
     course: "M.Sc (Maths)",
     yearsOfExperience: "4+",
     hoursTaught: "4000+",
-    imgSrc: "suryansh.png",
+    imgSrc: "suryansh1.png",
   },
 ];
 

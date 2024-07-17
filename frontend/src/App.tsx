@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import { AppContext } from "./AppProvider";
 import {
   AboutUs,
   Class,
@@ -20,8 +21,15 @@ import {
   Dashboard,
 } from "./components/Admin";
 import { AuthContext } from "./components/Admin/Auth/AuthProvider";
+import {
+  ACCEPTABLEUSE,
+  COOKIESPOLICY,
+  DISCLAIMER,
+  PRIVACYPOLICY,
+  RETURNPOLICY,
+  TERMSANDCONDITIONS,
+} from "./components/pages";
 import FloatButtonComponent from "./components/Reuse/FloatButton";
-import { AppContext } from "./AppProvider";
 
 function App() {
   const authContext = useContext(AuthContext);
@@ -67,6 +75,12 @@ function App() {
                 <Route path="/contact-us" element={<Contact />} />
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/admin" element={<AdminLogin />} />
+                <Route path="/privacy-policy" element={<PRIVACYPOLICY />} />
+                <Route path="/cookie-policy" element={<COOKIESPOLICY />} />
+                <Route path="/terms" element={<TERMSANDCONDITIONS />} />
+                <Route path="/return-policy" element={<RETURNPOLICY />} />
+                <Route path="/disclaimer" element={<DISCLAIMER />} />
+                <Route path="/acceptable-use" element={<ACCEPTABLEUSE />} />
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
             </div>

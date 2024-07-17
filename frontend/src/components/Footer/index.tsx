@@ -4,9 +4,8 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SocialLinks from "./SocialLinks";
-import { Link } from "react-router-dom";
 import { address, phone } from "../Strings";
+import SocialLinks from "./SocialLinks";
 
 const contactDetails = [
   {
@@ -39,6 +38,26 @@ const impLinks = [
     title: "Privacy Policy",
     link: "/privacy-policy",
   },
+  {
+    title: "Cookie Policy",
+    link: "/cookie-policy",
+  },
+  {
+    title: "Terms and Conditions",
+    link: "/terms",
+  },
+  {
+    title: "Return Policy",
+    link: "/return-policy",
+  },
+  {
+    title: "Disclaimer",
+    link: "/disclaimer",
+  },
+  {
+    title: "Acceptable Use Policy",
+    link: "/acceptable-use",
+  },
 ];
 
 const Footer = () => {
@@ -51,7 +70,7 @@ const Footer = () => {
               <h4>Contact Us</h4>
               <div className="contact_link_box">
                 {contactDetails.map((contact, index) => (
-                  <a key={index} href={contact.href}>
+                  <a key={index} href={contact.href} className=" text-wrap">
                     <FontAwesomeIcon icon={contact.icon} aria-hidden="true" />{" "}
                     <span>{contact.text}</span>
                   </a>
@@ -80,9 +99,9 @@ const Footer = () => {
               <h4>Important Links</h4>
               <div className="contact_link_box">
                 {impLinks.map((contact, index) => (
-                  <Link key={index} to={contact.link}>
+                  <a key={index} href={contact.link}>
                     <span>{contact.title}</span>
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>

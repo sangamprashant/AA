@@ -283,4 +283,16 @@ const address = "HIG-A-373/ll rajajipuram, Lucknow Uttar Pradesh -226017";
 
 const phone = "9454509368";
 
-export { Hero_Data, CountryOption, socialLinks, address, phone };
+const webDomain = "https://a-to-z-classes.vercel.app";
+
+const email = "connect@theatozclasses.com";
+
+export {
+  Hero_Data,
+  CountryOption,
+  socialLinks,
+  address,
+  phone,
+  webDomain,
+  email,
+};

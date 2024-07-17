@@ -3,14 +3,13 @@
 }
 
 .payment-screen {
-  background-image: url("admin/top-header.png");
+  background-image: url("/admin/top-header.png");
   height: 150px;
   width: 100%;
 }
 
-
-.payment-input{
-    position: relative;
-    padding: 0 23px 23px 23px;
-    margin-top: -80px;
+.payment-input {
+  position: relative;
+  padding: 0 23px 23px 23px;
+  margin-top: -80px;
 }
