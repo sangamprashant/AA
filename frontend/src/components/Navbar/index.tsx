@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Admin/Auth/AuthProvider";
 import { LoadingUI } from "../../App";
 import PersonIcon from "@mui/icons-material/Person";
-import { phone } from "../Strings";
+import { email, phone } from "../Strings";
 
 const Navbar = () => {
   const navbarCollapseRef = React.useRef<HTMLDivElement>(null);
@@ -152,10 +152,10 @@ const Navbar = () => {
               >
                 <Link
                   className="nav-link btn theme-btn"
-                  to="mailto:princeujjawal.uk@gamil.com"
+                  to={`mailto:${email}`}
                   onClick={handleNavItemClick}
                 >
-                  princeujjawal.uk@gamil.com
+                  {email}
                 </Link>
               </motion.li>
             </ul>

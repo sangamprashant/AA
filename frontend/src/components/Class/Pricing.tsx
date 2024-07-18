@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { appName } from "../Strings";
 
 const Pricing = () => {
   const items = [
@@ -31,9 +32,7 @@ const Pricing = () => {
 
   return (
     <div className="pricing-class-section">
-      <h2 className="pricing-class-title text-center">
-        How A to Z Classes Works
-      </h2>
+      <h2 className="pricing-class-title text-center">How {appName} Works</h2>
       <div className="pricing-class-row row align-items-center justify-content-center mt-4">
         <div className="pricing-class-col col-md-5">
           {items.map((item, index) => (

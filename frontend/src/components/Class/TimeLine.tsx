@@ -1,6 +1,7 @@
 import { Timeline } from "antd";
 import { motion } from "framer-motion";
 import Section from "../Reuse/Section";
+import { appName } from "../Strings";
 
 const TimeLine = () => {
   return (
@@ -13,7 +14,7 @@ const TimeLine = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: false }}
         >
-          Discover the Journey of Learning with A to Z Classes
+          Discover the Journey of Learning with {appName}
         </motion.h1>
         <motion.p
           className="text-center"
@@ -22,7 +23,7 @@ const TimeLine = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: false }}
         >
-          At A to Z Classes, our curriculum is designed to nurture curiosity and foster academic excellence in a supportive and engaging environment. Here’s a glimpse of what our students experience:
+          At {appName}, our curriculum is designed to nurture curiosity and foster academic excellence in a supportive and engaging environment. Here’s a glimpse of what our students experience:
         </motion.p>
         <div className="row py-5 justify-content-center">
           <motion.div

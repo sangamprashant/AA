@@ -1,5 +1,5 @@
 import type { NotificationArgsProps } from "antd";
-import { Alert, notification } from "antd";
+import { Alert, AutoComplete, notification } from "antd";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -46,6 +46,14 @@ const BookClass = () => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleInputChangeAutoComplete = (value: string) => {
+    console.log({ value });
+    setFormData({
+      ...formData,
+      country: value,
     });
   };
 
@@ -142,26 +150,24 @@ const BookClass = () => {
                       required
                     />
                   </motion.div>
+
                   <motion.div className="col-md-12 mt-3">
                     <div className="input-container">
-                      <select
-                        className="country-select form-control"
-                        name="country"
+                      <AutoComplete
+                        style={{ width: 120, height:40 }}
+                        options={CountryOption.map((option) => ({
+                          value: option.phoneCode,
+                          label: `${option.label} ${option.phoneCode}`,
+                        }))}
+                        placeholder="Enter a Country"
+                        filterOption={(inputValue, option) =>
+                          option!.label
+                            .toUpperCase()
+                            .includes(inputValue.toUpperCase())
+                        }
+                        onChange={handleInputChangeAutoComplete}
                         value={formData.country}
-                        onChange={handleInputChange}
-                        required
-                      >
-                        <option value="">Select Country</option>
-                        {CountryOption.map((option) => (
-                          <option
-                            key={option.value}
-                            value={option.phoneCode}
-                            className="w-100"
-                          >
-                            {option.label} {option.phoneCode}
-                          </option>
-                        ))}
-                      </select>
+                      />
                       <input
                         type="text"
                         className="phone-input form-control"

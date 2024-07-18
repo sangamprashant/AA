@@ -2,7 +2,7 @@ import { useLayoutEffect } from "react";
 import Terms, { ListStyle } from "..";
 import Section from "../../../Reuse/Section";
 import TermsHeader from "../TermsHeader";
-import { webDomain } from "../../../Strings";
+import { address, email, webDomain } from "../../../Strings";
 
 const PRIVACYPOLICY = () => {
   useLayoutEffect(() => {
@@ -36,8 +36,8 @@ const PRIVACYPOLICY = () => {
           <b>Questions or concerns?</b> Reading this privacy notice will help
           you understand your privacy rights and choices. If you do not agree
           with our policies and practices, please do not use our Services. If
-          you still have any questions or concerns, please contact us at
-          princeujjawal.uk@gmail.com.
+          you still have any questions or concerns, please contact us at{" "}
+          <a href={`mailto:${email}`}>{email}</a>
         </p>
         <h3 className="mt-4">SUMMARY OF KEY POINTS</h3>
         <p className="font-weight-bold">
@@ -357,12 +357,11 @@ const PRIVACYPOLICY = () => {
         </h3>
         <p>
           If you have questions or comments about this notice, you may email us
-          at princeujjawal.uk@gmail.com or by post to:
+          at <a href={`mailto:${email}`}>{email}</a> or by post to:
         </p>
         <ul className=" list-unstyled">
           <li>The A To Z classes</li>
-          <hr style={{ width: "150px", height: "20px" }} />
-          <hr style={{ width: "150px" }} />
+          {address}
           <li>India</li>
         </ul>
 
@@ -375,7 +374,7 @@ const PRIVACYPOLICY = () => {
           to request access to the personal information we collect from you,
           change that information, or delete it in some circumstances. To
           request to review, update, or delete your personal information, please
-          visit: https://a-to-z-classes.vercel.app/contact. We will respond to
+          visit: <a href={`${webDomain}/contact-us`}>{webDomain}/contact-us</a>. We will respond to
           your request within 30 days.
         </p>
       </Section>

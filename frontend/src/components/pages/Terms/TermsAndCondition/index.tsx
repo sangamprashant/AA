@@ -1,6 +1,6 @@
 import Terms, { ListStyle } from "..";
 import TermsHeader from "../TermsHeader";
-import { email, phone, webDomain } from "../../../Strings";
+import { address, email, phone, webDomain } from "../../../Strings";
 import Section from "../../../Reuse/Section";
 import { useLayoutEffect } from "react";
 const TERMSANDCONDITIONS = () => {
@@ -18,8 +18,7 @@ const TERMSANDCONDITIONS = () => {
         <h3 className="mt-4">AGREEMENT TO OUR LEGAL TERMS</h3>
         <p>
           We are The A To Z classes ('<b>Company</b>', '<b>we</b>', '<b>us</b>',
-          or '<b>our</b>'), a company registered in India at{" "}
-          <b>HIG-A-373/ll rajajipuram, Lucknow Uttar Pradesh -226017</b>.
+          or '<b>our</b>'), a company registered in India at <b>{address}</b>.
         </p>
         <p>
           We operate the website{" "}
@@ -29,8 +28,8 @@ const TERMSANDCONDITIONS = () => {
           (the '<b>Site</b>'), as well as any other related products and
           services that refer or link to these legal terms (the '
           <b>Legal Terms</b>') (collectively, the '<b>Services</b>'). You can
-          contact us by phone at +919454509368, email at
-          connect@theatozclasses.com, India.
+          contact us by phone at +91{phone}, email at{" "}
+          <a href={`mailto:${email}`}>{email}</a>, India.
         </p>
         <p>
           These Legal Terms constitute a legally binding agreement made between
@@ -44,10 +43,10 @@ const TERMSANDCONDITIONS = () => {
         <p>
           We will provide you with prior notice of any scheduled changes to the
           Services you are using. The modified Legal Terms will become effective
-          upon posting or notifying you by connect@theatozclasses.com, as stated
-          in the email message. By continuing to use the Services after the
-          effective date of any changes, you agree to be bound by the modified
-          terms.
+          upon posting or notifying you by{" "}
+          <a href={`mailto:${email}`}>{email}</a>, as stated in the email
+          message. By continuing to use the Services after the effective date of
+          any changes, you agree to be bound by the modified terms.
         </p>
         <p>
           All users who are minors in the jurisdiction in which they reside

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Section from "../Reuse/Section";
 import { scrollToSection } from "../Reuse/functions";
+import { appName } from "../Strings";
 
 const FreeClass = () => {
   return (
@@ -33,10 +34,10 @@ const FreeClass = () => {
           <div className="col-md-8 d-flex flex-column justify-content-between">
             <div>
               <p>
-                At A to Z Classes, we offer a holistic learning experience that
-                goes beyond traditional teaching methods. Our approach ensures
-                that your child gains a strong foundation in all subjects,
-                setting them up for long-term success.
+                At {appName}, we offer a holistic learning experience that goes
+                beyond traditional teaching methods. Our approach ensures that
+                your child gains a strong foundation in all subjects, setting
+                them up for long-term success.
               </p>
               <p className="mt-5">
                 Our expert tutors focus on personalized learning, making sure

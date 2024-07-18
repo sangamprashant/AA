@@ -1,3 +1,4 @@
+import { appName } from "../Strings";
 
 const Partner = () => {
   const data = [
@@ -17,7 +18,7 @@ const Partner = () => {
         <div className="col-md-5">
           <div className="shadow p-4 rounded-4">
             <h5 className="text-center">
-              A to Z Classes students outperform even their seniors!
+              {appName} students outperform even their seniors!
             </h5>
             <p>
               Our students consistently excel and often outperform their seniors
@@ -25,7 +26,7 @@ const Partner = () => {
             </p>
             <div>
               <img src="/class/list/verified.png" alt="Verified" height={50} />{" "}
-              Certified by <code>A to Z Certification Authority</code>
+              Certified by <code>{appName} Certification Authority</code>
             </div>
           </div>
         </div>

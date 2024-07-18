@@ -1,13 +1,12 @@
 import { useContext } from "react";
+import { LoadingUI } from "../../../App";
+import { AppContext } from "../../../AppProvider";
+import { AuthContext } from "../../Admin/Auth/AuthProvider";
 import Section from "../../Reuse/Section";
 import { useClassContext } from "../ClassContext";
 import MobilePrice from "./MobilePrice";
 import PriceChart from "./PriceChart";
 import "./price.css";
-import { AppContext } from "../../../AppProvider";
-import { AuthContext } from "../../Admin/Auth/AuthProvider";
-import { LoadingUI } from "../../../App";
-import { Link } from "react-router-dom";
 
 const Price = () => {
   const appContext = useContext(AppContext);
@@ -19,7 +18,7 @@ const Price = () => {
   if (!authContext) {
     return <LoadingUI />;
   }
-  const { loading,  isDummyLogin } = authContext;
+  const { loading } = authContext;
   if (loading) {
     return <LoadingUI />;
   }
@@ -271,16 +270,16 @@ const Price = () => {
           </div>
         </div>
         <div className="d-flex justify-content-center mt-5">
-          {isDummyLogin ? (
-            <button className="btn theme-btn" onClick={showPayment}>
-              Fill Form to Pay Now
-            </button>
-          ) : (
-            <Link to="/login" className="btn theme-btn">
-              {" "}
-              Login to make a payment
-            </Link>
-          )}
+          {/* {isDummyLogin ? ( */}
+          <button className="btn theme-btn" onClick={showPayment}>
+            Fill Form to Pay Now
+          </button>
+          {/* // ) : (
+          //   <Link to="/login" className="btn theme-btn">
+          //     {" "}
+          //     Login to make a payment
+          //   </Link>
+          // )} */}
         </div>
       </div>
     </Section>

@@ -279,7 +279,9 @@ const socialLinks = {
   youtube: "https://www.youtube.com/@theatozclasses",
 };
 
-const address = "HIG-A-373/ll rajajipuram, Lucknow Uttar Pradesh -226017";
+const appName = "The A to Z Classes"
+
+const address = "HIG-A-373/ll Rajajipuram, Lucknow Uttar Pradesh -226017";
 
 const phone = "9454509368";
 
@@ -295,4 +297,5 @@ export {
   phone,
   webDomain,
   email,
+  appName
 };

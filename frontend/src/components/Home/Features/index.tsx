@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 export const featuresData = [
   {
-    end: 1000,
+    end: 10000,
     suffix: "+",
     title: "Students Enrolled",
   },
