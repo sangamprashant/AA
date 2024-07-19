@@ -86,6 +86,12 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ children }) => {
             },
             {
               key: "4",
+              icon: <CalendarOutlined />,
+              label: "Payment",
+              onClick: () => navigate("/admin/payment"),
+            },
+            {
+              key: "5",
               icon: <LogoutOutlined />,
               label: "Logout",
               title: "Logout from admin panel",

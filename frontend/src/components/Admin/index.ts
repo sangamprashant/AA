@@ -4,6 +4,7 @@ import Dashboard from "./Pannel/Dashboard";
 import AdminFormReceiveContact from "./Pannel/Dashboard/Contact";
 import Admin404 from "./Pannel/Dashboard/Admin404";
 import AdminBooking from "./Pannel/Dashboard/Booking";
+import AdminPayment from "./Pannel/Dashboard/Payment";
 
 export {
   AdminLogin,
@@ -12,4 +13,5 @@ export {
   AdminFormReceiveContact,
   Admin404,
   AdminBooking,
+  AdminPayment,
 };

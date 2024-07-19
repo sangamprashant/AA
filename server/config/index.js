@@ -9,7 +9,9 @@ const config = {
   FRONTEND_DOMAIN: process.env.FRONTEND_DOMAIN,
   EMAIL: process.env.EMAIL,
   EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
-  ADMIN_EMAIL: process.env.ADMIN_EMAIL
+  ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+  RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID,
+  RAZORPAY_SECRET_KEY: process.env.RAZORPAY_SECRET_KEY,
 };
 
 module.exports = config;

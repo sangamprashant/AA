@@ -4,7 +4,7 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { address, phone } from "../Strings";
+import { address, appName, email, phone } from "../Strings";
 import SocialLinks from "./SocialLinks";
 
 const contactDetails = [
@@ -14,14 +14,14 @@ const contactDetails = [
     href: "#",
   },
   {
+    icon: faEnvelope,
+    text: email,
+    href: `mailto:${email}`,
+  },
+  {
     icon: faPhone,
     text: `Call +91 ${phone}`,
     href: `tel:+91${phone}`,
-  },
-  {
-    icon: faEnvelope,
-    text: "connect@theatozclasses.com",
-    href: "mailto:connect@theatozclasses.com",
   },
 ];
 
@@ -112,7 +112,7 @@ const Footer = () => {
             &copy; <span id="displayYear">{new Date().getFullYear()}</span> All
             Rights Reserved By{" "}
             <a href="/" className="text-white">
-              true A to Z Classes
+              {appName}
             </a>
           </sup>
         </div>

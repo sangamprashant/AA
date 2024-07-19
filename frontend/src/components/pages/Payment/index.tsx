@@ -1,7 +1,12 @@
-import { Drawer, message } from "antd";
+import { Drawer, notification } from "antd";
+import axios from "axios";
 import { FormEvent, useContext, useState } from "react";
 import { AppContext } from "../../../AppProvider";
+import { config } from "../../../config";
 import "./payment.css";
+
+type NotificationType = "success" | "info" | "warning" | "error";
+
 const Payment: React.FC = () => {
   const appContext = useContext(AppContext);
 
@@ -14,9 +19,22 @@ const Payment: React.FC = () => {
   const [purpose, setPurpose] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
   const [selectClass, setSelectClass] = useState<string>("");
-  const [submissionStatus, setSubmissionStatus] = useState<string | null>(null);
 
-  const handleFormSubmit = (e: FormEvent) => {
+  const [api, contextHolder] = notification.useNotification();
+
+  const openNotification = (
+    type: NotificationType,
+    message: string,
+    description: string
+  ) => {
+    api[type]({
+      message,
+      description,
+      placement: "bottomRight",
+    });
+  };
+
+  const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (
       !name ||
@@ -26,12 +44,113 @@ const Payment: React.FC = () => {
       !amount ||
       !selectClass
     ) {
-      message.error("Please fill out all fields before making the payment.");
+      openNotification(
+        "error",
+        "Form Incomplete",
+        "Please fill out all fields before making the payment."
+      );
       return;
     }
 
-    setSubmissionStatus("success");
-    // loadGooglePay();
+    const paymentReqBody = {
+      name,
+      mobileNumber,
+      email,
+      purpose,
+      amount,
+      selectClass,
+    };
+
+    try {
+      const res = await loadScript(
+        "https://checkout.razorpay.com/v1/checkout.js"
+      );
+      if (!res) {
+        alert("Razorpay SDK failed to load. Are you online?");
+        return;
+      }
+
+      const payToDb = await axios.post(
+        `${config.SERVER}/payment/make`,
+        paymentReqBody
+      );
+      const {
+        id: order_id,
+        currency,
+        amount,
+        success: payToDbSuccess,
+      } = payToDb.data;
+      if (!payToDbSuccess) {
+        openNotification(
+          "error",
+          "Payment Failed",
+          "Payment failed. Please try again later."
+        );
+        return;
+      }
+
+      const options = {
+        key: config.RAZORPAY_KEY_ID,
+        amount: amount.toString(),
+        currency: currency,
+        name: name,
+        image: "/logo-crop.png",
+        order_id: order_id,
+        handler: async function (response: any) {
+          const data = {
+            orderCreationId: order_id,
+            razorpayPaymentId: response.razorpay_payment_id,
+            razorpayOrderId: response.razorpay_order_id,
+            razorpaySignature: response.razorpay_signature,
+          };
+          const result = await axios.post(
+            `${config.SERVER}/payment/success`,
+            data
+          );
+          if (result.data.success) {
+            openNotification(
+              "success",
+              "Payment Successful",
+              result.data.message || "Payment done."
+            );
+          } else {
+            openNotification(
+              "error",
+              "Payment Error",
+              "There was an error processing your payment. Please try again later."
+            );
+          }
+        },
+        prefill: {
+          name: name,
+          email: email,
+          contact: mobileNumber,
+        },
+        notes: {
+          name: name,
+          mobileNumber: mobileNumber,
+          email: email,
+          purpose: purpose,
+          class: selectClass,
+        },
+        theme: {
+          color: "#000000",
+        },
+      };
+      if (window.Razorpay) {
+        const paymentObject = new window.Razorpay(options);
+        paymentObject.open();
+      } else {
+        console.error("Razorpay SDK not loaded");
+      }
+    } catch (error) {
+      console.error(error);
+      openNotification(
+        "error",
+        "Error",
+        "An unexpected error occurred. Please try again later."
+      );
+    }
   };
 
   return (
@@ -41,6 +160,7 @@ const Payment: React.FC = () => {
       onClose={closePayment}
       open={paymentOpen}
     >
+      {contextHolder}
       <div className="main">
         <div className="payment-screen"></div>
         <div className="payment-input">
@@ -136,24 +256,26 @@ const Payment: React.FC = () => {
                 Proceed to Pay
               </button>
             </form>
-            {submissionStatus === "success" && (
-              <div className="alert alert-success mt-3" role="alert">
-                Thank you for your submission! We will reach out to you shortly.
-                An email will be sent with the payment details. Please follow
-                the instructions in the email to complete the payment.
-              </div>
-            )}
-            {submissionStatus === "error" && (
-              <div className="alert alert-danger mt-3" role="alert">
-                There was an error processing your payment. Please try again
-                later.
-              </div>
-            )}
           </div>
         </div>
       </div>
     </Drawer>
   );
+
+  //loading the payment script:
+  function loadScript(src: string) {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
 };
 
 export default Payment;

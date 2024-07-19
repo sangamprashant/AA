@@ -11,6 +11,7 @@ import {
   Navbar,
   PageNotFound,
   Payment,
+  ViewPayment,
 } from "./components";
 import {
   Admin404,
@@ -18,6 +19,7 @@ import {
   AdminFormReceiveContact,
   AdminLogin,
   AdminPanel,
+  AdminPayment,
   Dashboard,
 } from "./components/Admin";
 import { AuthContext } from "./components/Admin/Auth/AuthProvider";
@@ -57,6 +59,7 @@ function App() {
                   element={<AdminFormReceiveContact />}
                 />
                 <Route path="/admin/booking" element={<AdminBooking />} />
+                <Route path="/admin/payment" element={<AdminPayment />} />
                 <Route path="*" element={<Admin404 />} />
               </Routes>
             </AdminPanel>
@@ -74,6 +77,7 @@ function App() {
                 {/* delete it later */}
                 <Route path="/contact-us" element={<Contact />} />
                 <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/payment" element={<ViewPayment />} />
                 <Route path="/admin" element={<AdminLogin />} />
                 <Route path="/privacy-policy" element={<PRIVACYPOLICY />} />
                 <Route path="/cookie-policy" element={<COOKIESPOLICY />} />

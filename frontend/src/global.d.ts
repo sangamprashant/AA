@@ -7,3 +7,8 @@ interface Window {
 interface ImportMeta {
   readonly env: Record<string, string | undefined>;
 }
+
+// razorpay.d.ts
+interface Window {
+  Razorpay: any;
+}
