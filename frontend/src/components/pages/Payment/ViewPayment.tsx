@@ -20,7 +20,7 @@ const ViewPayment = () => {
   }
 
   return (
-    <Section>
+    <Section className="pb-5">
       <PaymentViewContainer payId={payId}/>
     </Section>
   );
