@@ -218,7 +218,7 @@ const dashboardContent = async (req, res) => {
       payments,
     ] = await Promise.all([
       Visitor.countDocuments(),
-      Visitor.countDocuments({ isNew: true }),
+      Visitor.countDocuments({ isNewVisitor: true }),
       Payment.countDocuments({ status: "created" }),
       Payment.countDocuments({ status: "success" }),
       Payment.countDocuments({ status: "pending" }),

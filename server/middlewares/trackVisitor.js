@@ -17,7 +17,7 @@ const trackVisitor = async (req, res, next) => {
   });
 
   if (existingVisitor) {
-    existingVisitor.isNew = false;
+    existingVisitor.isNewVisitor = false;
     await existingVisitor.save();
   } else {
     const newVisitor = new Visitor({ ip: hashedIp });
