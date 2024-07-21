@@ -1,13 +1,16 @@
+import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import axios from "axios";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import { useEffect, useState } from "react";
 import { config } from "../../config";
-import "./payment.css";
 import { address, appName, email, phone } from "../Strings";
+import "./payment.css";
+import Loading from "./Loading";
+import SocialLinks, { socialMediaLinks } from "../Footer/SocialLinks";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
-  payId: string;
+  payId?: string;
+  orderId?: string;
 }
 
 interface PaymentNotes {
@@ -89,45 +92,81 @@ interface PaymentResponse {
   paymentdb: PaymentDB;
 }
 
-const PaymentViewContainer = ({ payId }: Props) => {
+const PaymentViewContainer = ({ payId, orderId }: Props) => {
   const [data, setData] = useState<PaymentResponse | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    console.log({ payId, orderId });
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${config.SERVER}/payment/view-one/${payId}`
-        );
+        const response = await axios.post(`${config.SERVER}/payment/view-one`, {
+          payment_id: payId,
+          order_id: orderId,
+        });
         setData(response.data);
       } catch (error) {
         console.error("Error fetching payment data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, [payId]);
+  }, [payId, orderId]);
+
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === "p") {
+        event.preventDefault();
+        handlePrint();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
+
+  const handlePrint = () => {
+    const printContents = document?.getElementById(
+      "printable-container"
+    )?.innerHTML;
+    if (printContents) {
+      const originalContents = document.body.innerHTML;
+      document.body.innerHTML = printContents;
+      window.print();
+      document.body.innerHTML = originalContents;
+      window.location.reload();
+    }
+  };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   if (!data) {
-    return <div>Loading...</div>;
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="text-center">
+          <div className="mb-4">
+            <img src="/page/nodata.jpg" alt="No Data" className="img-fluid" />
+          </div>
+          <h2 className="mb-3">No Payment Found</h2>
+          <p className="lead">
+            We couldn’t find any payment details for the provided ID. Please
+            check the ID and try again.
+          </p>
+          <a href="/" className="btn btn-primary mt-3">
+            Go to Homepage
+          </a>
+        </div>
+      </div>
+    );
   }
 
   const { payment_, paymentdb } = data;
-
-  const handlePrint = () => {
-    const input = document.getElementById("printable-container");
-    if (input) {
-      html2canvas(input).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const pdf = new jsPDF();
-        const imgProps = pdf.getImageProperties(imgData);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-        pdf.save(`${payId}.pdf`);
-      });
-    }
-  };
 
   const renderPaymentInfo = () => {
     switch (payment_.method) {
@@ -165,17 +204,20 @@ const PaymentViewContainer = ({ payId }: Props) => {
   return (
     <div className="expanded">
       <main className="columns">
-        <header className="text-end">
-          <button className="btn theme-btn" onClick={handlePrint}>
-            <i>icon</i> Print Invoice
+        <header className="text-end no-print">
+          <button className="btn theme-btn mb-2" onClick={handlePrint}>
+            <i>
+              <LocalPrintshopIcon />
+            </i>
+            Print Invoice
           </button>
         </header>
-        <div className="card inner-container">
+        <div className="card inner-container printable-container">
           <div id="printable-container">
             <div className="m-5">
               <section className="row">
                 <div className="callout large invoice-container">
-                  <table className="invoice table table-responsive">
+                  <table className="invoice table table-responsive table-borderless">
                     <thead>
                       <tr className="header">
                         <td>
@@ -189,7 +231,7 @@ const PaymentViewContainer = ({ payId }: Props) => {
                         <td>
                           Hello, <b>{paymentdb.name}.</b>
                           <br />
-                          Thank you for your order.
+                          Thank you for purchasing from {appName}.
                         </td>
                         <td className="text-right">
                           <span className="num">
@@ -198,10 +240,14 @@ const PaymentViewContainer = ({ payId }: Props) => {
                               #{paymentdb.orderCreationId}
                             </b>
                           </span>
-                          <br />
-                          {new Date(
-                            payment_.created_at * 1000
-                          ).toLocaleDateString()}
+                          {payment_ && (
+                            <>
+                              <br />
+                              {new Date(
+                                payment_.created_at * 1000
+                              ).toLocaleDateString()}
+                            </>
+                          )}
                         </td>
                       </tr>
                     </thead>
@@ -211,10 +257,14 @@ const PaymentViewContainer = ({ payId }: Props) => {
                           <table>
                             <thead>
                               <tr>
-                                <th className="desc">Item Description</th>
-                                <th className="id">Item ID</th>
-                                <th className="qty">Selected Class</th>
-                                <th className="amt">Subtotal</th>
+                                <th className="bold-text desc">
+                                  Item Description
+                                </th>
+                                <th className="bold-text id">Item ID</th>
+                                <th className="bold-text qty">
+                                  Selected Class
+                                </th>
+                                <th className="bold-text amt">Subtotal</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -223,7 +273,9 @@ const PaymentViewContainer = ({ payId }: Props) => {
                                   {paymentdb.purpose}
                                   <br />
                                 </td>
-                                <td className="id num">{payId}</td>
+                                <td className="id num">
+                                  {paymentdb.razorpayPaymentId || "N.A"}
+                                </td>
                                 <td className="qty">{paymentdb.selectClass}</td>
                                 <td className="amt">{paymentdb.amount} ₹</td>
                               </tr>
@@ -244,14 +296,20 @@ const PaymentViewContainer = ({ payId }: Props) => {
                                 <td className="num">Shipping & Handling</td>
                                 <td className="num">0.00 ₹</td>
                               </tr>
-                              <tr className="tax">
-                                <td className="num">Tax</td>
-                                <td className="num">{payment_.tax / 100} ₹</td>
-                              </tr>
-                              <tr className="total">
-                                <td>Total</td>
-                                <td>{payment_.amount / 100} ₹</td>
-                              </tr>
+                              {payment_ && (
+                                <tr className="tax">
+                                  <td className="num">Tax</td>
+                                  <td className="num">
+                                    {payment_.tax / 100} ₹
+                                  </td>
+                                </tr>
+                              )}
+                              {payment_ && (
+                                <tr className="total">
+                                  <td>Total</td>
+                                  <td>{payment_.amount / 100} ₹</td>
+                                </tr>
+                              )}
                             </tbody>
                           </table>
                         </td>
@@ -275,49 +333,67 @@ const PaymentViewContainer = ({ payId }: Props) => {
                           <br />
                           {email}
                           <br />
-                          {phone}
+                          +91 {phone}
                           <br />
                           {address}
                         </p>
                       </div>
+
                       <div className="column">
                         <h5>Payment Information</h5>
-                        <p className="m-0">{renderPaymentInfo()}</p>
+                        {payment_ && (
+                          <p className="m-0">{renderPaymentInfo()}</p>
+                        )}
                         <p className="m-0">
-                          <b>Status:</b> {paymentdb.status}
+                          <b>Status:</b> {paymentdb?.status}
                         </p>
-                        <p className="m-0">
-                          <b>Order ID:</b> {payment_.order_id}
-                        </p>
-                        <p className="m-0 text-wrap">
-                          <b>Payment ID:</b> {payment_.id}
-                        </p>
-                        <p className="m-0">
-                          <b>Invoice ID:</b> {payment_.invoice_id || "N/A"}
-                        </p>
-                        <p className="m-0">
-                          <b>Captured:</b> {payment_.captured ? "Yes" : "No"}
-                        </p>
-                        <p className="m-0">
-                          <b>Refund Status:</b>{" "}
-                          {payment_.refund_status || "N/A"}
-                        </p>
-                        <p className="m-0">
-                          <b>Error Code:</b> {payment_.error_code || "N/A"}
-                        </p>
-                        <p className="m-0">
-                          <b>Error Description:</b>{" "}
-                          {payment_.error_description || "N/A"}
-                        </p>
-                        <p className="m-0">
-                          <b>Acquirer RRN:</b>{" "}
-                          {payment_.acquirer_data.rrn || "N/A"}
-                        </p>
+                        {payment_ && (
+                          <>
+                            <p className="m-0">
+                              <b>Order ID:</b> {payment_.order_id}
+                            </p>
+                            <p className="m-0 text-wrap">
+                              <b>Payment ID:</b> {payment_.id}
+                            </p>
+                            <p className="m-0">
+                              <b>Invoice ID:</b> {payment_.invoice_id || "N/A"}
+                            </p>
+                            <p className="m-0">
+                              <b>Captured:</b>{" "}
+                              {payment_.captured ? "Yes" : "No"}
+                            </p>
+                            <p className="m-0">
+                              <b>Refund Status:</b>{" "}
+                              {payment_.refund_status || "N/A"}
+                            </p>
+                            <p className="m-0">
+                              <b>Error Code:</b> {payment_.error_code || "N/A"}
+                            </p>
+                            <p className="m-0">
+                              <b>Error Description:</b>{" "}
+                              {payment_.error_description || "N/A"}
+                            </p>
+                            <p className="m-0">
+                              <b>Acquirer RRN:</b>{" "}
+                              {payment_.acquirer_data.rrn || "N/A"}
+                            </p>
+                          </>
+                        )}
                       </div>
                     </div>
                   </section>
                 </div>
               </section>
+            </div>
+            <hr />
+            <div className="d-flex list-unstyled justify-content-center gap-1">
+              {socialMediaLinks.map((data, index) => (
+                <li key={index}>
+                  <a href={data.link} className="btn">
+                    <FontAwesomeIcon icon={data.icon} />
+                  </a>
+                </li>
+              ))}
             </div>
           </div>
         </div>

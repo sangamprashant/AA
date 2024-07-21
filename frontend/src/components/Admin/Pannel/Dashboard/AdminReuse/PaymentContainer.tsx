@@ -174,8 +174,8 @@ const PaymentContainer = ({ type }: PaymentContainerProps) => {
         key: "action",
         render: (data: DBPayment) => {
           const link = data.razorpayPaymentId
-            ? `/payment?payment_id=${data.razorpayPaymentId}`
-            : `/order?order_id=${data.orderCreationId}`;
+            ? `/admin/payment-open?payment_id=${data.razorpayPaymentId}`
+            : `/admin/payment-open?order_id=${data.orderCreationId}`;
           const text = data.razorpayPaymentId ? "Payment" : "Order";
 
           return <Link to={link}>View {text}</Link>;

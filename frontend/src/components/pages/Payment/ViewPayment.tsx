@@ -3,25 +3,28 @@ import Section from "../../Reuse/Section";
 import PaymentViewContainer from "../../Reuse/PaymentViewContainer";
 
 const ViewPayment = () => {
-  const [payId, setPayId] = useState<string>("");
+  const [payId, setPayId] = useState<string | null>(null);
+  const [orderId, setOrderId] = useState<string | null>(null);
 
   useEffect(() => {
-    // Extract query parameters
     const queryParams = new URLSearchParams(window.location.search);
-    const id = queryParams.get("payment_id"); // Extract the 'payment_id' parameter
+    const id = queryParams.get("payment_id");
+    const Oid = queryParams.get("order_id");
 
     if (id) {
       setPayId(id);
+    } else if (Oid) {
+      setOrderId(Oid);
     }
-  }, [window.location.search]);
-
-  if(!payId) {
-    return null
-  }
+  }, []);
 
   return (
     <Section className="pb-5">
-      <PaymentViewContainer payId={payId}/>
+      {payId || orderId ? (
+        <PaymentViewContainer payId={payId || ""} orderId={orderId || ""} />
+      ) : (
+        <div>No Payment or Order ID provided</div>
+      )}
     </Section>
   );
 };

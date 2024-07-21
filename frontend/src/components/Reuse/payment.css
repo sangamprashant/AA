@@ -4,7 +4,8 @@ main {
   min-height: calc(100vh - 107px);
 }
 main .inner-container {
-  max-width: 800px;
+  /* max-width: 800px; */
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
@@ -157,5 +158,56 @@ table.invoice tr.totals table tr.total td:last-child {
   .info-columns .column {
     min-width: 100%;
     padding: 5px;
+  }
+}
+
+/* Hide elements during print */
+@media print {
+  header,
+  .no-print {
+    display: none !important;
+  }
+
+  .main-content {
+    margin-top: 0px !important;
+  }
+
+  .p-1,
+  .p-2,
+  .p-3,
+  .p-4,
+  .p-5 {
+    padding: 0 !important;
+  }
+
+  .pb-5 {
+    padding: 0 !important;
+  }
+
+  .main .inner-container {
+    width: 100% !important;
+    min-width: 800px;
+    /* margin-top: -20px; */
+    /* padding: 0; */
+  }
+
+  .m-5 {
+    margin: 0 !important;
+  }
+
+  .container {
+    padding: 0 !important;
+    margin: 0;
+  }
+
+
+
+  .printable-container {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* display: block !important; */
   }
 }

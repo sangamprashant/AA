@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import { socialLinks } from "../Strings";
 import { Link } from "react-router-dom";
 
-const socialMediaLinks = [
+export const socialMediaLinks = [
   {
     platform: "Facebook",
     icon: faFacebook,
@@ -47,7 +47,7 @@ const SocialLinks = () => {
   return (
     <motion.div
       className="social-buttons mt-3"
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 1, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}

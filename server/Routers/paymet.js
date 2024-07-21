@@ -13,7 +13,7 @@ router.post("/make", userMakePayment);
 // check payment
 router.post("/success", userVerifyPayment);
 // view the payment
-router.get("/view-one/:payment_id", viewOnePayment);
+router.post("/view-one", viewOnePayment);
 
 // -----------------Admin------------
 // view the payment acc to the type

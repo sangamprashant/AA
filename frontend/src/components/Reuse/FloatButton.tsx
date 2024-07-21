@@ -13,7 +13,7 @@ const FloatButtonComponent: React.FC = () => {
   const { showPayment } = appContext;
 
   return (
-    <div className="custom-float-button-wrapper">
+    <div className="custom-float-button-wrapper no-print">
       <Tooltip title="Fill a payment form to initiate payment">
         <button
           className="custom-float-button my-2 text-white btn"

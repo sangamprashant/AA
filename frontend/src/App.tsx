@@ -60,6 +60,7 @@ function App() {
                 />
                 <Route path="/admin/booking" element={<AdminBooking />} />
                 <Route path="/admin/payment" element={<AdminPayment />} />
+                <Route path="/admin/payment-open" element={<ViewPayment />} />
                 <Route path="*" element={<Admin404 />} />
               </Routes>
             </AdminPanel>

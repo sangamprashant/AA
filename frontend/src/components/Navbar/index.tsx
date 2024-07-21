@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <>
       <motion.nav
-        className="navbar navbar-expand-lg position-fixed w-100 sticky-top backdrop-nav"
+        className="navbar navbar-expand-lg position-fixed w-100 sticky-top backdrop-nav no-print"
         data-navbar-on-scroll="data-navbar-on-scroll"
         variants={navItemVariants}
         initial="hidden"
