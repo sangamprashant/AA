@@ -1,6 +1,5 @@
 /* Global Styles */
 main {
-  margin-top: 4rem;
   min-height: calc(100vh - 107px);
 }
 main .inner-container {

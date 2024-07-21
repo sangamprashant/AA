@@ -24,6 +24,8 @@ interface AuthContextType {
   dummyLogin: (email: string, password: string, name?: string) => Promise<void>;
   isDummyLogin: boolean;
   dummyLogout: () => void;
+  dashboardTitle: string;
+  setHeader: (h: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -39,6 +41,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [forButtonLoading, setForButtonLoading] = React.useState(false);
   const [loginError, setLoginError] = React.useState<string | null>("");
   const [isDummyLogin, setIsDummyLogin] = React.useState<boolean>(false);
+  const [dashboardTitle, setDashboardTitle] = React.useState<string>("");
 
   useEffect(() => {
     handleFetchProtectedData();
@@ -137,6 +140,10 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     setIsDummyLogin(false);
   };
 
+  const setHeader = async (h: string) => {
+    setDashboardTitle(h);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -150,6 +157,8 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         dummyLogin,
         isDummyLogin,
         dummyLogout,
+        dashboardTitle,
+        setHeader,
       }}
     >
       {children}

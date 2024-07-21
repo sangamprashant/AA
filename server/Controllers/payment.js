@@ -2,6 +2,9 @@ const Razorpay = require("razorpay");
 const config = require("../config");
 const Payment = require("../Models/payment");
 const crypto = require("crypto");
+const Contact = require("../Models/contact");
+const Booking = require("../Models/bookings");
+const Visitor = require("../Models/visitor");
 
 const instance = new Razorpay({
   key_id: config.RAZORPAY_KEY_ID,
@@ -105,16 +108,14 @@ const viewOnePayment = async (req, res) => {
   try {
     const { payment_id, order_id } = req.body;
 
-    console.log(req.body)
+    console.log(req.body);
 
     // Check for required parameters
     if (!payment_id && !order_id) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "payment_id or order_id is required!",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "payment_id or order_id is required!",
+      });
     }
 
     // Handle payment_id case
@@ -199,9 +200,76 @@ const viewPaymentAccType = async (req, res) => {
   }
 };
 
+const dashboardContent = async (req, res) => {
+  try {
+    const [
+      totalVisitors,
+      newVisitors,
+      createdCount,
+      successCount,
+      pendingCount,
+      paymentTotalCount,
+      checkedTrueCount,
+      checkedFalseCount,
+      contactTotalCount,
+      bookingCheckedCount,
+      bookingUncheckedCount,
+      bookingTotalCount,
+      payments,
+    ] = await Promise.all([
+      Visitor.countDocuments(),
+      Visitor.countDocuments({ isNew: true }),
+      Payment.countDocuments({ status: "created" }),
+      Payment.countDocuments({ status: "success" }),
+      Payment.countDocuments({ status: "pending" }),
+      Payment.countDocuments(),
+      Contact.countDocuments({ checked: true }),
+      Contact.countDocuments({ checked: false }),
+      Contact.countDocuments(),
+      Booking.countDocuments({ checked: true }),
+      Booking.countDocuments({ checked: false }),
+      Booking.countDocuments(),
+      instance.payments.all(),
+    ]);
+
+    res.json({
+      success: true,
+      visitorsCounts: {
+        total: totalVisitors,
+        new: newVisitors,
+      },
+      paymentCounts: {
+        created: createdCount,
+        success: successCount,
+        pending: pendingCount,
+        total: paymentTotalCount,
+      },
+      contactCounts: {
+        checkedTrue: checkedTrueCount,
+        checkedFalse: checkedFalseCount,
+        total: contactTotalCount,
+      },
+      bookingCounts: {
+        checked: bookingCheckedCount,
+        unchecked: bookingUncheckedCount,
+        total: bookingTotalCount,
+      },
+      payments: payments.items,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Some error occurred",
+      success: false,
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   userMakePayment,
   userVerifyPayment,
   viewOnePayment,
   viewPaymentAccType,
+  dashboardContent,
 };

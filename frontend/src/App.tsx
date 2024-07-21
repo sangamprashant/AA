@@ -20,6 +20,7 @@ import {
   AdminLogin,
   AdminPanel,
   AdminPayment,
+  AdminSetting,
   Dashboard,
 } from "./components/Admin";
 import { AuthContext } from "./components/Admin/Auth/AuthProvider";
@@ -60,6 +61,7 @@ function App() {
                 />
                 <Route path="/admin/booking" element={<AdminBooking />} />
                 <Route path="/admin/payment" element={<AdminPayment />} />
+                <Route path="/admin/setting" element={<AdminSetting />} />
                 <Route path="/admin/payment-open" element={<ViewPayment />} />
                 <Route path="*" element={<Admin404 />} />
               </Routes>

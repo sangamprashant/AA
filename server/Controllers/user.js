@@ -31,6 +31,39 @@ const validateLogin = [
   check("password").trim().notEmpty().withMessage("Password is required"),
 ];
 
+// Validation middleware for changing email and password
+const validateChangeEmail = [
+  check("currentPassword")
+    .trim()
+    .notEmpty()
+    .withMessage("Current password is required"),
+  check("oldEmail")
+    .trim()
+    .notEmpty()
+    .withMessage("Old email is required")
+    .isEmail()
+    .withMessage("Invalid old email address"),
+  check("newEmail")
+    .trim()
+    .notEmpty()
+    .withMessage("New email is required")
+    .isEmail()
+    .withMessage("Invalid new email address"),
+];
+
+const validateChangePassword = [
+  check("currentPassword")
+    .trim()
+    .notEmpty()
+    .withMessage("Current password is required"),
+  check("newPassword")
+    .trim()
+    .notEmpty()
+    .withMessage("New password is required")
+    .isLength({ min: 6 })
+    .withMessage("New password must be at least 6 characters long"),
+];
+
 const register = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -101,10 +134,87 @@ const logout = (req, res) => {
   res.status(200).json({ success: true, message: "Logged out successfully" });
 };
 
+// Change Email Controller
+const changeEmail = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array(), success: false });
+  }
+
+  const { currentPassword, oldEmail, newEmail } = req.body;
+
+  try {
+    const user = await User.findOne({ email: oldEmail });
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: "User not found", success: false });
+    }
+
+    const isMatch = await user.isValidPassword(currentPassword);
+    if (!isMatch) {
+      return res
+        .status(400)
+        .json({ message: "Current password is incorrect", success: false });
+    }
+
+    user.email = newEmail;
+    user.password = currentPassword;
+    await user.save();
+
+    res
+      .status(200)
+      .json({ message: "Email updated successfully", success: true });
+  } catch (error) {
+    console.error("Error changing email:", error);
+    res.status(500).json({ message: "Server error", success: false });
+  }
+};
+
+// Change Password Controller
+const changePassword = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array(), success: false });
+  }
+
+  const { currentPassword, newPassword } = req.body;
+
+  try {
+    const user = await User.findOne({ _id: req.user.userId });
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: "User not found", success: false });
+    }
+
+    const isMatch = await user.isValidPassword(currentPassword);
+    if (!isMatch) {
+      return res
+        .status(400)
+        .json({ message: "Current password is incorrect", success: false });
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    res
+      .status(200)
+      .json({ message: "Password updated successfully", success: true });
+  } catch (error) {
+    console.error("Error changing password:", error);
+    res.status(500).json({ message: "Server error", success: false });
+  }
+};
+
 module.exports = {
   validateRegister,
   validateLogin,
   register,
   login,
   logout,
+  validateChangeEmail,
+  validateChangePassword,
+  changeEmail,
+  changePassword,
 };

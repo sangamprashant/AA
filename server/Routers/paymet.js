@@ -6,6 +6,7 @@ const {
   userVerifyPayment,
   viewOnePayment,
   viewPaymentAccType,
+  dashboardContent,
 } = require("../Controllers/payment");
 
 // create a payment
@@ -18,6 +19,8 @@ router.post("/view-one", viewOnePayment);
 // -----------------Admin------------
 // view the payment acc to the type
 router.get("/view/:type", authenticateToken, viewPaymentAccType);
+// view-payment-fron razorpay
+router.get("/dashboard",  dashboardContent);
 
 // router.get("/payments", async (req, res) => {
 //   try {

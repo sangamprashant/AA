@@ -1,6 +1,11 @@
 import { Card, Typography } from "antd";
 
-const Visits = () => {
+interface VisitsProps {
+  total: number;
+  newVisitors: number;
+}
+
+const Visits = ({ total, newVisitors }: VisitsProps) => {
   return (
     <div className="col-md-4">
       <Card
@@ -11,16 +16,16 @@ const Visits = () => {
         }}
       >
         <table className="table table-borderless p-0 m-0">
-          <tbody className="">
+          <tbody>
             <tr>
               <td>
-                <h5>#9354</h5>
+                <h5>#{total}</h5>
                 <Typography.Text type="secondary" className="m-0 p-0">
                   Website Visitors
                 </Typography.Text>
               </td>
               <td>
-                <h5>#9354</h5>
+                <h5>#{newVisitors}</h5>
                 <Typography.Text type="secondary" className="m-0 p-0">
                   New Customers
                 </Typography.Text>

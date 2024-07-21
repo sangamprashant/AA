@@ -1,12 +1,12 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { config } from "../../config";
+import { socialMediaLinks } from "../Footer/SocialLinks";
 import { address, appName, email, phone } from "../Strings";
-import "./payment.css";
 import Loading from "./Loading";
-import SocialLinks, { socialMediaLinks } from "../Footer/SocialLinks";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./payment.css";
 
 interface Props {
   payId?: string;
@@ -224,7 +224,7 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
                           <img src="/logo.png" alt="Company Name" height={40} />
                         </td>
                         <td className="align-right">
-                          <h2>Invoice</h2>
+                          <h2>INVOICE</h2>
                         </td>
                       </tr>
                       <tr className="intro">

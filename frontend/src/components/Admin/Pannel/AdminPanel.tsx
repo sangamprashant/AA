@@ -6,7 +6,10 @@ import {
   MenuUnfoldOutlined,
   PhoneOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, Typography, theme } from "antd";
+import PaymentIcon from "@mui/icons-material/Payment";
+import SettingsIcon from "@mui/icons-material/Settings";
+
+import { Button, Layout, Menu, Modal, Typography, theme } from "antd";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoadingUI } from "../../../App";
@@ -20,6 +23,8 @@ interface AdminPanelProps {
 }
 
 const AdminPanel: React.FC<AdminPanelProps> = ({ children }) => {
+  const [isLogOutOpen, setIslogOutOpen] = useState<boolean>(false);
+
   const navigate = useNavigate();
 
   const initCollapsed = localStorage.getItem("collapsed");
@@ -37,7 +42,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ children }) => {
   if (!authContext) {
     return <LoadingUI />;
   }
-  const { loading, logout } = authContext;
+  const { loading, logout, dashboardTitle } = authContext;
   if (loading) {
     return <LoadingUI />;
   }
@@ -86,17 +91,23 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ children }) => {
             },
             {
               key: "4",
-              icon: <CalendarOutlined />,
+              icon: <PaymentIcon />,
               label: "Payment",
               onClick: () => navigate("/admin/payment"),
             },
             {
               key: "5",
+              icon: <SettingsIcon />,
+              label: "Setting",
+              onClick: () => navigate("/admin/setting"),
+            },
+            {
+              key: "6",
               icon: <LogoutOutlined />,
               label: "Logout",
               title: "Logout from admin panel",
               onClick: () => {
-                logout();
+                setIslogOutOpen(true);
               },
             },
           ]}
@@ -144,16 +155,22 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ children }) => {
         >
           <header className="admin-dashboard-header shadow">
             <div className="container p-5">
-              <h1 className="display-3 p-0 m-0">Welcome to Dashboard</h1>
-              <p className="p-0 m-0">
-                We are on a mission to help developers like you build successful
-                projects for FREE.
-              </p>
+              <h1 className="display-3 p-0 m-0">{dashboardTitle}</h1>
             </div>
           </header>
           <main className="p-3 mb-2 admin-dashboard-main ">{children}</main>
         </Content>
       </Layout>
+      <Modal
+        open={isLogOutOpen}
+        onClose={() => setIslogOutOpen(false)}
+        onCancel={() => setIslogOutOpen(false)}
+        onOk={() => logout()}
+        centered
+      >
+        <Title level={4}>Logout Confirmation</Title>
+        <p>Are you sure you want to logout from the admin panel?</p>
+      </Modal>
     </Layout>
   );
 };

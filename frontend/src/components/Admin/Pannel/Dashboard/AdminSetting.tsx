@@ -1,29 +1,30 @@
-import { Tabs } from "antd";
-import BookingTable from "./AdminReuse/BookingTable";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Auth/AuthProvider";
 import { LoadingUI } from "../../../../App";
+import { Tabs } from "antd";
+import ChangeEmail from "./AdminReuse/ChangeEmail";
+import ChangePassword from "./AdminReuse/ChangePassword";
 
-const AdminBooking = () => {
+const AdminSetting = () => {
   const authContext = useContext(AuthContext);
   if (!authContext) {
     return <LoadingUI />;
   }
   const { setHeader } = authContext;
   useEffect(() => {
-    setHeader("Booking Form Responses");
+    setHeader("Account Settings");
   }, [authContext]);
 
   const items = [
     {
-      label: `Unverified`,
       key: "1",
-      children: <BookingTable type="unverified" />,
+      label: "Change Email",
+      children: <ChangeEmail />,
     },
     {
-      label: `Verified`,
       key: "2",
-      children: <BookingTable type="verified" />,
+      label: "Change Password",
+      children: <ChangePassword />,
     },
   ];
 
@@ -34,4 +35,4 @@ const AdminBooking = () => {
   );
 };
 
-export default AdminBooking;
+export default AdminSetting;

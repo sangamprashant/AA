@@ -5,9 +5,10 @@ const { Title, Text } = Typography;
 interface CountsProps {
   title: string;
   count: number;
+  icon: string;
 }
 
-const Counts = ({ title, count }: CountsProps) => {
+const Counts = ({ title, count, icon }: CountsProps) => {
   return (
     <div className="col-md-4 mb-3">
       <Card
@@ -18,13 +19,13 @@ const Counts = ({ title, count }: CountsProps) => {
         }}
       >
         <div className="d-flex gap-3 align-items-center">
-          <div>icon</div>
+          <img src={icon} alt="" height={50} />
           <div>
             <Text type="secondary" className="m-0 p-0">
               {title}
             </Text>
-            <Title level={2} className="m-0 p-0">
-              {count}
+            <Title level={2} className="m-0 p-0 bold-text">
+              <b>{count}</b>
             </Title>
           </div>
         </div>

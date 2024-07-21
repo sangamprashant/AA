@@ -8,6 +8,7 @@ const rateLimit = require("express-rate-limit");
 const cookieParser = require("cookie-parser");
 const config = require("./server/config");
 const authenticateToken = require("./server/middlewares/authMiddleware");
+const trackVisitor = require("./server/middlewares/trackVisitor");
 
 const app = express();
 
@@ -44,6 +45,7 @@ mongoose.connection.on("error", (err) => {
 });
 
 // routes
+app.use(trackVisitor);
 app.use("/api/v1/user", require("./server/Routers/user"));
 app.use("/api/v1/booking", require("./server/Routers/booking"));
 app.use("/api/v1/contact", require("./server/Routers/contact"));

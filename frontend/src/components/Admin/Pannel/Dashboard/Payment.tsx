@@ -1,7 +1,23 @@
 import { Tabs } from "antd";
 import PaymentContainer from "./AdminReuse/PaymentContainer";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../Auth/AuthProvider";
+import { LoadingUI } from "../../../../App";
+import PaymentSearch from "./AdminReuse/PaymentSearch";
 
 const AdminPayment = () => {
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    return <LoadingUI />;
+  }
+
+  const { setHeader } = authContext;
+
+  useEffect(() => {
+    setHeader("Payment's status");
+  }, [authContext]);
+
   const onChange = (key: string) => {
     console.log(key);
   };
@@ -34,7 +50,8 @@ const AdminPayment = () => {
   ];
   return (
     <div className="card p-3 border-0 shadow">
-      <h3 className="display-6 theme-color">Payment</h3>
+      <PaymentSearch />
+      <hr />
       <Tabs defaultActiveKey="1" centered items={items} onChange={onChange} />
     </div>
   );
