@@ -25,7 +25,7 @@ const contactDetails = [
   },
 ];
 
-const impLinks = [
+export const impLinks = [
   {
     title: "About Us",
     link: "/about-us",

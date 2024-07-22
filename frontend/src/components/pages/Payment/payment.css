@@ -10,6 +10,15 @@
 
 .payment-input {
   position: relative;
-  padding: 0 23px 23px 23px;
   margin-top: -80px;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .payment-input {
+    margin-top: 0;
+  }
+  .row-revers {
+    flex-direction: column-reverse;
+  }
 }

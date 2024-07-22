@@ -7,7 +7,6 @@ import {
   Class,
   Contact,
   Home,
-  Login,
   Navbar,
   PageNotFound,
   Payment,
@@ -75,12 +74,10 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/class" element={<Class />} />
-                {/* delete it later */}
-                <Route path="/login" element={<Login />} />
-                {/* delete it later */}
                 <Route path="/contact-us" element={<Contact />} />
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/payment" element={<ViewPayment />} />
+                <Route path="/pay" element={<Payment />} />
                 <Route path="/admin" element={<AdminLogin />} />
                 <Route path="/privacy-policy" element={<PRIVACYPOLICY />} />
                 <Route path="/cookie-policy" element={<COOKIESPOLICY />} />
@@ -91,7 +88,6 @@ function App() {
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
             </div>
-            <Payment />
             <FloatButtonComponent />
           </React.Fragment>
         )}

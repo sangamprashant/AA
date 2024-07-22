@@ -1,26 +1,31 @@
-import { Drawer, notification } from "antd";
+import { notification } from "antd";
 import axios from "axios";
-import { FormEvent, useContext, useState } from "react";
-import { AppContext } from "../../../AppProvider";
+import { FormEvent, useLayoutEffect, useState } from "react";
 import { config } from "../../../config";
 import "./payment.css";
+import FerjiDetails from "./FerjiDetails";
+import { appName } from "../../Strings";
+import Section from "../../Reuse/Section";
+import Footer from "../../Footer";
+import { Link } from "react-router-dom";
 
 type NotificationType = "success" | "info" | "warning" | "error";
 
 const Payment: React.FC = () => {
-  const appContext = useContext(AppContext);
-
-  if (!appContext) return null;
-  const { paymentOpen, closePayment } = appContext;
-
   const [name, setName] = useState<string>("");
   const [mobileNumber, setMobileNumber] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [purpose, setPurpose] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
   const [selectClass, setSelectClass] = useState<string>("");
+  const [state, setState] = useState<"success" | "error" | "">("");
+  const [stateId, setStateId] = useState<string>("");
 
   const [api, contextHolder] = notification.useNotification();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const openNotification = (
     type: NotificationType,
@@ -108,12 +113,16 @@ const Payment: React.FC = () => {
             data
           );
           if (result.data.success) {
+            setStateId(data.razorpayPaymentId);
+            setState("success");
             openNotification(
               "success",
               "Payment Successful",
               result.data.message || "Payment done."
             );
           } else {
+            setStateId(data.razorpayOrderId);
+            setState("error");
             openNotification(
               "error",
               "Payment Error",
@@ -154,112 +163,149 @@ const Payment: React.FC = () => {
   };
 
   return (
-    <Drawer
-      width={720}
-      title="Payment Form"
-      onClose={closePayment}
-      open={paymentOpen}
-    >
+    <>
       {contextHolder}
-      <div className="main">
-        <div className="payment-screen"></div>
-        <div className="payment-input">
-          <div className="card shadow-lg p-3">
-            <p>
-              You can use this form to pay your admission fees and installments.
-            </p>
-            <form>
-              <div className="form-group mt-1">
-                <label htmlFor="name">Name of Student</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group mt-1">
-                <label htmlFor="mobileNumber">Mobile Number</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="mobileNumber"
-                  value={mobileNumber}
-                  onChange={(e) => setMobileNumber(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group mt-1">
-                <label htmlFor="email">Email Address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group mt-1">
-                <label htmlFor="purpose">
-                  Purpose (e.g., Admission Fees, Installment)
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="purpose"
-                  value={purpose}
-                  onChange={(e) => setPurpose(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group mt-1">
-                <label htmlFor="class">Select a class to make payment</label>
-                <select
-                  name="class"
-                  id="class"
-                  className="form-control"
-                  value={selectClass}
-                  onChange={(e) => {
-                    setSelectClass(e.target.value);
-                  }}
-                >
-                  <option value="">Select a class</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-              </div>
-              <div className="form-group mt-1">
-                <label htmlFor="amount">Amount</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="amount"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  required
-                />
-              </div>
-              <button onClick={handleFormSubmit} className="mt-2 btn theme-btn">
-                Proceed to Pay
-              </button>
-            </form>
+      <div className="main mb-5">
+        <div className="payment-screen">
+          <div className="d-flex p-3 text-white gap-3">
+            <div className="bg-white rounded-4 p-1">
+              <img src="logo.png" alt="" height={70} />
+            </div>
+            <div className="app-header">
+              <h2 className="m-0">{appName}</h2>
+              <p className="m-0">Admission/Tuition Fee</p>
+            </div>
           </div>
         </div>
+        <Section className="mt-2">
+          <div className="row row-revers">
+            <div className="col-md-6">
+              {/* ferji details */}
+              <FerjiDetails />
+            </div>
+            <div className="col-md-6">
+              <div className="payment-input">
+                <div className="card shadow-lg p-3">
+                  <form>
+                    <div className="form-group mt-1">
+                      <label htmlFor="name">Name of Student</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="form-group mt-1">
+                      <label htmlFor="mobileNumber">Mobile Number</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="mobileNumber"
+                        value={mobileNumber}
+                        onChange={(e) => setMobileNumber(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="form-group mt-1">
+                      <label htmlFor="email">Email Address</label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="form-group mt-1">
+                      <label htmlFor="purpose">
+                        Purpose (e.g., Admission Fees, Installment)
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="purpose"
+                        value={purpose}
+                        onChange={(e) => setPurpose(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="form-group mt-1">
+                      <label htmlFor="class">
+                        Select a class to make payment
+                      </label>
+                      <select
+                        name="class"
+                        id="class"
+                        className="form-control"
+                        value={selectClass}
+                        onChange={(e) => {
+                          setSelectClass(e.target.value);
+                        }}
+                      >
+                        <option value="">Select a class</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                    </div>
+                    <div className="form-group mt-1 mb-5">
+                      <label htmlFor="amount">Amount</label>
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="amount"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <hr />
+
+                    <button
+                      onClick={handleFormSubmit}
+                      className="mt-2 btn theme-btn w-100"
+                    >
+                      Proceed to Pay
+                    </button>
+                    {state === "success" && (
+                      <Link
+                        to={`/payment?payment_id=${stateId}`}
+                        className="mt-2 btn btn-success w-100 mt-2"
+                      >
+                        View the Invoice
+                      </Link>
+                    )}
+
+                    {state === "error" && (
+                      <Link
+                        to={`/payment?order_id=${stateId}`}
+                        className="mt-2 btn btn-warning w-100 mt-2"
+                      >
+                        View the Invoice
+                      </Link>
+                    )}
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Section>
       </div>
-    </Drawer>
+      <Footer />
+    </>
   );
 
   //loading the payment script:

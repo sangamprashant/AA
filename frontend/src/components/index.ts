@@ -8,7 +8,6 @@ import PageNotFound from "./PageNotFound";
 import Contact from "./pages/Contact/Contact";
 import AboutUs from "./pages/AboutUs";
 import Payment from "./pages/Payment";
-import Login from "./dummy/Login";
 import ViewPayment from "./pages/Payment/ViewPayment";
 
 export {
@@ -22,6 +21,5 @@ export {
   Contact,
   AboutUs,
   Payment,
-  Login,
   ViewPayment,
 };

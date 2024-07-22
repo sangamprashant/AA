@@ -1,25 +1,10 @@
 import { motion } from "framer-motion";
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../Admin/Auth/AuthProvider";
-import { LoadingUI } from "../../App";
-import PersonIcon from "@mui/icons-material/Person";
 import { email, phone } from "../Strings";
 
 const Navbar = () => {
   const navbarCollapseRef = React.useRef<HTMLDivElement>(null);
-
-  // dummy
-  const authContext = useContext(AuthContext);
-
-  if (!authContext) {
-    return <LoadingUI />;
-  }
-  const { loading, isDummyLogin, dummyLogout } = authContext;
-  if (loading) {
-    return <LoadingUI />;
-  }
-  // dummy
 
   const navItemVariants = {
     hidden: { opacity: 0, y: -20 },
@@ -105,27 +90,6 @@ const Navbar = () => {
                   About Us
                 </Link>
               </motion.li>
-              {isDummyLogin && (
-                <motion.li
-                  className="nav-item"
-                  key="about-us"
-                  variants={navItemVariants}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: 0.1, duration: 0.7 }}
-                >
-                  <Link
-                    className="nav-link"
-                    to="/"
-                    onClick={() => {
-                      dummyLogout();
-                      handleNavItemClick();
-                    }}
-                  >
-                    <PersonIcon />
-                  </Link>
-                </motion.li>
-              )}
               <motion.li
                 className="nav-item"
                 key="mobile number"
