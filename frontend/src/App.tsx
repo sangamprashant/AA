@@ -6,6 +6,7 @@ import {
   AboutUs,
   Class,
   Contact,
+  ContentOpen,
   Home,
   Navbar,
   PageNotFound,
@@ -21,6 +22,7 @@ import {
   AdminPayment,
   AdminSetting,
   Dashboard,
+  StudyMaterial,
 } from "./components/Admin";
 import { AuthContext } from "./components/Admin/Auth/AuthProvider";
 import {
@@ -60,6 +62,7 @@ function App() {
                 />
                 <Route path="/admin/booking" element={<AdminBooking />} />
                 <Route path="/admin/payment" element={<AdminPayment />} />
+                <Route path="/admin/s-m" element={<StudyMaterial />} />
                 <Route path="/admin/setting" element={<AdminSetting />} />
                 <Route path="/admin/payment-open" element={<ViewPayment />} />
                 <Route path="*" element={<Admin404 />} />
@@ -78,6 +81,7 @@ function App() {
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/payment" element={<ViewPayment />} />
                 <Route path="/pay" element={<Payment />} />
+                <Route path="/study-material/:id" element={<ContentOpen />} />
                 <Route path="/admin" element={<AdminLogin />} />
                 <Route path="/privacy-policy" element={<PRIVACYPOLICY />} />
                 <Route path="/cookie-policy" element={<COOKIESPOLICY />} />
@@ -101,7 +105,11 @@ export default App;
 export const LoadingUI = () => {
   return (
     <div className="loading-container">
-      <img src="welcome.gif?cache-control=max-age=31536000" alt="" />
+      <img
+        src="./welcome.gif?cache-control=max-age=31536000"
+        alt=""
+        loading="lazy"
+      />
       <p className="rainbow-text text-center">Welcome to A to Z Classes</p>
     </div>
   );

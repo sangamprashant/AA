@@ -178,9 +178,8 @@ const Payment: React.FC = () => {
           </div>
         </div>
         <Section className="mt-2">
-          <div className="row row-revers">
+          <div className="row row-reverse">
             <div className="col-md-6">
-              {/* ferji details */}
               <FerjiDetails />
             </div>
             <div className="col-md-6">
@@ -242,9 +241,8 @@ const Payment: React.FC = () => {
                         id="class"
                         className="form-control"
                         value={selectClass}
-                        onChange={(e) => {
-                          setSelectClass(e.target.value);
-                        }}
+                        onChange={(e) => setSelectClass(e.target.value)}
+                        required
                       >
                         <option value="">Select a class</option>
                         <option value="1">1</option>

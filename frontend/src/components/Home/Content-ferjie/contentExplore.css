@@ -1,0 +1,98 @@
+.scroll-content-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 10px;
+  max-width: 100%;
+  padding: 10px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #9c9c9c #f1f1f1;
+}
+
+.scroll-content-container::-webkit-scrollbar {
+  height: 5px;
+}
+
+.scroll-content-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.scroll-content-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.scroll-content-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.card-content-explore {
+  flex: 0 0 auto;
+  width: 170px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.card-img-top-content-explore {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 10px;
+  text-align: center;
+}
+
+.card-body p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: black;
+}
+
+.btn-study-materials {
+  background-color: rgb(209, 216, 255);
+  border: none;
+  padding: 10px 20px;
+  transition: transform 0.3s ease-in-out;
+}
+.btn-study-materials:hover {
+  background-color: var(--yellow);
+  color: white;
+  padding: 10px 20px;
+  transform: scale(1.09);
+}
+.btn-study-materials.active {
+  background-color: var(--yellow);
+  color: white;
+}
+.btn-study-materials img {
+  margin-right: 10px;
+}
+
+/* content open */
+.content-open-options {
+  background-color: rgb(209, 216, 255);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+.content-open-options:hover {
+  background-color: rgb(187, 197, 255);
+
+}
+
+.content-open-options-like {
+  background-color: transparent;
+  border: none;
+}
+
+
+.divider{
+  border: 1px solid #000000;
+  margin: 0 10px;
+}

@@ -1,20 +1,16 @@
-import { useEffect } from "react";
-// import Section from "../Reuse/Section";
-import BookClass from "./Book";
-// import CarouselComponent from "./CarouselComponent";
-import Classes from "./Classes";
-import Faq from "./Faq";
-// import Hero from "./Hero";
-// import Yout from "./Hero/Yout";
-import Mentors from "./Reviews/Mentors";
-import ReviewStudent from "./Reviews/Student";
-// import Navbar from "../Navbar";
+import { Fragment, useEffect } from "react";
 import Footer from "../Footer";
 import ContactHome from "../pages/Contact/ContactHome";
+import BookClass from "./Book";
+import Classes from "./Classes";
+import ContentExpore from "./Content-ferjie/ContentExpore";
+import Faq from "./Faq";
 import Features from "./Features";
 import Try from "./Hero/Try";
+import Mentors from "./Reviews/Mentors";
 import ReviewParent from "./Reviews/Parent/Parent";
 import ParentsTrust from "./Reviews/Parent/ParentsTrust";
+import ReviewStudent from "./Reviews/Student";
 
 const Home = () => {
   useEffect(() => {
@@ -22,17 +18,8 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      {/* <Navbar /> */}
+    <Fragment>
       <Try />
-      {/* <div className="top">
-        <Section>
-          <CarouselComponent>
-            <Hero />
-            <Yout />
-          </CarouselComponent>
-        </Section>
-      </div> */}
       <Features />
       <Classes />
       <ReviewStudent />
@@ -41,9 +28,10 @@ const Home = () => {
       <Mentors />
       <BookClass />
       <ContactHome />
+      <ContentExpore />
       <Faq />
       <Footer />
-    </>
+    </Fragment>
   );
 };
 

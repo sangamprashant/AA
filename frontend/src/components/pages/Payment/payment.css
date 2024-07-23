@@ -18,7 +18,7 @@
   .payment-input {
     margin-top: 0;
   }
-  .row-revers {
+  .row-reverse {
     flex-direction: column-reverse;
   }
 }

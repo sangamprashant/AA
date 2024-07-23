@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import PaymentIcon from "@mui/icons-material/Payment";
 import SettingsIcon from "@mui/icons-material/Settings";
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 import { Button, Layout, Menu, Modal, Typography, theme } from "antd";
 import React, { useContext, useState } from "react";
@@ -97,12 +98,18 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ children }) => {
             },
             {
               key: "5",
+              icon: <LibraryBooksIcon />,
+              label: "Study Materials",
+              onClick: () => navigate("/admin/s-m"),
+            },
+            {
+              key: "6",
               icon: <SettingsIcon />,
               label: "Setting",
               onClick: () => navigate("/admin/setting"),
             },
             {
-              key: "6",
+              key: "7",
               icon: <LogoutOutlined />,
               label: "Logout",
               title: "Logout from admin panel",

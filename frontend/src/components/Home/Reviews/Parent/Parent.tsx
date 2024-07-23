@@ -107,7 +107,7 @@ const ReviewParent = () => {
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
         >
           <div>
             <motion.img
@@ -117,14 +117,14 @@ const ReviewParent = () => {
               initial={{ opacity: 0, y: -90, x: -90 }}
               whileInView={{ opacity: 1, y: 0, x: 0 }}
               transition={{ duration: 1, delay: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
             />
             <motion.h5
               className="family-review-title m-0 p-0"
               initial={{ opacity: 0, y: -50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
             >
               A LOT OF
             </motion.h5>
@@ -133,7 +133,7 @@ const ReviewParent = () => {
               initial={{ opacity: 0, y: -50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
             >
               HAPPY
             </motion.h5>
@@ -142,7 +142,7 @@ const ReviewParent = () => {
               initial={{ opacity: 0, y: -50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.9 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
             >
               PARENTS
             </motion.h5>
@@ -153,7 +153,7 @@ const ReviewParent = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
         >
           <div className="f">
             {teamMembers.map((member, index) => (

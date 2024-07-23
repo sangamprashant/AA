@@ -50,6 +50,7 @@ app.use("/api/v1/user", require("./server/Routers/user"));
 app.use("/api/v1/booking", require("./server/Routers/booking"));
 app.use("/api/v1/contact", require("./server/Routers/contact"));
 app.use("/api/v1/payment", require("./server/Routers/paymet"));
+app.use("/api/v1/study-materials", require("./server/Routers/studyMaterials"));
 
 app.get("/api/v1/protected", authenticateToken, (req, res) => {
   res.status(200).json({
