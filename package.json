@@ -1,14 +1,14 @@
 {
   "name": "aaaaa",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
     "dev": "npm run start"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Prashant Srivastav",
+  "license": "MIT",
+  "description": "A to Z Classes is an educational platform providing comprehensive resources and study materials for various subjects and classes. The platform offers a range of features including secure payments, notifications, and detailed content management to enhance the learning experience.",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
