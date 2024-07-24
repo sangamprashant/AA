@@ -114,10 +114,10 @@ const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      // secure: process.env.NODE_ENV === "production",
-      secure: true,
-      sameSite: "Lax",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Strict",
       maxAge: 3 * 60 * 60 * 1000,
+      path: '/', 
     });
     res.status(200).json({ message: "Login successful", success: true });
   } catch (error) {
