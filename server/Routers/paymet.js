@@ -7,6 +7,7 @@ const {
   viewOnePayment,
   viewPaymentAccType,
   dashboardContent,
+  dashboardPayments,
 } = require("../Controllers/payment");
 
 // create a payment
@@ -19,29 +20,10 @@ router.post("/view-one", viewOnePayment);
 // -----------------Admin------------
 // view the payment acc to the type
 router.get("/view/:type", authenticateToken, viewPaymentAccType);
+router.get("/dashboard", authenticateToken, dashboardContent);
 // view-payment-fron razorpay
-router.get("/dashboard",  dashboardContent);
+router.get("/dashboard/payments", authenticateToken, dashboardPayments);
 
-// router.get("/payments", async (req, res) => {
-//   try {
-//     const pay = await instance.payments.fetch("pay_Oa55R1KG3pQGuz");
-//     const payments = await instance.payments.all();
 
-//     const payload = {
-
-//       amount: 10 * 100,
-//       currency: "INR",
-//       description: "trail  links",
-//       notify: {
-//         sms: true,
-//         email: true,
-//       },
-//     };
-//     const link = await instance.paymentLink.create(payload);
-//     res.json(pay);
-//   } catch (error) {
-//     res.status(500).send("Failed to fetch payments from Razorpay");
-//   }
-// });
 
 module.exports = router;

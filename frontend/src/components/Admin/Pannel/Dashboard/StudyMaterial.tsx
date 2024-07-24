@@ -30,7 +30,9 @@ const StudyMaterial = () => {
 
   return (
     <div className="card p-3 border-0 shadow">
-      <Tabs defaultActiveKey="1" centered items={items} />
+      <div className="container ">
+        <Tabs defaultActiveKey="1" centered items={items} />
+      </div>
     </div>
   );
 };

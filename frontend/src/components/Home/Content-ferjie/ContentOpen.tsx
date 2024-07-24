@@ -6,6 +6,8 @@ import Footer from "../../Footer";
 import ShareIcon from "@mui/icons-material/Share";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import Loading from "../../Reuse/Loading";
+import NoData from "../../Reuse/NoData";
 // import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 // import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 // import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
@@ -25,10 +27,13 @@ const ContentOpen: React.FC = () => {
     unlikes: number;
   } | null>(null);
   const [isSaved, setIsSaved] = useState<boolean>(false);
-//   const [hasLiked, setHasLiked] = useState<boolean>(false);
-//   const [hasUnliked, setHasUnliked] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  //   const [hasLiked, setHasLiked] = useState<boolean>(false);
+  //   const [hasUnliked, setHasUnliked] = useState<boolean>(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    setLoading(true);
     const fetchContent = async () => {
       try {
         const response = await fetch(`${config.SERVER}/study-materials/${id}`);
@@ -55,6 +60,8 @@ const ContentOpen: React.FC = () => {
         // setHasUnliked(unlikedItems.includes(id));
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -74,7 +81,6 @@ const ContentOpen: React.FC = () => {
 
     setIsSaved(!isSaved);
   };
-  
 
   const handleShare = async () => {
     try {
@@ -87,8 +93,21 @@ const ContentOpen: React.FC = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="">
+        <Loading />
+      </div>
+    );
+  }
+
   if (!content) {
-    return <div>Loading...</div>;
+    return (
+      <NoData
+        heading="No Study Material Found"
+        content="We couldn’t find any study materials for the provided ID. Please check the ID and try again."
+      />
+    );
   }
 
   return (

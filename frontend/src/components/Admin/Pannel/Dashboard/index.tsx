@@ -60,9 +60,14 @@ const Dashboard: React.FC = () => {
   }, [authContext]);
 
   const [data, setData] = useState<DashboardData | undefined>(undefined);
+  const [payments, setPayments] = useState<Payment[]>([]);
 
   useLayoutEffect(() => {
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    fetchPayments();
   }, []);
 
   return (
@@ -131,7 +136,7 @@ const Dashboard: React.FC = () => {
           />
         </div>
         <div className="row mt-3">
-          <Transctions payments={data?.payments || []} />
+          <Transctions payments={payments || []} />
           <Visits
             total={data?.visitorsCounts.total || 0}
             newVisitors={data?.visitorsCounts.new || 0}
@@ -143,9 +148,26 @@ const Dashboard: React.FC = () => {
 
   async function fetchData() {
     try {
-      const response = await axios.get(`${config.SERVER}/payment/dashboard`);
+      const response = await axios.get(`${config.SERVER}/payment/dashboard`, {
+        withCredentials: true,
+      });
       if (response.data.success) {
         setData(response.data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  async function fetchPayments() {
+    try {
+      const response = await axios.get(
+        `${config.SERVER}/payment/dashboard/payments`,
+        {
+          withCredentials: true,
+        }
+      );
+      if (response.data.success) {
+        setPayments(response.data.payments);
       }
     } catch (error) {
       console.error(error);

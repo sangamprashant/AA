@@ -6,6 +6,8 @@ const {
   getMaterialsById,
   like,
   unlike,
+  updateMaterial,
+  deleteMaterial,
 } = require("../Controllers/studyMaterials");
 
 const router = express.Router();
@@ -17,5 +19,8 @@ router.get("/:id/like", like);
 router.get("/:id/unlike", unlike);
 // admin
 router.post("", authenticateToken, AddMaterial);
+router.put("/:id", authenticateToken, updateMaterial);
+router.delete("/:id", authenticateToken, deleteMaterial);
+// delete is remaining bass
 
 module.exports = router;

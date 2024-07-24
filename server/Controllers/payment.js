@@ -5,6 +5,8 @@ const crypto = require("crypto");
 const Contact = require("../Models/contact");
 const Booking = require("../Models/bookings");
 const Visitor = require("../Models/visitor");
+const sendPaymentConfirmationEmail = require("../Mail/paymentCreated");
+const sendPaymentCompletionEmail = require("../Mail/paymentCompletion");
 
 const instance = new Razorpay({
   key_id: config.RAZORPAY_KEY_ID,
@@ -40,6 +42,7 @@ const userMakePayment = async (req, res) => {
     });
 
     await newPayment.save();
+    sendPaymentConfirmationEmail(newPayment);
 
     res.status(200).json({
       message: "Payment created successfully",
@@ -87,6 +90,8 @@ const userVerifyPayment = async (req, res) => {
       { new: true }
     );
 
+    sendPaymentCompletionEmail(payment);
+
     if (payment) {
       res.json({ success: true, message: "Payment successful!" });
     } else {
@@ -107,8 +112,6 @@ const userVerifyPayment = async (req, res) => {
 const viewOnePayment = async (req, res) => {
   try {
     const { payment_id, order_id } = req.body;
-
-    console.log(req.body);
 
     // Check for required parameters
     if (!payment_id && !order_id) {
@@ -215,7 +218,6 @@ const dashboardContent = async (req, res) => {
       bookingCheckedCount,
       bookingUncheckedCount,
       bookingTotalCount,
-      payments,
     ] = await Promise.all([
       Visitor.countDocuments(),
       Visitor.countDocuments({ isNewVisitor: true }),
@@ -229,7 +231,6 @@ const dashboardContent = async (req, res) => {
       Booking.countDocuments({ checked: true }),
       Booking.countDocuments({ checked: false }),
       Booking.countDocuments(),
-      instance.payments.all(),
     ]);
 
     res.json({
@@ -254,7 +255,6 @@ const dashboardContent = async (req, res) => {
         unchecked: bookingUncheckedCount,
         total: bookingTotalCount,
       },
-      payments: payments.items,
     });
   } catch (error) {
     console.log(error);
@@ -266,10 +266,28 @@ const dashboardContent = async (req, res) => {
   }
 };
 
+const dashboardPayments = async (req, res) => {
+  try {
+    const payments = await instance.payments.all();
+    res.status(200).json({
+      success: true,
+      payments: payments.items,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Some error occurred",
+      success: false,
+      error,
+    });
+  }
+};
+
 module.exports = {
   userMakePayment,
   userVerifyPayment,
   viewOnePayment,
   viewPaymentAccType,
   dashboardContent,
+  dashboardPayments,
 };

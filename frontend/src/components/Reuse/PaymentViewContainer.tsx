@@ -7,6 +7,7 @@ import { socialMediaLinks } from "../Footer/SocialLinks";
 import { address, appName, email, phone } from "../Strings";
 import Loading from "./Loading";
 import "./payment.css";
+import NoData from "./NoData";
 
 interface Props {
   payId?: string;
@@ -148,21 +149,10 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
 
   if (!data) {
     return (
-      <div className="d-flex justify-content-center align-items-center vh-100">
-        <div className="text-center">
-          <div className="mb-4">
-            <img src="/page/nodata.jpg" alt="No Data" className="img-fluid" />
-          </div>
-          <h2 className="mb-3">No Payment Found</h2>
-          <p className="lead">
-            We couldn’t find any payment details for the provided ID. Please
-            check the ID and try again.
-          </p>
-          <a href="/" className="btn btn-primary mt-3">
-            Go to Homepage
-          </a>
-        </div>
-      </div>
+      <NoData
+        heading="No Payment Found"
+        content="We couldn’t find any payment details for the provided ID. Please check the ID and try again."
+      />
     );
   }
 

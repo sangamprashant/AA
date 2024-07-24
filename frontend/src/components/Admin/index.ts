@@ -7,11 +7,18 @@ import AdminBooking from "./Pannel/Dashboard/Booking";
 import AdminFormReceiveContact from "./Pannel/Dashboard/Contact";
 import AdminPayment from "./Pannel/Dashboard/Payment";
 import StudyMaterial from "./Pannel/Dashboard/StudyMaterial";
+import StudyMaterialOpen from "./Pannel/Dashboard/StudyMaterialOpen";
 
 export {
   Admin404,
-  AdminBooking, AdminFormReceiveContact, AdminLogin,
-  AdminPanel, AdminPayment,
-  AdminSetting, Dashboard, StudyMaterial
+  AdminBooking,
+  AdminFormReceiveContact,
+  AdminLogin,
+  AdminPanel,
+  AdminPayment,
+  AdminSetting,
+  Dashboard,
+  StudyMaterial,
+  StudyMaterialOpen
 };
 

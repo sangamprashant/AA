@@ -1,0 +1,21 @@
+// router.get("/payments", async (req, res) => {
+//   try {
+//     const pay = await instance.payments.fetch("pay_Oa55R1KG3pQGuz");
+//     const payments = await instance.payments.all();
+
+//     const payload = {
+
+//       amount: 10 * 100,
+//       currency: "INR",
+//       description: "trail  links",
+//       notify: {
+//         sms: true,
+//         email: true,
+//       },
+//     };
+//     const link = await instance.paymentLink.create(payload);
+//     res.json(pay);
+//   } catch (error) {
+//     res.status(500).send("Failed to fetch payments from Razorpay");
+//   }
+// });

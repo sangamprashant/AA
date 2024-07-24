@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   storage,
@@ -9,15 +9,38 @@ import {
 import StydyMaterialHelp from "./StydyMaterialHelp";
 import { config } from "../../../../../config";
 
-const StudyMaterialForm: React.FC = () => {
-  const [title, setTitle] = useState("");
+interface StudyMaterialFormProps {
+  data?: {
+    _id: string;
+    title: string;
+    pdfUrl: string;
+    imageUrl: string;
+    content: string;
+    category: string;
+  };
+}
+
+const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
+  const [title, setTitle] = useState(data?.title || "");
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [content, setContent] = useState("");
-  const [category, setCategory] = useState("LKG");
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [content, setContent] = useState(data?.content || "");
+  const [category, setCategory] = useState(data?.category || "LKG");
+  const [pdfUrl, setPdfUrl] = useState<string | null>(data?.pdfUrl || null);
+  const [imageUrl, setImageUrl] = useState<string | null>(
+    data?.imageUrl || null
+  );
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (data?._id) {
+      setTitle(data.title);
+      setContent(data.content);
+      setCategory(data.category);
+      setPdfUrl(data.pdfUrl);
+      setImageUrl(data.imageUrl);
+    }
+  }, [data]);
 
   const handleFileUpload = async (
     file: File,
@@ -32,45 +55,60 @@ const StudyMaterialForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (pdfFile && imageFile) {
-      setLoading(true);
-      try {
-        // Use Promise.all to upload files in parallel
-        const [pdfUrl, imageUrl] = await Promise.all([
-          handleFileUpload(pdfFile, `pdfs/${pdfFile.name}`),
-          handleFileUpload(imageFile, `images/${imageFile.name}`),
-        ]);
+    setLoading(true);
+    try {
+      let pdfUploadUrl = pdfUrl;
+      let imageUploadUrl = imageUrl;
 
-        const data = {
-          title,
-          pdf: pdfUrl,
-          image: imageUrl,
-          content,
-          category,
-        };
+      if (pdfFile) {
+        pdfUploadUrl = await handleFileUpload(pdfFile, `pdfs/${pdfFile.name}`);
+      }
 
-        console.log({ data });
+      if (imageFile) {
+        imageUploadUrl = await handleFileUpload(
+          imageFile,
+          `images/${imageFile.name}`
+        );
+      }
 
-        await axios.post(`${config.SERVER}/study-materials`, data, {
+      const payload = {
+        title,
+        pdf: pdfUploadUrl,
+        image: imageUploadUrl,
+        content,
+        category,
+      };
+
+      if (data) {
+        // Update existing material
+        await axios.put(
+          `${config.SERVER}/study-materials/${data._id}`,
+          payload,
+          {
+            withCredentials: true,
+          }
+        );
+        alert("Study material updated successfully");
+      } else {
+        // Add new material
+        await axios.post(`${config.SERVER}/study-materials`, payload, {
           withCredentials: true,
         });
         alert("Study material added successfully");
-
-        // Reset form fields
-        setTitle("");
-        setPdfFile(null);
-        setImageFile(null);
-        setContent("");
-        setCategory("LKG");
-        setPdfUrl(null);
-        setImageUrl(null);
-      } catch (error) {
-        alert("Failed to upload files or submit data");
-      } finally {
-        setLoading(false);
       }
-    } else {
-      alert("Please upload both PDF and image files");
+
+      // Reset form fields
+      setTitle("");
+      setPdfFile(null);
+      setImageFile(null);
+      setContent("");
+      setCategory("LKG");
+      setPdfUrl(null);
+      setImageUrl(null);
+    } catch (error) {
+      alert("Failed to upload files or submit data");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -89,11 +127,11 @@ const StudyMaterialForm: React.FC = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <>
       <div className="d-flex justify-content-center">
         <div className="col-md-6">
           <form onSubmit={handleSubmit} className="card p-3">
-            <h1>Add Study Material</h1>
+            <h1>{data ? "Edit Study Material" : "Add Study Material"}</h1>
 
             <div className="form-group">
               <label htmlFor="title">
@@ -120,8 +158,13 @@ const StudyMaterialForm: React.FC = () => {
                 id="pdf"
                 accept=".pdf"
                 onChange={handlePdfChange}
-                required
+                required={!data} // Required if adding new material
               />
+              {pdfUrl && !pdfFile && (
+                <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
+                  Current PDF
+                </a>
+              )}
             </div>
 
             <div className="form-group">
@@ -134,8 +177,11 @@ const StudyMaterialForm: React.FC = () => {
                 id="image"
                 accept="image/*"
                 onChange={handleImageChange}
-                required
+                required={!data} // Required if adding new material
               />
+              {imageUrl && !imageFile && (
+                <img src={imageUrl} alt="Current" width="100" />
+              )}
             </div>
 
             <div className="form-group">
@@ -152,7 +198,7 @@ const StudyMaterialForm: React.FC = () => {
                 rows={7}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                placeholder="Enter a html content to display"
+                placeholder="Enter HTML content to display"
                 required
               />
             </div>
@@ -169,8 +215,6 @@ const StudyMaterialForm: React.FC = () => {
                 onChange={(e) => setCategory(e.target.value)}
                 required
               >
-                <option value="LKG">LKG</option>
-                <option value="UKG">UKG</option>
                 {[...Array(10)].map((_, index) => (
                   <option key={index + 1} value={`class ${index + 1}`}>
                     Class {index + 1}
@@ -184,7 +228,7 @@ const StudyMaterialForm: React.FC = () => {
               className="btn btn-primary mt-2"
               disabled={loading}
             >
-              {loading ? "Submitting..." : "Submit"}
+              {loading ? "Submitting..." : data ? "Update" : "Submit"}
             </button>
           </form>
         </div>
@@ -198,7 +242,13 @@ const StudyMaterialForm: React.FC = () => {
       <div className="container mt-3">
         <div className="card-content-explore">
           <img
-            src={imageUrl ? imageUrl : "https://via.placeholder.com/150"}
+            src={
+              imageUrl
+                ? imageUrl
+                : data?.imageUrl
+                ? data.imageUrl
+                : "https://via.placeholder.com/150"
+            }
             className="card-img-top-content-explore"
             alt=""
           />
@@ -211,14 +261,14 @@ const StudyMaterialForm: React.FC = () => {
         <hr />
 
         <div className="py-5">
-          <h5 className=" text-danger">When card is clicked and opened:</h5>
+          <h5 className="text-danger">When card is clicked and opened:</h5>
           <h2>{title ? title : "Title here..."}</h2>
           <div
             className="my-3"
             dangerouslySetInnerHTML={{
               __html: content
                 ? content
-                : "Add contentin the above form to see the changes",
+                : "Add content in the above form to see the changes",
             }}
           />
           {pdfUrl && (
@@ -232,7 +282,7 @@ const StudyMaterialForm: React.FC = () => {
           <StydyMaterialHelp />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

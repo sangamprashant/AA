@@ -72,13 +72,11 @@ const unlike = async (req, res) => {
     await material.save();
     res.status(200).json({ material, success: true });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Failed to update unlike status",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Failed to update unlike status",
+      error,
+      success: false,
+    });
   }
 };
 
@@ -107,4 +105,76 @@ const AddMaterial = async (req, res) => {
   }
 };
 
-module.exports = { AddMaterial, getMaterials, getMaterialsById, like, unlike };
+const updateMaterial = async (req, res) => {
+  try {
+    const { id } = req.params; // Get the ID from the request parameters
+    const { title, pdf, image, content, category } = req.body; // Get the updated data from the request body
+
+    // Find the study material by ID and update it with the new data
+    const updatedStudyMaterial = await StudyMaterial.findByIdAndUpdate(
+      id,
+      {
+        title,
+        pdfUrl: pdf,
+        imageUrl: image,
+        content,
+        category,
+        updatedAt: new Date(),
+      },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedStudyMaterial) {
+      return res
+        .status(404)
+        .json({ message: "Study material not found", success: false });
+    }
+
+    res.status(200).json({
+      message: "Study material updated successfully",
+      success: true,
+      data: updatedStudyMaterial,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to update study material",
+      error,
+      success: false,
+    });
+  }
+};
+
+const deleteMaterial = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedStudyMaterial = await StudyMaterial.findByIdAndDelete(id);
+
+    if (!deletedStudyMaterial) {
+      return res
+        .status(404)
+        .json({ message: "Study material not found", success: false });
+    }
+
+    res
+      .status(200)
+      .json({ message: "Study material deleted successfully", success: true });
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: "Failed to delete study material",
+        error,
+        success: false,
+      });
+  }
+};
+
+module.exports = {
+  AddMaterial,
+  getMaterials,
+  getMaterialsById,
+  like,
+  unlike,
+  updateMaterial,
+  deleteMaterial,
+};

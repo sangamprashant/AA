@@ -1,13 +1,15 @@
+import PaymentIcon from "@mui/icons-material/Payment";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 import { notification } from "antd";
 import axios from "axios";
 import { FormEvent, useLayoutEffect, useState } from "react";
-import { config } from "../../../config";
-import "./payment.css";
-import FerjiDetails from "./FerjiDetails";
-import { appName } from "../../Strings";
-import Section from "../../Reuse/Section";
-import Footer from "../../Footer";
 import { Link } from "react-router-dom";
+import { config } from "../../../config";
+import Footer from "../../Footer";
+import Section from "../../Reuse/Section";
+import { appName } from "../../Strings";
+import FerjiDetails from "./FerjiDetails";
+import "./payment.css";
 
 type NotificationType = "success" | "info" | "warning" | "error";
 
@@ -20,6 +22,7 @@ const Payment: React.FC = () => {
   const [selectClass, setSelectClass] = useState<string>("");
   const [state, setState] = useState<"success" | "error" | "">("");
   const [stateId, setStateId] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [api, contextHolder] = notification.useNotification();
 
@@ -65,7 +68,7 @@ const Payment: React.FC = () => {
       amount,
       selectClass,
     };
-
+    setLoading(true);
     try {
       const res = await loadScript(
         "https://checkout.razorpay.com/v1/checkout.js"
@@ -159,6 +162,8 @@ const Payment: React.FC = () => {
         "Error",
         "An unexpected error occurred. Please try again later."
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -275,15 +280,21 @@ const Payment: React.FC = () => {
                     <button
                       onClick={handleFormSubmit}
                       className="mt-2 btn theme-btn w-100"
+                      disabled={loading}
                     >
-                      Proceed to Pay
+                      {loading ? "Loading.." : `Proceed to Pay`}{" "}
+                      {loading ? (
+                        <img src="/loading.svg" alt="" height={40} />
+                      ) : (
+                        <PaymentIcon fontSize="large" />
+                      )}
                     </button>
                     {state === "success" && (
                       <Link
                         to={`/payment?payment_id=${stateId}`}
                         className="mt-2 btn btn-success w-100 mt-2"
                       >
-                        View the Invoice
+                        View the Invoice <ReceiptIcon fontSize="large" />
                       </Link>
                     )}
 
@@ -292,7 +303,7 @@ const Payment: React.FC = () => {
                         to={`/payment?order_id=${stateId}`}
                         className="mt-2 btn btn-warning w-100 mt-2"
                       >
-                        View the Invoice
+                        View the Invoice <ReceiptIcon fontSize="large" />
                       </Link>
                     )}
                   </form>
