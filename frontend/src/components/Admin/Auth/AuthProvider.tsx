@@ -72,9 +72,9 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         }
       );
       if (response.data.success) {
-        setIsLoggedIn(true);
         handleFetchProtectedData();
-        window.location.href = "/admin/dashboard";
+        // window.location.href = "/admin/dashboard";
+        window.location.assign("/admin/dashboard");
       } else {
         setLoginError(
           response?.data?.message || "Something went wrong, please try later"

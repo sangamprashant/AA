@@ -15,8 +15,6 @@ interface TransctionsProps {
 }
 
 const Transctions: React.FC<TransctionsProps> = ({ payments }) => {
-  console.log({ payments });
-
   const dataColumns = [
     {
       title: 'ID',
