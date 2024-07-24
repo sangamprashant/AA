@@ -1,8 +1,10 @@
 import axios from "axios";
-import { Fragment, useEffect, useState, useMemo } from "react";
+import { Fragment, useEffect, useState, useMemo, useContext } from "react";
 import { config } from "../../../../../config";
 import { Table, notification } from "antd";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Auth/AuthProvider";
+import { LoadingUI } from "../../../../../App";
 
 // Types for payment data
 interface RazorpayPayment {
@@ -41,6 +43,11 @@ interface PaymentContainerProps {
 }
 
 const PaymentContainer = ({ type }: PaymentContainerProps) => {
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    return <LoadingUI />;
+  }
+  const { token } = authContext;
   const [dataSource, setDataSource] = useState<Payment[]>([]);
 
   useEffect(() => {
@@ -52,7 +59,9 @@ const PaymentContainer = ({ type }: PaymentContainerProps) => {
       const response = await axios.get(
         `${config.SERVER}/payment/view/${type}`,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 

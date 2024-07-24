@@ -1,11 +1,18 @@
 import { Form, Input, Typography, message } from "antd";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { LoadingUI } from "../../../../../App";
 import { config } from "../../../../../config";
+import { AuthContext } from "../../../Auth/AuthProvider";
 
 const { Title } = Typography;
 
 const ChangeEmail = () => {
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    return <LoadingUI />;
+  }
+  const { token } = authContext;
   const [currentPassword, setCurrentPassword] = useState<string>("");
   const [oldEmail, setOldEmail] = useState<string>("");
   const [newEmail, setNewEmail] = useState<string>("");
@@ -42,13 +49,15 @@ const ChangeEmail = () => {
           newEmail,
         },
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       if (response.data.success) {
         message.success("Email changed successfully.");
-        setCurrentPassword(""); 
+        setCurrentPassword("");
         setOldEmail("");
         setNewEmail("");
       } else {

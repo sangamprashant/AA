@@ -24,7 +24,7 @@ const StudyMaterialOpen = () => {
     return <LoadingUI />;
   }
 
-  const { setHeader } = authContext;
+  const { setHeader, token } = authContext;
 
   useLayoutEffect(() => {
     setHeader("Study Materials: Edit");
@@ -34,7 +34,9 @@ const StudyMaterialOpen = () => {
         const response = await axios.get(
           `${config.SERVER}/study-materials/${id}`,
           {
-            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
         setData(response.data.material);

@@ -8,8 +8,10 @@ import {
   notification,
 } from "antd";
 import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { config } from "../../../../../config";
+import { AuthContext } from "../../../Auth/AuthProvider";
+import { LoadingUI } from "../../../../../App";
 
 type NotificationPlacement = NotificationArgsProps["placement"];
 
@@ -30,6 +32,11 @@ interface dataSourceProps {
 }
 
 const BookingTable = ({ type }: BookingTableProps) => {
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    return <LoadingUI />;
+  }
+  const { token } = authContext;
   const [dataSource, setDataSource] = useState<dataSourceProps[]>([]);
   const [selectedData, setSelectedData] = useState<dataSourceProps | undefined>(
     undefined
@@ -196,7 +203,9 @@ const BookingTable = ({ type }: BookingTableProps) => {
       const response = await axios.get(
         `${config.SERVER}/booking/by-status/${state}`,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       if (response.data.success) {
@@ -229,7 +238,9 @@ const BookingTable = ({ type }: BookingTableProps) => {
         `${config.SERVER}/booking/update/${selectedData?._id}`,
         reqBody,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       if (response.data.success) {
@@ -252,7 +263,9 @@ const BookingTable = ({ type }: BookingTableProps) => {
       const response = await axios.delete(
         `${config.SERVER}/booking/delete/${selectedData?._id}`,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 

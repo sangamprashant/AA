@@ -1,7 +1,9 @@
 import { Alert, Modal, NotificationArgsProps, Table, notification } from "antd";
 import axios from "axios";
-import { FormEvent, Fragment, useEffect, useState } from "react";
+import { FormEvent, Fragment, useContext, useEffect, useState } from "react";
+import { LoadingUI } from "../../../../../App";
 import { config } from "../../../../../config";
+import { AuthContext } from "../../../Auth/AuthProvider";
 
 type NotificationPlacement = NotificationArgsProps["placement"];
 
@@ -21,6 +23,11 @@ interface dataSourceProps {
 }
 
 const ContactTable = ({ type }: ContactTableProps) => {
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    return <LoadingUI />;
+  }
+  const { token } = authContext;
   const [dataSource, setdataSource] = useState<dataSourceProps[]>([]);
   const [modelOpen, setModelOpen] = useState<boolean>(false);
   const [selectData, setSelectedData] = useState<dataSourceProps | null>(null);
@@ -141,7 +148,9 @@ const ContactTable = ({ type }: ContactTableProps) => {
   async function fetchData(status: string) {
     try {
       const response = await axios.get(`${config.SERVER}/contact/${status}`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       if (response.data.success) {
         setdataSource(response.data.contacts);
@@ -171,7 +180,9 @@ const ContactTable = ({ type }: ContactTableProps) => {
         `${config.SERVER}/contact/${selectData?._id}`,
         responseBody,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       if (response.data.success) {
@@ -198,7 +209,9 @@ const ContactTable = ({ type }: ContactTableProps) => {
       const response = await axios.delete(
         `${config.SERVER}/contact/${selectData._id}`,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       if (response.data.success) {

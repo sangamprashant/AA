@@ -54,7 +54,7 @@ const Dashboard: React.FC = () => {
   if (!authContext) {
     return <LoadingUI />;
   }
-  const { setHeader } = authContext;
+  const { setHeader,token } = authContext;
   useEffect(() => {
     setHeader("Welcome to Dashboard");
   }, [authContext]);
@@ -149,7 +149,9 @@ const Dashboard: React.FC = () => {
   async function fetchData() {
     try {
       const response = await axios.get(`${config.SERVER}/payment/dashboard`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       if (response.data.success) {
         setData(response.data);
@@ -163,7 +165,9 @@ const Dashboard: React.FC = () => {
       const response = await axios.get(
         `${config.SERVER}/payment/dashboard/payments`,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       if (response.data.success) {

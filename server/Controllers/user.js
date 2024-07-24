@@ -111,28 +111,11 @@ const login = async (req, res) => {
     const token = jwt.sign({ userId: user._id }, config.JWT_SECRET, {
       expiresIn: "3h",
     });
-
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Strict",
-      maxAge: 3 * 60 * 60 * 1000,
-      path: '/', 
-    });
-    res.status(200).json({ message: "Login successful", success: true });
+    res.status(200).json({ message: "Login successful", success: true, token });
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).json({ message: "Server error", success: false });
   }
-};
-
-const logout = (req, res) => {
-  res.clearCookie("token", {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "Strict",
-  });
-  res.status(200).json({ success: true, message: "Logged out successfully" });
 };
 
 // Change Email Controller
@@ -213,7 +196,6 @@ module.exports = {
   validateLogin,
   register,
   login,
-  logout,
   validateChangeEmail,
   validateChangePassword,
   changeEmail,

@@ -1,10 +1,10 @@
 import axios from "axios";
-import Cookies from "js-cookie";
 import React, {
   FC,
   ReactNode,
   createContext,
   useEffect,
+  useLayoutEffect,
   useState,
 } from "react";
 import { config } from "../../../config";
@@ -23,6 +23,7 @@ interface AuthContextType {
   loginError: string | null;
   dashboardTitle: string;
   setHeader: (h: string) => Promise<void>;
+  token: string | null;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -38,15 +39,23 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [forButtonLoading, setForButtonLoading] = React.useState(false);
   const [loginError, setLoginError] = React.useState<string | null>("");
   const [dashboardTitle, setDashboardTitle] = React.useState<string>("");
+  const [token, setToken] = useState<string>("");
+
+  useLayoutEffect(() => {
+    setToken(sessionStorage.getItem("token") || "");
+  }, []);
 
   useEffect(() => {
-    handleFetchProtectedData();
-  }, []);
+    if (token) handleFetchProtectedData();
+    else setLoading(false);
+  }, [token]);
 
   const handleFetchProtectedData = async (): Promise<void> => {
     try {
       const response = await axios.get(`${config.SERVER}/protected`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (response.data.success) {
@@ -64,17 +73,15 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const login = async (email: string, password: string): Promise<void> => {
     try {
       setForButtonLoading(true);
-      const response = await axios.post(
-        `${config.SERVER}/user/login`,
-        { email, password },
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.post(`${config.SERVER}/user/login`, {
+        email,
+        password,
+      });
       if (response.data.success) {
+        setToken(response.data.token);
+        sessionStorage.setItem("token", response.data.token);
         handleFetchProtectedData();
-        // window.location.href = "/admin/dashboard";
-        window.location.assign("/admin/dashboard");
+        window.location.href = "/admin/dashboard";
       } else {
         setLoginError(
           response?.data?.message || "Something went wrong, please try later"
@@ -92,22 +99,10 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   };
 
   const logout = async (): Promise<void> => {
-    try {
-      await axios.post(
-        `${config.SERVER}/user/logout`,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-    } catch (error) {
-      console.error("Logout error:", error);
-    } finally {
-      setUser(null);
-      setIsLoggedIn(false);
-      Cookies.remove("token");
-      window.location.href = "/";
-    }
+    setUser(null);
+    setIsLoggedIn(false);
+    sessionStorage.clear();
+    window.location.href = "/";
   };
 
   const setHeader = async (h: string) => {
@@ -126,6 +121,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         loginError,
         dashboardTitle,
         setHeader,
+        token,
       }}
     >
       {children}

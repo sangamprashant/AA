@@ -1,11 +1,18 @@
 import { Form, Input, Typography, message } from "antd";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { LoadingUI } from "../../../../../App";
 import { config } from "../../../../../config";
+import { AuthContext } from "../../../Auth/AuthProvider";
 
 const { Title } = Typography;
 
 const ChangePassword = () => {
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    return <LoadingUI />;
+  }
+  const { token } = authContext;
   const [currentPassword, setCurrentPassword] = useState<string>("");
   const [newPassword, setNewPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -41,7 +48,9 @@ const ChangePassword = () => {
           newPassword,
         },
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 

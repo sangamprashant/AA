@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import {
   storage,
@@ -8,6 +8,8 @@ import {
 } from "../../../../../firebase";
 import StydyMaterialHelp from "./StydyMaterialHelp";
 import { config } from "../../../../../config";
+import { AuthContext } from "../../../Auth/AuthProvider";
+import { LoadingUI } from "../../../../../App";
 
 interface StudyMaterialFormProps {
   data?: {
@@ -21,6 +23,11 @@ interface StudyMaterialFormProps {
 }
 
 const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    return <LoadingUI />;
+  }
+  const { token } = authContext;
   const [title, setTitle] = useState(data?.title || "");
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -85,14 +92,18 @@ const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
           `${config.SERVER}/study-materials/${data._id}`,
           payload,
           {
-            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
         alert("Study material updated successfully");
       } else {
         // Add new material
         await axios.post(`${config.SERVER}/study-materials`, payload, {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
         alert("Study material added successfully");
       }
