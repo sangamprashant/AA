@@ -53,9 +53,9 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         setIsLoggedIn(true);
         setUser(response.data.user);
       }
-      console.log("Protected data:", response.data);
+      // console.log("Protected data:", response.data);
     } catch (error) {
-      console.error("Error fetching protected data:", error);
+      // console.error("Error fetching protected data:", error);
     } finally {
       setLoading(false);
     }
