@@ -2,7 +2,8 @@ const StudyMaterial = require("../Models/studyMaterials");
 
 const getMaterials = async (req, res) => {
   try {
-    const materials = await StudyMaterial.find();
+    const materials = await StudyMaterial.find().sort({ createdAt: -1 });
+
     res.status(200).json({
       materials,
       success: true,
@@ -159,13 +160,11 @@ const deleteMaterial = async (req, res) => {
       .status(200)
       .json({ message: "Study material deleted successfully", success: true });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Failed to delete study material",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Failed to delete study material",
+      error,
+      success: false,
+    });
   }
 };
 

@@ -187,15 +187,24 @@ const viewPaymentAccType = async (req, res) => {
   try {
     const { type } = req.params;
     let query = {};
+
+    // If the type is not 'razorpay', set up the query based on type
     if (type !== "razorpay") {
       if (type !== "all") {
         query.status = type;
       }
-      const payments = await Payment.find(query);
+
+      // Find payments and sort by most recent
+      const payments = await Payment.find(query).sort({ createdAt: -1 });
       return res.json({ success: true, payments });
     }
+
+    // For Razorpay, get all payments and sort by most recent
     const payments = await instance.payments.all();
-    res.json({ success: true, payments: payments.items });
+    const sortedPayments = payments.items.sort(
+      (a, b) => new Date(b.created_at) - new Date(a.created_at)
+    );
+    res.json({ success: true, payments: sortedPayments });
   } catch (error) {
     res
       .status(500)
@@ -269,9 +278,15 @@ const dashboardContent = async (req, res) => {
 const dashboardPayments = async (req, res) => {
   try {
     const payments = await instance.payments.all();
+
+    // Assuming `created_at` is the field to sort by
+    const sortedPayments = payments.items.sort(
+      (a, b) => new Date(b.created_at) - new Date(a.created_at)
+    );
+
     res.status(200).json({
       success: true,
-      payments: payments.items,
+      payments: sortedPayments,
     });
   } catch (error) {
     console.log(error);
