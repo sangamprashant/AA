@@ -1,8 +1,10 @@
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { LoadingUI } from "../../../App";
+import { AppContext } from "../../../AppProvider";
 import { config } from "../../../config";
 import Footer from "../../Footer";
 import Loading from "../../Reuse/Loading";
@@ -27,11 +29,20 @@ const ContentOpen: React.FC = () => {
     updatedAt: string;
     likes: number;
     unlikes: number;
+    free: boolean;
   } | null>(null);
   const [isSaved, setIsSaved] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   //   const [hasLiked, setHasLiked] = useState<boolean>(false);
   //   const [hasUnliked, setHasUnliked] = useState<boolean>(false);
+
+  const [showAccessModal, setShowAccessModal] = useState<boolean>(false);
+  const appContext = useContext(AppContext);
+  if (!appContext) {
+    return <LoadingUI />;
+  }
+
+  const { locked } = appContext;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -84,6 +95,12 @@ const ContentOpen: React.FC = () => {
     setIsSaved(!isSaved);
   };
 
+  useEffect(() => {
+    if (locked && content && !content.free) {
+      setShowAccessModal(true);
+    }
+  }, [locked, content]);
+
   const handleShare = async () => {
     try {
       // Copy current URL to clipboard
@@ -114,7 +131,7 @@ const ContentOpen: React.FC = () => {
 
   return (
     <>
-      <AccessModal />
+      {showAccessModal && <AccessModal />}
       <Section className="py-3">
         <div className="row">
           <div className="col-md-8">

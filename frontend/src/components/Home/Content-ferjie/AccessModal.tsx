@@ -1,8 +1,24 @@
-import React, { useEffect, useState } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Modal, Button, Form, Input, notification } from "antd";
+import { Button, Form, Input, Modal, notification } from "antd";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { LoadingUI } from "../../../App";
+import { AppContext } from "../../../AppProvider";
+import { config } from "../../../config";
 
 interface FormValues {
+  email?: string;
+  phone?: string;
+  otp?: string;
+}
+
+interface handleGenerateOtpProps {
+  email?: string;
+  phone?: string;
+}
+
+interface handleVerifyOtpProps {
   email?: string;
   phone?: string;
   otp?: string;
@@ -15,6 +31,16 @@ const AccessModal: React.FC = () => {
   const [form] = Form.useForm();
   const [step, setStep] = useState<Steps>(1);
   const [formValues, setFormValues] = useState<FormValues>({});
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState<boolean>(false);
+  const appContext = useContext(AppContext);
+  if (!appContext) {
+    return <LoadingUI />;
+  }
+  const { locked, handleLock } = appContext;
+  useEffect(() => {
+    setVisible(locked);
+  }, [locked]);
 
   const handleNext = () => {
     form
@@ -30,30 +56,10 @@ const AccessModal: React.FC = () => {
 
   const handleSubmit = (values: FormValues) => {
     setFormValues((prevValues) => ({ ...prevValues, ...values }));
-    console.log("Form values:", { ...formValues, ...values }); // Log all form values
-
     if (step === 2) {
-      // Generate OTP and transition to step 3
-      notification.success({
-        message: "OTP Generated",
-        description: "An OTP has been sent to your email.",
-      });
-      setStep(3);
+      handleGenerateOtp({ ...formValues, ...values });
     } else if (step === 4) {
-      // Handle OTP verification
-      if (values.otp === "123456") {
-        // Replace with actual OTP verification logic
-        notification.success({
-          message: "Verification Successful",
-          description: "You have successfully verified your details.",
-        });
-        setStep(5);
-      } else {
-        notification.error({
-          message: "Verification Failed",
-          description: "The OTP entered is incorrect.",
-        });
-      }
+      handleVerifyOtp({ ...formValues, ...values });
     }
   };
 
@@ -62,10 +68,6 @@ const AccessModal: React.FC = () => {
       setTimeout(() => setStep(4), 3000);
     }
   }, [step]);
-
-  const handleCancel = () => {
-    setVisible(false);
-  };
 
   return (
     <Modal
@@ -101,13 +103,15 @@ const AccessModal: React.FC = () => {
                         message: "Phone number must be 10 digits long!",
                       },
                       {
-                        pattern: /^[0-9]+$/,
-                        message: "Phone number must be numeric!",
+                        pattern: /^[6-9][0-9]{9}$/,
+                        message:
+                          "Phone number must be numeric and start with a digit greater than 5!",
                       },
                     ]}
                   >
                     <Input placeholder="Enter your phone number" />
                   </Form.Item>
+
                   <Form.Item>
                     <Button
                       type="primary"
@@ -115,7 +119,7 @@ const AccessModal: React.FC = () => {
                       block
                       onClick={handleNext}
                     >
-                      Next Step <ArrowForwardIosIcon fontSize="small"/>
+                      Next Step <ArrowForwardIosIcon fontSize="small" />
                     </Button>
                   </Form.Item>
                 </>
@@ -157,8 +161,10 @@ const AccessModal: React.FC = () => {
                       htmlType="button"
                       block
                       onClick={() => form.submit()}
+                      disabled={loading}
                     >
-                      Generate OTP
+                      {loading ? "Loading" : "Generate OTP"}
+                      {loading && <img src="/loading.svg" height={30} />}
                     </Button>
                   </Form.Item>
                 </>
@@ -208,8 +214,10 @@ const AccessModal: React.FC = () => {
                   htmlType="button"
                   block
                   onClick={() => form.submit()}
+                  disabled={loading}
                 >
-                  Submit OTP
+                  {loading ? "Loading" : "Submit OTP"}
+                  {loading && <img src="/loading.svg" height={30} />}
                 </Button>
               </Form.Item>
             </Form>
@@ -239,6 +247,110 @@ const AccessModal: React.FC = () => {
       </div>
     </Modal>
   );
+
+  async function handleVerifyOtp({ email, phone, otp }: handleVerifyOtpProps) {
+    try {
+      setLoading(true);
+      const response = await fetch(`${config.SERVER}/access-content/verify`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, phone, otp }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        const user = {
+          email,
+          phone,
+        };
+        localStorage.setItem("access-content", JSON.stringify(user));
+        notification.success({
+          message: "Verification Successful",
+          description: "You have successfully verified your details.",
+        });
+        setStep(5);
+      } else {
+        notification.warning({
+          message: "Warning",
+          description:
+            data.message || "Something went wrong. Please try again later.",
+        });
+      }
+    } catch (error: any) {
+      console.error(error);
+      if (error.response.status === 500) {
+        notification.error({
+          message: "Error",
+          description: "Something went wrong. Please try again later.",
+        });
+      } else {
+        notification.warning({
+          message: "Warning",
+          description:
+            error.response.data.message ||
+            "Something went wrong. Please try again later.",
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleGenerateOtp({ email, phone }: handleGenerateOtpProps) {
+    try {
+      setLoading(true);
+      const res = await axios.post(`${config.SERVER}/access-content`, {
+        email,
+        phone,
+      });
+      if (res.data.success) {
+        if (res.data.verified) {
+          const user = {
+            email,
+            phone,
+          };
+          localStorage.setItem("access-content", JSON.stringify(user));
+          setStep(5);
+          notification.success({
+            message: "OTP Verified",
+            description: res.data.message,
+          });
+        } else {
+          notification.success({
+            message: "OTP Generated",
+            description: "An OTP has been sent to your email.",
+          });
+          setStep(3);
+        }
+      } else {
+        notification.error({
+          message: "Error",
+          description: res.data.message,
+        });
+      }
+    } catch (error) {
+      notification.error({
+        message: "Error",
+        description: "Something went wrong. Please try again later.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleCancel() {
+    await handleLock();
+    const initialData = await localStorage.getItem("access-content");
+    if (!initialData) {
+      notification.warning({
+        message: "Action Canceled",
+        description:
+          "You have canceled the process. Please complete the action to unlock the content and view it.",
+      });
+      navigate("/study-material");
+    }
+  }
 };
 
 export default AccessModal;

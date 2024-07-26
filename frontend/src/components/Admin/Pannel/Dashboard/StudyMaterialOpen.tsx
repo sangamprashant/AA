@@ -15,6 +15,7 @@ const StudyMaterialOpen = () => {
     pdfUrl: string;
     imageUrl: string;
     content: string;
+    free: boolean;
     category: string;
   }>();
   const [loading, setLoading] = useState<boolean>(true);

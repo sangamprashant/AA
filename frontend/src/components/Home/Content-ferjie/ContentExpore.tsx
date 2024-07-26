@@ -1,8 +1,13 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import StarIcon from "@mui/icons-material/Star";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { LoadingUI } from "../../../App";
+import { AppContext } from "../../../AppProvider";
+import { config } from "../../../config";
 import Section from "../../Reuse/Section";
 import "./contentExplore.css";
-import { Link } from "react-router-dom";
-import { config } from "../../../config";
 
 interface StudyMaterial {
   _id: string;
@@ -117,6 +122,12 @@ interface CardContainerProps {
 }
 
 const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
+  const appContext = useContext(AppContext);
+  if (!appContext) {
+    return <LoadingUI />;
+  }
+
+  const { locked } = appContext;
   return (
     <Link to={`/study-material/${item._id}`} className="card-content-explore">
       <img
@@ -131,7 +142,16 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
       </div>
       <div className="content-explore-offer">
         <p className={`m-0 ${item.free ? "free" : "email"}`}>
-          {item.free ? "Free" : "Email"}
+          <span className="icon">
+            {item.free ? (
+              <StarIcon />
+            ) : locked ? (
+              <LockOutlinedIcon />
+            ) : (
+              <LockOpenOutlinedIcon />
+            )}
+          </span>{" "}
+          {item.free ? "Free" : locked ? "Locked" : "Unlocked"}
         </p>
       </div>
     </Link>

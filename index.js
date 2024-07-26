@@ -51,6 +51,7 @@ app.use("/api/v1/booking", require("./server/Routers/booking"));
 app.use("/api/v1/contact", require("./server/Routers/contact"));
 app.use("/api/v1/payment", require("./server/Routers/paymet"));
 app.use("/api/v1/study-materials", require("./server/Routers/studyMaterials"));
+app.use("/api/v1/access-content", require("./server/Routers/access-data"));
 
 app.get("/api/v1/protected", authenticateToken, (req, res) => {
   res.status(200).json({
@@ -59,7 +60,6 @@ app.get("/api/v1/protected", authenticateToken, (req, res) => {
     success: true,
   });
 });
-
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "server.html"));

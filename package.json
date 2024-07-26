@@ -10,6 +10,7 @@
   "license": "MIT",
   "description": "A to Z Classes is an educational platform providing comprehensive resources and study materials for various subjects and classes. The platform offers a range of features including secure payments, notifications, and detailed content management to enhance the learning experience.",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

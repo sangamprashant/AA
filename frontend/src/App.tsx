@@ -11,7 +11,8 @@ import {
   Navbar,
   PageNotFound,
   Payment,
-  ViewPayment,
+  StudyMaterialP,
+  ViewPayment
 } from "./components";
 import {
   Admin404,
@@ -83,6 +84,7 @@ function App() {
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/payment" element={<ViewPayment />} />
                 <Route path="/pay" element={<Payment />} />
+                <Route path="/study-material" element={<StudyMaterialP />} />
                 <Route path="/study-material/:id" element={<ContentOpen />} />
                 <Route path="/admin" element={<AdminLogin />} />
                 <Route path="/privacy-policy" element={<PRIVACYPOLICY />} />

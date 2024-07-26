@@ -9,16 +9,17 @@ import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact/Contact";
 import Payment from "./pages/Payment";
 import ViewPayment from "./pages/Payment/ViewPayment";
+import StudyMaterialP from "./Home/Content-ferjie/StudyMaterial";
 
 export {
   AboutUs,
   Class,
-  Contact, ContentOpen, Footer,
+  Contact,  ContentOpen,
+  Footer,StudyMaterialP,
   Home,
   Navbar,
   PageNotFound,
   Payment,
-  Price,
-  ViewPayment
+  Price, ViewPayment
 };
 
