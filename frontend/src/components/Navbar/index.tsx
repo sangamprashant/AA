@@ -33,7 +33,7 @@ const Navbar = () => {
         <div className="container">
           <Link className="navbar-brand" to="/">
             <motion.img
-              src="/navbar/logo.png"
+              src="/navbar/logo.png?cache-control=max-age=31536000"
               height="60"
               alt="logo"
               initial={{ opacity: 0, y: -20 }}

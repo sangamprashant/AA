@@ -8,8 +8,6 @@ const Try = () => {
   const [active, setActive] = React.useState(0);
   const [videoLoaded, setVideoLoaded] = React.useState(false);
 
-
-
   useEffect(() => {
     const carousel = document.querySelector("#customCarousel1");
     if (carousel) {
@@ -80,13 +78,13 @@ const Try = () => {
         <div className="bg-box">
           {!videoLoaded && (
             <img
-              src="/home/girl.jpg"
+              src="/home/girl.jpg?cache-control=max-age=31536000"
               className="placeholder-image"
               alt="Loading"
             />
           )}
           <video
-            src="/video.mp4"
+            src="/video.mp4?cache-control=max-age=31536000"
             autoPlay
             muted
             loop
@@ -119,7 +117,6 @@ const Try = () => {
                             <motion.li
                               key={index}
                               className="mt-2 hero-tag-text"
-         
                             >
                               <FaCheckCircle
                                 className="text-success me-2"
@@ -161,7 +158,6 @@ const Try = () => {
                           <motion.button
                             className="btn theme-btn btn-lg"
                             onClick={() => scrollToSection("mentor")}
-
                           >
                             View Mentors
                           </motion.button>

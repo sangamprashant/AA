@@ -52,7 +52,7 @@ const MentorsList = () => {
                   <div className="col-sm-12 d-flex justify-content-center mt-2">
                     <div className="mentor-image-container">
                       <img
-                        src={`review/mentors/${mentor.imgSrc}`}
+                        src={`review/mentors/${mentor.imgSrc}?cache-control=max-age=31536000`}
                         className="mentor-image blink img-fluid"
                         width={150}
                         alt={`${mentor.name}'s avatar`}

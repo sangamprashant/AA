@@ -1,9 +1,12 @@
-import React from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useClassContext } from "../ClassContext";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 const PriceChart = () => {
   const [pre, setPre] = React.useState<boolean>(false);
   const { classId } = useClassContext();
+  const [installmentActive, setInstallmentActive] = useState<boolean>(false);
 
   // Define the type for the prices object
   type PriceType = {
@@ -33,6 +36,10 @@ const PriceChart = () => {
     const installments = planType === "premium" ? 2 : 4;
     return (total - 5000) / installments;
   };
+
+  useEffect(() => {
+    setInstallmentActive(false);
+  }, [pre]);
 
   return (
     <div className="mt-5" id="price-plan">
@@ -65,13 +72,7 @@ const PriceChart = () => {
               </p>
             </td>
           </tr>
-          <tr>
-            <td colSpan={2}>
-              <p className="plan-detail">
-                {pre ? "Four" : "Two"} Easy Installments
-              </p>
-            </td>
-          </tr>
+
           <tr>
             <td>
               <p className="plan-detail">Total Fees</p>
@@ -84,38 +85,58 @@ const PriceChart = () => {
               <p className="plan-price">₹ 5,000</p>
             </td>
           </tr>
-
-          <tr>
-            <td>
-              <p className="plan-detail">Installment 1 Fees</p>
-              <p className="plan-price">
-                ₹ {getInstallments(pre ? "personalized" : "premium")}
-              </p>
-            </td>
-
-            <td>
-              <p className="plan-detail">Installment 2 Fees</p>
-              <p className="plan-price">
-                ₹ {getInstallments(pre ? "personalized" : "premium")}
+          <tr
+            onClick={() => {
+              setInstallmentActive((pre) => !pre);
+            }}
+          >
+            <td colSpan={2} className="cursor-pointer">
+              <p className="plan-detail">
+                {pre ? "Four" : "Two"} Easy Installments{" "}
+                {installmentActive ? (
+                  <KeyboardArrowUpIcon />
+                ) : (
+                  <KeyboardArrowDownIcon />
+                )}
               </p>
             </td>
           </tr>
-          {pre && (
-            <tr>
-              <td>
-                <p className="plan-detail">Installment 3 Fees</p>
-                <p className="plan-price">
-                  ₹ {getInstallments(pre ? "personalized" : "premium")}
-                </p>
-              </td>
 
-              <td>
-                <p className="plan-detail">Installment 4 Fees</p>
-                <p className="plan-price">
-                  ₹ {getInstallments(pre ? "personalized" : "premium")}
-                </p>
-              </td>
-            </tr>
+          {installmentActive && (
+            <Fragment>
+              <tr>
+                <td>
+                  <p className="plan-detail">Installment 1 Fees</p>
+                  <p className="plan-price">
+                    ₹ {getInstallments(pre ? "personalized" : "premium")}
+                  </p>
+                </td>
+
+                <td>
+                  <p className="plan-detail">Installment 2 Fees</p>
+                  <p className="plan-price">
+                    ₹ {getInstallments(pre ? "personalized" : "premium")}
+                  </p>
+                </td>
+              </tr>
+              {pre && (
+                <tr>
+                  <td>
+                    <p className="plan-detail">Installment 3 Fees</p>
+                    <p className="plan-price">
+                      ₹ {getInstallments(pre ? "personalized" : "premium")}
+                    </p>
+                  </td>
+
+                  <td>
+                    <p className="plan-detail">Installment 4 Fees</p>
+                    <p className="plan-price">
+                      ₹ {getInstallments(pre ? "personalized" : "premium")}
+                    </p>
+                  </td>
+                </tr>
+              )}
+            </Fragment>
           )}
         </tbody>
       </table>

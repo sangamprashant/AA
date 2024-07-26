@@ -9,7 +9,7 @@ const ContactHome = () => {
       <div className="row">
         <div className="col-md-5 d-flex justify-content-center">
           <img
-            src="contactus/expert.webp"
+            src="contactus/expert.webp?cache-control=max-age=31536000"
             alt=""
             width="100%"
           />

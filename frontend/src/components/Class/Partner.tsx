@@ -4,11 +4,11 @@ const Partner = () => {
   const data = [
     {
       text: "Aligned with the CBSE curriculum",
-      imgSrc: "class/partners/cbse.svg",
+      imgSrc: "class/partners/cbse.svg?cache-control=max-age=31536000",
     },
     {
       text: "Aligned with the ICSE curriculum",
-      imgSrc: "class/partners/icse.svg",
+      imgSrc: "class/partners/icse.svg?cache-control=max-age=31536000",
     },
   ];
 
@@ -25,7 +25,11 @@ const Partner = () => {
               in standardized tests and academic achievements.
             </p>
             <div>
-              <img src="/class/list/verified.png" alt="Verified" height={50} />{" "}
+              <img
+                src="/class/list/verified.png?cache-control=max-age=31536000"
+                alt="Verified"
+                height={50}
+              />{" "}
               Certified by <code>{appName} Certification Authority</code>
             </div>
           </div>

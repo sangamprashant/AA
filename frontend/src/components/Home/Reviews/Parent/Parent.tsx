@@ -111,7 +111,7 @@ const ReviewParent = () => {
         >
           <div>
             <motion.img
-              src="review/family.png"
+              src="review/family.png?cache-control=max-age=31536000"
               alt=""
               className="parent-image-banner"
               initial={{ opacity: 0, y: -90, x: -90 }}
@@ -165,7 +165,7 @@ const ReviewParent = () => {
                 <header className="parent-review-card shadow p-3">
                   <div className="d-flex align-items-center gap-3">
                     <img
-                      src={`review/parents/${member.photo}`}
+                      src={`review/parents/${member.photo}?cache-control=max-age=31536000`}
                       alt={member.name}
                       className="parent-image shadow"
                     />

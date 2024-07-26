@@ -8,7 +8,7 @@ const FreeClass = () => {
     <Section className="py-5">
       <div id="free-class">
         <h1 className="free-class-heading">
-          Ensure Your Child Learns the Right Way with A to Z Classes!
+          Ensure Your Child Learns the Right Way with {appName}!
         </h1>
         <div className="row py-5 justify-content-center">
           <div
@@ -36,13 +36,13 @@ const FreeClass = () => {
               <p>
                 At {appName}, we offer a holistic learning experience that goes
                 beyond traditional teaching methods. Our approach ensures that
-                your child gains a strong foundation in all subjects, setting
+                your child gains a strong foundation in all mathematics, setting
                 them up for long-term success.
               </p>
               <p className="mt-5">
                 Our expert tutors focus on personalized learning, making sure
                 each student grasps fundamental concepts thoroughly. Early
-                mastery of core subjects is a key predictor of future academic
+                mastery of core subject is a key predictor of future academic
                 achievement.
               </p>
             </div>

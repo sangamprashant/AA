@@ -23,7 +23,9 @@ const TimeLine = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: false }}
         >
-          At {appName}, our curriculum is designed to nurture curiosity and foster academic excellence in a supportive and engaging environment. Here’s a glimpse of what our students experience:
+          At {appName}, our curriculum is designed to nurture curiosity and
+          foster academic excellence in a supportive and engaging environment.
+          Here’s a glimpse of what our students experience:
         </motion.p>
         <div className="row py-5 justify-content-center">
           <motion.div
@@ -33,7 +35,11 @@ const TimeLine = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: false }}
           >
-            <img width="100%" src="/class/timeline/timeline.gif" alt="Timeline" />
+            <img
+              width="100%"
+              src="/class/timeline/timeline.gif?cache-control=max-age=31536000"
+              alt="Timeline"
+            />
           </motion.div>
           <motion.div
             className="col-md-6 d-flex flex-column justify-content-between"

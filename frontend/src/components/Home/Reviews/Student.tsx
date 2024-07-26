@@ -127,7 +127,7 @@ const ReviewStudent = () => {
               <div className="d-flex justify-content-center align-items-center gap-4">
                 <div className="comandSlider__item_photo spaceship">
                   <img
-                    src={`review/students/${member.photo}`}
+                    src={`review/students/${member.photo}?cache-control=max-age=31536000`}
                     alt={member.name}
                     className="students-photo-review "
                   />

@@ -85,7 +85,11 @@ const ContentExplore: React.FC = () => {
           }`}
           onClick={() => setSelectedClass("")}
         >
-          <img src={`/home/study-materials/icon/all.png`} alt="" height="35" />{" "}
+          <img
+            src={`/home/study-materials/icon/all.png?cache-control=max-age=31536000`}
+            alt=""
+            height="35"
+          />{" "}
           Show All
         </button>
         {[...Array(12)].map((_, index) => (
@@ -97,7 +101,9 @@ const ContentExplore: React.FC = () => {
             onClick={() => setSelectedClass(`class ${index + 1}`)}
           >
             <img
-              src={`/home/study-materials/icon/${index + 1}.png`}
+              src={`/home/study-materials/icon/${
+                index + 1
+              }.png?cache-control=max-age=31536000`}
               alt=""
               height="35"
             />{" "}
@@ -131,7 +137,7 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
   return (
     <Link to={`/study-material/${item._id}`} className="card-content-explore">
       <img
-        src={item.imageUrl}
+        src={`${item.imageUrl}?cache-control=max-age=31536000`}
         className="card-img-top-content-explore"
         alt={item.title}
       />

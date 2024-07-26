@@ -46,7 +46,11 @@ const ParentsTrust: React.FC = () => {
             <div className=" col-md-6 text-center p-2" key={index}>
               <div className="parent-trust-card">
                 <div className="icon">
-                  <img src={reason.icon} alt="" width={80} />
+                  <img
+                    src={`${reason.icon}?cache-control=max-age=31536000`}
+                    alt=""
+                    width={80}
+                  />
                 </div>
                 <div className="text-container">
                   <h5 className=" display-6">{reason.title}</h5>

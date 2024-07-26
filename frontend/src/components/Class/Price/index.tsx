@@ -168,7 +168,7 @@ const Price = () => {
           <div className="text-center">
             <h2>Price Packages for Online Maths Classes for Class {classId}</h2>
             <p>
-              For classes 3-5, we recommend 2 classes per week. Each of our
+              For classes 1-4, we recommend 5 classes per week. Each of our
               online maths
               <br /> classes for class {classId} is a 55-minute live class with
               a dedicated teacher.
@@ -219,7 +219,10 @@ const Price = () => {
             <div className="sampling-image">
               {samplingImages.map((image, index) => (
                 <div key={index}>
-                  <img src={image.src} alt={image.title} />
+                  <img
+                    src={`${image.src}?cache-control=max-age=31536000`}
+                    alt={image.title}
+                  />
                   <p className="price-title">{image.title}</p>
                   <p className="price-desc">{image.desc}</p>
                 </div>
@@ -242,7 +245,10 @@ const Price = () => {
             <div className="sampling-image" style={{ marginTop: "30px" }}>
               {samplingImages.map((image, index) => (
                 <div key={index}>
-                  <img src={image.src} alt={image.title} />
+                  <img
+                    src={`${image.src}?cache-control=max-age=31536000`}
+                    alt={image.title}
+                  />
                   <p className="price-title">{image.title}</p>
                   <p className="price-desc">{image.desc}</p>
                 </div>

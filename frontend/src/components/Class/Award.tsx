@@ -1,8 +1,11 @@
-
 const Award = () => {
   return (
     <div id="class-award">
-      <img src="/class/awards.png" alt="Award" className="class-award-image" />
+      <img
+        src="/class/awards.png?cache-control=max-age=31536000"
+        alt="Award"
+        className="class-award-image"
+      />
       <div className="class-award-content">
         <h2 className="class-award-heading">Our Commitment to Quality</h2>
         <p className="class-award-description">
@@ -14,7 +17,10 @@ const Award = () => {
         <div className="row">
           <div className="col-md-3">
             <div className="award-card">
-              <img src="/class/award/selection.png" alt="Selection" />
+              <img
+                src="/class/award/selection.png?cache-control=max-age=31536000"
+                alt="Selection"
+              />
               <h3 className="award-title">Rigorous Selection</h3>
               <p className="award-text">
                 Only the top teachers from renowned institutions.
@@ -23,7 +29,10 @@ const Award = () => {
           </div>
           <div className="col-md-3">
             <div className="award-card">
-              <img src="/class/award/training.png" alt="Training" />
+              <img
+                src="/class/award/training.png?cache-control=max-age=31536000"
+                alt="Training"
+              />
               <h3 className="award-title">Comprehensive Training</h3>
               <p className="award-text">
                 Continuous professional development programs.
@@ -32,7 +41,10 @@ const Award = () => {
           </div>
           <div className="col-md-3">
             <div className="award-card">
-              <img src="/class/award/monitoring.png" alt="Monitoring" />
+              <img
+                src="/class/award/monitoring.png?cache-control=max-age=31536000"
+                alt="Monitoring"
+              />
               <h3 className="award-title">Effective Monitoring</h3>
               <p className="award-text">
                 Regular performance evaluations and feedback.
@@ -41,7 +53,10 @@ const Award = () => {
           </div>
           <div className="col-md-3">
             <div className="award-card">
-              <img src="/class/award/upskill.png" alt="Upskill" />
+              <img
+                src="/class/award/upskill.png?cache-control=max-age=31536000"
+                alt="Upskill"
+              />
               <h3 className="award-title">Continuous Upskilling</h3>
               <p className="award-text">
                 Encouraging teachers to stay updated with the latest teaching

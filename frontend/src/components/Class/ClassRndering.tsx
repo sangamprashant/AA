@@ -44,7 +44,7 @@ const ClassRendering = () => {
 
               <div className="col-lg-4 text-center">
                 <motion.img
-                  src={`/class/list/${image}`}
+                  src={`/class/list/${image}?cache-control=max-age=31536000`}
                   alt="Image Alt Text"
                   className="img-fluid"
                   initial={{ opacity: 0, x: -50, scale: 0.4 }}
