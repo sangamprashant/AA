@@ -143,7 +143,7 @@ table.invoice tr.totals table tr.total td:last-child {
 /* Responsive Styles */
 @media (max-width: 768px) {
   .columns {
-    flex-direction: column;
+    flex-direction: row;
   }
   .inner-container {
     padding: 10px;
@@ -158,6 +158,10 @@ table.invoice tr.totals table tr.total td:last-child {
     min-width: 100%;
     padding: 5px;
   }
+}
+
+.only-print {
+  display: none;
 }
 
 /* Hide elements during print */
@@ -177,8 +181,11 @@ table.invoice tr.totals table tr.total td:last-child {
   .p-4,
   .p-5 {
     padding: 0 !important;
+    text-align: left;
   }
-
+  .only-print {
+    display: block;
+  }
   .pb-5 {
     padding: 0 !important;
   }
@@ -199,8 +206,9 @@ table.invoice tr.totals table tr.total td:last-child {
     margin: 0;
   }
 
-
-
+  .info-columns table tr td {
+    text-align: left;
+  }
   .printable-container {
     visibility: visible;
     position: absolute;

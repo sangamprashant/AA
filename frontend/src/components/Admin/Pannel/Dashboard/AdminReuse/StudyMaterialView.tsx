@@ -12,6 +12,7 @@ interface StudyMaterial {
   imageUrl: string;
   content: string;
   category: string;
+  free: boolean;
   createdAt: string;
   updatedAt: string;
   likes: number;

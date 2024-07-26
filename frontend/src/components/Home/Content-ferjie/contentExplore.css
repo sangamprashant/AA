@@ -33,6 +33,8 @@
   border-radius: 4px;
   margin-right: 10px;
   overflow: hidden;
+  position: relative;
+  display: block;
 }
 
 .card-img-top-content-explore {
@@ -74,6 +76,24 @@
   margin-right: 10px;
 }
 
+.content-explore-offer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 3;
+}
+
+.content-explore-offer .free {
+  color: rgb(255, 255, 255);
+}
+
+.content-explore-offer .email {
+  color: wheat;
+}
+
 /* content open */
 .content-open-options {
   background-color: rgb(209, 216, 255);
@@ -83,7 +103,6 @@
 }
 .content-open-options:hover {
   background-color: rgb(187, 197, 255);
-
 }
 
 .content-open-options-like {
@@ -91,8 +110,37 @@
   border: none;
 }
 
-
-.divider{
+.divider {
   border: 1px solid #000000;
   margin: 0 10px;
+}
+
+.side-content {
+  box-shadow: 1px 1px 5px #000000;
+  margin: 10px 0;
+}
+
+.side-content header {
+  background-color: var(--theme-color);
+  padding: 10px 15px;
+  color: white;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.side-content article {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.side-content article .material-item {
+  padding: 10px 15px;
+  border-bottom: 1px solid rgb(197, 197, 197);
+  transition: background-color 0.3s ease;
+  color: #000000;
+}
+
+.side-content article .material-item:hover {
+  background-color: #f0f0f0;
+  color: #555;
 }

@@ -19,10 +19,12 @@ interface StudyMaterialFormProps {
     imageUrl: string;
     content: string;
     category: string;
+    free: boolean;
   };
 }
 
 const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
+  console.log({ data });
   const authContext = useContext(AuthContext);
   if (!authContext) {
     return <LoadingUI />;
@@ -34,6 +36,7 @@ const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
   const [content, setContent] = useState(data?.content || "");
   const [category, setCategory] = useState(data?.category || "LKG");
   const [pdfUrl, setPdfUrl] = useState<string | null>(data?.pdfUrl || null);
+  const [free, setFree] = useState<boolean>(data?.free || true);
   const [imageUrl, setImageUrl] = useState<string | null>(
     data?.imageUrl || null
   );
@@ -46,6 +49,7 @@ const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
       setCategory(data.category);
       setPdfUrl(data.pdfUrl);
       setImageUrl(data.imageUrl);
+      setFree(data?.free);
     }
   }, [data]);
 
@@ -84,6 +88,7 @@ const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
         image: imageUploadUrl,
         content,
         category,
+        free,
       };
 
       if (data) {
@@ -226,12 +231,45 @@ const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
                 onChange={(e) => setCategory(e.target.value)}
                 required
               >
-                {[...Array(10)].map((_, index) => (
+                {[...Array(12)].map((_, index) => (
                   <option key={index + 1} value={`class ${index + 1}`}>
                     Class {index + 1}
                   </option>
                 ))}
               </select>
+
+              <div className="form-group my-2 d-flex gap-2">
+                <label
+                  htmlFor="free"
+                  className="d-flex align-items-center gap-1"
+                >
+                  <b>Is content free</b>{" "}
+                  <input
+                    type="radio"
+                    checked={free}
+                    id="free"
+                    onClick={() => {
+                      setFree(true);
+                    }}
+                    required
+                  />
+                </label>
+                <label
+                  htmlFor="email"
+                  className="d-flex align-items-center gap-1"
+                >
+                  <b>Needed email</b>{" "}
+                  <input
+                    type="radio"
+                    checked={!free}
+                    id="email"
+                    onClick={() => {
+                      setFree(false);
+                    }}
+                    required
+                  />
+                </label>
+              </div>
             </div>
 
             <button
@@ -266,6 +304,11 @@ const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
           <div className="card-body">
             <p className="m-0">
               <strong>{title ? title : "{title here}"}</strong>
+            </p>
+          </div>
+          <div className="content-explore-offer">
+            <p className={`m-0 ${free ? "free" : "email"}`}>
+              {free ? "Free" : "Email"}
             </p>
           </div>
         </div>

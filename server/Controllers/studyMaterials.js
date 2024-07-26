@@ -83,7 +83,7 @@ const unlike = async (req, res) => {
 
 const AddMaterial = async (req, res) => {
   try {
-    const { title, pdf, image, content, category } = req.body;
+    const { title, pdf, image, content, category, free } = req.body;
 
     const newStudyMaterial = new StudyMaterial({
       title,
@@ -93,6 +93,7 @@ const AddMaterial = async (req, res) => {
       category,
       createdAt: new Date(),
       updatedAt: new Date(),
+      free,
     });
 
     await newStudyMaterial.save();
@@ -109,7 +110,7 @@ const AddMaterial = async (req, res) => {
 const updateMaterial = async (req, res) => {
   try {
     const { id } = req.params; // Get the ID from the request parameters
-    const { title, pdf, image, content, category } = req.body; // Get the updated data from the request body
+    const { title, pdf, image, content, category, free } = req.body; // Get the updated data from the request body
 
     // Find the study material by ID and update it with the new data
     const updatedStudyMaterial = await StudyMaterial.findByIdAndUpdate(
@@ -121,6 +122,7 @@ const updateMaterial = async (req, res) => {
         content,
         category,
         updatedAt: new Date(),
+        free,
       },
       { new: true } // Return the updated document
     );

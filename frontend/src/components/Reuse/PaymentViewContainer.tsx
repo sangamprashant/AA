@@ -307,69 +307,172 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
                     </tbody>
                   </table>
                   <section className="additional-info mt-4">
-                    <div className="info-columns">
-                      <div className="column">
-                        <h5>Billing Information</h5>
-                        <p className="bold-text">
-                          {paymentdb.name}
-                          <br />
-                          {paymentdb.email}
-                          <br />
-                          {paymentdb.mobileNumber}
-                        </p>
-                        <h5>Billing To</h5>
-                        <p className="bold-text">
-                          {appName}
-                          <br />
-                          {email}
-                          <br />
-                          +91 {phone}
-                          <br />
-                          {address}
-                        </p>
-                      </div>
-
-                      <div className="column">
-                        <h5>Payment Information</h5>
-                        {payment_ && (
-                          <p className="m-0">{renderPaymentInfo()}</p>
-                        )}
-                        <p className="m-0">
-                          <b>Status:</b> {paymentdb?.status}
-                        </p>
-                        {payment_ && (
-                          <>
-                            <p className="m-0">
-                              <b>Order ID:</b> {payment_.order_id}
-                            </p>
-                            <p className="m-0 text-wrap">
-                              <b>Payment ID:</b> {payment_.id}
-                            </p>
-                            <p className="m-0">
-                              <b>Invoice ID:</b> {payment_.invoice_id || "N/A"}
-                            </p>
-                            <p className="m-0">
-                              <b>Captured:</b>{" "}
-                              {payment_.captured ? "Yes" : "No"}
-                            </p>
-                            <p className="m-0">
-                              <b>Refund Status:</b>{" "}
-                              {payment_.refund_status || "N/A"}
-                            </p>
-                            <p className="m-0">
-                              <b>Error Code:</b> {payment_.error_code || "N/A"}
-                            </p>
-                            <p className="m-0">
-                              <b>Error Description:</b>{" "}
-                              {payment_.error_description || "N/A"}
-                            </p>
-                            <p className="m-0">
-                              <b>Acquirer RRN:</b>{" "}
-                              {payment_.acquirer_data.rrn || "N/A"}
-                            </p>
-                          </>
-                        )}
-                      </div>
+                    <div className="info-columns only-print">
+                      <table className="">
+                        <tr>
+                          <td>
+                            <div className="column">
+                              <h5>Billing Information</h5>
+                              <p className="bold-text">
+                                {paymentdb.name}
+                                <br />
+                                {paymentdb.email}
+                                <br />
+                                {paymentdb.mobileNumber}
+                              </p>
+                              <h5>Billing To</h5>
+                              <p className="bold-text">
+                                {appName}
+                                <br />
+                                {email}
+                                <br />
+                                +91 {phone}
+                                <br />
+                                {address}
+                              </p>
+                            </div>
+                          </td>
+                          <td
+                            style={{
+                              verticalAlign: "baseline",
+                            }}
+                          >
+                            <div className="column">
+                              <h5>Payment Information</h5>
+                              {payment_ && (
+                                <p className="m-0">{renderPaymentInfo()}</p>
+                              )}
+                              <p className="m-0">
+                                <b>Status:</b> {paymentdb?.status}
+                              </p>
+                              {payment_ && (
+                                <>
+                                  {payment_.order_id && (
+                                    <p className="m-0">
+                                      <b>Order ID:</b> {payment_.order_id}
+                                    </p>
+                                  )}
+                                  {payment_.id && (
+                                    <p className="m-0 text-wrap">
+                                      <b>Payment ID:</b> {payment_.id}
+                                    </p>
+                                  )}
+                                  {payment_.invoice_id && (
+                                    <p className="m-0">
+                                      <b>Invoice ID:</b> {payment_.invoice_id}
+                                    </p>
+                                  )}
+                                  <p className="m-0">
+                                    <b>Captured:</b>{" "}
+                                    {payment_.captured ? "Yes" : "No"}
+                                  </p>
+                                  {payment_.refund_status && (
+                                    <p className="m-0">
+                                      <b>Refund Status:</b>{" "}
+                                      {payment_.refund_status}
+                                    </p>
+                                  )}
+                                  {payment_.error_code && (
+                                    <p className="m-0">
+                                      <b>Error Code:</b> {payment_.error_code}
+                                    </p>
+                                  )}
+                                  {payment_.error_description && (
+                                    <p className="m-0">
+                                      <b>Error Description:</b>{" "}
+                                      {payment_.error_description}
+                                    </p>
+                                  )}
+                                  {payment_.acquirer_data?.rrn && (
+                                    <p className="m-0">
+                                      <b>Acquirer RRN:</b>{" "}
+                                      {payment_.acquirer_data.rrn}
+                                    </p>
+                                  )}
+                                </>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div className="info-columns no-print">
+                      <>
+                        <div className="column">
+                          <h5>Billing Information</h5>
+                          <p className="bold-text">
+                            {paymentdb.name}
+                            <br />
+                            {paymentdb.email}
+                            <br />
+                            {paymentdb.mobileNumber}
+                          </p>
+                          <h5>Billing To</h5>
+                          <p className="bold-text">
+                            {appName}
+                            <br />
+                            {email}
+                            <br />
+                            +91 {phone}
+                            <br />
+                            {address}
+                          </p>
+                        </div>
+                        <div className="column">
+                          <h5>Payment Information</h5>
+                          {payment_ && (
+                            <p className="m-0">{renderPaymentInfo()}</p>
+                          )}
+                          <p className="m-0">
+                            <b>Status:</b> {paymentdb?.status}
+                          </p>
+                          {payment_ && (
+                            <>
+                              {payment_.order_id && (
+                                <p className="m-0">
+                                  <b>Order ID:</b> {payment_.order_id}
+                                </p>
+                              )}
+                              {payment_.id && (
+                                <p className="m-0 text-wrap">
+                                  <b>Payment ID:</b> {payment_.id}
+                                </p>
+                              )}
+                              {payment_.invoice_id && (
+                                <p className="m-0">
+                                  <b>Invoice ID:</b> {payment_.invoice_id}
+                                </p>
+                              )}
+                              <p className="m-0">
+                                <b>Captured:</b>{" "}
+                                {payment_.captured ? "Yes" : "No"}
+                              </p>
+                              {payment_.refund_status && (
+                                <p className="m-0">
+                                  <b>Refund Status:</b> {payment_.refund_status}
+                                </p>
+                              )}
+                              {payment_.error_code && (
+                                <p className="m-0">
+                                  <b>Error Code:</b> {payment_.error_code}
+                                </p>
+                              )}
+                              {payment_.error_description && (
+                                <p className="m-0">
+                                  <b>Error Description:</b>{" "}
+                                  {payment_.error_description}
+                                </p>
+                              )}
+                              {payment_.acquirer_data?.rrn && (
+                                <p className="m-0">
+                                  <b>Acquirer RRN:</b>{" "}
+                                  {payment_.acquirer_data.rrn}
+                                </p>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      </>
                     </div>
                   </section>
                 </div>

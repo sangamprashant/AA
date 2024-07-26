@@ -1,13 +1,15 @@
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import ShareIcon from "@mui/icons-material/Share";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { config } from "../../../config";
-import Section from "../../Reuse/Section";
 import Footer from "../../Footer";
-import ShareIcon from "@mui/icons-material/Share";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Loading from "../../Reuse/Loading";
 import NoData from "../../Reuse/NoData";
+import Section from "../../Reuse/Section";
+import AccessModal from "./AccessModal";
+import ContentSide from "./ContentSide";
 // import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 // import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 // import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
@@ -112,24 +114,27 @@ const ContentOpen: React.FC = () => {
 
   return (
     <>
+      <AccessModal />
       <Section className="py-3">
-        <h1>{content.title}</h1>
-        <div
-          className="my-3"
-          dangerouslySetInnerHTML={{
-            __html: content.content,
-          }}
-        />
-        <iframe
-          src={`https://docs.google.com/gview?url=${encodeURIComponent(
-            content.pdfUrl
-          )}&embedded=true`}
-          width="100%"
-          height={500}
-          title="PDF Viewer"
-        ></iframe>
-        <div className="mb-4 mt-2 d-flex gap-3 align-items-center">
-          {/* <div className="content-open-options d-flex">
+        <div className="row">
+          <div className="col-md-8">
+            <h1>{content.title}</h1>
+            <div
+              className="my-3"
+              dangerouslySetInnerHTML={{
+                __html: content.content,
+              }}
+            />
+            <iframe
+              src={`https://docs.google.com/gview?url=${encodeURIComponent(
+                content.pdfUrl
+              )}&embedded=true`}
+              width="100%"
+              height={500}
+              title="PDF Viewer"
+            ></iframe>
+            <div className="mb-4 mt-2 d-flex gap-3 align-items-center">
+              {/* <div className="content-open-options d-flex">
             <button className="content-open-options-like" onClick={handleLike}>
               <span>{hasLiked ? <ThumbUpIcon /> : <ThumbUpOffAltIcon />}</span>{" "}
               {content.likes}
@@ -146,20 +151,25 @@ const ContentOpen: React.FC = () => {
             </button>
           </div> */}
 
-          <button className="content-open-options" onClick={handleShare}>
-            <ShareIcon /> Share
-          </button>
-          <button className="content-open-options" onClick={handleSave}>
-            {isSaved ? (
-              <>
-                <BookmarkIcon /> Unsave
-              </>
-            ) : (
-              <>
-                <BookmarkBorderIcon /> Save
-              </>
-            )}
-          </button>
+              <button className="content-open-options" onClick={handleShare}>
+                <ShareIcon /> Share
+              </button>
+              <button className="content-open-options" onClick={handleSave}>
+                {isSaved ? (
+                  <>
+                    <BookmarkIcon /> Unsave
+                  </>
+                ) : (
+                  <>
+                    <BookmarkBorderIcon /> Save
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <ContentSide category={content.category} />
+          </div>
         </div>
       </Section>
       <Footer />

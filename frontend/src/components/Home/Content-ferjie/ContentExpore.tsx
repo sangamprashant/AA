@@ -10,6 +10,14 @@ interface StudyMaterial {
   pdfUrl: string;
   imageUrl: string;
   category: string;
+  free: boolean;
+}
+
+interface SavedMaterial {
+  _id: string;
+  title: string;
+  category: string;
+  imageUrl: string;
 }
 
 const ContentExplore: React.FC = () => {
@@ -33,19 +41,32 @@ const ContentExplore: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${config.SERVER}/study-materials`); // Replace with your API endpoint
+      const response = await fetch(`${config.SERVER}/study-materials`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      setContent(data.materials); 
+      const filteredMaterials: SavedMaterial[] = data.materials.map(
+        (material: StudyMaterial) => ({
+          _id: material._id,
+          title: material.title,
+          imageUrl: material.imageUrl,
+          category: material.category,
+        })
+      );
+      saveToLocalStorage(filteredMaterials);
+      setContent(data.materials);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
+  const saveToLocalStorage = (materials: SavedMaterial[]) => {
+    localStorage.setItem("studyMaterials", JSON.stringify(materials));
+  };
+
   if (content.length === 0) {
-    return <p>Loading...</p>; 
+    return null;
   }
 
   return (
@@ -62,7 +83,7 @@ const ContentExplore: React.FC = () => {
           <img src={`/home/study-materials/icon/all.png`} alt="" height="35" />{" "}
           Show All
         </button>
-        {[...Array(10)].map((_, index) => (
+        {[...Array(12)].map((_, index) => (
           <button
             key={index}
             className={`btn btn-study-materials ${
@@ -99,13 +120,18 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
   return (
     <Link to={`/study-material/${item._id}`} className="card-content-explore">
       <img
-        src={item.imageUrl} 
+        src={item.imageUrl}
         className="card-img-top-content-explore"
         alt={item.title}
       />
       <div className="card-body">
         <p className="m-0">
           <strong>{item.title}</strong>
+        </p>
+      </div>
+      <div className="content-explore-offer">
+        <p className={`m-0 ${item.free ? "free" : "email"}`}>
+          {item.free ? "Free" : "Email"}
         </p>
       </div>
     </Link>
