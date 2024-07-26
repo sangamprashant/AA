@@ -27,6 +27,10 @@ const AccessDataSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    reached: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

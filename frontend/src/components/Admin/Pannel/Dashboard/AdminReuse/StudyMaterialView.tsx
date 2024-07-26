@@ -21,10 +21,12 @@ interface StudyMaterial {
 
 const StudyMaterialView: React.FC = () => {
   const [materials, setMaterials] = useState<StudyMaterial[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchMaterials = async () => {
       try {
+        setLoading(true);
         const response = await fetch(`${config.SERVER}/study-materials`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -33,6 +35,8 @@ const StudyMaterialView: React.FC = () => {
         setMaterials(data.materials); // Assuming the response contains an array of materials
       } catch (error) {
         console.error("Error fetching materials:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -72,7 +76,12 @@ const StudyMaterialView: React.FC = () => {
 
   return (
     <div>
-      <Table dataSource={materials} columns={columns} rowKey="_id" />
+      <Table
+        dataSource={materials}
+        columns={columns}
+        rowKey="_id"
+        loading={loading}
+      />
     </div>
   );
 };

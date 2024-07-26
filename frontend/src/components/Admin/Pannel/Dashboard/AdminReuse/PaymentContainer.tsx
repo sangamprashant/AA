@@ -49,6 +49,7 @@ const PaymentContainer = ({ type }: PaymentContainerProps) => {
   }
   const { token } = authContext;
   const [dataSource, setDataSource] = useState<Payment[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     fetchData();
@@ -56,6 +57,7 @@ const PaymentContainer = ({ type }: PaymentContainerProps) => {
 
   const fetchData = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(
         `${config.SERVER}/payment/view/${type}`,
         {
@@ -79,6 +81,8 @@ const PaymentContainer = ({ type }: PaymentContainerProps) => {
         message: "Error",
         description: "An error occurred while fetching payment data.",
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -201,6 +205,7 @@ const PaymentContainer = ({ type }: PaymentContainerProps) => {
         dataSource={dataSource as any} // Use 'any' to bypass TypeScript issue, ensure to use proper dataSource
         rowKey={type === "razorpay" ? "id" : "_id"}
         className="table-responsive"
+        loading={loading}
       />
     </Fragment>
   );

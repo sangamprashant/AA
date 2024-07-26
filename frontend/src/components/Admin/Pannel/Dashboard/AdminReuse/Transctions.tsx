@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card, Table } from 'antd';
+import React from "react";
+import { Card, Table } from "antd";
 
 interface Payment {
   id: string;
@@ -12,31 +12,32 @@ interface Payment {
 
 interface TransctionsProps {
   payments: Payment[];
+  loading: boolean;
 }
 
-const Transctions: React.FC<TransctionsProps> = ({ payments }) => {
+const Transctions: React.FC<TransctionsProps> = ({ payments, loading }) => {
   const dataColumns = [
     {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
     },
     {
-      title: 'Name',
-      dataIndex: 'notes',
-      key: 'notes',
+      title: "Name",
+      dataIndex: "notes",
+      key: "notes",
       render: (data: { name: string }) => <div>{data.name}</div>,
     },
     {
-      title: 'Email',
-      dataIndex: 'notes',
-      key: 'notes',
+      title: "Email",
+      dataIndex: "notes",
+      key: "notes",
       render: (data: { email: string }) => <div>{data.email}</div>,
     },
     {
-      title: 'Amount',
-      dataIndex: 'amount',
-      key: 'amount',
+      title: "Amount",
+      dataIndex: "amount",
+      key: "amount",
       render: (amount: number) => <div>{amount / 100}</div>,
     },
   ];
@@ -51,7 +52,12 @@ const Transctions: React.FC<TransctionsProps> = ({ payments }) => {
         }}
       >
         <h5 className="p-0 m-0">Payments</h5>
-        <Table className="table-responsive" dataSource={payments} columns={dataColumns} />
+        <Table
+          className="table-responsive"
+          dataSource={payments}
+          columns={dataColumns}
+          loading={loading}
+        />
       </Card>
     </div>
   );

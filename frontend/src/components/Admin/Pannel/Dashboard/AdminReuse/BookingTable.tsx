@@ -46,6 +46,7 @@ const BookingTable = ({ type }: BookingTableProps) => {
   const [time, setTime] = useState<string | undefined>(undefined);
   const [api, contextHolder] = notification.useNotification();
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     fetchBookings(type);
@@ -130,6 +131,7 @@ const BookingTable = ({ type }: BookingTableProps) => {
         }
         dataSource={dataSource}
         className="table-responsive"
+        loading={loading}
       />
       <Modal
         title={`${
@@ -200,6 +202,7 @@ const BookingTable = ({ type }: BookingTableProps) => {
 
   async function fetchBookings(state: string) {
     try {
+      setLoading(true);
       const response = await axios.get(
         `${config.SERVER}/booking/by-status/${state}`,
         {
@@ -213,6 +216,8 @@ const BookingTable = ({ type }: BookingTableProps) => {
       }
     } catch (error) {
       console.log("Failed to fetch the bookings:", error);
+    } finally {
+      setLoading(false);
     }
   }
 

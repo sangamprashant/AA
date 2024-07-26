@@ -54,20 +54,17 @@ const Dashboard: React.FC = () => {
   if (!authContext) {
     return <LoadingUI />;
   }
-  const { setHeader,token } = authContext;
+  const { setHeader, token } = authContext;
   useEffect(() => {
     setHeader("Welcome to Dashboard");
   }, [authContext]);
 
   const [data, setData] = useState<DashboardData | undefined>(undefined);
   const [payments, setPayments] = useState<Payment[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useLayoutEffect(() => {
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    fetchPayments();
+    Promise.all([fetchPayments(), fetchData()]);
   }, []);
 
   return (
@@ -136,7 +133,7 @@ const Dashboard: React.FC = () => {
           />
         </div>
         <div className="row mt-3">
-          <Transctions payments={payments || []} />
+          <Transctions payments={payments || []} loading={loading}/>
           <Visits
             total={data?.visitorsCounts.total || 0}
             newVisitors={data?.visitorsCounts.new || 0}
@@ -162,6 +159,7 @@ const Dashboard: React.FC = () => {
   }
   async function fetchPayments() {
     try {
+      setLoading(true);
       const response = await axios.get(
         `${config.SERVER}/payment/dashboard/payments`,
         {
@@ -175,6 +173,8 @@ const Dashboard: React.FC = () => {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   }
 };

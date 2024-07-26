@@ -12,9 +12,10 @@ import {
   PageNotFound,
   Payment,
   StudyMaterialP,
-  ViewPayment
+  ViewPayment,
 } from "./components";
 import {
+  AccessContent,
   Admin404,
   AdminBooking,
   AdminFormReceiveContact,
@@ -66,6 +67,7 @@ function App() {
                 <Route path="/admin/payment" element={<AdminPayment />} />
                 <Route path="/admin/s-m" element={<StudyMaterial />} />
                 <Route path="/admin/s-m/:id" element={<StudyMaterialOpen />} />
+                <Route path="/admin/a-c" element={<AccessContent />} />
                 <Route path="/admin/setting" element={<AdminSetting />} />
                 <Route path="/admin/payment-open" element={<ViewPayment />} />
                 <Route path="*" element={<Admin404 />} />

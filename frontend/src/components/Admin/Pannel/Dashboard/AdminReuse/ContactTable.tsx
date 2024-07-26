@@ -34,6 +34,7 @@ const ContactTable = ({ type }: ContactTableProps) => {
   const [responseMsg, setResponseMsg] = useState<string | undefined>(undefined);
   const [errorMsg, setErrorMsg] = useState<string | undefined>(undefined);
   const [api, contextHolder] = notification.useNotification();
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     fetchData(type);
@@ -90,6 +91,7 @@ const ContactTable = ({ type }: ContactTableProps) => {
         columns={columns}
         dataSource={dataSource}
         className="table-responsive"
+        loading={loading}
       />
       <Modal
         open={modelOpen}
@@ -147,6 +149,7 @@ const ContactTable = ({ type }: ContactTableProps) => {
 
   async function fetchData(status: string) {
     try {
+      setLoading(true);
       const response = await axios.get(`${config.SERVER}/contact/${status}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -157,6 +160,8 @@ const ContactTable = ({ type }: ContactTableProps) => {
       }
     } catch (error) {
       console.log("failed to fetch contact:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
