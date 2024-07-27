@@ -21,6 +21,5 @@ router.get("/:id/unlike", unlike);
 router.post("", authenticateToken, AddMaterial);
 router.put("/:id", authenticateToken, updateMaterial);
 router.delete("/:id", authenticateToken, deleteMaterial);
-// delete is remaining bass
 
 module.exports = router;

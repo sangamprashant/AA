@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Table } from "antd";
+import React, { useContext, useEffect, useState } from "react";
+import { Table, Modal, notification } from "antd";
 import { config } from "../../../../../config";
 import moment from "moment"; // Import moment
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Auth/AuthProvider";
+import { LoadingUI } from "../../../../../App";
+import { Button } from "react-bootstrap";
 
-// Define a type for the study material
 interface StudyMaterial {
   _id: string;
   title: string;
@@ -20,6 +22,11 @@ interface StudyMaterial {
 }
 
 const StudyMaterialView: React.FC = () => {
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    return <LoadingUI />;
+  }
+  const { token } = authContext;
   const [materials, setMaterials] = useState<StudyMaterial[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -32,7 +39,7 @@ const StudyMaterialView: React.FC = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setMaterials(data.materials); // Assuming the response contains an array of materials
+        setMaterials(data.materials);
       } catch (error) {
         console.error("Error fetching materials:", error);
       } finally {
@@ -42,6 +49,55 @@ const StudyMaterialView: React.FC = () => {
 
     fetchMaterials();
   }, []);
+
+  const handleDelete = async (id: string) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${config.SERVER}/study-materials/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const result = await response.json();
+      if (result.success) {
+        notification.success({
+          message: "Success",
+          description: result.message,
+        });
+        setMaterials(materials.filter((material) => material._id !== id));
+      } else {
+        notification.error({
+          message: "Error",
+          description: result.message,
+        });
+      }
+    } catch (error) {
+      console.error("Error deleting material:", error);
+      notification.error({
+        message: "Error",
+        description:
+          "Failed to delete the study material. Please try again later.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const showDeleteConfirm = (id: string) => {
+    Modal.confirm({
+      title: "Are you sure you want to delete this study material?",
+      okText: "Yes",
+      okType: "danger",
+      cancelText: "No",
+      onOk: () => handleDelete(id),
+      centered: true,
+    });
+  };
 
   const columns = [
     {
@@ -68,7 +124,13 @@ const StudyMaterialView: React.FC = () => {
           <Link to={`/admin/s-m/${record._id}`} className="btn btn-primary">
             View
           </Link>
-          <button className="btn btn-danger">Delete</button>
+          <Button
+            type="button"
+            variant="danger"
+            onClick={() => showDeleteConfirm(record._id)}
+          >
+            Delete
+          </Button>
         </span>
       ),
     },

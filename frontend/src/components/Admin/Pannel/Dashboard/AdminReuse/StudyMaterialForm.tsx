@@ -24,7 +24,6 @@ interface StudyMaterialFormProps {
 }
 
 const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
-  console.log({ data });
   const authContext = useContext(AuthContext);
   if (!authContext) {
     return <LoadingUI />;
@@ -112,8 +111,6 @@ const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
         });
         alert("Study material added successfully");
       }
-
-      // Reset form fields
       setTitle("");
       setPdfFile(null);
       setImageFile(null);
@@ -145,10 +142,9 @@ const StudyMaterialForm: React.FC<StudyMaterialFormProps> = ({ data }) => {
   return (
     <>
       <div className="d-flex justify-content-center">
-        <div className="col-md-6">
+        <div className="col-md-12">
           <form onSubmit={handleSubmit} className="card p-3">
             <h1>{data ? "Edit Study Material" : "Add Study Material"}</h1>
-
             <div className="form-group">
               <label htmlFor="title">
                 <b>Title</b>
