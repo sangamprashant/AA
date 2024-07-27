@@ -12,6 +12,7 @@ import Partner from "./Partner";
 import Price from "./Price";
 import Pricing from "./Pricing";
 import TimeLine from "./TimeLine";
+import { appName } from "../Strings";
 
 const ClassRendering = () => {
   const { classId } = useClassContext();
@@ -122,8 +123,8 @@ function componentRendering(classId: string, handleHomeClick: any) {
           and develop their own unique interests. Find engaging teachers who
           help your kids learn fun and interactively. We provide the online
           tuition classes with best teachers for class 7 CBSE, IB Board, IGCSE
-          Board, State Board & ICSE Students For English, Mathematics, Science,
-          Computers, Social Science & Hindi. Book a free demo class Today.
+          Board, State Board & ICSE Students For Mathematics. Book a free demo
+          class Today.
         </p>
       );
     case "8":
@@ -131,7 +132,7 @@ function componentRendering(classId: string, handleHomeClick: any) {
         <p>
           Get the best online tuition for class 8th with experienced Indian
           teachers. We provide tuition to students of CBSE, IB, IGCSE, and all
-          state boards with all subjects at affordable prices. Our classes are
+          state boards with mathematics at affordable prices. Our classes are
           very flexible you can take classes according to your time and
           convenience. Book a free demo class today.
         </p>
@@ -141,27 +142,27 @@ function componentRendering(classId: string, handleHomeClick: any) {
         <p>
           <b>Get the best one-to-one</b> online tuition for class 9 in your
           regional languages. Get solutions from NCERT-based books. Our online
-          tutors are highly experienced and provide classes for all subjects and
-          boards. Book a free demo class today.
+          tutors are highly experienced and provide classes for mathematics and
+          all boards. Book a free demo class today.
         </p>
       );
     case "10":
       return (
         <>
           <p>
-            Are you looking for the best one-to-one classes for Class 10 for all
-            subjects? We provide tuition for 10 to help you excel in your
+            Are you looking for the best one-to-one classes for Class 10 for
+            mathematics? We provide tuition for 10 to help you excel in your
             studies and score well in your examinations.
           </p>
           <p>
-            At e-Tuitions, we understand the unique needs of Class 10 students.
-            Our online classes for 10th CBSE and all state boards are designed
-            to make learning fun and effective.
+            At <b>{appName}</b>, we understand the unique needs of Class 10
+            students. Our online classes for 10th CBSE and all state boards are
+            designed to make learning fun and effective.
           </p>
 
           <p>
             Our experienced online tutors for Class 10 are dedicated to
-            providing the best tuition for Class 10 for all subjects at
+            providing the best tuition for Class 10 for mathematics at
             affordable prices. They make learning engaging, interactive, and
             easy to understand.
           </p>
@@ -171,52 +172,51 @@ function componentRendering(classId: string, handleHomeClick: any) {
           </p>
         </>
       );
-
     case "11":
       return (
         <>
           <p>
-            Experience the best online tuition for the sciences of physics,
-            chemistry, biology, and math with our thorough online tuition.
+            Experience the best online tuition for mathematics with our thorough
+            online tuition.
           </p>
           <p>
-            Get a deep understanding of forces and energy, from cells to
-            ecosystems, chemical reactions to the periodic table, trigonometric
-            functions to permutations and combinations, and more.
+            Get a deep understanding of mathematical concepts, from
+            trigonometric functions to permutations and combinations, and more.
           </p>
-          <p>Our expert online science tutors make complex concepts simple.</p>
+          <p>Our expert online math tutors make complex concepts simple.</p>
         </>
       );
     case "12":
       return (
         <div className="content-12">
-          Are you tired of struggling with Class 12 Science? Imagine a world
+          Are you tired of struggling with Class 12 Mathematics? Imagine a world
           where you can tackle complex subjects with ease and confidence.
           <h5>Act Now to Overcome These Common Pain Points:</h5>
           <ul>
             <li>
-              <b>Complex Topics:</b> Do complex scientific theories leave you
+              <b>Complex Topics:</b> Do complex mathematical concepts leave you
               baffled and stressed?
             </li>
             <li>
-              <b> Exam Anxiety:</b> Are you worried about your upcoming Class 12
-              Science exams?
+              <b>Exam Anxiety:</b> Are you worried about your upcoming Class 12
+              Mathematics exams?
             </li>
             <li>
               <b>Lack of Personal Attention:</b> Do you feel lost in overcrowded
               classrooms?
             </li>
             <li>
-              <b> Confidence Crisis:</b> Has your confidence taken a hit due to
+              <b>Confidence Crisis:</b> Has your confidence taken a hit due to
               academic challenges?
             </li>
             <li>
-              <b> Academic Excellence:</b> Dreaming of scoring top grades and
+              <b>Academic Excellence:</b> Dreaming of scoring top grades and
               securing a bright future?
             </li>
           </ul>
           <h5>
-            <b>Your Solution:</b> Join Our Online Tuition for Class 12 Science
+            <b>Your Solution:</b> Join Our Online Tuition for Class 12
+            Mathematics
           </h5>
           <p>
             In our online classes, we understand your struggles and are here to
@@ -236,12 +236,12 @@ function componentRendering(classId: string, handleHomeClick: any) {
               questions, and clarify doubts in real time.
             </li>
             <li>
-              <b> Individualized Support:</b> Receive personalized guidance to
+              <b>Individualized Support:</b> Receive personalized guidance to
               address your unique needs.
             </li>
             <li>
-              <b> Proven Results:</b> Join the ranks of our successful students
-              who have aced their Class 12 Science exams.
+              <b>Proven Results:</b> Join the ranks of our successful students
+              who have aced their Class 12 Mathematics exams.
             </li>
             <li>
               <b>Affordable Prices:</b> We provide the best teachers at
@@ -249,8 +249,7 @@ function componentRendering(classId: string, handleHomeClick: any) {
             </li>
           </ul>
           <h5>
-            Find expert science teachers to help you achieve your academic
-            goals.
+            Find expert math teachers to help you achieve your academic goals.
           </h5>
         </div>
       );

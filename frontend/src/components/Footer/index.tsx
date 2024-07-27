@@ -6,6 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { address, appName, email, phone } from "../Strings";
 import SocialLinks from "./SocialLinks";
+import "./footer.css";
 
 const contactDetails = [
   {
@@ -63,6 +64,7 @@ export const impLinks = [
 const Footer = () => {
   return (
     <footer className="footer_section">
+      <div className="footer-animation"></div>
       <div className="container">
         <div className="row">
           <div className="col-md-4 footer-col">

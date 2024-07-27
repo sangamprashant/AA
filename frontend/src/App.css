@@ -398,7 +398,7 @@ h1 span {
 .footer_section {
   background-color: var(--theme-color);
   color: #ffffff;
-  padding: 75px 0 40px 0;
+  padding: 0px 0 40px 0;
   text-align: center;
 }
 

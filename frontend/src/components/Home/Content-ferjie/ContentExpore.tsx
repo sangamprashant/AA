@@ -76,7 +76,35 @@ const ContentExplore: React.FC = () => {
 
   return (
     <Section className="py-5">
-      <h1>Study Materials</h1>
+      {/* <h1>Study Materials</h1> */}
+      <h1 className="mt-4">Featured Study Materials</h1>
+      <p>
+        Explore our extensive collection of study materials for each class. From
+        detailed notes to practice problems, we have everything you need to
+        excel in your studies.
+      </p>
+      <ul>
+        <li>
+          <b>Notes:</b> Comprehensive notes covering all important topics.
+        </li>
+        <li>
+          <b>Practice Problems:</b> A variety of problems to practice and master
+          each topic.
+        </li>
+        <li>
+          <b>Sample Papers:</b> Practice with sample papers to prepare for your
+          exams.
+        </li>
+        <li>
+          <b>Video Lectures:</b> Watch video lectures by expert educators to
+          understand difficult concepts.
+        </li>
+      </ul>
+      <p>
+        Join us today and take the first step towards academic excellence. Our
+        study materials are designed to help you achieve your academic goals
+        with ease and confidence.
+      </p>
       <h2>Classes</h2>
       <div className="scroll-content-container">
         <button
@@ -87,7 +115,7 @@ const ContentExplore: React.FC = () => {
         >
           <img
             src={`/home/study-materials/icon/all.png?cache-control=max-age=31536000`}
-            alt=""
+            alt="Show All"
             height="35"
           />{" "}
           Show All
@@ -104,7 +132,7 @@ const ContentExplore: React.FC = () => {
               src={`/home/study-materials/icon/${
                 index + 1
               }.png?cache-control=max-age=31536000`}
-              alt=""
+              alt={`Class ${index + 1}`}
               height="35"
             />{" "}
             Class {index + 1}

@@ -168,7 +168,7 @@ const Price = () => {
           <div className="text-center">
             <h2>Price Packages for Online Maths Classes for Class {classId}</h2>
             <p>
-              For classes 1-4, we recommend 5 classes per week. Each of our
+              For classes 1-12, we recommend 5 classes per week. Each of our
               online maths
               <br /> classes for class {classId} is a 55-minute live class with
               a dedicated teacher.

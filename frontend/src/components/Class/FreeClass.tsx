@@ -36,7 +36,7 @@ const FreeClass = () => {
               <p>
                 At {appName}, we offer a holistic learning experience that goes
                 beyond traditional teaching methods. Our approach ensures that
-                your child gains a strong foundation in all mathematics, setting
+                your child gains a strong foundation in mathematics, setting
                 them up for long-term success.
               </p>
               <p className="mt-5">

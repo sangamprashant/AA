@@ -1,10 +1,3 @@
-#contact-form {
-  /* background-color: var(--theme-color);
-  background: url('/contactus/bg.jpg') no-repeat center center;
-  background-size: cover; */
-  background: linear-gradient(90deg, #001731, #150022);
-}
-
 #contact-header-content {
   height: 400px;
   display: flex;
@@ -20,37 +13,35 @@
 }
 
 .social-links-contact {
-    padding: 20px;
-    border-radius: 10px;
+  padding: 20px;
+  border-radius: 10px;
+}
 
+.social-link {
+  height: 70px;
+  width: 70px;
+  background: linear-gradient(45deg, var(--theme-color), #2575fc);
+  font-size: 50px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
 
-  }
-  
-  .social-link {
-    height: 70px;
-    width: 70px;
-    background: linear-gradient(45deg, var(--theme-color), #2575fc);
-    font-size: 50px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .social-link:hover {
-    transform: scale(1.1);
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 15px rgb(0, 34, 128); /* Apply a green glow */
-  }
-  
-  .social-link-content {
-    margin-left: 20px;
-    flex: 1;
-  }
-  
-  .social-link-content p {
-    margin: 0;
-    padding: 0;
-  }
+.social-link:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgb(0, 34, 128); /* Apply a green glow */
+}
+
+.social-link-content {
+  margin-left: 20px;
+  flex: 1;
+}
+
+.social-link-content p {
+  margin: 0;
+  padding: 0;
+}
