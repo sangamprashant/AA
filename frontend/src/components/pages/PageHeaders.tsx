@@ -17,7 +17,7 @@ const PageHeaders = ({ title, description }: PageHeadersProps) => {
         alt=""
         className="about-us-right-image"
       />
-      <header id="contact-header-navbar"></header>
+      {/* <header id="contact-header-navbar"></header> */}
       <header id="about-header-content">
         <h1 className="display-1">{title}</h1>
         {description && <h3 className="">{description}</h3>}

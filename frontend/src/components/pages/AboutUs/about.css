@@ -1,11 +1,11 @@
 #about-us {
   min-height: 450px;
-  /* background: linear-gradient(90deg, #001731, #150022); */
-  background-image: url("/dv.svg");
+  background: linear-gradient(90deg, #001731, #150022);
+  /* background-image: url("/dv.svg");
  background-size: cover;
  background-position: center center;
  background-repeat: no-repeat;
- background-attachment: fixed;
+ background-attachment: fixed; */
 }
 
 #about-us .about-us-left-image {
@@ -33,13 +33,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: #2575fc;
+  color: wheat;
   text-align: center;
   z-index: 2;
 }
 
 #about-header-content h1 {
-  color: var(--theme-color);
+  color: white;
 }
 
 .about-us-count-container {

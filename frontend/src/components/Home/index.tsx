@@ -11,6 +11,7 @@ import Mentors from "./Reviews/Mentors";
 import ReviewParent from "./Reviews/Parent/Parent";
 import ParentsTrust from "./Reviews/Parent/ParentsTrust";
 import ReviewStudent from "./Reviews/Student";
+import WhatNext from "./JEE-ferjie";
 
 const Home = () => {
   useEffect(() => {
@@ -30,6 +31,7 @@ const Home = () => {
       <ContactHome />
       <ContentExpore />
       <Faq />
+      <WhatNext />
       <Footer />
     </Fragment>
   );

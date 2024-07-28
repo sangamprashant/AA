@@ -156,7 +156,7 @@ const Faq = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            We love solving doubts!
+            We Love Solving Doubts.!
           </motion.h2>
           <motion.p
             className="p-0 m-0"

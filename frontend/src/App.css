@@ -23,11 +23,6 @@ h5,
 h6 {
   font-family: "Volkhov", serif; /* Apply Volkhov to headings */
 }
-/* Reset default list styles */
-ul,
-ol {
-  list-style: none;
-}
 section {
   background-size: cover;
   background-position: center;
@@ -399,7 +394,7 @@ h1 span {
   background-color: var(--theme-color);
   color: #ffffff;
   padding: 0px 0 40px 0;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .footer_section h4 {

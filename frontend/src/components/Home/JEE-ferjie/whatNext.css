@@ -1,0 +1,38 @@
+#what-next .what-next-container {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f8f9fa;
+  }
+  
+  #what-next .what-next-container .left {
+    background-color: var(--theme-color);
+    padding: 20px;
+    color: white;
+    text-align: center;
+  }
+  
+  #what-next .what-next-container .left p {
+    margin-bottom: 20px;
+  }
+  
+  #what-next .what-next-container .next-steps-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #what-next .what-next-container .next-steps-list li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+  }
+  
+  #what-next .what-next-container .next-steps {
+    padding: 20px;
+  }
+  
+  #what-next .what-next-container .next-steps p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+  

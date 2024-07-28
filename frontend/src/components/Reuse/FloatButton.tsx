@@ -20,7 +20,7 @@ const FloatButtonComponent: React.FC = () => {
       <Tooltip title="Connect with us on WhatsApp">
         <Link
           className="custom-float-button"
-          to="https://wa.me/919140399023"
+          to="https://wa.me/+919454509368"
           target="_blank"
           rel="noopener noreferrer"
         >
