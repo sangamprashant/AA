@@ -12,6 +12,7 @@ const config = {
   ADMIN_EMAIL: process.env.ADMIN_EMAIL,
   RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID,
   RAZORPAY_SECRET_KEY: process.env.RAZORPAY_SECRET_KEY,
+  EMAIL_IN_MAIL: process.env.EMAIL_IN_MAIL,
 };
 
 module.exports = config;
