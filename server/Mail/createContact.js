@@ -80,7 +80,7 @@ const sendContactEmail = async (contactDetails) => {
               </div>
               <div style="text-align: center; margin-top: 20px;">
                   <a href="mailto:${config.EMAIL_IN_MAIL}" style="color: #007BFF; text-decoration: none; margin: 0 10px;">Mail Us</a> |
-                  <a href="${config.FRONTEND_DOMAIN}/contact" style="color: #007BFF; text-decoration: none; margin: 0 10px;">Contact Us</a>
+                  <a href="${config.FRONTEND_DOMAIN}/contact-us" style="color: #007BFF; text-decoration: none; margin: 0 10px;">Contact Us</a>
               </div>
               <div style="text-align: center; padding: 10px 0; border-top: 1px solid #dddddd; font-size: 12px; color: #999999;">
                   &copy; 2024 The A To Z Classes. All rights reserved.
