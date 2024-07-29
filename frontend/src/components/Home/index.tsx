@@ -12,6 +12,7 @@ import ReviewParent from "./Reviews/Parent/Parent";
 import ParentsTrust from "./Reviews/Parent/ParentsTrust";
 import ReviewStudent from "./Reviews/Student";
 import WhatNext from "./JEE-ferjie";
+import Class1 from "./Content-ferjie/Class1/Class1";
 
 const Home = () => {
   useEffect(() => {
@@ -20,6 +21,7 @@ const Home = () => {
 
   return (
     <Fragment>
+      <Class1 />
       <Try />
       <Features />
       <Classes />

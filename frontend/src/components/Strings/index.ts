@@ -281,7 +281,7 @@ const socialLinks = {
 
 const appName = "The A to Z Classes"
 
-const address = "HIG-A-373/ll Rajajipuram, Lucknow Uttar Pradesh -226017";
+const address = "HIG-A-373/ll Rajajipuram, Lucknow, Uttar Pradesh -226017";
 
 const phone = "9454509368";
 

@@ -63,16 +63,20 @@ export const impLinks = [
 
 const Footer = () => {
   return (
-    <footer className="footer_section">
+    <footer className="footer_section text-center">
       <div className="footer-animation"></div>
       <div className="container">
         <div className="row">
           <div className="col-md-4 footer-col">
             <div className="footer_contact">
               <h4>Contact Us</h4>
-              <div className="contact_link_box">
+              <div className="contact_link_box text-start">
                 {contactDetails.map((contact, index) => (
-                  <a key={index} href={contact.href} className=" text-wrap">
+                  <a
+                    key={index}
+                    href={contact.href}
+                    className=" d-flex gap-3 text-wrap"
+                  >
                     <FontAwesomeIcon icon={contact.icon} aria-hidden="true" />{" "}
                     <span>{contact.text}</span>
                   </a>
@@ -85,7 +89,7 @@ const Footer = () => {
               <a href="/" className="footer-logo text-decoration-none">
                 The A to Z Classes
               </a>
-              <p>
+              <p className="text-center">
                 At The A to Z Classes, we are dedicated to providing
                 comprehensive and personalized education to our students. Our
                 experienced instructors, up-to-date curriculum, and interactive
@@ -99,7 +103,7 @@ const Footer = () => {
           <div className="col-md-4 footer-col">
             <div className="footer_contact">
               <h4>Important Links</h4>
-              <div className="contact_link_box">
+              <div className="contact_link_box ">
                 {impLinks.map((contact, index) => (
                   <a key={index} href={contact.link}>
                     <span>{contact.title}</span>
