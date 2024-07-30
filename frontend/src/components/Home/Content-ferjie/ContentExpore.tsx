@@ -8,6 +8,7 @@ import { AppContext } from "../../../AppProvider";
 import { config } from "../../../config";
 import Section from "../../Reuse/Section";
 import "./contentExplore.css";
+import { ContentData } from "./HHH";
 
 interface StudyMaterial {
   _id: string;
@@ -59,8 +60,17 @@ const ContentExplore: React.FC = () => {
           category: material.category,
         })
       );
-      saveToLocalStorage(filteredMaterials);
-      setContent(data.materials);
+      const filteredContentData: SavedMaterial[] = ContentData.map(
+        (item: StudyMaterial) => ({
+          _id: item._id,
+          title: item.title,
+          imageUrl: item.imageUrl,
+          category: item.category,
+        })
+      );
+      const combinedMaterials = [...filteredMaterials, ...filteredContentData];
+      saveToLocalStorage(combinedMaterials);
+      setContent([...data.materials, ...ContentData]);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -165,7 +175,7 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
   return (
     <Link to={`/study-material/${item._id}`} className="card-content-explore">
       <img
-        src={`${item.imageUrl}?cache-control=max-age=31536000`}
+        src={`${item?.imageUrl}?cache-control=max-age=31536000`}
         className="card-img-top-content-explore"
         alt={item.title}
       />
@@ -178,11 +188,11 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
         <p className={`m-0 ${item.free ? "free" : "email"}`}>
           <span className="icon">
             {item.free ? (
-              <StarIcon />
+              <StarIcon style={{ fontSize: "15px" }} />
             ) : locked ? (
-              <LockOutlinedIcon />
+              <LockOutlinedIcon style={{ fontSize: "15px" }} />
             ) : (
-              <LockOpenOutlinedIcon />
+              <LockOpenOutlinedIcon style={{ fontSize: "15px" }} />
             )}
           </span>{" "}
           {item.free ? "Free" : locked ? "Locked" : "Unlocked"}
