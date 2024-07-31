@@ -37,11 +37,13 @@ const ContentExplore: React.FC = () => {
 
   useEffect(() => {
     if (content.length !== 0) {
-      setFilteredData(
-        selectedClass
-          ? content.filter((item) => item.category === selectedClass)
-          : content
+      const filteredByCategory = selectedClass
+        ? content.filter((item) => item.category === selectedClass)
+        : content;
+      const uniqueFilteredData = Array.from(
+        new Map(filteredByCategory.map((item) => [item._id, item])).values()
       );
+      setFilteredData(uniqueFilteredData);
     }
   }, [content, selectedClass]);
 
@@ -69,7 +71,10 @@ const ContentExplore: React.FC = () => {
         })
       );
       const combinedMaterials = [...filteredMaterials, ...filteredContentData];
-      saveToLocalStorage(combinedMaterials);
+      const uniqueFilteredData = Array.from(
+        new Map(combinedMaterials.map((item) => [item._id, item])).values()
+      );
+      saveToLocalStorage(uniqueFilteredData);
       setContent([...data.materials, ...ContentData]);
     } catch (error) {
       console.error("Error fetching data:", error);

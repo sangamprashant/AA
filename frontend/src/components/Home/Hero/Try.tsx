@@ -204,7 +204,7 @@ const Try = () => {
               </div>
             </div>
             <div className="container">
-              <ol className="carousel-indicators gap-2">
+              <ol className="carousel-indicators gap-2 list-unstyled">
                 <li
                   data-slide-to="0"
                   className={active === 0 ? "active" : ""}
