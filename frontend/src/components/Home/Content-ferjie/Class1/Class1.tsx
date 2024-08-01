@@ -1,11 +1,7 @@
 const Class1 = () => {
-  return (
-  <>
+  return <>
 
-
-
-  </>
-  );
+  </>;
 };
 
 export default Class1;

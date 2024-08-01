@@ -10,9 +10,9 @@ import "./footer.css";
 
 const contactDetails = [
   {
-    icon: faLocationDot,
-    text: address,
-    href: "#",
+    icon: faPhone,
+    text: `Call +91 ${phone}`,
+    href: `tel:+91${phone}`,
   },
   {
     icon: faEnvelope,
@@ -20,9 +20,9 @@ const contactDetails = [
     href: `mailto:${email}`,
   },
   {
-    icon: faPhone,
-    text: `Call +91 ${phone}`,
-    href: `tel:+91${phone}`,
+    icon: faLocationDot,
+    text: address,
+    href: "#",
   },
 ];
 
@@ -69,16 +69,11 @@ const Footer = () => {
         <div className="row">
           <div className="col-md-4 footer-col">
             <div className="footer_contact">
-              <h4>Contact Us</h4>
-              <div className="contact_link_box text-start">
-                {contactDetails.map((contact, index) => (
-                  <a
-                    key={index}
-                    href={contact.href}
-                    className=" d-flex gap-3 text-wrap"
-                  >
-                    <FontAwesomeIcon icon={contact.icon} aria-hidden="true" />{" "}
-                    <span>{contact.text}</span>
+              <h4>Important Links</h4>
+              <div className="contact_link_box ">
+                {impLinks.map((contact, index) => (
+                  <a key={index} href={contact.link}>
+                    <span>{contact.title}</span>
                   </a>
                 ))}
               </div>
@@ -102,11 +97,16 @@ const Footer = () => {
           </div>
           <div className="col-md-4 footer-col">
             <div className="footer_contact">
-              <h4>Important Links</h4>
-              <div className="contact_link_box ">
-                {impLinks.map((contact, index) => (
-                  <a key={index} href={contact.link}>
-                    <span>{contact.title}</span>
+              <h4>Contact Us</h4>
+              <div className="contact_link_box">
+                {contactDetails.map((contact, index) => (
+                  <a
+                    key={index}
+                    href={contact.href}
+                    className=" d-flex gap-3 text-wrap text-start"
+                  >
+                    <FontAwesomeIcon icon={contact.icon} aria-hidden="true" />{" "}
+                    <span>{contact.text}</span>
                   </a>
                 ))}
               </div>

@@ -67,7 +67,7 @@ const Mentors = () => {
             variants={listVariants}
             viewport={{ once: true }}
           >
-            <ul>
+            <ul className="list-unstyled">
               {mentorsData.map((item, index) => (
                 <motion.li key={index} variants={itemVariants}>
                   {item}

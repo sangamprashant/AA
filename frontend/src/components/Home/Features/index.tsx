@@ -80,7 +80,7 @@ export const NumbersCountFeatures: React.FC<NumbersCountProps> = ({
     >
       <div className="text-center">
         {inView && (
-          <h1 className="display-1 p-0 m-0">
+          <h4 className="display-6 p-0 m-0">
             <CountUp
               end={end}
               suffix={suffix}
@@ -88,7 +88,7 @@ export const NumbersCountFeatures: React.FC<NumbersCountProps> = ({
               decimals={decimalPlaces(end)}
               style={{ color: "var(--theme-color)" }}
             />
-          </h1>
+          </h4>
         )}
         <h5 className="p-0 m-0">{title}</h5>
       </div>

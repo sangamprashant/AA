@@ -189,20 +189,22 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
           <strong>{item.title}</strong>
         </p>
       </div>
-      <div className="content-explore-offer">
-        <p className={`m-0 ${item.free ? "free" : "email"}`}>
-          <span className="icon">
-            {item.free ? (
-              <StarIcon style={{ fontSize: "15px" }} />
-            ) : locked ? (
-              <LockOutlinedIcon style={{ fontSize: "15px" }} />
-            ) : (
-              <LockOpenOutlinedIcon style={{ fontSize: "15px" }} />
-            )}
-          </span>{" "}
-          {item.free ? "Free" : locked ? "Locked" : "Unlocked"}
-        </p>
-      </div>
+      {!item.free && (
+        <div className="content-explore-offer">
+          <p className={`m-0 ${item.free ? "free" : "email"}`}>
+            <span className="icon">
+              {item.free ? (
+                <StarIcon style={{ fontSize: "15px" }} />
+              ) : locked ? (
+                <LockOutlinedIcon style={{ fontSize: "15px" }} />
+              ) : (
+                <LockOpenOutlinedIcon style={{ fontSize: "15px" }} />
+              )}
+            </span>{" "}
+            {item.free ? "Free" : locked ? "Locked" : "Unlocked"}
+          </p>
+        </div>
+      )}
     </Link>
   );
 };
