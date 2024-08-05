@@ -1,23 +1,24 @@
 import { motion } from "framer-motion";
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { email, phone } from "../Strings";
 
 const Navbar = () => {
-  const navbarCollapseRef = React.useRef<HTMLDivElement>(null);
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+
+  const handleNavItemClick = () => {
+    if (window.innerWidth < 992) {
+      setIsNavCollapsed(true);
+    }
+  };
+
+  const handleToggleClick = () => {
+    setIsNavCollapsed(!isNavCollapsed);
+  };
 
   const navItemVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0 },
-  };
-
-  const handleNavItemClick = () => {
-    if (window.innerWidth < 992) {
-      const collapseElement = navbarCollapseRef.current;
-      if (collapseElement && collapseElement.classList.contains("show")) {
-        collapseElement.classList.remove("show");
-      }
-    }
   };
 
   return (
@@ -45,17 +46,17 @@ const Navbar = () => {
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
-            aria-expanded="false"
+            aria-expanded={!isNavCollapsed}
             aria-label="Toggle navigation"
+            onClick={handleToggleClick}
           >
-            <span className="navbar-toggler-icon"> </span>
+            <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className="collapse navbar-collapse mt-4 mt-lg-0"
-            id="navbarSupportedContent"
-            ref={navbarCollapseRef}
+            className={`collapse navbar-collapse mt-4 mt-lg-0 ${
+              isNavCollapsed ? "" : "show"
+            }`}
           >
             <ul className="navbar-nav ms-auto gap-2 align-items-center justify-content-start">
               <motion.li

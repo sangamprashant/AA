@@ -36,3 +36,21 @@
     line-height: 1.6;
   }
   
+  #neet-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #neet-table th, #neet-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  #neet-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  #neet-table tbody tr:nth-child(even) {
+    background-color: #e9e9e9;
+  }

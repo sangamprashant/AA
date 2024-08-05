@@ -49,12 +49,12 @@ const BookClass = () => {
     });
   };
 
-  const handleInputChangeAutoComplete = (value: string) => {
-    console.log({ value });
-    setFormData({
-      ...formData,
+
+  const handleCountryChange = (value: string) => {
+    setFormData(prevState => ({
+      ...prevState,
       country: value,
-    });
+    }));
   };
 
   const openNotification = (message: string) => {
@@ -107,13 +107,11 @@ const BookClass = () => {
           <div className="row align-items-center">
             <motion.div className="col-md-7">
               <motion.h1 className="bold-text">
-                Speak with the{" "}
-                <span className="text-warning">The A to Z Classes </span>
-                Parents Coach
+                Book a <span className="text-warning">Demo Class</span>
               </motion.h1>
               <motion.p>
-                Get ready for an amazing journey with best mentors who turn
-                every challenge into chance to boost your career
+                Get ready for an amazing journey with the best mentors who turn
+                every challenge into a chance to boost your career.
               </motion.p>
               <motion.form onSubmit={handleSubmit}>
                 <div className="row">
@@ -135,7 +133,7 @@ const BookClass = () => {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      placeholder="Enter Second Name"
+                      placeholder="Enter Last Name"
                       required
                     />
                   </motion.div>
@@ -152,9 +150,9 @@ const BookClass = () => {
                   </motion.div>
 
                   <motion.div className="col-md-12 mt-3">
-                    <div className="input-container">
+                    <div className="input-container gap-2">
                       <AutoComplete
-                        style={{ width: 120, height:40 }}
+                        style={{ width: 150, height: 40 }}
                         options={CountryOption.map((option) => ({
                           value: option.phoneCode,
                           label: `${option.label} ${option.phoneCode}`,
@@ -165,11 +163,11 @@ const BookClass = () => {
                             .toUpperCase()
                             .includes(inputValue.toUpperCase())
                         }
-                        onChange={handleInputChangeAutoComplete}
+                        onChange={handleCountryChange}
                         value={formData.country}
                       />
                       <input
-                        type="text"
+                        type="number"
                         className="phone-input form-control"
                         name="phoneNumber"
                         value={formData.phoneNumber}

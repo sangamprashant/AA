@@ -67,35 +67,7 @@ const Footer = () => {
       <div className="footer-animation"></div>
       <div className="container">
         <div className="row">
-          <div className="col-md-4 footer-col">
-            <div className="footer_contact">
-              <h4>Important Links</h4>
-              <div className="contact_link_box ">
-                {impLinks.map((contact, index) => (
-                  <a key={index} href={contact.link}>
-                    <span>{contact.title}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4 footer-col">
-            <div className="footer_detail">
-              <a href="/" className="footer-logo text-decoration-none">
-                The A to Z Classes
-              </a>
-              <p className="text-center">
-                At The A to Z Classes, we are dedicated to providing
-                comprehensive and personalized education to our students. Our
-                experienced instructors, up-to-date curriculum, and interactive
-                teaching methods ensure a high level of student achievement and
-                satisfaction. Join us to excel in your academic journey and
-                beyond.
-              </p>
-              <SocialLinks />
-            </div>
-          </div>
-          <div className="col-md-4 footer-col">
+          <div className="col-md-4 footer-col px-5">
             <div className="footer_contact">
               <h4>Contact Us</h4>
               <div className="contact_link_box">
@@ -112,8 +84,36 @@ const Footer = () => {
               </div>
             </div>
           </div>
+          <div className="col-md-4 footer-col p-2">
+            <div className="footer_detail">
+              <a href="/" className="footer-logo text-decoration-none">
+                The A to Z Classes
+              </a>
+              <p className="text-center">
+                At The A to Z Classes, we are dedicated to providing
+                comprehensive and personalized education to our students. Our
+                experienced instructors, up-to-date curriculum, and interactive
+                teaching methods ensure a high level of student achievement and
+                satisfaction. Join us to excel in your academic journey and
+                beyond.
+              </p>
+            </div>
+          </div>
+          <div className="col-md-4 footer-col px-5">
+            <div className="footer_contact">
+              <h4>Important Links</h4>
+              <div className="contact_link_box ">
+                {impLinks.map((contact, index) => (
+                  <a key={index} href={contact.link}>
+                    <span>{contact.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="footer-info text-center mt-0">
+        <SocialLinks />
+        <div className="footer-info text-center mt-4">
           <sup>
             &copy; <span id="displayYear">{new Date().getFullYear()}</span> All
             Rights Reserved By{" "}

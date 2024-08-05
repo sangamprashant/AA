@@ -640,7 +640,7 @@ const CommonCommONCOntext = {
   geometry: `
     <div id="learnSection" class="learnSection" style="height: max-content;">
 <p>Geometry (from the Ancient Greek: geo- "earth", -metron "measurement") is a branch of mathematics, that is primarily concerned with the shapes and sizes of the objects, their relative position, and the properties of space. There are many postulates and theorems applied by the Greek mathematician Euclid, who is often referred to as the “Father of Geometry”. Let us explore all the important topics in Geometry.</p>
-<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%; display: none;" class="subMenuSticky">
+<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%;" class="subMenuSticky">
 <tbody>
 <tr>
 <td style="text-align: center;"><span style="color:#0000ff;">1.</span></td>
@@ -674,10 +674,6 @@ const CommonCommONCOntext = {
 <td style="text-align: center;"><span style="color:#0000ff;">8.</span></td>
 <td><a href="#three-dimensional-geometry">Three-dimensional Geometry</a></td>
 </tr>
-<tr>
-<td style="text-align: center;"><span style="color:#0000ff;">9.</span></td>
-<td><a href="#faqs-on-geometry">FAQs on Geometry</a></td>
-</tr>
 </tbody>
 </table>
 <div id="what-is-geometry">
@@ -693,10 +689,10 @@ const CommonCommONCOntext = {
 <div id="euclidean-geometry">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Euclidean Geometry</h2>
 </div>
-<p>We study <a href="https://www.cuemath.com/geometry/euclids-geometry/">Euclidean geometry</a> to understand the fundamentals of geometry. Euclidean Geometry refers to the study of plane and solid figures on the basis of axioms (a statement or proposition) and theorems. The fundamental concepts of Euclidean geometry include Points and Lines, <a href="https://www.cuemath.com/geometry/euclids-axioms-and-postulates/">Euclid’s Axioms and Postulates</a>, Geometrical Proof, and Euclid’s Fifth Postulate. There are 5 basic postulates of Euclidean Geometry that define geometrical figures.</p>
+<p>We study <a>Euclidean geometry</a> to understand the fundamentals of geometry. Euclidean Geometry refers to the study of plane and solid figures on the basis of axioms (a statement or proposition) and theorems. The fundamental concepts of Euclidean geometry include Points and Lines, <a>Euclid’s Axioms and Postulates</a>, Geometrical Proof, and Euclid’s Fifth Postulate. There are 5 basic postulates of Euclidean Geometry that define geometrical figures.</p>
 <ul>
 <li>A straight line segment is drawn from any given point to any other.</li>
-<li>A <a href="https://www.cuemath.com/geometry/straight-line/">straight line</a> is extended indefinitely in both directions.</li>
+<li>A <a>straight line</a> is extended indefinitely in both directions.</li>
 <li>A circle is drawn with any given point as its center and any length as its radius.</li>
 <li>All right angles are congruent.</li>
 <li>Any two straight lines are infinitely parallel that are equidistant from one another at two points.</li>
@@ -723,33 +719,33 @@ const CommonCommONCOntext = {
 <div id="plane-geometry">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Plane Geometry</h2>
 </div>
-<p>Euclidean geometry involves the study of geometry in a plane. A two-dimensional surface extending infinitely in both directions forms the plane. Planes are used in every area of geometry and graph theory. The basic components of planes in geometry are analogous to points, lines, and angles. A point is the no-dimensional basic unit of geometry. Points lying on the same line are the <a href="https://www.cuemath.com/geometry/collinear-points/">collinear points</a>. A <a href="https://www.cuemath.com/geometry/lines/">line</a> is a uni-dimensional unit that refers to a set of points that extends in two opposite directions and the line is said to be the intersection of two planes. A line has no endpoints. It is easy to differentiate a line, <a href="https://www.cuemath.com/geometry/line-segment/">line segment</a>, and ray. Lines may be parallel or perpendicular. Lines may or not intersect.</p>
+<p>Euclidean geometry involves the study of geometry in a plane. A two-dimensional surface extending infinitely in both directions forms the plane. Planes are used in every area of geometry and graph theory. The basic components of planes in geometry are analogous to points, lines, and angles. A point is the no-dimensional basic unit of geometry. Points lying on the same line are the <a>collinear points</a>. A <a>line</a> is a uni-dimensional unit that refers to a set of points that extends in two opposite directions and the line is said to be the intersection of two planes. A line has no endpoints. It is easy to differentiate a line, <a>line segment</a>, and ray. Lines may be parallel or perpendicular. Lines may or not intersect.</p>
 <p><img alt="Lines, line segments and rays" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/lines-1614922235.png" style="width: 400px;"></p>
 <h3>Angles in Geometry</h3>
-<p>When two <a href="https://www.cuemath.com/geometry/straight-line/">straight lines</a> or rays intersect at a point, they form an angle. <a href="https://www.cuemath.com/geometry/angles/">Angles</a> are usually measured in degrees. The angles can be an acute, obtuse, right angle, straight angle, or obtuse angle. The pairs of angles can be supplementary or complementary. The construction of angles and lines is an intricate component of geometry. The study of angles in a <a href="https://www.cuemath.com/geometry/unit-circle/">unit circle</a> and that of a triangle forms the stepping stone of <a href="https://www.cuemath.com/trigonometry/">trigonometry</a>. <a href="https://www.cuemath.com/geometry/transversals-and-related-angles/">Transversals and related angles</a> establish the interesting properties of parallel lines and their theorems.</p>
+<p>When two <a straight lines</a> or rays intersect at a point, they form an angle. <a>Angles</a> are usually measured in degrees. The angles can be an acute, obtuse, right angle, straight angle, or obtuse angle. The pairs of angles can be supplementary or complementary. The construction of angles and lines is an intricate component of geometry. The study of angles in a <a>unit circle</a> and that of a triangle forms the stepping stone of <a>trigonometry</a>. <a>Transversals and related angles</a> establish the interesting properties of parallel lines and their theorems.</p>
 <h3>Plane Shapes in Geometry</h3>
-<p>The properties of <a href="https://www.cuemath.com/geometry/plane-shapes/">plane shapes</a> help us identify and classify them. The plane geometric shapes are two-dimensional shapes or flat shapes. Polygons are closed curves that are made up of more than two lines. A <a href="https://www.cuemath.com/geometry/triangles/">triangle</a> is a closed figure with three sides and three vertices. There are many theorems based on the triangles that help us understand the properties of triangles. In geometry, the most significant theorems based on triangles include Heron's formula, The <a href="https://www.cuemath.com/geometry/exterior-angle-theorem/">exterior angle theorem</a>, the angle sum property, the <a href="https://www.cuemath.com/geometry/basic-proportionality-theorem/">basic proportionality theorem</a>, the similarity and <a href="https://www.cuemath.com/geometry/congruence-in-triangles/">Congruence in Triangles</a>, the <a href="https://www.cuemath.com/geometry/pythagoras-theorem/">Pythagoras Theorem</a>, and so on. These help us recognize the angle-side relationships in triangles. <a href="https://www.cuemath.com/geometry/quadrilaterals/">Quadrilaterals</a> are polygons with four sides and four vertices. A <a href="https://www.cuemath.com/geometry/circles/">circle</a> is a closed figure and has no edges or corners. It is defined as the set of all points in a plane that are equidistant from a given point called the center of the circle. Various concepts centered around symmetry, <a href="https://www.cuemath.com/geometry/transformations/">transformations</a> in shapes, construction of shapes are the formative chapters in geometry.</p>
+<p>The properties of <a>plane shapes</a> help us identify and classify them. The plane geometric shapes are two-dimensional shapes or flat shapes. Polygons are closed curves that are made up of more than two lines. A <a >triangle</a> is a closed figure with three sides and three vertices. There are many theorems based on the triangles that help us understand the properties of triangles. In geometry, the most significant theorems based on triangles include Heron's formula, The <a>exterior angle theorem</a>, the angle sum property, the <a>basic proportionality theorem</a>, the similarity and <a>Congruence in Triangles</a>, the <a>Pythagoras Theorem</a>, and so on. These help us recognize the angle-side relationships in triangles. <a>Quadrilaterals</a> are polygons with four sides and four vertices. A <a>circle</a> is a closed figure and has no edges or corners. It is defined as the set of all points in a plane that are equidistant from a given point called the center of the circle. Various concepts centered around symmetry, <a>transformations</a> in shapes, construction of shapes are the formative chapters in geometry.</p>
 <div id="solid-geometry">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Solid Geometry</h2>
 </div>
-<p><a href="https://www.cuemath.com/geometry/solid-shapes/">Solid shapes</a> in geometry are three-dimensional in nature. The three dimensions that are taken into consideration are length, width, and height. There are different types of solid figures like a cylinder, cube, sphere, cone, cuboids, prism, pyramids, and so on and these figures acquire some space. They are characterized by vertices, faces, and edges. The five <a href="https://www.cuemath.com/geometry/platonic-solids/">platonic solids</a> and the polyhedrons have interesting properties in Euclidean space. The nets of the plane shapes can be folded into solids.</p>
+<p><a>Solid shapes</a> in geometry are three-dimensional in nature. The three dimensions that are taken into consideration are length, width, and height. There are different types of solid figures like a cylinder, cube, sphere, cone, cuboids, prism, pyramids, and so on and these figures acquire some space. They are characterized by vertices, faces, and edges. The five <a>platonic solids</a> and the polyhedrons have interesting properties in Euclidean space. The nets of the plane shapes can be folded into solids.</p>
 <h3><img alt="plane shapes and solid shapes in geometry" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/plane-shapes-and-solid-shapes-in-geometry-1626368835.png" style="width: 400px;"></h3>
 <div id="measurement-in-geometry">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Measurement in Geometry</h2>
 </div>
-<p><a href="https://www.cuemath.com/measurement/">Measurement</a> in geometry ascertains the calculation of length or distance, the area occupied by a flat shape, and the volume occupied by the solid objects. Mensuration in geometry is applied to the computation of perimeter, area, capacity, surface areas, and volumes of geometric figures. <a href="https://www.cuemath.com/measurement/perimeter/">Perimeter</a> is the distance around the plane shapes, the <a href="https://www.cuemath.com/measurement/area/">area</a> is the region occupied by the shape, <a href="https://www.cuemath.com/measurement/volume/">volume</a> is the amount of region occupied by a solid, and the <a href="https://www.cuemath.com/measurement/surface-area/">surface area</a> of a solid is the sum of the areas of its faces.</p>
+<p><a>Measurement</a> in geometry ascertains the calculation of length or distance, the area occupied by a flat shape, and the volume occupied by the solid objects. Mensuration in geometry is applied to the computation of perimeter, area, capacity, surface areas, and volumes of geometric figures. <a>Perimeter</a> is the distance around the plane shapes, the <a>area</a> is the region occupied by the shape, <a>volume</a> is the amount of region occupied by a solid, and the <a>surface area</a> of a solid is the sum of the areas of its faces.</p>
 <div id="two-dimensional-analytical-geometry">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Two-dimensional Analytical Geometry</h2>
 </div>
-<p>Analytical geometry is popularly known as <a href="https://www.cuemath.com/geometry/coordinate-geometry/">coordinate geometry </a>is a branch of geometry where the position of any given point on a plane is defined with the help of an ordered pair of numbers, or coordinates using the rectangular Cartesian coordinate system. The coordinate axes divide the plane into four quadrants. Identifying and plotting points will be a building block of visualizing the geometric objects on the <a href="https://www.cuemath.com/geometry/coordinate-plane/">coordinate plane</a>. In the example below, point A is defined as (4,3) and Point B is defined as (-3,1).</p>
+<p>Analytical geometry is popularly known as <a>coordinate geometry </a>is a branch of geometry where the position of any given point on a plane is defined with the help of an ordered pair of numbers, or coordinates using the rectangular Cartesian coordinate system. The coordinate axes divide the plane into four quadrants. Identifying and plotting points will be a building block of visualizing the geometric objects on the <a>coordinate plane</a>. In the example below, point A is defined as (4,3) and Point B is defined as (-3,1).</p>
 <p><img alt="coordinate geometry or analytical geometry" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/coordinate-geometry-1626368881.png" style="width: 400px;"></p>
-<p>The various properties of the geometric figures like straight lines, curves, parabolas, ellipse, hyperbola, circles, and so on can be studied using coordinate geometry. In analytical geometry, the curves are represented as algebraic equations, and this gives a deeper understanding of algebraic equations through visual representations. <a href="https://www.cuemath.com/distance-formula/">The distance formula</a>, the section formula, <a href="https://www.cuemath.com/geometry/midpoint/">midpoint formula</a>, the <a href="https://www.cuemath.com/geometry/centroid-of-a-triangle/">centroid of a triangle</a>, the area of the triangle formed by three given points, and the area of the quadrilateral formed by four points are determined using the known coordinates in the cartesian coordinate system. <a href="https://www.cuemath.com/geometry/equation-of-a-straight-line/">The equation of a straight line</a> passing through a point, or two points, the angle between two straight lines are computed easily using the analytical geometry as they are generalized using formulas.</p>
+<p>The various properties of the geometric figures like straight lines, curves, parabolas, ellipse, hyperbola, circles, and so on can be studied using coordinate geometry. In analytical geometry, the curves are represented as algebraic equations, and this gives a deeper understanding of algebraic equations through visual representations. <a The distance formula</a>, the section formula, <a>midpoint formula</a>, the <a>centroid of a triangle</a>, the area of the triangle formed by three given points, and the area of the quadrilateral formed by four points are determined using the known coordinates in the cartesian coordinate system. <a>The equation of a straight line</a> passing through a point, or two points, the angle between two straight lines are computed easily using the analytical geometry as they are generalized using formulas.</p>
 <div id="three-dimensional-geometry">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Three-dimensional Geometry</h2>
 </div>
 <p>The three-dimensional geometry discusses the geometry of shapes in 3D space in the cartesian planes. Every point in the space is denoted by 3 coordinates, represented as an ordered triple (x, y,z) of real numbers.</p>
 <h3>Direction Cosines of a Line</h3>
-<p>If a straight line makes angles α, β and γ with the x-axis, y-axis, and z-axis respectively then cosα, cosβ, cosγ are called <a href="https://www.cuemath.com/jee/direction-cosines-and-ratios-of-lines-3-dimensional-geometry/">the direction cosines of a line</a>. These are denoted as l = cosα, m = cosβ, and n = cosγ. For l, m, and n, l<sup>2</sup> + m<sup>2</sup> + n<sup>2</sup> = 1, direction cosines of a line joining the points P(<span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-1-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 113%; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>z</mi><mn>1</mn></msub></math>" role="presentation"><span id="MJXc-Node-1" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-2" class="mjx-mrow"><span id="MJXc-Node-3" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-4" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-5" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span><span id="MJXc-Node-6" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-7" class="mjx-msubsup MJXc-space1"><span class="mjx-base" style="margin-right: -0.006em;"><span id="MJXc-Node-8" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.501em; padding-right: 0.006em;">y</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-9" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span><span id="MJXc-Node-10" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-11" class="mjx-msubsup MJXc-space1"><span class="mjx-base" style="margin-right: -0.003em;"><span id="MJXc-Node-12" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em; padding-right: 0.003em;">z</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-13" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>z</mi><mn>1</mn></msub></math></span></span><script type="math/tex" id="MathJax-Element-1">x_1, y_1, z_1</script>) and Q(<span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-2-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 113%; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo>,</mo><msub><mi>z</mi><mn>2</mn></msub></math>" role="presentation"><span id="MJXc-Node-14" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-15" class="mjx-mrow"><span id="MJXc-Node-16" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-17" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-18" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-19" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-20" class="mjx-msubsup MJXc-space1"><span class="mjx-base" style="margin-right: -0.006em;"><span id="MJXc-Node-21" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.501em; padding-right: 0.006em;">y</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-22" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-23" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-24" class="mjx-msubsup MJXc-space1"><span class="mjx-base" style="margin-right: -0.003em;"><span id="MJXc-Node-25" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em; padding-right: 0.003em;">z</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-26" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo>,</mo><msub><mi>z</mi><mn>2</mn></msub></math></span></span><script type="math/tex" id="MathJax-Element-2">x_2, y_2, z_2</script>) are given as :<span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-3-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 113%; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mstyle displaystyle=&quot;true&quot; scriptlevel=&quot;0&quot;><mfrac><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>&amp;#x2212;</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle><mo>,</mo><mstyle displaystyle=&quot;true&quot; scriptlevel=&quot;0&quot;><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>&amp;#x2212;</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle><mo>,</mo><mstyle displaystyle=&quot;true&quot; scriptlevel=&quot;0&quot;><mfrac><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>&amp;#x2212;</mo><msub><mi>z</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle></math>" role="presentation"><span id="MJXc-Node-27" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-28" class="mjx-mrow"><span id="MJXc-Node-29" class="mjx-mstyle"><span id="MJXc-Node-30" class="mjx-mrow"><span id="MJXc-Node-31" class="mjx-mfrac"><span class="mjx-box MJXc-stacked" style="width: 3.344em; padding: 0px 0.12em;"><span class="mjx-numerator" style="width: 3.344em; top: -1.285em;"><span id="MJXc-Node-32" class="mjx-mrow"><span id="MJXc-Node-33" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-34" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-35" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-36" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">−</span></span><span id="MJXc-Node-37" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-38" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-39" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span></span></span><span class="mjx-denominator" style="width: 3.344em; bottom: -0.931em;"><span id="MJXc-Node-40" class="mjx-mrow"><span id="MJXc-Node-41" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.445em; padding-bottom: 0.279em; padding-right: 0.109em;">P</span></span><span id="MJXc-Node-42" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.501em; padding-bottom: 0.445em;">Q</span></span></span></span><span class="mjx-line" style="border-bottom: 1.3px solid; top: -0.285em; width: 3.344em;"></span></span><span class="mjx-vsize" style="height: 2.215em; vertical-align: -0.931em;"></span></span></span></span><span id="MJXc-Node-43" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-44" class="mjx-mstyle MJXc-space1"><span id="MJXc-Node-45" class="mjx-mrow"><span id="MJXc-Node-46" class="mjx-mfrac"><span class="mjx-box MJXc-stacked" style="width: 3.18em; padding: 0px 0.12em;"><span class="mjx-numerator" style="width: 3.18em; top: -1.321em;"><span id="MJXc-Node-47" class="mjx-mrow"><span id="MJXc-Node-48" class="mjx-msubsup"><span class="mjx-base" style="margin-right: -0.006em;"><span id="MJXc-Node-49" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.501em; padding-right: 0.006em;">y</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-50" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-51" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">−</span></span><span id="MJXc-Node-52" class="mjx-msubsup MJXc-space2"><span class="mjx-base" style="margin-right: -0.006em;"><span id="MJXc-Node-53" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.501em; padding-right: 0.006em;">y</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-54" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span></span></span><span class="mjx-denominator" style="width: 3.18em; bottom: -0.931em;"><span id="MJXc-Node-55" class="mjx-mrow"><span id="MJXc-Node-56" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.445em; padding-bottom: 0.279em; padding-right: 0.109em;">P</span></span><span id="MJXc-Node-57" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.501em; padding-bottom: 0.445em;">Q</span></span></span></span><span class="mjx-line" style="border-bottom: 1.3px solid; top: -0.285em; width: 3.18em;"></span></span><span class="mjx-vsize" style="height: 2.252em; vertical-align: -0.931em;"></span></span></span></span><span id="MJXc-Node-58" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-59" class="mjx-mstyle MJXc-space1"><span id="MJXc-Node-60" class="mjx-mrow"><span id="MJXc-Node-61" class="mjx-mfrac"><span class="mjx-box MJXc-stacked" style="width: 3.13em; padding: 0px 0.12em;"><span class="mjx-numerator" style="width: 3.13em; top: -1.285em;"><span id="MJXc-Node-62" class="mjx-mrow"><span id="MJXc-Node-63" class="mjx-msubsup"><span class="mjx-base" style="margin-right: -0.003em;"><span id="MJXc-Node-64" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em; padding-right: 0.003em;">z</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-65" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-66" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">−</span></span><span id="MJXc-Node-67" class="mjx-msubsup MJXc-space2"><span class="mjx-base" style="margin-right: -0.003em;"><span id="MJXc-Node-68" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em; padding-right: 0.003em;">z</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-69" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span></span></span><span class="mjx-denominator" style="width: 3.13em; bottom: -0.931em;"><span id="MJXc-Node-70" class="mjx-mrow"><span id="MJXc-Node-71" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.445em; padding-bottom: 0.279em; padding-right: 0.109em;">P</span></span><span id="MJXc-Node-72" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.501em; padding-bottom: 0.445em;">Q</span></span></span></span><span class="mjx-line" style="border-bottom: 1.3px solid; top: -0.285em; width: 3.13em;"></span></span><span class="mjx-vsize" style="height: 2.215em; vertical-align: -0.931em;"></span></span></span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle><mo>,</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle><mo>,</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>−</mo><msub><mi>z</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle></math></span></span><script type="math/tex" id="MathJax-Element-3">\dfrac{x_2-x_1}{PQ}, \dfrac{y_2-y_1}{PQ}, \dfrac{z_2-z_1}{PQ}</script>,</p>
+<p>If a straight line makes angles α, β and γ with the x-axis, y-axis, and z-axis respectively then cosα, cosβ, cosγ are called <a>the direction cosines of a line</a>. These are denoted as l = cosα, m = cosβ, and n = cosγ. For l, m, and n, l<sup>2</sup> + m<sup>2</sup> + n<sup>2</sup> = 1, direction cosines of a line joining the points P(<span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-1-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 113%; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>z</mi><mn>1</mn></msub></math>" role="presentation"><span id="MJXc-Node-1" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-2" class="mjx-mrow"><span id="MJXc-Node-3" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-4" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-5" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span><span id="MJXc-Node-6" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-7" class="mjx-msubsup MJXc-space1"><span class="mjx-base" style="margin-right: -0.006em;"><span id="MJXc-Node-8" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.501em; padding-right: 0.006em;">y</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-9" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span><span id="MJXc-Node-10" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-11" class="mjx-msubsup MJXc-space1"><span class="mjx-base" style="margin-right: -0.003em;"><span id="MJXc-Node-12" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em; padding-right: 0.003em;">z</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-13" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>z</mi><mn>1</mn></msub></math></span></span><script type="math/tex" id="MathJax-Element-1">x_1, y_1, z_1</script>) and Q(<span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-2-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 113%; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo>,</mo><msub><mi>z</mi><mn>2</mn></msub></math>" role="presentation"><span id="MJXc-Node-14" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-15" class="mjx-mrow"><span id="MJXc-Node-16" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-17" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-18" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-19" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-20" class="mjx-msubsup MJXc-space1"><span class="mjx-base" style="margin-right: -0.006em;"><span id="MJXc-Node-21" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.501em; padding-right: 0.006em;">y</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-22" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-23" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-24" class="mjx-msubsup MJXc-space1"><span class="mjx-base" style="margin-right: -0.003em;"><span id="MJXc-Node-25" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em; padding-right: 0.003em;">z</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-26" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo>,</mo><msub><mi>z</mi><mn>2</mn></msub></math></span></span><script type="math/tex" id="MathJax-Element-2">x_2, y_2, z_2</script>) are given as :<span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-3-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 113%; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mstyle displaystyle=&quot;true&quot; scriptlevel=&quot;0&quot;><mfrac><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>&amp;#x2212;</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle><mo>,</mo><mstyle displaystyle=&quot;true&quot; scriptlevel=&quot;0&quot;><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>&amp;#x2212;</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle><mo>,</mo><mstyle displaystyle=&quot;true&quot; scriptlevel=&quot;0&quot;><mfrac><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>&amp;#x2212;</mo><msub><mi>z</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle></math>" role="presentation"><span id="MJXc-Node-27" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-28" class="mjx-mrow"><span id="MJXc-Node-29" class="mjx-mstyle"><span id="MJXc-Node-30" class="mjx-mrow"><span id="MJXc-Node-31" class="mjx-mfrac"><span class="mjx-box MJXc-stacked" style="width: 3.344em; padding: 0px 0.12em;"><span class="mjx-numerator" style="width: 3.344em; top: -1.285em;"><span id="MJXc-Node-32" class="mjx-mrow"><span id="MJXc-Node-33" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-34" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-35" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-36" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">−</span></span><span id="MJXc-Node-37" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-38" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-39" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span></span></span><span class="mjx-denominator" style="width: 3.344em; bottom: -0.931em;"><span id="MJXc-Node-40" class="mjx-mrow"><span id="MJXc-Node-41" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.445em; padding-bottom: 0.279em; padding-right: 0.109em;">P</span></span><span id="MJXc-Node-42" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.501em; padding-bottom: 0.445em;">Q</span></span></span></span><span class="mjx-line" style="border-bottom: 1.3px solid; top: -0.285em; width: 3.344em;"></span></span><span class="mjx-vsize" style="height: 2.215em; vertical-align: -0.931em;"></span></span></span></span><span id="MJXc-Node-43" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-44" class="mjx-mstyle MJXc-space1"><span id="MJXc-Node-45" class="mjx-mrow"><span id="MJXc-Node-46" class="mjx-mfrac"><span class="mjx-box MJXc-stacked" style="width: 3.18em; padding: 0px 0.12em;"><span class="mjx-numerator" style="width: 3.18em; top: -1.321em;"><span id="MJXc-Node-47" class="mjx-mrow"><span id="MJXc-Node-48" class="mjx-msubsup"><span class="mjx-base" style="margin-right: -0.006em;"><span id="MJXc-Node-49" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.501em; padding-right: 0.006em;">y</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-50" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-51" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">−</span></span><span id="MJXc-Node-52" class="mjx-msubsup MJXc-space2"><span class="mjx-base" style="margin-right: -0.006em;"><span id="MJXc-Node-53" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.501em; padding-right: 0.006em;">y</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-54" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span></span></span><span class="mjx-denominator" style="width: 3.18em; bottom: -0.931em;"><span id="MJXc-Node-55" class="mjx-mrow"><span id="MJXc-Node-56" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.445em; padding-bottom: 0.279em; padding-right: 0.109em;">P</span></span><span id="MJXc-Node-57" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.501em; padding-bottom: 0.445em;">Q</span></span></span></span><span class="mjx-line" style="border-bottom: 1.3px solid; top: -0.285em; width: 3.18em;"></span></span><span class="mjx-vsize" style="height: 2.252em; vertical-align: -0.931em;"></span></span></span></span><span id="MJXc-Node-58" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.163em; padding-bottom: 0.556em;">,</span></span><span id="MJXc-Node-59" class="mjx-mstyle MJXc-space1"><span id="MJXc-Node-60" class="mjx-mrow"><span id="MJXc-Node-61" class="mjx-mfrac"><span class="mjx-box MJXc-stacked" style="width: 3.13em; padding: 0px 0.12em;"><span class="mjx-numerator" style="width: 3.13em; top: -1.285em;"><span id="MJXc-Node-62" class="mjx-mrow"><span id="MJXc-Node-63" class="mjx-msubsup"><span class="mjx-base" style="margin-right: -0.003em;"><span id="MJXc-Node-64" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em; padding-right: 0.003em;">z</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-65" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-66" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">−</span></span><span id="MJXc-Node-67" class="mjx-msubsup MJXc-space2"><span class="mjx-base" style="margin-right: -0.003em;"><span id="MJXc-Node-68" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em; padding-right: 0.003em;">z</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-69" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span></span></span><span class="mjx-denominator" style="width: 3.13em; bottom: -0.931em;"><span id="MJXc-Node-70" class="mjx-mrow"><span id="MJXc-Node-71" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.445em; padding-bottom: 0.279em; padding-right: 0.109em;">P</span></span><span id="MJXc-Node-72" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.501em; padding-bottom: 0.445em;">Q</span></span></span></span><span class="mjx-line" style="border-bottom: 1.3px solid; top: -0.285em; width: 3.13em;"></span></span><span class="mjx-vsize" style="height: 2.215em; vertical-align: -0.931em;"></span></span></span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle><mo>,</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle><mo>,</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>−</mo><msub><mi>z</mi><mn>1</mn></msub></mrow><mrow><mi>P</mi><mi>Q</mi></mrow></mfrac></mstyle></math></span></span><script type="math/tex" id="MathJax-Element-3">\dfrac{x_2-x_1}{PQ}, \dfrac{y_2-y_1}{PQ}, \dfrac{z_2-z_1}{PQ}</script>,</p>
 <p>where PQ = <span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-4-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 113%; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><msqrt><mo stretchy=&quot;false&quot;>(</mo><mo stretchy=&quot;false&quot;>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>&amp;#x2212;</mo><msub><mi>x</mi><mn>1</mn></msub><msup><mo stretchy=&quot;false&quot;>)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy=&quot;false&quot;>(</mo><msub><mi>y</mi><mn>2</mn></msub><mo>&amp;#x2212;</mo><msub><mi>y</mi><mn>1</mn></msub><msup><mo stretchy=&quot;false&quot;>)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy=&quot;false&quot;>(</mo><msub><mi>z</mi><mn>2</mn></msub><mo>&amp;#x2212;</mo><msub><mi>z</mi><mn>1</mn></msub><msup><mo stretchy=&quot;false&quot;>)</mo><mn>2</mn></msup></msqrt></math>" role="presentation"><span id="MJXc-Node-73" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-74" class="mjx-mrow"><span id="MJXc-Node-75" class="mjx-msqrt"><span class="mjx-box" style="padding-top: 0.045em;"><span class="mjx-surd"><span class="mjx-char MJXc-TeX-size1-R" style="padding-top: 0.611em; padding-bottom: 0.611em;">√</span></span><span class="mjx-box" style="padding-top: 0.061em; border-top: 1.4px solid;"><span id="MJXc-Node-76" class="mjx-mrow"><span id="MJXc-Node-77" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.445em; padding-bottom: 0.611em;">(</span></span><span id="MJXc-Node-78" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.445em; padding-bottom: 0.611em;">(</span></span><span id="MJXc-Node-79" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-80" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-81" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-82" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">−</span></span><span id="MJXc-Node-83" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-84" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-85" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span><span id="MJXc-Node-86" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-87" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.445em; padding-bottom: 0.611em;">)</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.409em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-88" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-89" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">+</span></span><span id="MJXc-Node-90" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.445em; padding-bottom: 0.611em;">(</span></span><span id="MJXc-Node-91" class="mjx-msubsup"><span class="mjx-base" style="margin-right: -0.006em;"><span id="MJXc-Node-92" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.501em; padding-right: 0.006em;">y</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-93" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-94" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">−</span></span><span id="MJXc-Node-95" class="mjx-msubsup MJXc-space2"><span class="mjx-base" style="margin-right: -0.006em;"><span id="MJXc-Node-96" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.501em; padding-right: 0.006em;">y</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-97" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span><span id="MJXc-Node-98" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-99" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.445em; padding-bottom: 0.611em;">)</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.409em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-100" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-101" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">+</span></span><span id="MJXc-Node-102" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.445em; padding-bottom: 0.611em;">(</span></span><span id="MJXc-Node-103" class="mjx-msubsup"><span class="mjx-base" style="margin-right: -0.003em;"><span id="MJXc-Node-104" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em; padding-right: 0.003em;">z</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-105" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span><span id="MJXc-Node-106" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.279em; padding-bottom: 0.445em;">−</span></span><span id="MJXc-Node-107" class="mjx-msubsup MJXc-space2"><span class="mjx-base" style="margin-right: -0.003em;"><span id="MJXc-Node-108" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em; padding-right: 0.003em;">z</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-109" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">1</span></span></span></span><span id="MJXc-Node-110" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-111" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.445em; padding-bottom: 0.611em;">)</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.409em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-112" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.39em; padding-bottom: 0.335em;">2</span></span></span></span></span></span></span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mo stretchy="false">(</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><msub><mi>z</mi><mn>2</mn></msub><mo>−</mo><msub><mi>z</mi><mn>1</mn></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup></msqrt></math></span></span><script type="math/tex" id="MathJax-Element-4">\sqrt{((x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}</script></p>
 <p><img alt="direction cosines of a line" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/direction-cosines-of-a-line-1626368918.png" style="width: 400px;"></p>
 <h3>Direction Ratios of a Line</h3>
@@ -801,17 +797,13 @@ const CommonCommONCOntext = {
 <td style="text-align: center"><span style="color: #0000ff">6.</span></td>
 <td><a href="#f">Time Measurement</a></td>
 </tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">7.</span></td>
-<td><a href="#g">FAQs on Measurement</a></td>
-</tr>
 </tbody>
 </table>
 <div id="a">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>What is Measurement?</h2>
 </div>
-<p><strong>Measurement</strong> is defined as the system or act of measuring. It can be understood as a process of defining physical items using <a href="https://www.cuemath.com/numbers/">numbers</a>. For example, 'this rod is bigger than that rod'. This statement is serving a very limited purpose of comparison where we do not know anything about the individual attributes of the given rods. However, if we say that the length of the first rod is 20 inches, and the length of the second rod is 15 inches, we understand that the 1st rod is bigger than the second one by 5 inches. This statement is making more sense mathematically and offers us a reason for our deduction.</p>
-<p>In mathematics, measurement is often considered as a separate branch as it includes a wide range of knowledge including conversion, units, measuring length, mass, time, etc. It is associated with other branches as well like <a href="https://www.cuemath.com/geometry/">geometry</a>, trigonometry, algebra, etc. We use the concept of measurement with the <a href="https://www.cuemath.com/geometry/shapes/">shapes</a> (area, volume, etc). Measuring heights and distances using <a href="https://www.cuemath.com/trigonometry/trigonometric-ratios/">trigonometric ratios</a> is also a type of measurement (<a href="https://www.cuemath.com/trigonometry/">trigonometry</a>). Measurement can also be done using unknown quantities or variables to establish a general relationship (<a href="https://www.cuemath.com/algebra/">algebra</a>). Now, before learning about measurement units, let us learn the abbreviations that are generally used to represent units of measurement.</p>
+<p><strong>Measurement</strong> is defined as the system or act of measuring. It can be understood as a process of defining physical items using <b>numbers</b>. For example, 'this rod is bigger than that rod'. This statement is serving a very limited purpose of comparison where we do not know anything about the individual attributes of the given rods. However, if we say that the length of the first rod is 20 inches, and the length of the second rod is 15 inches, we understand that the 1st rod is bigger than the second one by 5 inches. This statement is making more sense mathematically and offers us a reason for our deduction.</p>
+<p>In mathematics, measurement is often considered as a separate branch as it includes a wide range of knowledge including conversion, units, measuring length, mass, time, etc. It is associated with other branches as well like <b>geometry</b>, trigonometry, algebra, etc. We use the concept of measurement with the <b>shapes</b> (area, volume, etc). Measuring heights and distances using <b>trigonometric ratios</b> is also a type of measurement (<b>trigonometry</b>). Measurement can also be done using unknown quantities or variables to establish a general relationship (<b>algebra</b>). Now, before learning about measurement units, let us learn the abbreviations that are generally used to represent units of measurement.</p>
 <table class="table table-bordered">
 <thead class="bg-warning">
 <tr>
@@ -901,47 +893,22 @@ const CommonCommONCOntext = {
 </tr>
 </tbody>
 </table>
-<p>You can go ahead and explore all important topics in measurement by selecting the topics from the list given below:</p>
-<table border="1">
-<tbody>
-<tr>
-<td>
-<p><a href="https://www.cuemath.com/measurement/measuring-weight/">Measuring Weight</a></p>
-</td>
-<td>
-<p><a href="https://www.cuemath.com/measurement/measuring-capacity/">Measuring Capacity</a></p>
-</td>
-</tr>
-<tr>
-<td><a href="https://www.cuemath.com/measurement/reading-a-calendar/">Reading a Calendar</a></td>
-<td><a href="https://www.cuemath.com/measurement/metric-conversion-chart/">Metric Conversion Chart</a></td>
-</tr>
-<tr>
-<td><a href="https://www.cuemath.com/measurement/length-conversion/">Length Conversion</a></td>
-<td><a href="https://www.cuemath.com/measurement/unit-conversion/">Unit Conversion</a></td>
-</tr>
-<tr>
-<td><a href="https://www.cuemath.com/measurement/temperature-converter/">Temperature Converter</a></td>
-<td><a href="https://www.cuemath.com/measurement/reading-and-representing-time/">Reading and Representing Time</a></td>
-</tr>
-</tbody>
-</table>
 <div id="b">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Measurement Units</h2>
 </div>
-<p>There are various <strong>units of measurement</strong> depending on its type. For example, the measurement units of length are meters, centimeters, inches, feet, etc. For mass, we have kilograms, grams, pounds, tons, etc. There is a way to classify various measurement units into two types: <a href="https://www.cuemath.com/measurement/metric-system/">Metric System</a> and the U.S Standard System (Imperial System of Measurement). In each of these systems, we use different units for each type of measurement. While millimeters, centimeters, meters, and kilometers are measurement units of length under the metric system, in the US standard system, we commonly use inches, feet, yards, and miles.</p>
-<p>Observe the measurement chart given below which shows the categorization of different measurement units in these two <a href="https://www.cuemath.com/measurement/system-of-measurement/">systems of measurement</a>.</p>
+<p>There are various <strong>units of measurement</strong> depending on its type. For example, the measurement units of length are meters, centimeters, inches, feet, etc. For mass, we have kilograms, grams, pounds, tons, etc. There is a way to classify various measurement units into two types: <b>Metric System</b> and the U.S Standard System (Imperial System of Measurement). In each of these systems, we use different units for each type of measurement. While millimeters, centimeters, meters, and kilometers are measurement units of length under the metric system, in the US standard system, we commonly use inches, feet, yards, and miles.</p>
+<p>Observe the measurement chart given below which shows the categorization of different measurement units in these two <b>systems of measurement</b>.</p>
 <p><img alt="measurement units" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/measurement-units-1640001690.png" style="width: 450px;"></p>
 <div id="c">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Measurement Conversion</h2>
 </div>
-<p>Whenever we need to compare the values of the given quantities or perform <a href="https://www.cuemath.com/numbers/arithmetic-operations/">arithmetic operations</a> on them, we need to have a common unit of measurement. For example, we can add 12 meters to 10 meters to get 22 meters of length, but we cannot add 12 meters to 10 inches. In those cases, we need to know and use 'measurement conversion' to convert the given units into a common unit. Whether it is length, mass, temperature, or time, we have some formulas that can be used to get the values in a common unit. Given below is a measurement chart that can be used for such conversion.</p>
+<p>Whenever we need to compare the values of the given quantities or perform arithmetic operations on them, we need to have a common unit of measurement. For example, we can add 12 meters to 10 meters to get 22 meters of length, but we cannot add 12 meters to 10 inches. In those cases, we need to know and use 'measurement conversion' to convert the given units into a common unit. Whether it is length, mass, temperature, or time, we have some formulas that can be used to get the values in a common unit. Given below is a measurement chart that can be used for such conversion.</p>
 <p><img alt="measurement conversion - measurement chart" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/measurement-conversion-1640001792.png" style="width: 450px;"></p>
-<p>By using these values, we can apply the <a href="https://www.cuemath.com/commercial-math/unitary-method/">unitary method</a> to convert a unit to another unit of measurement. For example, if 1 inch = 2.54 centimeters, then 5 inches can be calculated by multiplying 5 by 2.54 which will give us 12.7 centimeters. In addition to the conversion within the same system of measurement, we can also convert a unit from the metric system to the standard system, and vice-versa as shown in the above example.</p>
+<p>By using these values, we can apply the unitary method to convert a unit to another unit of measurement. For example, if 1 inch = 2.54 centimeters, then 5 inches can be calculated by multiplying 5 by 2.54 which will give us 12.7 centimeters. In addition to the conversion within the same system of measurement, we can also convert a unit from the metric system to the standard system, and vice-versa as shown in the above example.</p>
 <div id="d">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Measurement of Length</h2>
 </div>
-<p>To measure length, we use measurement tapes and a ruler. We have already discussed units and conversion for the <a href="https://www.cuemath.com/measurement/measuring-length/">measurement of length</a>. There are two ways to measure length which are informal ways and formal ways. Informal ways include measuring length using hand span, thread, etc., where there is no definite relation between the quantities in numbers. The formal ways include measurement units like meters, inches, etc., which give meaning and structure to our findings. The following table gives some of the units and their conversions related to the length measurement.</p>
+<p>To measure length, we use measurement tapes and a ruler. We have already discussed units and conversion for the <b>measurement of length</b>. There are two ways to measure length which are informal ways and formal ways. Informal ways include measuring length using hand span, thread, etc., where there is no definite relation between the quantities in numbers. The formal ways include measurement units like meters, inches, etc., which give meaning and structure to our findings. The following table gives some of the units and their conversions related to the length measurement.</p>
 <table border="1">
 <tbody>
 <tr>
@@ -991,7 +958,7 @@ const CommonCommONCOntext = {
 <div id="e">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Measurement of Mass</h2>
 </div>
-<p>Mass is the amount of matter present in an object. To measure <a href="https://www.cuemath.com/measurement/mass/">mass</a>, we use various units like grams, <a href="https://www.cuemath.com/measurement/kilogram/">kilograms</a>, milligrams, pounds, ounces, tons, etc. It is measured using a scale or a weighing balance. To convert mass from one unit to another, we can use the following conversions:</p>
+<p>Mass is the amount of matter present in an object. To measure <span>mass</span>, we use various units like grams, <a>kilograms</a>, milligrams, pounds, ounces, tons, etc. It is measured using a scale or a weighing balance. To convert mass from one unit to another, we can use the following conversions:</p>
 <table border="1">
 <tbody>
 <tr>
@@ -1034,21 +1001,15 @@ const CommonCommONCOntext = {
 <div id="f">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Time Measurement</h2>
 </div>
-<p>Measurement of <a href="https://www.cuemath.com/measurement/time/">time</a> can be done using various units like seconds, minutes, hours, weeks, days, fortnights, months, and years. To write time, we use <a href="https://www.cuemath.com/measurement/am-pm/">A.M and P.M</a>, but to measure it these units are used. Observe the measurement chart given below which shows the units of measuring time along with their conversions.</p>
+<p>Measurement of <a>time</a> can be done using various units like seconds, minutes, hours, weeks, days, fortnights, months, and years. To write time, we use <a>A.M and P.M</a>, but to measure it these units are used. Observe the measurement chart given below which shows the units of measuring time along with their conversions.</p>
 <p><img alt="time measurement" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/time-measurement-1-1640002641.png" style="width: 350px;"></p>
-<p>In 1 year, there are 365 days or 52 weeks and 1 day, but in a leap year, there are 366 days or 52 weeks and 2 days. A leap year can be identified by dividing it by 4. If it is exactly <a href="https://www.cuemath.com/numbers/divisibility-rule-of-4/">divisible by 4</a>, then it is a leap year, otherwise, it is not. For example, 2020 was a leap year as 2020 is divisible by 4. For century years like 2000, 2100, 3000, etc., we check their divisibility by 400 to find out whether they are leap years or not.</p>
-<p><strong>► Related Topics:</strong></p>
-<p>Check these interesting articles related to the measurement.</p>
-<ul>
-<li><a href="https://www.cuemath.com/measurement-formulas/">Measurement Formulas</a></li>
-<li><a href="https://www.cuemath.com/measurement/litres-to-milliliters/">Liters to Milliliters</a></li>
-<li><a href="https://www.cuemath.com/measurement/measuring-cup/">Measuring Cup</a></li>
-</ul>
+<p>In 1 year, there are 365 days or 52 weeks and 1 day, but in a leap year, there are 366 days or 52 weeks and 2 days. A leap year can be identified by dividing it by 4. If it is exactly <a>divisible by 4</a>, then it is a leap year, otherwise, it is not. For example, 2020 was a leap year as 2020 is divisible by 4. For century years like 2000, 2100, 3000, etc., we check their divisibility by 400 to find out whether they are leap years or not.</p>
 </div>
 `,
-  data: `<div id="learnSection" class="learnSection">
+  data: `
+<div id="learnSection" class="learnSection">
 <p>Data can be of several types: data that you input into a computer program to get an output; it can also be statistics of a country's population. In fact, this information that you are reading at the moment can also be classified as data.&nbsp;Data in math can be any information or fact. It can be a number, an observation, an alphabet, or any collective knowledge about anything.&nbsp;</p>
-<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%; display: none;" class="subMenuSticky">
+<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%;" class="subMenuSticky">
 <tbody>
 <tr>
 <td style="text-align: center"><span style="color: #0000ff">1.</span></td>
@@ -1062,10 +1023,6 @@ const CommonCommONCOntext = {
 <td style="text-align: center"><span style="color: #0000ff">3.</span></td>
 <td><a href="#pri">Primary And Secondary Data</a></td>
 </tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">4.</span></td>
-<td><a href="#FAQ">FAQs on Data</a></td>
-</tr>
 </tbody>
 </table>
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>What is Meant by Data?</h2>
@@ -1075,27 +1032,6 @@ const CommonCommONCOntext = {
 <li>The list of student names in a class</li>
 <li>Physical attributes such as age, height, weight, etc.</li>
 </ul>
-<p>You can go ahead and explore all important topics in Data by selecting the topics from this list below:</p>
-<table border="1" cellpadding="10" cellspacing="1" style="max-width:100%;width:100%;">
-<tbody>
-<tr>
-<td><a href="https://www.cuemath.com/data/data-handling/">Data Handling</a></td>
-<td><a href="https://www.cuemath.com/data/discrete-data/">Discrete Data</a></td>
-</tr>
-<tr>
-<td><a href="https://www.cuemath.com/data/pictographs/">Pictograph</a></td>
-<td><a href="https://www.cuemath.com/data/pie-charts/">Pie Chart</a></td>
-</tr>
-<tr>
-<td><a href="https://www.cuemath.com/data/line-graphs/">Line graph</a></td>
-<td><a href="https://www.cuemath.com/data/bar-graphs/">Bar Graph</a></td>
-</tr>
-<tr>
-<td><a href="https://www.cuemath.com/data/combinations/">Combinations</a></td>
-<td><a href="https://www.cuemath.com/data/histograms/">Histogram</a></td>
-</tr>
-</tbody>
-</table>
 <p>Data handling refers to the process of gathering, recording, and presenting information in a way that is helpful to others. Data is usually represented in the form of pictographs, bar graphs, pie charts, histograms, line graphs, etc. Below given are different ways to represent data:</p>
 <ul>
 <li>Pictograph</li>
@@ -1105,24 +1041,24 @@ const CommonCommONCOntext = {
 <li>Histogram</li>
 </ul>
 <h3>Pictograph</h3>
-<p>A <a href="https://www.cuemath.com/data/pictographs/">pictograph</a>&nbsp;is a representation of data using different images or symbols." Pictographs in maths typically find application in concepts like&nbsp;<a href="https://www.cuemath.com/data/data-handling/">data handling</a>. They help in laying the foundation for the interpretation of data based on pictorial information.</p>
+<p>A <a>pictograph</a>&nbsp;is a representation of data using different images or symbols." Pictographs in maths typically find application in concepts like&nbsp;<a>data handling</a>. They help in laying the foundation for the interpretation of data based on pictorial information.</p>
 <p>For example, the pictograph given below depicts the data of the different types of pizzas that were ordered on a random day.&nbsp;</p>
 <p><img alt="Pictograph used for data handling" class="max-width:100%" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/data-image-1-1614593402.png" style="width: 400px; max-width: 100%;"></p>
 <h3>Pie-Chart</h3>
-<p>A <a href="https://www.cuemath.com/data/pie-charts/">pie chart</a> is another type of graph that is used to&nbsp;visually display data in a circular graph. Pie charts are one of the most commonly used graphs for&nbsp;the representation of data using the attributes of<a href="https://www.cuemath.com/geometry/circles/"> <span style="background-color:null;">circles</span></a><span style="background-color:null;">, </span><a href="https://www.cuemath.com/geometry/sphere/"><span style="background-color:null;">spheres</span></a><span style="background-color:null;">,</span> and angular data to represent real-world information. Pie charts are circular-shaped charts that record discrete data whereby&nbsp;pie represents the whole and the slices represent the parts of the whole.</p>
+<p>A <a>pie chart</a> is another type of graph that is used to&nbsp;visually display data in a circular graph. Pie charts are one of the most commonly used graphs for&nbsp;the representation of data using the attributes of<a"> <span style="background-color:null;">circles</span></a><span style="background-color:null;">, </span><a><span style="background-color:null;">spheres</span></a><span style="background-color:null;">,</span> and angular data to represent real-world information. Pie charts are circular-shaped charts that record discrete data whereby&nbsp;pie represents the whole and the slices represent the parts of the whole.</p>
 <p>For example,&nbsp;the pie chart&nbsp;given below depicts the data of the different kinds of desserts preferred by kids at model school.&nbsp;</p>
 <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img alt="pie charts application in data handling" class="max-width:100%" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/data-image-2-1614593446.png" style="max-width: 100%; width: 400px;"></p>
 <h3>Bar-Graph</h3>
-<p>The <a href="https://www.cuemath.com/data/bar-graphs/">bar graph</a><strong>&nbsp;</strong>is a specific way of&nbsp;data representation&nbsp;using<strong>&nbsp;rectangular bars,</strong>&nbsp;where the length of each bar is proportional to the value the bar&nbsp;represents. Bar graphs, also referred to as&nbsp;are the pictorial representation of grouped data. Bar graphs are one of the examples&nbsp;of&nbsp;data handling that are an excellent tool when representing data that are independent of one another and don’t need to be in any specific order while being represented.</p>
+<p>The <a>bar graph</a><strong>&nbsp;</strong>is a specific way of&nbsp;data representation&nbsp;using<strong>&nbsp;rectangular bars,</strong>&nbsp;where the length of each bar is proportional to the value the bar&nbsp;represents. Bar graphs, also referred to as&nbsp;are the pictorial representation of grouped data. Bar graphs are one of the examples&nbsp;of&nbsp;data handling that are an excellent tool when representing data that are independent of one another and don’t need to be in any specific order while being represented.</p>
 <p>For example,&nbsp;the bar graph given below depicts the data of the number of employees in the different departments of Cmath Inc.</p>
 <p><img alt="Bar graph used for data handling" class="max-width:100%" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/data-image-3-1614593486.png" style="width: 500px; max-width: 100%;"></p>
 <h3>Line-Graph</h3>
-<p>A <a href="https://www.cuemath.com/data/line-graphs/">line graph</a> is a special type of graph used to display change over time as a series of data points connected by straight line segments on two axes.&nbsp;The line graph, also called a line chart, helps to determine the relationship between two sets of values, with one data set always being dependent on the other set.</p>
+<p>A <a>line graph</a> is a special type of graph used to display change over time as a series of data points connected by straight line segments on two axes.&nbsp;The line graph, also called a line chart, helps to determine the relationship between two sets of values, with one data set always being dependent on the other set.</p>
 <p>They are helpful in demonstrating&nbsp;information factors and patterns unmistakably. Line diagrams can make future expectations about the consequences of information not yet recorded.</p>
 <p>For example, the line&nbsp;graph&nbsp;given below depicts the data of the pass percentage of Grade 7 students in a scholarship exam from the year 2010-2016.&nbsp;</p>
 <p><img alt="Line graph used for data handling" class="max-width:100%" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/data-image-4-1614593516.png" style="width: 450px; max-width: 100%;"></p>
 <h3>Histogram</h3>
-<p>A <a href="https://www.cuemath.com/data/histograms/">histogram</a> is defined as a graph with a set of rectangles with bases along with the intervals between class boundaries. Each&nbsp;<a href="https://www.cuemath.com/geometry/rectangle/">rectangle</a>&nbsp;depicts some sort of data and all the rectangles ar<span style="background-color:null;">e </span><a href="https://www.cuemath.com/geometry/adjacent/"><span style="background-color:null;">adjacent</span></a><span style="background-color:null;">.</span> The heights of rectangles are proportional&nbsp;to corresponding frequencies of similar&nbsp;as well as&nbsp;for different classes.&nbsp;For example, the bar graph given below depicts the data of the preference of a particular sport among people.&nbsp;</p>
+<p>A <a>histogram</a> is defined as a graph with a set of rectangles with bases along with the intervals between class boundaries. Each&nbsp;<a>rectangle</a>&nbsp;depicts some sort of data and all the rectangles ar<span style="background-color:null;">e </span><a><span style="background-color:null;">adjacent</span></a><span style="background-color:null;">.</span> The heights of rectangles are proportional&nbsp;to corresponding frequencies of similar&nbsp;as well as&nbsp;for different classes.&nbsp;For example, the bar graph given below depicts the data of the preference of a particular sport among people.&nbsp;</p>
 <p><img alt="Histogram used for data handling" class="max-width:100%" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/data-image-5-1614598800.png" style="width: 400px; max-width: 100%;"></p>
 <div id="What-Are-The-Different-Types-of-Data">
 <div id="types">
@@ -1150,7 +1086,7 @@ const CommonCommONCOntext = {
 <h4><strong>Quantitative Data -&nbsp;</strong>As the name suggests it deals with quantity and quantity is related to numbers. It is also known as numeric data. For example the number of bananas in a dozen, the number of candies in a box, etc.<br>
 	Quantitative Data is further classified as:<br>
 <br>
-<strong><span style="background-color:null;">1.</span></strong><span style="background-color:null;">&nbsp;</span><strong><a href="https://www.cuemath.com/data/discrete-data/"><span style="background-color:null;">Discrete Data</span></a></strong>&nbsp;- This type of data takes values that can be counted such as counting the number of fruits on a tree, the number of students in a class, etc. An example is shown in the form of an image given&nbsp;below:</h4>
+<strong><span style="background-color:null;">1.</span></strong><span style="background-color:null;">&nbsp;</span><strong><a><span style="background-color:null;">Discrete Data</span></a></strong>&nbsp;- This type of data takes values that can be counted such as counting the number of fruits on a tree, the number of students in a class, etc. An example is shown in the form of an image given&nbsp;below:</h4>
 </li>
 </ul>
 <p style="margin: 0cm 0cm 8pt 40px;"><img alt="Count orange on the tree Premium Vector" class="max-width:100%" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/data-image-9-1614593674.png" style="width: 350px; max-width: 100%;"></p>
@@ -1175,11 +1111,13 @@ const CommonCommONCOntext = {
 <li>Make sure under which category your data falls while recording.</li>
 <li>It is important to make use of a combination of the types of data&nbsp;to improve any type of evaluation.</li>
 </ul>
-</div>`,
-  algebra: `<div id="learnSection" class="learnSection">
+</div>
+`,
+  algebra: `
+  <div id="learnSection" class="learnSection">
 <p>Algebra is the branch of mathematics that helps in the representation of problems or situations in the form of mathematical expressions. It involves variables like x, y, z, and mathematical operations like addition, subtraction, multiplication, and division to form a meaningful mathematical expression. All the branches of mathematics such as trigonometry, calculus, and coordinate geometry, involve the use of algebra. One simple example of an expression in algebra is 2x + 4 = 8.</p>
 <p>Algebra deals with symbols and these symbols are related to each other with the help of operators. It is not just a mathematical concept, but a skill that all of us use in our daily life without even realizing it. Understanding algebra as a concept is more important than solving equations and finding the right answer, as it is useful in all the other topics of mathematics that you are going to learn in the future or you have already learned in the past.</p>
-<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%; display: none;" class="">
+<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%; class="">
 <tbody>
 <tr>
 <td style="text-align: center"><span style="color: #0000ff">1.</span></td>
@@ -1205,16 +1143,12 @@ const CommonCommONCOntext = {
 <td style="text-align: center"><span style="color: #0000ff">6.</span></td>
 <td><a href="#basic">Basic Rules and Properties of Algebra</a></td>
 </tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">7.</span></td>
-<td><a href="#faqonalg">FAQs on Algebra</a></td>
-</tr>
 </tbody>
 </table>
 <div id="what">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>What is Algebra?</h2>
 </div>
-<p>Algebra is a branch of mathematics that deals with symbols and the arithmetic operations across these symbols. These symbols do not have any fixed values and are called <a href="https://www.cuemath.com/algebra/variables-constants-and-expressions/">variables.</a> In our real-life problems, we often see certain values that keep on changing. But there is a constant need to represent these changing values. Here in algebra, these values are often represented with symbols such as x, y, z, p, or q, and these symbols are called variables. Further, these symbols are manipulated through various arithmetic operations of <a href="https://www.cuemath.com/numbers/addition/">addition</a>, subtraction, <a href="https://www.cuemath.com/numbers/multiplication/">multiplication</a>, and division, with the objective to find the values.</p>
+<p>Algebra is a branch of mathematics that deals with symbols and the arithmetic operations across these symbols. These symbols do not have any fixed values and are called <a>variables.</a> In our real-life problems, we often see certain values that keep on changing. But there is a constant need to represent these changing values. Here in algebra, these values are often represented with symbols such as x, y, z, p, or q, and these symbols are called variables. Further, these symbols are manipulated through various arithmetic operations of <a>addition</a>, subtraction, <a>multiplication</a>, and division, with the objective to find the values.</p>
 <p><img alt="Algebraic Equation" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/algebric-expression-image-3-1615010733.png" style="width: 300px;"></p>
 <p>The above algebraic expressions are made up of variables, operators, and constants. Here the numbers 4 and 28 are constants, x is the variable, and the arithmetic operation of addition is performed.</p>
 <div id="branches">
@@ -1228,42 +1162,42 @@ const CommonCommONCOntext = {
 <li>Universal Algebra</li>
 </ul>
 <h3>Pre-algebra</h3>
-<p>The basic ways of presenting the unknown values as variables help to create mathematical expressions. It helps in transforming real-life problems into an <a href="https://www.cuemath.com/algebra/algebraic-expression/">algebraic expression</a> in mathematics. Forming a mathematical expression of the given problem statement is part of pre-algebra.</p>
+<p>The basic ways of presenting the unknown values as variables help to create mathematical expressions. It helps in transforming real-life problems into an <a>algebraic expression</a> in mathematics. Forming a mathematical expression of the given problem statement is part of pre-algebra.</p>
 <h3>Elementary Algebra</h3>
-<p>Elementary algebra deals with solving the algebraic expressions for a viable answer. In elementary algebra, simple variables like x, y, are represented in the form of an equation. Based on the degree of the variable, the equations are called linear equations, quadratic equations, polynomials. <a href="https://www.cuemath.com/algebra/linear-equations/"> Linear equations</a> are of the form, ax + b = c, ax + by + c = 0, ax + by + cz + d = 0. Elementary algebra based on the degree of the variables, branches out into quadratic equations and polynomials. A general form of representation of a quadratic equation is ax<sup>2</sup> + bx + c = 0, and for a polynomial equation, it is ax<sup>n </sup>+ bx<sup>n-1</sup>+ cx<sup>n-2</sup>+ .....k = 0.</p>
+<p>Elementary algebra deals with solving the algebraic expressions for a viable answer. In elementary algebra, simple variables like x, y, are represented in the form of an equation. Based on the degree of the variable, the equations are called linear equations, quadratic equations, polynomials. <a> Linear equations</a> are of the form, ax + b = c, ax + by + c = 0, ax + by + cz + d = 0. Elementary algebra based on the degree of the variables, branches out into quadratic equations and polynomials. A general form of representation of a quadratic equation is ax<sup>2</sup> + bx + c = 0, and for a polynomial equation, it is ax<sup>n </sup>+ bx<sup>n-1</sup>+ cx<sup>n-2</sup>+ .....k = 0.</p>
 <h3>Abstract Algebra</h3>
 <p>Abstract algebra deals with the use of abstract concepts like groups, rings, vectors rather than simple mathematical number systems. Rings are a simple level of abstraction found by writing the addition and multiplication properties together. Group theory and ring theory are two important concepts of abstract algebra. Abstract algebra finds numerous applications in computer sciences, physics, astronomy, and uses vector spaces to represent quantities.</p>
 <h3>Universal Algebra</h3>
-<p>All the other mathematical forms involving trigonometry, <a href="https://www.cuemath.com/calculus/">calculus</a>, <a href="https://www.cuemath.com/geometry/coordinate-geometry/">coordinate geometry</a> involving algebraic expressions can be accounted as universal algebra. Across these topics, universal algebra studies mathematical expressions and does not involve the study of models of algebra. All the other branches of algebra can be considered as the subset of universal algebra. Any of the real-life problems can be classified into one of the branches of mathematics and can be solved using abstract algebra.</p>
+<p>All the other mathematical forms involving trigonometry, <a>calculus</a>, <a>coordinate geometry</a> involving algebraic expressions can be accounted as universal algebra. Across these topics, universal algebra studies mathematical expressions and does not involve the study of models of algebra. All the other branches of algebra can be considered as the subset of universal algebra. Any of the real-life problems can be classified into one of the branches of mathematics and can be solved using abstract algebra.</p>
 <div id="algtopics">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Algebra Topics</h2>
 </div>
-<p>Algebra is divided into numerous topics to help for a detailed study. Here, we have listed some of the important topics of algebra such as algebraic expressions and equations, <a href="https://www.cuemath.com/numbers/sequence-and-series/">sequence and series</a>, exponents, logarithm, and sets.</p>
+<p>Algebra is divided into numerous topics to help for a detailed study. Here, we have listed some of the important topics of algebra such as algebraic expressions and equations, <a>sequence and series</a>, exponents, logarithm, and sets.</p>
 <h3>Algebraic Expressions</h3>
-<p>An algebraic expression in algebra is formed using <a href="https://www.cuemath.com/numbers/integers/">integer</a> constants, variables, and basic arithmetic operations of addition(+), <a href="https://www.cuemath.com/numbers/subtraction/">subtraction</a>(-), multiplication(×), and <a href="https://www.cuemath.com/numbers/division/">division</a>(/). An example of an algebraic expression is 5x + 6. Here 5 and 6 are fixed numbers and x is a variable. Further, the variables can be simple variables using alphabets like x, y, z or can have complex variables like x<sup>2</sup>, x<sup>3</sup>, x<sup>n</sup>, xy, x<sup>2</sup>y, etc. Algebraic expressions are also known as polynomials. A <a href="https://www.cuemath.com/algebra/polynomials/">polynomial</a> is an expression consisting of variables (also called indeterminates), coefficients, and non-negative integer exponents of variables. Example: 5x<sup>3</sup> + 4x<sup>2</sup> + 7x + 2 = 0.</p>
+<p>An algebraic expression in algebra is formed using <a>integer</a> constants, variables, and basic arithmetic operations of addition(+), <a>subtraction</a>(-), multiplication(×), and <a>division</a>(/). An example of an algebraic expression is 5x + 6. Here 5 and 6 are fixed numbers and x is a variable. Further, the variables can be simple variables using alphabets like x, y, z or can have complex variables like x<sup>2</sup>, x<sup>3</sup>, x<sup>n</sup>, xy, x<sup>2</sup>y, etc. Algebraic expressions are also known as polynomials. A <a>polynomial</a> is an expression consisting of variables (also called indeterminates), coefficients, and non-negative integer exponents of variables. Example: 5x<sup>3</sup> + 4x<sup>2</sup> + 7x + 2 = 0.</p>
 <p><img alt="Algebraic Expression - Basic Algebra Examples" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/algebraic-expression-1643716398.png" style="width: 400px;"></p>
 <p>An equation is a mathematical statement with an 'equal to' symbol between two algebraic expressions that have equal values. Given below are the different types of equations, based on the degree of the variable, where we apply the concept of algebra:</p>
 <ul>
 <li><strong>Linear Equations: </strong>Linear equations help in representing the relationship between variables such as x, y, z, and are expressed in exponents of one degree. In these linear equations, we use algebra, starting from the basics such as the addition and subtraction of algebraic expressions.</li>
-<li><strong>Quadratic Equations</strong>: A <a href="https://www.cuemath.com/algebra/quadratic-equations/">quadratic equation</a> can be written in the standard form as ax<sup>2 </sup>+ bx + c = 0, where a, b, c are constants and x is the variable. The values of x that satisfy the equation are called solutions of the equation, and a quadratic equation has at most two solutions.</li>
-<li><strong>Cubic Equations:</strong> The algebraic equations having variables with power 3 are referred to as cubic equations. A generalized form of a cubic equation is ax<sup>3</sup> + bx<sup>2</sup> + cx + d = 0. A cubic equation has numerous applications in calculus and three-dimensional geometry (<a href="https://www.cuemath.com/geometry/3d-geometry/">3D Geometry</a>).</li>
+<li><strong>Quadratic Equations</strong>: A <a>quadratic equation</a> can be written in the standard form as ax<sup>2 </sup>+ bx + c = 0, where a, b, c are constants and x is the variable. The values of x that satisfy the equation are called solutions of the equation, and a quadratic equation has at most two solutions.</li>
+<li><strong>Cubic Equations:</strong> The algebraic equations having variables with power 3 are referred to as cubic equations. A generalized form of a cubic equation is ax<sup>3</sup> + bx<sup>2</sup> + cx + d = 0. A cubic equation has numerous applications in calculus and three-dimensional geometry (<a>3D Geometry</a>).</li>
 </ul>
 <h3>Sequence and Series</h3>
 <p>A set of numbers having a relationship across the numbers is called a sequence. A sequence is a set of numbers having a common mathematical relationship between the number, and a series is the sum of the terms of a sequence. In mathematics, we have two broad number sequences and series in the form of arithmetic progression and geometric progression. Some of these series are finite and some series are infinite. The two series are also called arithmetic progression and geometric progression and can be represented as follows.</p>
 <ul>
-<li><strong>Arithmetic Progression: </strong>An <a href="https://www.cuemath.com/algebra/arithmetic-progressions/">Arithmetic progression (AP)</a> is a special type of progression in which the difference between two consecutive terms is always a constant. The terms of an arithmetic progression series is a, a+d, a + 2d, a + 3d, a + 4d, a + 5d, .....</li>
-<li><strong>Geometric Progression: </strong>Any progression in which the ratio of adjacent terms is fixed is a <a href="https://www.cuemath.com/algebra/what-are-geometric-progressions/">Geometric Progression</a>. The general form of representation of a geometric sequence is a, ar, ar<sup>2</sup>, ar<sup>3</sup>, ar<sup>4</sup>, ar<sup>5</sup>, .....</li>
+<li><strong>Arithmetic Progression: </strong>An <a>Arithmetic progression (AP)</a> is a special type of progression in which the difference between two consecutive terms is always a constant. The terms of an arithmetic progression series is a, a+d, a + 2d, a + 3d, a + 4d, a + 5d, .....</li>
+<li><strong>Geometric Progression: </strong>Any progression in which the ratio of adjacent terms is fixed is a <a>Geometric Progression</a>. The general form of representation of a geometric sequence is a, ar, ar<sup>2</sup>, ar<sup>3</sup>, ar<sup>4</sup>, ar<sup>5</sup>, .....</li>
 </ul>
 <h3>Exponents</h3>
-<p>Exponent is a mathematical operation, written as a<sup>n</sup>. Here the expression a<sup>n</sup> involves two numbers, the base 'a' and the exponent or power 'n'. <a href="https://www.cuemath.com/algebra/exponents/">Exponents</a> are used to simplify algebraic expressions. In this section, we are going to learn in detail about exponents including squares, cubes, <a href="https://www.cuemath.com/algebra/squares-and-square-roots/">square root</a>, and <a href="https://www.cuemath.com/algebra/cubes-and-cube-roots/">cube root</a>. The names are based on the powers of these exponents. The exponents can be represented in the form a<sup>n</sup> = a × a × a × ... n times.</p>
+<p>Exponent is a mathematical operation, written as a<sup>n</sup>. Here the expression a<sup>n</sup> involves two numbers, the base 'a' and the exponent or power 'n'. <a>Exponents</a> are used to simplify algebraic expressions. In this section, we are going to learn in detail about exponents including squares, cubes, <a>square root</a>, and <a>cube root</a>. The names are based on the powers of these exponents. The exponents can be represented in the form a<sup>n</sup> = a × a × a × ... n times.</p>
 <h3>Logarithms</h3>
-<p>The logarithm is the inverse function to exponents in algebra. <a href="https://www.cuemath.com/algebra/logarithms/">Logarithms</a> are a convenient way to simplify large algebraic expressions. The exponential form represented as a<sup>x</sup> = n can be transformed into logarithmic form as log<span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-1-Frame" class="mjx-chtml MathJax_CHTML" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><msub><mi></mi><mi>a</mi></msub></math>" role="presentation" data-lrn-mathjax-postprocessed="true" style="font-size: 113%; position: relative;"><span id="MJXc-Node-1" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-2" class="mjx-mrow"><span id="MJXc-Node-3" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-4" class="mjx-mi"><span class="mjx-char"></span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-5" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">a</span></span></span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi></mi><mi>a</mi></msub></math></span></span><script type="math/tex" id="MathJax-Element-1">_a</script>n = x. John Napier discovered the concept of Logarithms in 1614. Logarithms have now become an integral part of modern mathematics.</p>
+<p>The logarithm is the inverse function to exponents in algebra. <a>Logarithms</a> are a convenient way to simplify large algebraic expressions. The exponential form represented as a<sup>x</sup> = n can be transformed into logarithmic form as log<span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-1-Frame" class="mjx-chtml MathJax_CHTML" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><msub><mi></mi><mi>a</mi></msub></math>" role="presentation" data-lrn-mathjax-postprocessed="true" style="font-size: 113%; position: relative;"><span id="MJXc-Node-1" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-2" class="mjx-mrow"><span id="MJXc-Node-3" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-4" class="mjx-mi"><span class="mjx-char"></span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-5" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.224em; padding-bottom: 0.279em;">a</span></span></span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi></mi><mi>a</mi></msub></math></span></span><script type="math/tex" id="MathJax-Element-1">_a</script>n = x. John Napier discovered the concept of Logarithms in 1614. Logarithms have now become an integral part of modern mathematics.</p>
 <h3>Sets</h3>
-<p>A <a href="https://www.cuemath.com/algebra/sets/">set</a> is a well-defined collection of distinct objects and is used to represent algebraic variables. The purpose of using sets is to represent the collection of relevant objects in a group. Example: Set A = {2, 4, 6, 8}..........(A set of even numbers), Set B = {a, e, i, o, u}......(A set of vowels).</p>
+<p>A <a>set</a> is a well-defined collection of distinct objects and is used to represent algebraic variables. The purpose of using sets is to represent the collection of relevant objects in a group. Example: Set A = {2, 4, 6, 8}..........(A set of even numbers), Set B = {a, e, i, o, u}......(A set of vowels).</p>
 <div id="algform">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Algebraic Formulas</h2>
 </div>
-<p>An <a href="https://www.cuemath.com/algebra/algebraic-identities/">algebraic identity </a>is an equation that is always true regardless of the values assigned to the variables. Identity means that the left-hand side of the equation is identical to the right-hand side, for all values of the variables. These formulae involve squares and cubes of algebraic expressions and help in solving the algebraic expressions in a few quick steps. The frequently used algebraic formulas are listed below.</p>
+<p>An <a>algebraic identity </a>is an equation that is always true regardless of the values assigned to the variables. Identity means that the left-hand side of the equation is identical to the right-hand side, for all values of the variables. These formulae involve squares and cubes of algebraic expressions and help in solving the algebraic expressions in a few quick steps. The frequently used algebraic formulas are listed below.</p>
 <ul>
 <li>(a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup></li>
 <li>(a - b)<sup>2</sup> = a<sup>2</sup> - 2ab + b<sup>2</sup></li>
@@ -1279,7 +1213,7 @@ const CommonCommONCOntext = {
 Using algebra formula (a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup>, we have,<br>
 (100 + 1)<sup>2</sup> = (100)<sup>2</sup> + 2(1)(100) + (1)<sup>2</sup><br>
 (101)<sup>2</sup> = 10201</p>
-<p>For more formulas check the page of <a href="https://www.cuemath.com/algebra/algebraic-formulas/">algebraic formulas</a>, containing the formulas for expansion of algebraic expressions, exponents, and logarithmic formulas.</p>
+<p>For more formulas check the page of <a>algebraic formulas</a>, containing the formulas for expansion of algebraic expressions, exponents, and logarithmic formulas.</p>
 <div id="operations">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Algebraic Operations</h2>
 </div>
@@ -1295,30 +1229,23 @@ Using algebra formula (a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup>,
 </div>
 <p>The basic rules or properties of algebra for variables, algebraic expressions, or real numbers a, b and c are as given below,</p>
 <ul>
-<li><a href="https://www.cuemath.com/numbers/commutative-property/">Commutative Property</a> of Addition: a + b = b + a</li>
-<li><a href="https://www.cuemath.com/numbers/commutative-property-of-multiplication/">Commutative Property of Multiplication</a>: a × b = b × a</li>
-<li><a href="https://www.cuemath.com/numbers/associative-property-of-addition/">Associative Property of Addition</a>: a + (b + c) = (a + b) + c</li>
-<li><a href="https://www.cuemath.com/numbers/associative-property-of-multiplication/">Associative Property of Multiplication</a>: a × (b × c) = (a × b) × c</li>
-<li><a href="https://www.cuemath.com/numbers/distributive-property/">Distributive Property</a>: a × (b + c) = (a × b) + (a × c), or, a × (b - c) = (a × b) - (a × c)</li>
-<li><a href="https://www.cuemath.com/numbers/reciprocal-definition/">Reciprocal</a>: Reciprocal of a = 1/a</li>
-<li><a href="https://www.cuemath.com/numbers/additive-identity-property/">Additive Identity Property</a>: a + 0 = 0 + a = a</li>
-<li><a href="https://www.cuemath.com/numbers/multiplicative-identity-property/">Multiplicative Identity Property</a>: a × 1 = 1 × a = a</li>
-<li><a href="https://www.cuemath.com/numbers/additive-inverse/">Additive Inverse</a>: a + (-a) = 0</li>
+<li><b>Commutative Property</b> of Addition: a + b = b + a</li>
+<li><b>Commutative Property of Multiplication</b>: a × b = b × a</li>
+<li><b>Associative Property of Addition</b>: a + (b + c) = (a + b) + c</li>
+<li><b>Associative Property of Multiplication</b>: a × (b × c) = (a × b) × c</li>
+<li><b>Distributive Property</b>: a × (b + c) = (a × b) + (a × c), or, a × (b - c) = (a × b) - (a × c)</li>
+<li><b>Reciprocal</b>: Reciprocal of a = 1/a</li>
+<li><b>Additive Identity Property</b>: a + 0 = 0 + a = a</li>
+<li><b>Multiplicative Identity Property</b>: a × 1 = 1 × a = a</li>
+<li><b>Additive Inverse</b>: a + (-a) = 0</li>
 </ul>
-<p><strong>☛ Related Topics:</strong></p>
-<ul>
-<li><a href="https://www.cuemath.com/algebra/algebra-1/">Algebra 1</a></li>
-<li><a href="https://www.cuemath.com/algebra/addition-of-algebraic-expressions/">Addition of Algebraic Expressions</a></li>
-<li><a href="https://www.cuemath.com/algebra/subtraction-of-algebraic-expressions/">Subtraction of Algebraic Expressions</a></li>
-<li><a href="https://www.cuemath.com/algebra/multiplication-of-algebraic-expressions/">Multiplication of Algebraic Expressions</a></li>
-<li><a href="https://www.cuemath.com/algebra/division-of-algebraic-expressions/">Division of Algebraic Expressions</a></li>
-</ul>
-<p>Cuemath is one of the world's leading math learning platforms that offers LIVE 1-to-1 <a href="https://www.cuemath.com/">online math classes for grades K-12</a>. Our mission is to transform the way children learn math, to help them excel in school and competitive exams. Our expert tutors conduct 2 or more live classes per week, at a pace that matches the child's learning needs.</p>
-</div>`,
-  trigonometry: `<div id="learnSection" class="learnSection">
+</div>
+`,
+  trigonometry: `
+  <div id="learnSection" class="learnSection">
 <p>Trigonometry is the branch of mathematics that deals with the relationship between ratios of the sides of a right-angled triangle with its angles. The ratios used to study this relationship are called trigonometric ratios, namely, sine, cosine, tangent, cotangent, secant, cosecant. The word trigonometry is a 16th century Latin derivative and the concept was given by the Greek mathematician Hipparchus.</p>
 <p>Here in the below content, we shall understand the basics of trigonometry, the various identities-formulas of trigonometry, and the real-life examples or applications of trigonometry.</p>
-<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%; display: none;" class="">
+<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%;" class="">
 <tbody>
 <tr>
 <td style="text-align: center"><span style="color: #0000ff">1.</span></td>
@@ -1356,16 +1283,12 @@ Using algebra formula (a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup>,
 <td style="text-align: center"><span style="color: #0000ff">9. </span></td>
 <td><a href="#app">Applications of Trigonometry</a></td>
 </tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">10. </span></td>
-<td><a href="#FAQ">FAQs on Trigonometry</a></td>
-</tr>
 </tbody>
 </table>
 <div id="intro">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Introduction to Trigonometry</h2>
 </div>
-<p>Trigonometry is one of the most important branches in mathematics. The word trigonometry is formed by clubbing words 'Trigonon' and 'Metron' which means triangle and measure respectively. It is the study of the relation between the sides and <a href="https://www.cuemath.com/geometry/angles/">angles</a> of a right-angled triangle. It thus helps in finding the measure of unknown dimensions of a <a href="https://www.cuemath.com/geometry/right-angled-triangle/">right-angled triangle</a> using formulas and identities based on this relationship.</p>
+<p>Trigonometry is one of the most important branches in mathematics. The word trigonometry is formed by clubbing words 'Trigonon' and 'Metron' which means triangle and measure respectively. It is the study of the relation between the sides and <a>angles</a> of a right-angled triangle. It thus helps in finding the measure of unknown dimensions of a <a>right-angled triangle</a> using formulas and identities based on this relationship.</p>
 <p><img alt="introduction to the term trigonometry" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/trignometry-01-1628830825.png" style="width: 400px;"></p>
 <div id="Trigonometric-Basics">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Trigonometry Basics</h2>
@@ -1375,11 +1298,11 @@ Using algebra formula (a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup>,
 <p>In a right-angled triangle, we have the following three sides.</p>
 <p>Perpendicular - It is the side opposite to the angle θ.<br>
 Base - This is the adjacent side to the angle θ.<br>
-Hypotenuse - This is the side opposite to the <a href="https://www.cuemath.com/geometry/right-angle/">right angle</a>.</p>
+Hypotenuse - This is the side opposite to the <a>right angle</a>.</p>
 <div id="ratio">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Trigonometric Ratios</h2>
 </div>
-<p>There are basic six ratios in trigonometry that help in establishing a relationship between the ratio of sides of a right triangle with the angle. If θ is the angle in a right-angled triangle, formed between the base and <a href="https://www.cuemath.com/geometry/hypotenuse/">hypotenuse</a>, then</p>
+<p>There are basic six ratios in trigonometry that help in establishing a relationship between the ratio of sides of a right triangle with the angle. If θ is the angle in a right-angled triangle, formed between the base and <a>hypotenuse</a>, then</p>
 <ul>
 <li>sin θ = Perpendicular/Hypotenuse</li>
 <li>cos θ = Base/Hypotenuse</li>
@@ -1394,7 +1317,7 @@ Hypotenuse - This is the side opposite to the <a href="https://www.cuemath.com/g
 <div id="table">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Trigonometric Table</h2>
 </div>
-<p>The trigonometric table is made up of trigonometric ratios that are interrelated to each other – sine, cosine, tangent, cosecant, secant, cotangent. These ratios, in short, are written as sin, cos, tan, cosec, sec, cot, and are taken for standard angle values. You can refer to the <a href="https://www.cuemath.com/trigonometry/trigonometric-table/">trigonometric table</a> chart to know more about these ratios.</p>
+<p>The trigonometric table is made up of trigonometric ratios that are interrelated to each other – sine, cosine, tangent, cosecant, secant, cotangent. These ratios, in short, are written as sin, cos, tan, cosec, sec, cot, and are taken for standard angle values. You can refer to the <a>trigonometric table</a> chart to know more about these ratios.</p>
 <p><img alt="trigonometric table" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/trigonometry-table-1626863935.png" style="width: 400px;"></p>
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Important Trigonometric Angles</h2>
 <p>Trigonometric angles are the angles in a right-angled triangle using which different trigonometric functions can be represented. Some standard angles used in trigonometry are 0º, 30º, 45º, 60º, 90º. The trigonometric values for these angles can be observed directly in a trigonometric table. Some other important angles in trigonometry are 180º, 270º, and 360º. Trigonometry angle can be expressed in terms of trigonometric ratios as,</p>
@@ -1430,7 +1353,7 @@ Hypotenuse - This is the side opposite to the <a href="https://www.cuemath.com/g
 <li>b<sup>2 </sup>= a<sup>2 </sup>+ c<sup>2 </sup>– 2ac cos B</li>
 </ul>
 <p>Here a, b, c are the lengths of the sides of the triangle and A, B, and C are the angle of the triangle.</p>
-<p>The complete list of trigonometric formulas involving trigonometry ratios and trigonometry identities is listed for easy access. Here's a list of all the <a href="https://www.cuemath.com/trigonometry/trigonometry-formula/">trigonometric formulas</a> for you to learn and revise.</p>
+<p>The complete list of trigonometric formulas involving trigonometry ratios and trigonometry identities is listed for easy access. Here's a list of all the <a>trigonometric formulas</a> for you to learn and revise.</p>
 <div id="graph">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Trigonometric Functions Graphs</h2>
 </div>
@@ -1441,16 +1364,16 @@ Hypotenuse - This is the side opposite to the <a href="https://www.cuemath.com/g
 <li>sin θ: Domain (-∞, + ∞); Range [-1, +1]</li>
 <li>cos θ: Domain (-∞ +∞); Range [-1, +1]</li>
 </ul>
-<p>Click here to learn about the graphs of all trigonometric functions and their domain and range in detail- <a href="https://www.cuemath.com/trigonometry/trigonometric-functions/">Trigonometric Functions</a></p>
+<p>Click here to learn about the graphs of all trigonometric functions and their domain and range in detail- <a>Trigonometric Functions</a></p>
 <div id="unit">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Unit Circle and Trigonometric Values</h2>
 </div>
-<p>Unit circle can be used to calculate the values of basic trigonometric functions- <a href="https://www.cuemath.com/trigonometry/sin-cos-tan/">sine, cosine, and tangent</a>. The following diagram shows how trigonometric ratios sine and cosine can be represented in a <a href="https://www.cuemath.com/geometry/unit-circle/">unit circle</a>.</p>
+<p>Unit circle can be used to calculate the values of basic trigonometric functions- <a>sine, cosine, and tangent</a>. The following diagram shows how trigonometric ratios sine and cosine can be represented in a <a>unit circle</a>.</p>
 <p><img alt="Unit Circle - Trigonometric Ratios" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/trigonometric-functions-using-a-unit-circle-1626266472.png" style="width: 400px;"></p>
 <div id="identity">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Trigonometry Identities</h2>
 </div>
-<p>In Trigonometric Identities, an equation is called an identity when it is true for all values of the variables involved. Similarly, an <a href="https://www.cuemath.com/algebra/equation/">equation</a> involving trigonometric ratios of an <a href="https://www.cuemath.com/geometry/angles/">angle</a> is called a trigonometric identity, if it is true for all values of the angles involved. In <a href="https://www.cuemath.com/trigonometry/trigonometric-identities/">trigonometric identities</a>, you will get to learn more about the Sum and Difference Identities.</p>
+<p>In Trigonometric Identities, an equation is called an identity when it is true for all values of the variables involved. Similarly, an <a>equation</a> involving trigonometric ratios of an <a>angle</a> is called a trigonometric identity, if it is true for all values of the angles involved. In <a>trigonometric identities</a>, you will get to learn more about the Sum and Difference Identities.</p>
 <p>For example, sin θ/cos θ = [Opposite/Hypotenuse] ÷ [Adjacent/Hypotenuse] = Opposite/Adjacent = tan θ</p>
 <p>Therefore, tan θ = sin θ/cos θ is a trigonometric identity. The three important trigonometric identities are:</p>
 <ul>
@@ -1478,15 +1401,6 @@ Distance = Height/tan θ</p>
 Since, tan 45° = 1<br>
 So, Height = 30 m</p>
 <p>The height of the tree can be found out by using basic trigonometry formulas.</p>
-<p><strong>☛ Related Topics:</strong></p>
-<ul>
-<li><a href="https://www.cuemath.com/trigonometry/sine-law/">Sine Law</a></li>
-<li><a href="https://www.cuemath.com/trigonometry/law-of-cosine/">Cosine Law</a></li>
-<li><a href="https://www.cuemath.com/trigonometry/what-is-a-radian/">What Is a Radian</a></li>
-<li><a href="https://www.cuemath.com/trigonometry/trigonometric-ratios-in-radians/">Trigonometric Ratios in Radians</a></li>
-<li><a href="https://www.cuemath.com/trigonometry/tangent-function/">Tangent Function</a></li>
-<li><a href="https://www.cuemath.com/trigonometry/heights-and-distances/">Heights and Distances</a></li>
-</ul>
 <p><strong>Important Notes on Trigonometry</strong></p>
 <ol>
 <li>Trigonometric values are based on the three major trigonometric ratios: Sine, Cosine, and Tangent.<br>
@@ -1500,10 +1414,362 @@ So, Height = 30 m</p>
 <p>The trigonometry ratios of cosθ, secθ are even functions, since cos(-θ) = cosθ, sec(-θ) = secθ.</p>
 </li>
 </ol>
-</div>`,
+</div>
+`,
+  calculus: `
+  <div id="learnSection" class="learnSection">
+<p><strong>Calculus</strong> is one of the most important branches of mathematics that deals with rate of change and motion. The two major concepts that calculus is based on are derivatives and integrals.</p>
+<ul>
+<li>The derivative of a function is the measure of the rate of change of a function. It gives an explanation of the function at a specific point.</li>
+<li>The integral is the measure of the area under the curve of the function. It accumulates the discrete values of a function over a range of values.</li>
+</ul>
+<p>Calculus is also referred to as infinitesimal calculus or “the calculus of infinitesimals”. Infinitesimal numbers are quantities that have a value nearly equal to zero, but not exactly zero. Generally, classical calculus is the study of continuous changes of functions.</p>
+<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%;" class="">
+<tbody>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">1.</span></td>
+<td><a href="#what">What is Calculus?</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">2.</span></td>
+<td><a href="#topics">Calculus Topics</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">3.</span></td>
+<td><a href="#functions">Functions</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">4.</span></td>
+<td><a href="#diff">Differential Calculus</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">5.</span></td>
+<td><a href="#inte">Integral Calculus</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">6.</span></td>
+<td><a href="#formula">Calculus Formula</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">7.</span></td>
+<td><a href="#appl">Applications of Calculus</a></td>
+</tr>
+</tbody>
+</table>
+<div id="what">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>What is Calculus?</h2>
+</div>
+<p>Calculus focuses on some important topics covered in math such as differentiation, integration, limits, functions, and so on. Calculus, a branch of mathematics, deals with the study of the rate of change and it was developed by Newton and Leibniz.</p>
+<p><strong>Calculus Definition:</strong> Calculus in mathematics is generally used in mathematical models to obtain optimal solutions and thus helps in understanding the changes between the values related by a function. Calculus is broadly classified into two different sections:</p>
+<ul>
+<li>Differential Calculus</li>
+<li>Integral Calculus</li>
+</ul>
+<p><img alt="description of important calculus terms" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/calculus-image-1-1614616109.png" style="width: 400px;"></p>
+<p>Both differential calculus and integral calculus serve as a foundation for the higher branch of Mathematics known as “Analysis”, dealing with the impact of a slight change in the dependent variable, as it leads to zero, on the function.</p>
+<p><img alt="branches of calculus are differential calculus and the integral calculus" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/calculus-image-2-1614616133.png" style="width: 400px;"></p>
+<div id="topics">
+<h3>Precalculus</h3>
+<p><a>Precalculus</a> in mathematics is a course that includes <a>trigonometry</a> and <a>algebra</a> designed to prepare students for the study of calculus. In precalculus, we focus on the study of advanced mathematical concepts including functions and quantitative reasoning. Some important topics covered under precalculus are,</p>
+<ul>
+<li><b>Functions</b></li>
+<li><b>Inverse Functions</b></li>
+<li><b>Trigonometric Functions</b></li>
+<li><b>Complex Numbers</b></li>
+<li><b>Rational Function</b></li>
+</ul>
+<div id="functions">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Functions</h2>
+</div>
+<p>Functions in calculus represent the relationship between two variables, which are the independent variable and the dependent variable. Let’s consider the following diagram.</p>
+<p><img alt="explanation of function as a part of calculus" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/calculus-image-3-1614616182.png" style="width: 400px;"></p>
+<p><img alt="formula used in calculus" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/images-05-1592311367.png" style="width: 450px;"></p>
+<p>There is an INPUT, a function, and an OUTPUT. For example, suppose we want to make a pizza. We would need the following basic ingredients.</p>
+<ul>
+<li>Pizza Base</li>
+<li>Pizza Sauce</li>
+<li>Cheese</li>
+<li>Seasoning</li>
+</ul>
+<p>The above real-life example can be represented in the form of a function as explained below,</p>
+<p><img alt="example of a pizza showing relation between input and output. It is labelled as function example in calculus" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/calculus-image-4-1614616205.png" style="width: 400px;"></p>
+<p>Let’s take another example</p>
+<p>Suppose that: y = x<sup>2</sup></p>
+<table border="1">
+<thead>
+<tr>
+<th scope="col"><strong>Value of x</strong></th>
+<th scope="col"><strong>Value of y</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>9</td>
+<td>81</td>
+</tr>
+<tr>
+<td>11</td>
+<td>121</td>
+</tr>
+</tbody>
+</table>
+<p>Using the diagram given above, we get:</p>
+<p><img alt="formula of function" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/calculus-image-5-1614616226.png" style="width: 400px;"></p>
+<p>We can see that the value of y <strong>depends</strong> on the value of x. We can conclude that, in calculus,</p>
+<ul>
+<li>INPUT (x) is independent of the OUTPUT (y)</li>
+<li>OUTPUT depends on the INPUT</li>
+<li>f(x) is responsible for the transformation of the INPUT to the OUTPUT and is called a "function"</li>
+</ul>
+<div id="diff">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Differential Calculus</h2>
+</div>
+<p>Differential calculus focuses on solving the problem of finding the <a>rate of change</a> of a function with respect to the other variables. To find the optimal solution, derivatives are used to calculate the <a>maxima and minima</a> values of a function. Differential helps in the study of the limit of a quotient, dealing with variables such as x and y, functions f(x), and the corresponding changes in the variables x and y. The notations dy and dx are known as differentials. The process used to find the derivatives is called <a>differentiation</a>. The derivative of a function, y with respect to variable x, is represented by dy/dx or f’(x).</p>
+<p><strong>Limits</strong></p>
+<p>Limit helps in calculating the degree of closeness to any value or the approaching term. A limit is normally expressed using the <a>limit formula</a> as,</p>
+<p>lim<sub>x→c</sub>f(x) = A</p>
+<p>This expression is read as “the limit of f of x as x approaches c equals A”.</p>
+<p><strong>Derivatives</strong></p>
+<p>Derivatives represent the <a>instantaneous rate of change</a> of a quantity with respect to the other. The derivative of a function is represented as:</p>
+<p>lim<sub>x→h</sub>[f(x + h) − f(x)]/h = A</p>
+<p><strong>Continuity</strong></p>
+<p>A function f(x) is said to be <a>continuous</a> at a particular point x = a, if the following three conditions are satisfied –</p>
+<ul>
+<li>f(a) is defined</li>
+<li>lim<sub>x→a</sub>f(x) exists</li>
+<li>lim<sub>x→a</sub>f(x) = f(a)</li>
+</ul>
+<p><strong>Continuity and Differentiability</strong></p>
+<p>A function is always continuous if it is differentiable at any point, whereas the vice-versa for this condition is not always true.</p>
+<div id="inte">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Integral Calculus</h2>
+</div>
+<p>Integral calculus is the study of integrals and the properties associated to them. It is helpful in:</p>
+<ul>
+<li>calculating f from f’ (i.e. from its derivative).</li>
+<li>calculating the <a>area under a curve</a> for any function.</li>
+</ul>
+<p><strong>Integration</strong></p>
+<p>Integration is the reverse process of differentiation. As differentiation can be understood as dividing a part into many small parts, integration can be said as a collection of small parts in order to form a whole. It is generally used for calculating areas.</p>
+<p><strong>Indefinite Integral</strong></p>
+<p>An <a>indefinite integral</a> does not have a specific boundary, i.e. no upper and lower limit is defined. Thus the integration value is always accompanied by a constant value (C). It is denoted as:</p>
+<p>∫ f(x) dx = F(x) + C, where F'(x) = f(x)</p>
+<p><strong>Definite Integral</strong></p>
+<p>A <a>definite integral</a> has a specific boundary or limit for the calculation of the function. The upper and lower limits of the independent variable of a function are specified. A definite integral is given mathematically as,</p>
+<p>∫<sub>a</sub><sup>b</sup> f(x) · dx = F(x)</p>
+<div id="formula">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Calculus Formula</h2>
+</div>
+<p>Calculus formulas can be broadly divided into the following six broad sets of formulas. The six broad formulas are related to limits, differentiation, <a>integration</a>, definite integrals, application of differentiation, and differential equations.</p>
+<p><strong>Limits Formulas:</strong> Limits formulas help in approximating the limit of a function at a given point.</p>
+<p>lim<sub>x→0</sub> (x<sup>n</sup> - a<sup>n</sup>)(x - a) = na<sup>(n - 1)</sup><br>
+lim<sub>x→0</sub> (sin x)/x = 1<br>
+lim<sub>x→0 </sub>(tan x)/x = 1<br>
+lim<sub>x→0 </sub>(e<sup>x</sup> - 1)/x = 1<br>
+lim<sub>x→0</sub> (a<sup>x</sup> - 1)/x = log<sub>e</sub>a<br>
+lim<sub>x→∞</sub> (1 + (1/x))<sup>x</sup> = e<br>
+lim<sub>x→0</sub> (1 + x)<sup>1/x</sup> = e<br>
+lim<sub>x→0 </sub>(1 + (a/x))<sup>x</sup> = e<sup>a</sup></p>
+<p><strong>Differentiation Formulas: </strong><a>Differentiation Formulas</a> are applicable to basic algebraic expressions, trigonometric ratios, inverse trigonometry, and exponential terms.</p>
+<p><a>d/dx (x<sup>n</sup>)</a> = nx<sup>n - 1 </sup><br>
+d/dx (Constant) = 0<br>
+<a>d/dx (e<sup>x</sup>)</a> = e<sup>x</sup><br>
+d/dx (a<sup>x</sup>) = a<sup>x</sup> · ln a<br>
+<a>d/dx (ln x)</a> = 1/x<br>
+<a>d/dx (sin x)</a> = cos x<br>
+<a>d/dx (cos x)</a> = -sin x<br>
+<a>d/dx (tan x)</a> = sec<sup>2</sup>x<br>
+<a>d/dx (cot x)</a> = -cosec<sup>2</sup>x<br>
+<a>d/dx (sec x)</a> = sec x · tan x<br>
+<a>d/dx (cosec x)</a> = -cosec x · cot x</p>
+<p><strong>Integration Formula:</strong> <a>Integrals formulas</a> can be derived from differentiation formulas, and are complimentary to differentiation formulas.</p>
+<p><a>∫ x<sup>n</sup> dx</a> = x<sup>n + 1</sup>/(n + 1) + C<br>
+<a>∫ 1 dx</a> = x + C<br>
+<a>∫ e<sup>x</sup> dx</a> = e<sup>x</sup> + C<br>
+<a>∫(1/x) dx</a> = ln |x| + C<br>
+∫ a<sup>x</sup> dx = (a<sup>x</sup>/log a) + C<br>
+<a>∫ cos x dx</a> = sin x + C<br>
+<a>∫ sin x dx</a> = -cos x + C<br>
+∫ sec<sup>2</sup>x dx = tan x + C<br>
+∫ cosec<sup>2</sup>x dx = -cot x + C<br>
+<a>∫ sec x tan x dx</a> = sec x + C<br>
+∫ cosec x cot x dx = -cosec x + C</p>
+<p><strong>Definite Integrals Formulas: </strong>Definite integrals are the basic integral formulas and are additionally having limits. There is an upper and a lower limit in definite integrals, that are helpful in finding the area within these limits.</p>
+<p>∫<sup>b</sup><sub>a</sub> f'(x) dx = f(b) - f(a), this is known as <a>fundamental theorem of calculus</a><br>
+∫<sup>b</sup><sub>a</sub> f(x) dx = ∫<sup>b</sup><sub>a</sub> f(t) dt<br>
+∫<sup>b</sup><sub>a</sub> f(x) dx = - ∫<sup>a</sup><sub>b</sub> f(x) dx<br>
+∫<sup>b</sup><sub>a</sub> f(x) dx = ∫<sup>c</sup><sub>a</sub> f(x) dx + ∫<sup>b</sup><sub>c</sub> f(x) dx<br>
+∫<sup>b</sup><sub>a</sub> f(x) dx = ∫<sup>b</sup><sub>a</sub> f(a + b - x) dx<br>
+∫<sup>a</sup><sub>0</sub> f(x) dx = ∫<sup>a</sup><sub>0</sub> f(a - x) dx<br>
+∫<sup>a</sup><sub>-a</sub> f(x) dx = 2∫<sup>a</sup><sub>0</sub> f(x) dx, f is an even function<br>
+∫<sup>a</sup><sub>-a</sub> f(x) dx = 0 , f is an odd function</p>
+<p><strong>Application of Differentiation Formulas:</strong> The application of differentiation formulas is useful for <a>approximation</a>, estimation of values, equations of <a>tangents and normals</a>, maxima and minima, and for finding the changes of numerous physical events.</p>
+<p>dy/dx = (dy/dt)/(dx/dt)<br>
+<a>Equation of a Tangent</a>: y - y<sub>1</sub> = dy/dx · (x - x<sub>1</sub>)<br>
+Equation of a Normal: y - y<sub>1</sub> = -1/(dy/dx) · (x - x<sub>1</sub>)</p>
+<p><strong>Differential Equations Formula: </strong><a>Differential equations</a> are equations involved with derivatives. In the general equation, we have the unknown variable 'x' and here we have the differentiation dy/dx as the variable of the equation.</p>
+<p><a>Homogeneous Differential Equation</a>: f(λx, λy) = λ<sup>n</sup>f(x, y)<br>
+<a>Linear Differential Equation</a>: dy/dx + Py = Q. The general solution of linear differential equation is y.e<sup>- </sup><sup>∫P dx </sup>= ∫(Q · e<sup>∫P dx</sup>) dx + C</p>
+<div id="appl">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Applications of Calculus</h2>
+</div>
+<p>Calculus is a very important branch, a mathematical model that helps in:</p>
+<ul>
+<li>Analyzing a system to find an optimal solution to predict the future of any given condition for a function.</li>
+<li>Concepts of calculus play a major role in real life, either it is related to solve the area of complicated shapes, evaluating survey data, the safety of vehicles, business planning, credit card payment records, or finding the changing conditions of a system that affect us, etc.</li>
+<li>Calculus is a language of economists, biologists, architects, medical experts, statisticians. For example, Architects and engineers use different concepts of calculus in determining the size and shape of the construction structures.</li>
+<li>Calculus is used in modeling concepts like birth and death rates, radioactive decay, reaction rates, heat and light, motion, electricity, etc.</li>
+</ul>
+`,
+  ComercialMaths: `
+  <div id="learnSection" class="learnSection" style="height: max-content;">
+<p>Commercial math deals with all those concepts that people use in their everyday life. The word commercial itself means the economical world or something relating to buying or selling. It involves the concept of profit and loss, discounts, marked price, simple and compound interest, taxes, ratio and proportion, percentages, and everything that revolved around money. Let's learn about commercial math and all its sub-branches in math in detail in this lesson.</p>
+<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%;" class="">
+<tbody>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">1.</span></td>
+<td><a href="#introduction-to-commercial-math">Introduction to Commercial Math</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">2.</span></td>
+<td><a href="#Money">Money</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">3.</span></td>
+<td><a href="#Ratio">Ratio</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">4.</span></td>
+<td><a href="#proportion">Proportion</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">5. </span></td>
+<td><a href="#Unitary-Method">Unitary Method</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">6. </span></td>
+<td><a href="#Profit-and-Loss">Profit and Loss</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">7. </span></td>
+<td><a href="#Simple-Interest">Simple Interest</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">8. </span></td>
+<td><a href="#Compound-Interest">Compound Interest</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">9. </span></td>
+<td><a href="#Discounts">Discounts</a></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="color: #0000ff">10. </span></td>
+<td><a href="#Taxes">Taxes</a></td>
+</tr>
+</tbody>
+</table>
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Introduction to Commercial Math</span></h2>
+<p>Commercial math focuses on those aspects of mathematics that are used in everyday life. Consider an example<span style="background-color:null;">; Eva, your friend goes to a stationary shop to buy a notebook. The shopkeeper tells her that 12 notebooks will cost $200. She has to calculate the cost of 1 notebook. This requires an understanding of the unitary method. Let’s take another example; Ron goes to buy a cricket bat with his mother. One shop offers him a 25% discount on the bat. The other shop offers a free cricket ball with the bat. Ron wants to help his mother select the best deal. He should know how to calculate percentages and also understand the concept of discounts.&nbsp;</span></p>
+<p>In both these examples, we make use of commercial math concepts.<span style="color:null;"> You can go ahead and explore all important topics in Commercial Math by selecting the topics from this list below:</span></p>
+<table border="1" cellpadding="10" cellspacing="1" style="width:100%;">
+<tbody>
+<tr>
+<td style="vertical-align: middle;"><a>Money</a></td>
+<td style="vertical-align: middle;"><a>Profit and Loss</a></td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><a>Ratios</a></td>
+<td style="vertical-align: middle;"><a>Simple Interest</a></td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><a>Proportion</a></td>
+<td style="vertical-align: middle;"><a>Compound Interest</a></td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><a>Percentages</a></td>
+<td style="vertical-align: middle;"><a>Discounts</a></td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><a>Unitary Method</a></td>
+<td style="vertical-align: middle;"><a>Taxes</a></td>
+</tr>
+</tbody>
+</table>
+<div id="Money">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Money</span></h2>
+</div>
+<p>Money is what makes the world go round, and mathematics is the centripetal force that governs it. From simple transactions to banking, taxes, and discounts, everything that involves money, involves math! <a>Money</a> is a medium of exchange. We pay coins and notes in order to get services and commodities. You can now learn more about the process of <a>identifying denominations</a> and the concept of <a>decomposing money</a>.</p>
+<p>All transactions are done using the country’s system of money i.e. currency. Money is something that we all interact with in some way on a daily basis and we end up falling back on our math skills to handle that money reliably.</p>
+<p><img alt="sum of two 5 Rs. coins" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/money-1614616934.png" style="max-width: 100%; width: 300px;"></p>
+<div id="Ratio">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Ratio</span></h2>
+</div>
+<p>A ratio tells us how much of the proportion of one thing to the other. The sequence (or order) in which the <span style="background-color:null;"><a>numbers</a>&nbsp;</span>in a ratio are written matters.&nbsp;The ratio is defined as the relation between the quantities of two or more objects and it indicates the amount of one object contained in the other. It is written in the form of a:b, where the first term, i.e 'a' is known as antecedent and the second term, i.e 'b' is known as consequent. Let's go ahead and learn about the concept of <a>Ratios</a>.</p>
+<p><strong>Example: </strong>1 tablespoon of lemon concentrate+ 5 tablespoon of water = a perfect lemonade. The ratio to get a perfect lemonade can be expressed as Lemon Concentrate: Water = 1:5.</p>
+<div id="proportion">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Proportion</span></h2>
+</div>
+<p>When two ratios are equivalent, they are said to be in proportion. Proportion is a mathematical comparison between two numbers.&nbsp; According to proportion, if two sets of given numbers are increasing or decreasing in the same ratio, then the ratios are said to be directly proportional to each other. Proportions are denoted using the symbol&nbsp; "::" or "=". Check out the examples of <a>Proportion</a> to understand the concept better.</p>
+<p><strong>Example: </strong>1:3 and 9:27 are equivalent ratios. They are in proportion. It is represented as 1:3::9:27. And is read as 1 is to 3 as 9 is to 27.</p>
+<div id="Percentages">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Percentages</span></h2>
+</div>
+<p>The percentage is defined as a given part or amount in every hundred. It is a fraction with 100 as the denominator and is represented by the symbol "%". The percentage is a fraction or a ratio in which the value of the whole is always 100. For example, if Sam scored 30% marks on his math test, it means that he scored 30 marks out of 100. It is written as 30/100 in the fraction form and 30:100 in terms of ratio. Percent means “out of 100”. If 20 out of 100 boxes are shaded, then we say that 20 percent or 20 of the boxes are shaded. You can now learn how to calculate <a>Percentages</a> and their applications with the help of examples.</p>
+<p><strong>Example: </strong>What is 30% of 750?</p>
+<p><strong>Solution:</strong> 30% of 750 = (30/100) × 750 = 225.</p>
+<div id="Unitary-Method">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2 id="unitary-method"><span style="color:null;">Unitary Method</span></h2>
+</div>
+<p>The unitary method, in essence, is all about finding the “per unit value”. The unitary method is a technique for solving a problem by first finding the value of a single unit, and then finding the necessary value by multiplying the single unit value. You can try solving some of the examples of the&nbsp;<a>Unitary Method</a> to understand the methods used in solving such problems.</p>
+<p><strong>Example: </strong>The cost of 4 lemons is $20. The cost of 1 lemon is 20/4 = $5. So, the cost of 10 lemons= 10 × 5 = $50.</p>
+<div id="Profit-and-Loss">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Profit and Loss</span></h2>
+</div>
+<p>Profit is the gain that is incurred when the Selling Price (SP) of a commodity is greater than its Cost Price (CP). Loss is incurred when the Selling Price (SP) of a commodity is less than its Cost Price (CP). <a>Profit and Loss</a> are the basic driving forces of the market, and here you will understand how to wield the power of mathematics and apply it to the commercial world.</p>
+<p><strong>Example:</strong></p>
+<p><img alt="formula of profit and loss" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/profit-and-loss-formula-1614616968.png" style="max-width: 100%; width: 300px;"></p>
+<div id="Simple-Interest">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Simple Interest</span></h2>
+</div>
+<p>Simple Interest is the interest that is calculated on the Principal Amount on a monthly, quarterly, or annual basis. Ever borrow money from a friend or relative and they said that you would have to return the amount after a year with 10% interest? The concept of <a>Simple Interest</a> will help you easily calculate the total amount you would need to repay them.</p>
+<p><strong>Example:</strong></p>
+<p><img alt="formula for simple interest" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/simple-interest-formula-1614616993.png" style="max-width: 100%; width: 400px;"></p>
+<div id="Compound-Interest">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Compound Interest</span></h2>
+</div>
+<p>Compound Interest is the interest that is calculated on the Principal Amount and the Interest that is obtained from the previous term. <a>Compound Interest</a> is usually charged by banks and insurance companies on the amount of loan taken by us from them.</p>
+<p><strong>Example:</strong></p>
+<p><img alt="formula for compound interest" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/compound-interest-formula-1614617034.png" style="max-width: 100%; width: 400px;"></p>
+<div id="Discounts">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Discounts</span></h2>
+</div>
+<p>Discount is a reduction in the price of a commodity. It is the difference between the selling price and market price. <a>Discounts</a> are probably the most frequent terms that come up during a shopping trip or any purchase that we make since they directly affect the amount of money involved.</p>
+<p><strong>Example:</strong></p>
+<p><img alt="formula for discounts" src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/discount-formula-1614617054.png" style="max-width: 100%; width: 300px;"></p>
+<div id="Taxes">
+<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Taxes</span></h2>
+</div>
+<p>The government charges a fee on every item that is sold. This fee is meant to be spent on public welfare and is known as tax. The tax charged is always a percentage of the SP. You must have heard words like income tax, GST, service tax, etc in daily conversations. Let’s now try and understand how <a>Taxes</a> are levied on products.</p>
+<p><strong>Example: </strong>A packet of homemade chocolates costs $50. A service tax of 10% is charged. What will be the total bill amount?</p>
+<p><strong>Solution: </strong></p>
+<p>Cost Price= $50</p>
+<p>Service Tax= 50 × 10/100 = $5</p>
+<p>The total bill amount including taxes= Cost price + Tax = $50 + $5 = $55.</p>
+  `,
 };
 
 const ContentData = [
+  // -------------------------------------------------------------------------------
+  //                                       Numbers 1-12
+  // -------------------------------------------------------------------------------
   {
     _id: "numbers",
     title: "Numbers",
@@ -1661,7 +1927,7 @@ const ContentData = [
     unlikes: 0,
   },
   // -------------------------------------------------------------------------------
-  //                                       Geometry
+  //                                       Geometry 1-12
   // -------------------------------------------------------------------------------
   {
     _id: "geometry",
@@ -1676,8 +1942,151 @@ const ContentData = [
     likes: 0,
     unlikes: 0,
   },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 2",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 3",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 4",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 5",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 6",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 7",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 8",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 9",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 10",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 11",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "geometry",
+    title: "Geometry",
+    pdfUrl: "",
+    imageUrl: "/content/geometry.jpeg",
+    category: "class 12",
+    free: true,
+    content: CommonCommONCOntext.geometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
   // -------------------------------------------------------------------------------
-  //                                       Measurement
+  //                                       Measurement 1-12
   // -------------------------------------------------------------------------------
   {
     _id: "measurement",
@@ -1692,8 +2101,151 @@ const ContentData = [
     likes: 0,
     unlikes: 0,
   },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 2",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 3",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 4",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 5",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 6",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 7",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 8",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 9",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 10",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 11",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "measurement",
+    title: "Measurement",
+    pdfUrl: "",
+    imageUrl: "/content/measurement.avif",
+    category: "class 12",
+    free: true,
+    content: CommonCommONCOntext.measurement,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
   // -------------------------------------------------------------------------------
-  //                                       Data
+  //                                       Data 1-12
   // -------------------------------------------------------------------------------
   {
     _id: "data",
@@ -1708,15 +2260,236 @@ const ContentData = [
     likes: 0,
     unlikes: 0,
   },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 2",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 3",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 4",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 5",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 6",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 7",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 8",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 9",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 10",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 11",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "data",
+    title: "Data",
+    pdfUrl: "",
+    imageUrl: "/content/data.jpeg",
+    category: "class 12",
+    free: true,
+    content: CommonCommONCOntext.data,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
   // -------------------------------------------------------------------------------
-  //                                       Algebra
+  //                                       Algebra 6-12
   // -------------------------------------------------------------------------------
   {
     _id: "algebra",
     title: "Algebra",
     pdfUrl: "",
     imageUrl: "/content/algebra.jpeg",
-    category: "class 1",
+    category: "class 6",
+    free: true,
+    content: CommonCommONCOntext.algebra,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "algebra",
+    title: "Algebra",
+    pdfUrl: "",
+    imageUrl: "/content/algebra.jpeg",
+    category: "class 7",
+    free: true,
+    content: CommonCommONCOntext.algebra,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "algebra",
+    title: "Algebra",
+    pdfUrl: "",
+    imageUrl: "/content/algebra.jpeg",
+    category: "class 8",
+    free: true,
+    content: CommonCommONCOntext.algebra,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "algebra",
+    title: "Algebra",
+    pdfUrl: "",
+    imageUrl: "/content/algebra.jpeg",
+    category: "class 9",
+    free: true,
+    content: CommonCommONCOntext.algebra,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "algebra",
+    title: "Algebra",
+    pdfUrl: "",
+    imageUrl: "/content/algebra.jpeg",
+    category: "class 10",
+    free: true,
+    content: CommonCommONCOntext.algebra,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "algebra",
+    title: "Algebra",
+    pdfUrl: "",
+    imageUrl: "/content/algebra.jpeg",
+    category: "class 11",
+    free: true,
+    content: CommonCommONCOntext.algebra,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "algebra",
+    title: "Algebra",
+    pdfUrl: "",
+    imageUrl: "/content/algebra.jpeg",
+    category: "class 12",
     free: true,
     content: CommonCommONCOntext.algebra,
     createdAt: "",
@@ -1725,16 +2498,230 @@ const ContentData = [
     unlikes: 0,
   },
   // -------------------------------------------------------------------------------
-  //                                       Trigonometry
+  //                                       Trigonometry 9-12
   // -------------------------------------------------------------------------------
   {
     _id: "trigonometry",
     title: "Trigonometry",
     pdfUrl: "",
     imageUrl: "/content/trigonometry.jpg",
-    category: "class 1",
+    category: "class 9",
     free: true,
     content: CommonCommONCOntext.trigonometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "trigonometry",
+    title: "Trigonometry",
+    pdfUrl: "",
+    imageUrl: "/content/trigonometry.jpg",
+    category: "class 10",
+    free: true,
+    content: CommonCommONCOntext.trigonometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "trigonometry",
+    title: "Trigonometry",
+    pdfUrl: "",
+    imageUrl: "/content/trigonometry.jpg",
+    category: "class 11",
+    free: true,
+    content: CommonCommONCOntext.trigonometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "trigonometry",
+    title: "Trigonometry",
+    pdfUrl: "",
+    imageUrl: "/content/trigonometry.jpg",
+    category: "class 12",
+    free: true,
+    content: CommonCommONCOntext.trigonometry,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  // -------------------------------------------------------------------------------
+  //                                       Calculus 8-12
+  // -------------------------------------------------------------------------------
+  {
+    _id: "calculus",
+    title: "Calculus",
+    pdfUrl: "",
+    imageUrl: "/content/trigonometry.jpg",
+    category: "class 8",
+    free: true,
+    content: CommonCommONCOntext.calculus,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "calculus",
+    title: "Calculus",
+    pdfUrl: "",
+    imageUrl: "/content/trigonometry.jpg",
+    category: "class 9",
+    free: true,
+    content: CommonCommONCOntext.calculus,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "calculus",
+    title: "Calculus",
+    pdfUrl: "",
+    imageUrl: "/content/trigonometry.jpg",
+    category: "class 10",
+    free: true,
+    content: CommonCommONCOntext.calculus,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "calculus",
+    title: "Calculus",
+    pdfUrl: "",
+    imageUrl: "/content/trigonometry.jpg",
+    category: "class 11",
+    free: true,
+    content: CommonCommONCOntext.calculus,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "calculus",
+    title: "Calculus",
+    pdfUrl: "",
+    imageUrl: "/content/trigonometry.jpg",
+    category: "class 12",
+    free: true,
+    content: CommonCommONCOntext.calculus,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  // -------------------------------------------------------------------------------
+  //                                       comercial-maths 1-8
+  // -------------------------------------------------------------------------------
+  {
+    _id: "comercial-maths",
+    title: "Comercial Maths",
+    pdfUrl: "",
+    imageUrl: "/content/comercial-maths.jpeg",
+    category: "class 1",
+    free: true,
+    content: CommonCommONCOntext.ComercialMaths,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "comercial-maths",
+    title: "Comercial Maths",
+    pdfUrl: "",
+    imageUrl: "/content/comercial-maths.jpeg",
+    category: "class 2",
+    free: true,
+    content: CommonCommONCOntext.ComercialMaths,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "comercial-maths",
+    title: "Comercial Maths",
+    pdfUrl: "",
+    imageUrl: "/content/comercial-maths.jpeg",
+    category: "class 3",
+    free: true,
+    content: CommonCommONCOntext.ComercialMaths,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "comercial-maths",
+    title: "Comercial Maths",
+    pdfUrl: "",
+    imageUrl: "/content/comercial-maths.jpeg",
+    category: "class 4",
+    free: true,
+    content: CommonCommONCOntext.ComercialMaths,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "comercial-maths",
+    title: "Comercial Maths",
+    pdfUrl: "",
+    imageUrl: "/content/comercial-maths.jpeg",
+    category: "class 5",
+    free: true,
+    content: CommonCommONCOntext.ComercialMaths,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "comercial-maths",
+    title: "Comercial Maths",
+    pdfUrl: "",
+    imageUrl: "/content/comercial-maths.jpeg",
+    category: "class 6",
+    free: true,
+    content: CommonCommONCOntext.ComercialMaths,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "comercial-maths",
+    title: "Comercial Maths",
+    pdfUrl: "",
+    imageUrl: "/content/comercial-maths.jpeg",
+    category: "class 7",
+    free: true,
+    content: CommonCommONCOntext.ComercialMaths,
+    createdAt: "",
+    updatedAt: "string",
+    likes: 0,
+    unlikes: 0,
+  },
+  {
+    _id: "comercial-maths",
+    title: "Comercial Maths",
+    pdfUrl: "",
+    imageUrl: "/content/comercial-maths.jpeg",
+    category: "class 8",
+    free: true,
+    content: CommonCommONCOntext.ComercialMaths,
     createdAt: "",
     updatedAt: "string",
     likes: 0,

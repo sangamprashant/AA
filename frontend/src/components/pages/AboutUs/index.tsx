@@ -4,10 +4,10 @@ import CountUp from "react-countup";
 import { FaCheckCircle } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import Footer from "../../Footer";
+import { featuresData } from "../../Home/Features";
 import Section from "../../Reuse/Section";
 import PageHeaders from "../PageHeaders";
 import "./about.css";
-import { featuresData } from "../../Home/Features";
 
 const AboutUs: React.FC = () => {
   React.useLayoutEffect(() => {
@@ -39,12 +39,12 @@ const AboutUs: React.FC = () => {
         <article>
           <h1 className="text-center">Who We Are</h1>
           <p>
-            At The A to Z Classes, we are passionate about helping students excel in
-            math. With years of experience in education, our team is dedicated
-            to providing high-quality math instruction tailored to meet the
-            needs of each student. We believe in the power of personalized
-            learning and strive to create an environment where every student can
-            thrive.
+            At The A to Z Classes, we are passionate about helping students
+            excel in math. With years of experience in education, our team is
+            dedicated to providing high-quality math instruction tailored to
+            meet the needs of each student. We believe in the power of
+            personalized learning and strive to create an environment where
+            every student can thrive.
           </p>
           <ul className="list-unstyled">
             {listItems.map((item, index) => (
@@ -65,8 +65,8 @@ const AboutUs: React.FC = () => {
             </div>
             <div className="col-md-6">
               <p>
-                At The A to Z Classes, we offer a range of math courses designed to
-                meet the needs of students at all levels. From foundational
+                At The A to Z Classes, we offer a range of math courses designed
+                to meet the needs of students at all levels. From foundational
                 concepts to advanced topics, our curriculum is comprehensive and
                 designed to foster deep understanding and proficiency in math.
                 Our interactive and engaging teaching methods ensure that
@@ -143,7 +143,12 @@ const AboutUs: React.FC = () => {
           </div>
           <div className="d-flex justify-content-center align-items-center mt-4">
             <div className="col-md-10">
-              <img src="/aboutus/map.webp" width="100%" alt="Map" className="about-map-image" />
+              <img
+                src="/aboutus/map.webp"
+                width="100%"
+                alt="Map"
+                className="about-map-image"
+              />
             </div>
           </div>
         </article>
@@ -192,7 +197,7 @@ export const NumbersCount: React.FC<NumbersCountProps> = ({
               suffix={suffix}
               duration={2}
               decimals={decimalPlaces(end)}
-              style={{color:"var(--theme-color)"}}
+              style={{ color: "var(--theme-color)" }}
             />
           </h1>
         )}

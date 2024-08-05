@@ -4,7 +4,7 @@ import Section from "../../Reuse/Section";
 const ContactHome = () => {
   return (
     <Section className="py-5">
-      <div className="col-xs-12 col-sm-12 have-question bg-dark-subtle p-3 rounded-2 mt-3 w-100">
+      <div className="col-xs-12 col-sm-12 have-question bg-dark-subtle p-3 rounded-2 mt-3 w-100 shadow">
         <div className="row">
           <div className="col-md-5 d-flex justify-content-center">
             <img

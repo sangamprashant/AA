@@ -10,6 +10,7 @@ import {
   Home,
   JEEE,
   Navbar,
+  NEET,
   PageNotFound,
   Payment,
   StudyMaterialP,
@@ -32,6 +33,7 @@ import { AuthContext } from "./components/Admin/Auth/AuthProvider";
 import {
   ACCEPTABLEUSE,
   COOKIESPOLICY,
+  Demo,
   DISCLAIMER,
   PRIVACYPOLICY,
   RETURNPOLICY,
@@ -83,11 +85,13 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/class" element={<Class />} />
+                <Route path="/demo-class" element={<Demo />} />
                 <Route path="/contact-us" element={<Contact />} />
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/payment" element={<ViewPayment />} />
                 <Route path="/pay" element={<Payment />} />
                 <Route path="/jee" element={<JEEE />} />
+                <Route path="/neet" element={<NEET />} />
                 <Route path="/study-material" element={<StudyMaterialP />} />
                 <Route path="/study-material/:id" element={<ContentOpen />} />
                 <Route path="/admin" element={<AdminLogin />} />

@@ -291,22 +291,50 @@ h1 span {
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: end;
 }
 .custom-float-button {
-  width: 60px;
-  height: 60px;
+  height: 40px;
+  width: 40px;
   background-color: #25d366;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 9px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.6s ease, height 0.6s ease, width 0.6s ease;
+  padding: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.custom-float-button.active {
+  height: 40px;
+  width: max-content;
+  display: flex;
+  gap: 10px;
+  border-radius: 50px;
+}
+.custom-float-button span {
+  opacity: 1;
+  transition: opacity 5s ease;
+}
+.custom-float-button.no-span span {
+  opacity: 0;
 }
 .custom-float-button:hover {
-  background-color: #1ebf5b;
+  height: 40px;
+  width: auto;
+  display: flex;
+  gap: 10px;
+  border-radius: 50px;
+  span {
+    opacity: 1;
+    transition: opacity 5s ease;
+    display: block;
+  }
+}
+.text-display {
+  display: none;
 }
 .chat-bubble {
   display: none;

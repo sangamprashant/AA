@@ -2,9 +2,11 @@ import Class from "./Class";
 import Price from "./Class/Price";
 import Footer from "./Footer";
 import Home from "./Home";
-import ContentOpen from "./Home/Content-ferjie/ContentOpen";
-import StudyMaterialP from "./Home/Content-ferjie/StudyMaterial";
-import JEEE from "./Home/JEE-ferjie/JEEE";
+import BookClass from "./Home/Book";
+import ContentOpen from "./Home/Content/ContentOpen";
+import StudyMaterialP from "./Home/Content/StudyMaterial";
+import JEEE from "./Home/JEE/JEEE";
+import NEET from "./Home/JEE/NEET";
 import Navbar from "./Navbar";
 import PageNotFound from "./PageNotFound";
 import AboutUs from "./pages/AboutUs";
@@ -14,11 +16,19 @@ import ViewPayment from "./pages/Payment/ViewPayment";
 
 export {
   AboutUs,
+  BookClass,
   Class,
   Contact,
   ContentOpen,
-  Footer, Home, JEEE, Navbar, PageNotFound,
+  Footer,
+  Home,
+  JEEE,
+  NEET,
+  Navbar,
+  PageNotFound,
   Payment,
-  Price, StudyMaterialP, ViewPayment
+  Price,
+  StudyMaterialP,
+  ViewPayment
 };
 

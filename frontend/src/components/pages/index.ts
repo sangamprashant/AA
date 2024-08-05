@@ -1,15 +1,12 @@
-import PRIVACYPOLICY from "./Terms/PrivicyPolicy";
-import COOKIESPOLICY from "./Terms/CookiesPolicy";
-import TERMSANDCONDITIONS from "./Terms/TermsAndCondition";
-import RETURNPOLICY from "./Terms/ReturnPolicy";
-import DISCLAIMER from "./Terms/Disclamer";
 import ACCEPTABLEUSE from "./Terms/ACCEPTABLEUSE";
+import COOKIESPOLICY from "./Terms/CookiesPolicy";
+import DISCLAIMER from "./Terms/Disclamer";
+import PRIVACYPOLICY from "./Terms/PrivicyPolicy";
+import RETURNPOLICY from "./Terms/ReturnPolicy";
+import TERMSANDCONDITIONS from "./Terms/TermsAndCondition";
+import Demo from "./demo-class/Demo";
 
 export {
-  PRIVACYPOLICY,
-  COOKIESPOLICY,
-  TERMSANDCONDITIONS,
-  RETURNPOLICY,
-  DISCLAIMER,
-  ACCEPTABLEUSE,
+  ACCEPTABLEUSE, COOKIESPOLICY, DISCLAIMER, Demo, PRIVACYPOLICY, RETURNPOLICY, TERMSANDCONDITIONS
 };
+
