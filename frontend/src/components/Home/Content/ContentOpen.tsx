@@ -38,7 +38,7 @@ const ContentOpen: React.FC = () => {
   const { locked } = appContext;
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     if (id && id.length === 24) {
       fetchContentFromServer();
     } else {

@@ -23,7 +23,7 @@ const bookingSchema = new mongoose.Schema(
       required: true,
     },
     selectedClass: {
-      type: Number,
+      type: String,
       required: true,
     },
     time: {

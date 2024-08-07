@@ -40,9 +40,7 @@ const validateBooking = [
     .withMessage("Phone number should be between 10 and 15 digits"),
   check("selectedClass")
     .notEmpty()
-    .withMessage("Class selection is required")
-    .isInt({ min: 1, max: 12 })
-    .withMessage("Class must be a number between 1 and 12"),
+    .withMessage("Class selection is required"),
   check("doc")
     .notEmpty()
     .withMessage("Date of class is required")

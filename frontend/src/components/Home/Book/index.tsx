@@ -49,9 +49,8 @@ const BookClass = () => {
     });
   };
 
-
   const handleCountryChange = (value: string) => {
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
       country: value,
     }));
@@ -194,6 +193,9 @@ const BookClass = () => {
                           {index + 1}
                         </option>
                       ))}
+                      <option key="higher-studies" value="higher studies">
+                        Higher Studies
+                      </option>
                     </select>
                   </motion.div>
                   <motion.div className="col-md-6 mt-3">

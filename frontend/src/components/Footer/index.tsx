@@ -75,10 +75,13 @@ const Footer = () => {
                   <a
                     key={index}
                     href={contact.href}
-                    className=" d-flex gap-3 text-wrap text-start"
+                    className="d-flex gap-3 text-wrap text-start"
+                    style={{
+                      overflowWrap: "break-word",
+                    }}
                   >
                     <FontAwesomeIcon icon={contact.icon} aria-hidden="true" />{" "}
-                    <span>{contact.text}</span>
+                    <span className="text-wrap">{contact.text}</span>
                   </a>
                 ))}
               </div>
