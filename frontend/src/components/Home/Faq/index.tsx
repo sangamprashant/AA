@@ -3,6 +3,8 @@ import Section from "../../Reuse/Section";
 import { useState } from "react";
 import "./faq.css";
 import { motion } from "framer-motion";
+import { appName, email } from "../../Strings";
+import { Link } from "react-router-dom";
 
 const faqData = [
   {
@@ -127,6 +129,78 @@ const faqData = [
               <b>Practice exam techniques:</b> Expert teachers can help students
               develop effective exam-taking strategies and provide practice
               questions and mock exams to prepare.
+            </p>
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    data: [
+      {
+        key: "7",
+        label: `What is ${appName} refund policy?`,
+        children: (
+          <>
+            <p>
+              {appName} Refund policy depends on the type of the enrolled
+              course.
+            </p>
+            <ol>
+              <li> All Long Term courses/subscriptions - No Refund</li>
+              <li>
+                Rank Booster/Doubt App/Trimmed Down Products/ Crash Courses
+                (JEE/NTSE/Olympiads) - No Refund
+              </li>
+              <li>
+                One-to-One Tuition courses (for regular tuitions in grade 6-12)
+                - No refund
+              </li>
+              <li>
+                {appName} Superkids program ( Coding, Reading and other specialty
+                classes) - No refund
+              </li>
+            </ol>
+            <p>
+              Please refer to the respective course enrolment page for specific
+              details on refund policy before enrollment.
+            </p>
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    data: [
+      {
+        key: "8",
+        label: `How can I get a refund? (in cases where applicable)`,
+        children: (
+          <>
+            <p>
+              We would love to hear your problem & solve it before you decide to
+              quit. However,if you wish to get a refund you can drop an email
+              with your course details you want a refund for with your
+              registered email id to {email}. Once you drop the email
+              the concerned team will connect you. Alternatively, you can chat
+              with our team using {appName} chat box.
+            </p>
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    data: [
+      {
+        key: "9",
+        label: `What if I have any concerns related to live classes or other services?`,
+        children: (
+          <>
+            <p>
+              You can always reach out to us through chat box "<Link to="/contact-us">Contact Us</Link>" or
+              through mail {email} or call on our customer care number
+              mentioned on the website and our team will resolve your issues
             </p>
           </>
         ),

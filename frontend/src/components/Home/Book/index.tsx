@@ -106,7 +106,7 @@ const BookClass = () => {
           <div className="row align-items-center">
             <motion.div className="col-md-7">
               <motion.h1 className="bold-text">
-                Book a <span className="text-warning">Demo Class</span>
+                Book a <span className="text-warning">Free</span> Demo Class
               </motion.h1>
               <motion.p>
                 Get ready for an amazing journey with the best mentors who turn

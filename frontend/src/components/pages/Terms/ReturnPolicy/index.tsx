@@ -9,52 +9,27 @@ const RETURNPOLICY = () => {
       <Section>
         <TermsHeader title="RETURN POLICY" desc="Last updated July 17, 2024" />
         <p>
-          Thank you for your purchase. We hope you are happy with your purchase.
-          However, if you are not completely satisfied with your purchase for
-          any reason, you may return it to us for a full refund only. Please see
-          below for more information on our return policy.
+          If, as a Student, you wish to cancel a confirmed enrolment made via
+          the Site or the Application, after enrolment to the Course, the
+          cancellation policy contained in the applicable Listing will apply to
+          such cancellation provided that no refund will be made in respect of
+          tuitions already provided. Our ability to refund the Course Fees and
+          other amounts charged to you will depend upon the terms of the
+          applicable cancellation policy and financial charges applicable in
+          case of course payment through No Cost EMI options. Details regarding
+          refunds and cancellation policies are available via the Site and
+          Application. The atoz classes will initiate any refunds due pursuant
+          to the Payments Terms. Please refer to the Refunds section of Love to
+          solving doubts for latest updated terms and conditions for various
+          categories of listings/courses.
         </p>
 
-        <h3 className="mt-4">RETURNS</h3>
         <p>
-          All returns must be postmarked within seven (7) days of the purchase
-          date. All returned items must be in new and unused condition, with all
-          original tags and labels attached.
-        </p>
-
-        <h3 className="mt-4">RETURN PROCESS</h3>
-        <p>
-          To return an item, place the item securely in its original packaging
-          and the return form provided, then mail your return to the following
-          address:
-        </p>
-        <address>
-          The A to z Classes
-          <br />
-          Attn: Returns
-          <br />
-          HIG-A-373/ll rajajipuram,
-          <br />
-          Lucknow Uttar Pradesh -226017
-          <br />
-          India
-        </address>
-        <p>Return shipping charges will be paid or reimbursed by us.</p>
-
-        <h3 className="mt-4">REFUNDS</h3>
-        <p>
-          After receiving your return and inspecting the condition of your item,
-          we will process your return. Please allow at least seven (7) days from
-          the receipt of your item to process your return. Refunds may take 1-2
-          billing cycles to appear on your credit card statement, depending on
-          your credit card company. We will notify you by email when your return
-          has been processed.
-        </p>
-
-        <h3 className="mt-4">EXCEPTIONS</h3>
-        <p>
-          For defective or damaged products, please contact us at the contact
-          details below to arrange a refund or exchange.
+          If We cancel a confirmed enrolment made via the Site, Services, and
+          Application, (i) The atoz classes will refund the Course Fees paid by
+          the Student for such enrolment to the applicable Student pursuant to
+          the Payments Terms which shall not exceed the total amount paid by the
+          Student.
         </p>
 
         <h3 className="mt-4">QUESTIONS</h3>
