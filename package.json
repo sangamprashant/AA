@@ -1,10 +1,9 @@
 {
   "name": "aaaaa",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "dev": "npm run start"
+    "public": "nodemon server-public/index.js",
+    "admin": "nodemon server-admin/index.js"
   },
   "author": "Prashant Srivastav",
   "license": "MIT",

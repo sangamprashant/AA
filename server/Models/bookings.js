@@ -1,4 +1,8 @@
 const mongoose = require("mongoose");
+const User = require("./users");
+const Schema = mongoose.Schema;
+
+
 
 const bookingSchema = new mongoose.Schema(
   {
@@ -34,9 +38,29 @@ const bookingSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    checked: {
-      type: Boolean,
-      default: false,
+    state: {
+      type: String,
+      enum: [
+        "New leads",
+        "Attempt to contacted (1)",
+        "Attempt to contacted (2)",
+        "Connected",
+        "Prospect",
+        "Hot leads",
+        "Payment Received",
+        "Not Interested",
+      ],
+      default: "New leads",
+    },
+    assignedEmployee: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    allocationDate: {
+      type: Date,
+      required: true,
+      default: Date.now,
     },
   },
   {
