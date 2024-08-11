@@ -20,7 +20,7 @@ const corsOptions = {
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
@@ -59,14 +59,8 @@ app.use("/api/v1/user", require("./server/Routers/public/user"));
 app.use("/api/v1/booking", require("./server/Routers/public/booking"));
 app.use("/api/v1/contact", require("./server/Routers/public/contact"));
 app.use("/api/v1/payment", require("./server/Routers/public/paymet"));
-app.use(
-  "/api/v1/study-materials",
-  require("./server/Routers/public/studyMaterials")
-);
-app.use(
-  "/api/v1/access-content",
-  require("./server/Routers/public/access-data")
-);
+app.use("/api/v1/study-materials", require("./server/Routers/public/studyMaterials"));
+app.use("/api/v1/access-content", require("./server/Routers/public/access-data"));
 // v2
 app.use("/api/v2/auth", require("./server/routers/admin/auth"));
 app.use("/api/v2/admin", require("./server/routers/admin/admin"));
@@ -81,7 +75,7 @@ app.get("/api/v1/protected", authenticateToken, (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../server.html"));
+  res.sendFile(path.join(__dirname, "./server.html"));
 });
 
 // app.use(express.static(path.join(__dirname, "frontend/dist")));
