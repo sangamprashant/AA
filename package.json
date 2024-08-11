@@ -2,8 +2,7 @@
   "name": "aaaaa",
   "version": "1.0.0",
   "scripts": {
-    "public": "nodemon server-public/index.js",
-    "admin": "nodemon server-admin/index.js"
+    "start" :"nodemon index.js"
   },
   "author": "Prashant Srivastav",
   "license": "MIT",
