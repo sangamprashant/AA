@@ -3,7 +3,7 @@ import { Home, Login } from "./auth";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthProvider";
 import { Dashboard404, DashboardSetting, Frame } from "./Dashboard";
-import { Bookings, EmployeeDashboard } from "./Dashboard/Employee";
+import { Bookings, EmpBOpen, EmployeeDashboard } from "./Dashboard/Employee";
 import {
   AdminAddEmployee,
   AdminBookings,
@@ -26,7 +26,6 @@ const AppComponent = () => {
   if (!authContext) {
     return null;
   }
-
   const { isLoggedIn } = authContext;
 
   return (
@@ -51,6 +50,7 @@ const AppComponent = () => {
             {/* -------------- employee -------------- */}
             <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
             <Route path="/employee/leads-bucket" element={<Bookings />} />
+            <Route path="/employee/leads-bucket/:id" element={<EmpBOpen />} />
             {/* ---------------- all ------------------ */}
             <Route path="/dashboard/setting" element={<DashboardSetting />} />
             <Route path="*" element={<Dashboard404 />} />

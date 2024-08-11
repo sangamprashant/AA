@@ -1,23 +1,11 @@
 .admin-panel-content-main {
   background: #eef0f6 !important;
+  /* padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
-.admin-dashboard-header {
-  min-height: 200px;
-  background-image: url("/admin/top-header.png");
-  background-position: top bottom;
-  display: flex;
-  align-items: center;
-  color: white;
-  border-radius: 0px 0px 10px 10px;
-}
-
-.admin-dashboard-main{
-  margin-top: -50px;
-}
-
-@media (max-width: 992px) {
-  .admin-dashboard-main{
-    margin-top: 0px;
-  }
-}
+/* .logo img {
+  transition: all 0.3s;
+  max-width: 100%;
+} */

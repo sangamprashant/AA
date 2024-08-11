@@ -3,7 +3,7 @@
   }
   
   .admin-dashboard-header {
-    min-height: 200px;
+    min-height: 40px;
     /* background: linear-gradient(90deg, rgba(64,58,180,1) 0%, rgba(29,168,253,1) 50%, rgba(118,69,252,1) 100%); */
     /* background: linear-gradient(90deg, rgba(18,152,99,1) 0%, rgba(29,253,70,1) 50%, rgba(69,252,186,1) 100%); */
     background: linear-gradient(90deg, rgba(153,153,153,1) 0%, rgba(255,255,255,1) 50%, rgba(205,205,205,1) 100%);
@@ -14,12 +14,3 @@
     border-radius: 0px 0px 10px 10px;
   }
   
-  .admin-dashboard-main{
-    margin-top: -50px;
-  }
-  
-  @media (max-width: 992px) {
-    .admin-dashboard-main{
-      margin-top: 0px;
-    }
-  }

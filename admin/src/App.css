@@ -1,0 +1,10 @@
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+}
+
+.card-my {
+  background-color: #f0f2f5;
+}

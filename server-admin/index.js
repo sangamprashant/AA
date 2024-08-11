@@ -45,6 +45,7 @@ mongoose.connection.on("error", (err) => {
 // routes
 app.use("/api/v1/auth", require("../server/routers/admin/auth"));
 app.use("/api/v1/admin", require("../server/routers/admin/admin"));
+app.use("/api/v1/employee", require("../server/routers/admin/employee"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

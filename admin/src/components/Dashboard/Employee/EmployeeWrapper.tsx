@@ -5,7 +5,7 @@ interface Wrapper {
 }
 
 const EmployeeWrapper = ({ children }: Wrapper) => {
-  return <div className="card p-4">{children}</div>;
+  return <div className="card px-4 card-my border-0">{children}</div>;
 };
 
 export default EmployeeWrapper;
