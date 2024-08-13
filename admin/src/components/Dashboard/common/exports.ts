@@ -21,12 +21,12 @@ export const statusOptions = [
 ];
 
 export const colors = [
-  "#e0f7fa", // New leads
-  "#ffebee", // Attempt to contacted (1)
-  "#fff3e0", // Attempt to contacted (2)
-  "#e8f5e9", // Connected
-  "#f3e5f5", // Prospect
-  "#ffecb3", // Hot leads
-  "#c8e6c9", // Payment Received
-  "#ef9a9a", // Not Interested
+  "#4c527e", // New leads
+  "#741a28", // Attempt to contacted (1)
+  "#6c5023", // Attempt to contacted (2)
+  "#07660e", // Connected
+  "#600f6c", // Prospect
+  "#7c600b", // Hot leads
+  "#07660b", // Payment Received
+  "#820c0c", // Not Interested
 ];

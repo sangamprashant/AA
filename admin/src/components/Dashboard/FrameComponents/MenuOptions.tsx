@@ -6,13 +6,13 @@ import {
 } from "@ant-design/icons";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import PaymentIcon from "@mui/icons-material/Payment";
+import PeopleIcon from "@mui/icons-material/People";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { Menu, Modal, Typography } from "antd";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
-import { useContext, useState } from "react";
-import PeopleIcon from "@mui/icons-material/People";
 
 const { Title } = Typography;
 
@@ -79,9 +79,6 @@ const MenuOptions = () => {
       onClick: () => navigate("/manager/payments"),
     },
   ];
-  const employeeOptions = [
-
-  ];
 
   const commonOptions = [
     {
@@ -125,7 +122,7 @@ const MenuOptions = () => {
       : user?.role === "manager"
       ? managerOptions
       : user?.role === "employee"
-      ? employeeOptions
+      ? []
       : []),
     ...commonBottom,
   ];

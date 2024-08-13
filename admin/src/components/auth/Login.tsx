@@ -1,9 +1,9 @@
+import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import { config } from "../../config";
 import { getButtonColor, openNotification } from "../../functions";
 import { AuthContext } from "../context/AuthProvider";
-import { config } from "../../config";
 
 const Login: React.FC = () => {
   const authContext = useContext(AuthContext);
@@ -11,7 +11,7 @@ const Login: React.FC = () => {
     return null;
   }
 
-  const { setIsLoggedIn, setUser } = authContext;
+  const { setIsLoggedIn, setUser, setToken } = authContext;
   const { role } = useParams<{ role: string }>();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -36,6 +36,7 @@ const Login: React.FC = () => {
         "You have successfully logged in.",
         "success"
       );
+      setToken(response.data.token);
       navigate(`/${response.data.user.role}/dashboard`);
     } catch (error: any) {
       console.error("Login Error:", error);

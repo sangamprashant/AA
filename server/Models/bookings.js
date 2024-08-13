@@ -2,8 +2,6 @@ const mongoose = require("mongoose");
 const User = require("./users");
 const Schema = mongoose.Schema;
 
-
-
 const bookingSchema = new mongoose.Schema(
   {
     firstName: {
@@ -56,6 +54,10 @@ const bookingSchema = new mongoose.Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
+    },
+    approvedBYHigher: {
+      type: Boolean,
+      default: true,
     },
     allocationDate: {
       type: Date,

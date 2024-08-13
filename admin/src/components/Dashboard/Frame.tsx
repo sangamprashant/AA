@@ -3,13 +3,12 @@ import {
   MenuUnfoldOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Badge, Button, Layout, Typography, theme } from "antd";
+import { Avatar, Badge, Button, Layout, theme } from "antd";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import MenuOptions from "./FrameComponents/MenuOptions";
 
 const { Header, Sider, Content } = Layout;
-const { Title } = Typography;
 
 interface AdminPanelProps {
   children: React.ReactNode;
@@ -30,7 +29,7 @@ const Frame = ({ children }: AdminPanelProps) => {
   if (!authContext) {
     return null;
   }
-  const { user, dashboardTitle } = authContext;
+  const { user } = authContext;
 
   return (
     <Layout style={{ minHeight: "100vh" }}>

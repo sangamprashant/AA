@@ -1,4 +1,3 @@
-import React from "react";
 import AdminWrapper from "../AdminWrapper";
 
 const AdminStudyM = () => {

@@ -1,10 +1,7 @@
-import React from 'react'
-import ManagerWrapper from '../ManagerWrapper'
+import ManagerWrapper from "../ManagerWrapper";
 
 const ManagerContentA = () => {
-  return (
-    <ManagerWrapper>ManagerContentA</ManagerWrapper>
-  )
-}
+  return <ManagerWrapper>ManagerContentA</ManagerWrapper>;
+};
 
-export default ManagerContentA
+export default ManagerContentA;

@@ -1,9 +1,6 @@
-import React from 'react'
 
 const AdminContacts = () => {
-  return (
-    <div>AdminContacts</div>
-  )
-}
+  return <div>AdminContacts</div>;
+};
 
-export default AdminContacts
+export default AdminContacts;

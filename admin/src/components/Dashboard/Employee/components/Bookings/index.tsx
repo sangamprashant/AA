@@ -7,7 +7,7 @@ import { config } from "../../../../../config";
 import { Booking } from "../../../../../types/booking";
 import { AuthContext } from "../../../../context/AuthProvider";
 import { colors } from "../../../common/exports";
-import CachedIcon from "@mui/icons-material/Cached";
+import TopBar from "./TopBar";
 
 const Bookings = () => {
   const authContext = useContext(AuthContext);
@@ -103,15 +103,7 @@ const Bookings = () => {
 
   return (
     <>
-      <div className="nav-bar mb-2">
-        <div></div>
-        <div className="d-flex gap-2">
-          <button className="btn btn-primary">Create Lead</button>
-          <button className="btn btn-outline-secondary btn-sm rounded-circle py-1">
-            <CachedIcon fontSize="small" />
-          </button>
-        </div>
-      </div>
+      <TopBar fetchData={fetchData} />
 
       <div className="leads">
         {items.map((data, index) => {
@@ -120,7 +112,7 @@ const Bookings = () => {
           return (
             <div key={index} className="leads-container">
               <div
-                className="top mb-2"
+                className="top mb-2 text-white-50"
                 style={{ backgroundColor: topBackgroundColor }}
               >
                 <b>{data.label}</b>

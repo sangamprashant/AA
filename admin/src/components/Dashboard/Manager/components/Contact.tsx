@@ -1,10 +1,7 @@
-import React from 'react'
-import ManagerWrapper from '../ManagerWrapper'
+import ManagerWrapper from "../ManagerWrapper";
 
 const ManagerContact = () => {
-  return (
-    <ManagerWrapper>ManagerContact</ManagerWrapper>
-  )
-}
+  return <ManagerWrapper>ManagerContact</ManagerWrapper>;
+};
 
-export default ManagerContact
+export default ManagerContact;

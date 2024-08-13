@@ -1,4 +1,3 @@
-import React from "react";
 import ManagerWrapper from "../ManagerWrapper";
 
 const ManagerStudyM = () => {

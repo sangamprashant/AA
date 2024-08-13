@@ -1,10 +1,7 @@
-import React from 'react'
-import AdminWrapper from '../AdminWrapper'
+import AdminWrapper from "../AdminWrapper";
 
 const AdminBookings = () => {
-  return (
-    <AdminWrapper>AdminBookings</AdminWrapper>
-  )
-}
+  return <AdminWrapper>AdminBookings</AdminWrapper>;
+};
 
-export default AdminBookings
+export default AdminBookings;

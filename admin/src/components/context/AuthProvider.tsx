@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, {
-    FC,
-    ReactNode,
-    createContext,
-    useLayoutEffect,
-    useState
+  FC,
+  ReactNode,
+  createContext,
+  useLayoutEffect,
+  useState,
 } from "react";
 import { config } from "../../config";
 
@@ -25,6 +25,7 @@ interface AuthContextType {
   token: string;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  setToken: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -68,7 +69,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     } catch (error) {
       console.error("Error fetching protected data:", error);
       setIsLoggedIn(false);
-      logout()
+      logout();
       setUser(null);
     } finally {
       setLoading(false);
@@ -99,6 +100,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         logout,
         token,
         setUser,
+        setToken,
       }}
     >
       {children}

@@ -1,9 +1,6 @@
-import React from 'react'
 
 const DashboardSetting = () => {
-  return (
-    <div className='card p-4'>DashboardSetting</div>
-  )
-}
+  return <div className="card p-4">DashboardSetting</div>;
+};
 
-export default DashboardSetting
+export default DashboardSetting;
