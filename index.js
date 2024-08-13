@@ -62,9 +62,9 @@ app.use("/api/v1/payment", require("./server/Routers/public/paymet"));
 app.use("/api/v1/study-materials", require("./server/Routers/public/studyMaterials"));
 app.use("/api/v1/access-content", require("./server/Routers/public/access-data"));
 // v2
-app.use("/api/v2/auth", require("./server/routers/admin/auth"));
-app.use("/api/v2/admin", require("./server/routers/admin/admin"));
-app.use("/api/v2/employee", require("./server/routers/admin/employee"));
+app.use("/api/v2/auth", require("./server/Routers/admin/auth"));
+app.use("/api/v2/admin", require("./server/Routers/admin/admin"));
+app.use("/api/v2/employee", require("./server/Routers/admin/employee"));
 
 app.get("/api/v1/protected", authenticateToken, (req, res) => {
   res.status(200).json({
