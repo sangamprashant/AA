@@ -27,6 +27,7 @@ const userCreateBooking = async (req, res) => {
       ...req.body,
       assignedEmployee: randomEmployee._id, // Set the assigned employee here
       checked: false,
+      approvedBYHigher: true,
     });
 
     // Notify admin about the new booking

@@ -12,23 +12,11 @@ const validStates = [
 ];
 
 const employeeGetTheirBookings = async (req, res) => {
-  // const { type } = req.body;
-
-  // console.log(req.body)
-
-  // if (!validStates.includes(type)) {
-  //   return res.status(400).json({
-  //     message: "Invalid booking state",
-  //     success: false,
-  //   });
-  // }
-
   try {
     const bookings = await Booking.find({
       assignedEmployee: req.user.id,
-      // state: type,
+      approvedBYHigher: true,
     });
-
     res.status(200).json(bookings);
   } catch (error) {
     console.error("Error fetching bookings:", error);
@@ -38,8 +26,6 @@ const employeeGetTheirBookings = async (req, res) => {
     });
   }
 };
-
-
 
 module.exports = {
   employeeGetTheirBookings,
