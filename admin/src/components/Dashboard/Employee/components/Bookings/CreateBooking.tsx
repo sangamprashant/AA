@@ -74,7 +74,9 @@ const CreateBooking: React.FC = () => {
           <Button type="primary" loading>
             Add and Go Back
           </Button>
-          <Button type="link">Cancel</Button>
+          <Button danger type="dashed">
+            Cancel
+          </Button>
         </div>
       </div>
 

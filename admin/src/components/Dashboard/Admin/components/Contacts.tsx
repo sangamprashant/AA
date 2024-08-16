@@ -1,6 +1,12 @@
+import Contact from "../../common/Contact";
+import AdminWrapper from "../AdminWrapper";
 
 const AdminContacts = () => {
-  return <div>AdminContacts</div>;
+  return (
+    <AdminWrapper>
+      <Contact />
+    </AdminWrapper>
+  );
 };
 
 export default AdminContacts;

@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const config = require("../../config");
 const User = require("../../Models/users");
 const Booking = require("../../Models/bookings");
+const Contact = require("../../Models/contact");
 
 const register = async (req, res) => {
   const { email, password, role } = req.body;
@@ -116,7 +117,10 @@ const BookingId = async (req, res) => {
         success: false,
       });
     }
-    const booking = await Booking.findById(bookingId);
+    const booking = await Booking.findById(bookingId).populate(
+      "assignedEmployee",
+      "name email"
+    );
     if (!booking) {
       return res.status(404).json({
         message: "Booking not found",
@@ -138,9 +142,77 @@ const BookingId = async (req, res) => {
   }
 };
 
+const BookingType = async (req, res) => {
+  if (!req.user || !req.user.id) {
+    return res.status(401).json({ message: "Unauthorized", success: false });
+  }
+
+  const user = await User.findById(req.user.id);
+  if (!user) {
+    return res.status(404).json({ message: "User not found", success: false });
+  }
+
+  const query = {};
+  query.state = req.body.type;
+  query.approvedBYHigher = true;
+
+  if (user.role === "employee") {
+    query.assignedEmployee = user._id;
+  }
+
+  try {
+    const bookings = await Booking.find(query).populate(
+      "assignedEmployee",
+      "name email"
+    );
+    // .populate("stateHistory.updatedBy", "name email");
+    res.status(200).json(bookings);
+  } catch (error) {
+    console.error("Error fetching bookings:", error);
+    res.status(500).json({
+      message: "Server error",
+      success: false,
+    });
+  }
+};
+
+const ContactsByType = async (req, res) => {
+  try {
+    const { type, page = 1, pageSize = 10 } = req.query; // Extract page and pageSize from query params
+
+    let contacts;
+
+    // Filter contacts based on the type
+    if (type === "received") {
+      contacts = await Contact.find({ checked: false })
+        .skip((page - 1) * pageSize)
+        .limit(parseInt(pageSize));
+    } else if (type === "responded") {
+      contacts = await Contact.find({ checked: true })
+        .skip((page - 1) * pageSize)
+        .limit(parseInt(pageSize));
+    } else {
+      return res
+        .status(400)
+        .json({ message: "Invalid type specified", success: false });
+    }
+
+    res.status(200).json(contacts);
+  } catch (error) {
+    console.error("Error fetching contacts:", error);
+    res.status(500).json({
+      message: "Server error, please try again later.",
+      error,
+      success: false,
+    });
+  }
+};
+
 module.exports = {
   login,
   register,
   checkAuth,
   BookingId,
+  BookingType,
+  ContactsByType,
 };

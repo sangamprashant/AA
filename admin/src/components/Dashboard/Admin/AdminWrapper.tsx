@@ -2,10 +2,11 @@ import { ReactNode } from "react";
 
 interface Wrapper {
   children: ReactNode;
+  className?: string;
 }
 
-const AdminWrapper = ({ children }: Wrapper) => {
-  return <div className="card p-4">{children}</div>;
+const AdminWrapper = ({ className, children }: Wrapper) => {
+  return <div className={className}>{children}</div>;
 };
 
 export default AdminWrapper;

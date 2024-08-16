@@ -5,7 +5,7 @@ interface Wrapper {
 }
 
 const ManagerWrapper = ({ children }: Wrapper) => {
-  return <div className="card p-4">{children}</div>;
+  return <div>{children}</div>;
 };
 
 export default ManagerWrapper;

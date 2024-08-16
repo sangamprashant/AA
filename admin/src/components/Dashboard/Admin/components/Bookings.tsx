@@ -1,7 +1,7 @@
-import AdminWrapper from "../AdminWrapper";
+import { Bookings } from "../../common";
 
 const AdminBookings = () => {
-  return <AdminWrapper>AdminBookings</AdminWrapper>;
+  return <Bookings />;
 };
 
 export default AdminBookings;

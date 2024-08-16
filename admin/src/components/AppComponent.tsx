@@ -3,7 +3,7 @@ import { Home, Login } from "./auth";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthProvider";
 import { Dashboard404, DashboardSetting, Frame } from "./Dashboard";
-import { Bookings, CreateBooking, EmpBOpen, EmployeeDashboard } from "./Dashboard/Employee";
+import {  CreateBooking, EmpBOpen, EmployeeDashboard } from "./Dashboard/Employee";
 import {
   AdminAddEmployee,
   AdminBookings,
@@ -20,6 +20,7 @@ import {
   ManagerPayments,
   ManagerStudyM,
 } from "./Dashboard/Manager";
+import { AMLeadsOpen, Bookings } from "./Dashboard/common";
 
 const AppComponent = () => {
   const authContext = useContext(AuthContext);
@@ -36,6 +37,7 @@ const AppComponent = () => {
             {/* -------------- Admnin -------------- */}
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/leads-bucket" element={<AdminBookings />} />
+            <Route path="/admin/leads-bucket/:id" element={<AMLeadsOpen />} />
             <Route path="/admin/contact" element={<AdminContacts />} />
             <Route path="/admin/s-m" element={<AdminStudyM />} />
             <Route path="/admin/employee" element={<AdminAddEmployee />} />
@@ -43,6 +45,7 @@ const AppComponent = () => {
             {/* -------------- manager -------------- */}
             <Route path="/manager/dashboard" element={<ManagerDashboard />} />
             <Route path="/manager/leads-bucket" element={<ManagerBookings />} />
+            <Route path="/manager/leads-bucket/:id" element={<AMLeadsOpen />} />
             <Route path="/manager/contact" element={<ManagerContact />} />
             <Route path="/manager/s-m" element={<ManagerStudyM />} />
             <Route path="/manager/c-a" element={<ManagerContentA />} />

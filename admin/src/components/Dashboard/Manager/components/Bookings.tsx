@@ -1,7 +1,7 @@
-import ManagerWrapper from "../ManagerWrapper";
+import { Bookings } from "../../common";
 
 const ManagerBookings = () => {
-  return <ManagerWrapper>Bookings</ManagerWrapper>;
+  return <Bookings />;
 };
 
 export default ManagerBookings;

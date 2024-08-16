@@ -1,4 +1,11 @@
 // types/booking.d.ts
+
+export type User = {
+  _id: string;
+  name: string;
+  email: string;
+};
+
 export type StateHistory = {
   state:
     | "New leads"
@@ -45,7 +52,7 @@ export type Booking = {
     | "Payment Received"
     | "Not Interested";
   stateHistory?: StateHistory[];
-  assignedEmployee: string; // Assuming this references a User ID
+  assignedEmployee: User;
   files?: Files;
   approvedBYHigher?: boolean;
   allocationDate: Date;

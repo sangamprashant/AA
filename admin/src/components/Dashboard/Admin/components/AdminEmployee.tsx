@@ -161,7 +161,7 @@ const AdminAddEmployee: React.FC = () => {
   ];
 
   return (
-    <AdminWrapper>
+    <AdminWrapper className="card p-4">
       <div style={{ padding: "20px", maxWidth: "700px", margin: "0 auto" }}>
         <Input.Search
           placeholder="Search by name"

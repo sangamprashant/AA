@@ -50,6 +50,7 @@ const EmpBOpen = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(res.data);
       setSelectedData(res.data.data);
       setNewState(res.data.data.state || "");
     } catch (error) {
