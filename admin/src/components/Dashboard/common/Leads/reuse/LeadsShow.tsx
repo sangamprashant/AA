@@ -15,7 +15,7 @@ const BookingTable = ({ type }: BookingTableProps) => {
   if (!authContext) {
     return null;
   }
-  const { token } = authContext;
+  const { token, user } = authContext;
   const [data, setData] = useState<Booking[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -59,6 +59,13 @@ const BookingTable = ({ type }: BookingTableProps) => {
               <strong>Allocation Date:</strong>{" "}
               {new Date(item.allocationDate).toLocaleDateString()}
               <br />
+              {user?.role !== "employee" && (
+                <>
+                  <strong>Allocated to:</strong>{" "}
+                  {item?.assignedEmployee?.name}
+                  <br />
+                </>
+              )}
               <strong>Created At:</strong>{" "}
               {new Date(item.createdAt).toLocaleString()}
               <br />

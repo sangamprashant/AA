@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const config = require("../config");
 
-const requireEmployee = (req, res, next) => {
+const requireManager = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
 
@@ -15,10 +15,10 @@ const requireEmployee = (req, res, next) => {
     const decoded = jwt.verify(token, config.JWT_SECRET);
     req.user = decoded;
 
-    if (req.user.role !== "employee") {
+    if (req.user.role !== "manager") {
       return res
         .status(403)
-        .json({ message: "Access denied. employees only.", success: false });
+        .json({ message: "Access denied. managers only.", success: false });
     }
 
     next();
@@ -27,4 +27,4 @@ const requireEmployee = (req, res, next) => {
   }
 };
 
-module.exports = requireEmployee;
+module.exports = requireManager;

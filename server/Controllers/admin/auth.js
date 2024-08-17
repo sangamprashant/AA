@@ -158,6 +158,14 @@ const BookingType = async (req, res) => {
 
   if (user.role === "employee") {
     query.assignedEmployee = user._id;
+  } else if (user.role === "manager") {
+    const managedEmployees = await User.find({ manager: user._id }, "_id");
+    if (managedEmployees.length > 0) {
+      const employeeIds = managedEmployees.map((emp) => emp._id);
+      query.assignedEmployee = { $in: employeeIds };
+    } else {
+      return res.status(200).json([]);
+    }
   }
 
   try {
@@ -165,7 +173,6 @@ const BookingType = async (req, res) => {
       "assignedEmployee",
       "name email"
     );
-    // .populate("stateHistory.updatedBy", "name email");
     res.status(200).json(bookings);
   } catch (error) {
     console.error("Error fetching bookings:", error);
@@ -178,11 +185,8 @@ const BookingType = async (req, res) => {
 
 const ContactsByType = async (req, res) => {
   try {
-    const { type, page = 1, pageSize = 10 } = req.query; // Extract page and pageSize from query params
-
+    const { type, page = 1, pageSize = 10 } = req.query;
     let contacts;
-
-    // Filter contacts based on the type
     if (type === "received") {
       contacts = await Contact.find({ checked: false })
         .skip((page - 1) * pageSize)
@@ -196,7 +200,6 @@ const ContactsByType = async (req, res) => {
         .status(400)
         .json({ message: "Invalid type specified", success: false });
     }
-
     res.status(200).json(contacts);
   } catch (error) {
     console.error("Error fetching contacts:", error);

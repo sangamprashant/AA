@@ -14,20 +14,43 @@ const { TabPane } = Tabs;
 const { RangePicker } = DatePicker;
 
 const Contact = () => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [dateRange, setDateRange] = useState<[Dayjs | null, Dayjs | null]>([
+    null,
+    null,
+  ]);
   return (
     <>
       <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
         <h5>CONTACTS</h5>
         <div className="d-flex gap-2">
-          {/* Add any additional buttons or links if needed */}
+          <div className="d-flex justify-content-center gap-2">
+            <Input
+              placeholder="Search by name or email"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{ width: "200px" }}
+            />
+            <RangePicker
+              placeholder={["Start Date", "End Date"]}
+              value={dateRange}
+              onChange={(dates) => {
+                if (dates && dates.length === 2) {
+                  setDateRange(dates as [Dayjs, Dayjs]);
+                } else {
+                  setDateRange([null, null]);
+                }
+              }}
+            />
+          </div>
         </div>
       </div>
       <Tabs defaultActiveKey="1">
         <TabPane tab="Contacts Received" key="1">
-          <ContactTable type="received" />
+          <ContactTable type="received" searchTerm={searchTerm} dateRange={dateRange}/>
         </TabPane>
         <TabPane tab="Contacts Responded" key="2">
-          <ContactTable type="responded" />
+          <ContactTable type="responded" searchTerm={searchTerm} dateRange={dateRange}/>
         </TabPane>
       </Tabs>
     </>
@@ -38,6 +61,8 @@ export default Contact;
 
 type ContactTableProps = {
   type: "received" | "responded";
+  searchTerm: string;
+  dateRange: [Dayjs | null, Dayjs | null];
 };
 
 type Contact = {
@@ -59,14 +84,9 @@ type ModalState = {
   type: "delete" | "respond";
 };
 
-const ContactTable = ({ type }: ContactTableProps) => {
+const ContactTable = ({ type, searchTerm, dateRange }: ContactTableProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [dateRange, setDateRange] = useState<[Dayjs | null, Dayjs | null]>([
-    null,
-    null,
-  ]);
   const [loading, setLoading] = useState<boolean>(true);
   const [page, setPage] = useState<number>(1);
   const [pageSize] = useState<number>(10);
@@ -250,25 +270,6 @@ const ContactTable = ({ type }: ContactTableProps) => {
 
   return (
     <div className="container">
-      <div className="d-flex justify-content-center mb-3 gap-2">
-        <Input
-          placeholder="Search by name or email"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ width: "200px" }}
-        />
-        <RangePicker
-          placeholder={["Start Date", "End Date"]}
-          value={dateRange}
-          onChange={(dates) => {
-            if (dates && dates.length === 2) {
-              setDateRange(dates as [Dayjs, Dayjs]);
-            } else {
-              setDateRange([null, null]);
-            }
-          }}
-        />
-      </div>
       <Table
         dataSource={filteredContacts}
         columns={columns}
@@ -293,11 +294,11 @@ const ContactTable = ({ type }: ContactTableProps) => {
         onCancel={closeModal}
         centered
         title={
-          modal.type === 'delete' ? 'Delete the message' : 'Reply to message'
+          modal.type === "delete" ? "Delete the message" : "Reply to message"
         }
         footer={
           <>
-            {modal.type === 'delete' ? (
+            {modal.type === "delete" ? (
               <Button
                 type="primary"
                 danger
@@ -308,7 +309,9 @@ const ContactTable = ({ type }: ContactTableProps) => {
             ) : (
               <Button
                 type="primary"
-                onClick={() => modal.content && handleRespond(modal.content._id)}
+                onClick={() =>
+                  modal.content && handleRespond(modal.content._id)
+                }
               >
                 Submit
               </Button>
@@ -321,15 +324,37 @@ const ContactTable = ({ type }: ContactTableProps) => {
       >
         {modal.content ? (
           <div>
-            <p><strong>Name:</strong> {modal.content.firstName} {modal.content.lastName}</p>
-            <p><strong>Email:</strong> {modal.content.email}</p>
-            <p><strong>Phone Number:</strong> {modal.content.phoneNumber}</p>
-            <p><strong>Message:</strong> {modal.content.message}</p>
+            <p>
+              <strong>Name:</strong> {modal.content.firstName}{" "}
+              {modal.content.lastName}
+            </p>
+            <p>
+              <strong>Email:</strong> {modal.content.email}
+            </p>
+            <p>
+              <strong>Phone Number:</strong> {modal.content.phoneNumber}
+            </p>
+            <p>
+              <strong>Message:</strong> {modal.content.message}
+            </p>
             {modal.content.responseMessage ? (
-              <p><strong>Response Message:</strong> {modal.content.responseMessage}</p> 
-            ):<><p><strong>Response Message:</strong></p> 
-            <textarea name="" id="" className="form-control" placeholder="write a reply.."></textarea>
-            </>}
+              <p>
+                <strong>Response Message:</strong>{" "}
+                {modal.content.responseMessage}
+              </p>
+            ) : (
+              <>
+                <p>
+                  <strong>Response Message:</strong>
+                </p>
+                <textarea
+                  name=""
+                  id=""
+                  className="form-control"
+                  placeholder="write a reply.."
+                ></textarea>
+              </>
+            )}
           </div>
         ) : (
           <p>No content available</p>

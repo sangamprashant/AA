@@ -1,6 +1,12 @@
+import { AMPayments } from "../../common";
+import AdminWrapper from "../AdminWrapper";
 
 const AdminPayments = () => {
-  return <div>AdminPayments</div>;
+  return (
+    <AdminWrapper>
+      <AMPayments />
+    </AdminWrapper>
+  );
 };
 
 export default AdminPayments;

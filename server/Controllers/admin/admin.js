@@ -1,7 +1,7 @@
 const User = require("../../Models/users");
 
 const registerUser = async (req, res) => {
-  const { email, password, role, name } = req.body;
+  const { email, password, role, name, manager } = req.body;
 
   // Input validation
   if (!email || !password || !role || !name) {
@@ -25,6 +25,7 @@ const registerUser = async (req, res) => {
       password,
       role,
       name,
+      manager: manager || undefined,
     });
 
     // Save the user to the database
@@ -42,12 +43,37 @@ const registerUser = async (req, res) => {
 // Fetch all users excluding those with the 'admin' role
 const adminGetUsers = async (req, res) => {
   try {
-    // Filter out users with the 'admin' role
-    const users = await User.find({ role: { $ne: "admin" } });
+    // Fetch users excluding the 'admin' role and excluding the 'notifications' field
+    const users = await User.find({ role: { $ne: "admin" } })
+      .select("-notifications")
+      .populate({
+        path: 'manager',
+        select: 'name email', 
+        match: { role: 'manager' } 
+      });
     res.json(users);
   } catch (error) {
+    console.error("Error fetching users:", error);
     res.status(500).json({ message: "Error fetching users" });
   }
 };
 
-module.exports = { adminGetUsers, registerUser };
+const adminDeleteUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found",success:false });
+    }
+    if (user.role === "admin") {
+      return res.status(403).json({ message: "Cannot delete an admin user",success:false });
+    }
+    await User.findByIdAndDelete(id);
+    res.status(200).json({ message: "User deleted successfully",success:true });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ message: "Error deleting user" ,success:false,error});
+  }
+};
+
+module.exports = { adminGetUsers, registerUser, adminDeleteUser };

@@ -1,14 +1,21 @@
 import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
-import { Tabs, Table } from "antd";
+import { Tabs, Table, Modal, Row, Col } from "antd";
 import AdminWrapper from "../AdminWrapper";
 import axios from "axios";
 import { ColumnType } from "antd/es/table";
 import { config } from "../../../../config";
 import { Form, Input, Button, Select, Typography, notification } from "antd";
 import { AuthContext } from "../../../context/AuthProvider";
+import TabPane from "antd/es/tabs/TabPane";
 
 const { Title } = Typography;
 const { Option } = Select;
+
+interface Manager {
+  _id: string;
+  name: string;
+  email: string;
+}
 
 interface User {
   _id: string;
@@ -16,12 +23,23 @@ interface User {
   email: string;
   role: string;
   createdAt: string;
+  updatedAt: string;
+  manager?: Manager;
+}
+
+interface modalProps {
+  isOpen: boolean;
+  data: User | null;
 }
 
 const AdminAddEmployee: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [searchValue, setSearchValue] = useState("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [model, setModal] = useState<modalProps>({
+    isOpen: false,
+    data: null,
+  });
+  const [modalDeleteLoading, setModalDeleteLoading] = useState(false);
   const authContext = useContext(AuthContext);
   if (!authContext) {
     return null;
@@ -37,6 +55,7 @@ const AdminAddEmployee: React.FC = () => {
 
   const fetchUsers = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(`${config.SERVER}/admin/users`, {
         headers: {
           "Content-Type": "application/json",
@@ -55,125 +74,136 @@ const AdminAddEmployee: React.FC = () => {
     }
   };
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.toLowerCase();
-    setSearchValue(value);
+  const loadDeleteData = (d: User) => {
+    setModal({
+      isOpen: true,
+      data: d,
+    });
   };
 
-  const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(searchValue)
-  );
+  const handelDelete = async () => {
+    try {
+      setModalDeleteLoading(true);
+      const res = await axios.delete(
+        `${config.SERVER}/admin/user/${model.data?._id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authContext.token}`,
+          },
+        }
+      );
 
-  const columns: ColumnType<User>[] = [
-    {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      sorter: (a, b) => a.name.localeCompare(b.name),
-      sortDirections: ["ascend", "descend"],
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-    },
-    {
-      title: "Role",
-      dataIndex: "role",
-      key: "role",
-    },
-    {
-      title: "Created At",
-      dataIndex: "createdAt",
-      key: "createdAt",
-      render: (text) => new Date(text).toLocaleString(),
-      sorter: (a, b) =>
-        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
-    },
-    {
-      title: "Actions",
-      key: "actions",
-      render: (_: any, record: User) => (
-        <div className="d-flex gap-2">
-          <Button
-            type="primary"
-            onClick={() => {
-              // Handle view logic here
-              console.log("View details of", record.name);
-            }}
-          >
-            View
-          </Button>
-          <Button
-            // type="danger"
-            danger
-            // onClick={() => deleteEmployee(record._id)}
-          >
-            Delete
-          </Button>
-        </div>
-      ),
-    },
-  ];
+      if (res.data.success) {
+        notification.success({
+          message: "Success",
+          description: "User has been deleted successfully.",
+        });
+        fetchUsers();
+      }
+    } catch (error: any) {
+      notification.error({
+        message: "Error",
+        description:
+          error?.response?.data?.message ||
+          "There was an error deleting the user. Please try again later.",
+      });
+      console.error("Error deleting user:", error);
+    } finally {
+      handelCancelDelete();
+      setModalDeleteLoading(false);
+    }
+  };
 
-  const items = [
-    {
-      key: "1",
-      label: "All",
-      children: (
-        <Table
-          columns={columns}
-          dataSource={filteredUsers}
-          loading={loading}
-          rowKey="_id"
-        />
-      ),
-    },
-    {
-      key: "2",
-      label: "All Managers",
-      children: (
-        <Table
-          columns={columns}
-          dataSource={filteredUsers.filter((user) => user.role === "manager")}
-          loading={loading}
-          rowKey="_id"
-        />
-      ),
-    },
-    {
-      key: "3",
-      label: "All Employees",
-      children: (
-        <Table
-          columns={columns}
-          dataSource={filteredUsers.filter((user) => user.role === "employee")}
-          loading={loading}
-          rowKey="_id"
-        />
-      ),
-    },
-    {
-      key: "4",
-      label: "Add Employees",
-      children: <AddEmployee onSuccess={fetchUsers} />,
-    },
-  ];
+  const handelCancelDelete = () => {
+    setModal({
+      isOpen: false,
+      data: null,
+    });
+  };
 
   return (
-    <AdminWrapper className="card p-4">
-      <div style={{ padding: "20px", maxWidth: "700px", margin: "0 auto" }}>
-        <Input.Search
-          placeholder="Search by name"
-          value={searchValue}
-          onChange={handleSearch}
-          width="100%"
-        />
+    <>
+      <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
+        <h5>EMPLOYEES</h5>
+        <div className="d-flex gap-2">{/* render if required */}</div>
       </div>
-      <div className=" table-responsive">
-        <Tabs defaultActiveKey="1" items={items} />
-      </div>
-    </AdminWrapper>
+      <AdminWrapper>
+        <Tabs defaultActiveKey="1">
+          <TabPane tab="All" key="1">
+            <EmployeeShow
+              loading={loading}
+              users={users}
+              loadDeleteData={loadDeleteData}
+              type="all"
+            />
+          </TabPane>
+          <TabPane tab="Managers" key="2">
+            <EmployeeShow
+              loading={loading}
+              users={users.filter((user) => user.role === "manager")}
+              loadDeleteData={loadDeleteData}
+              type="manager"
+            />
+          </TabPane>
+          <TabPane tab="Employees" key="3">
+            <EmployeeShow
+              loading={loading}
+              users={users.filter((user) => user.role === "employee")}
+              loadDeleteData={loadDeleteData}
+              type="employee"
+            />
+          </TabPane>
+          <TabPane tab="Add" key="4">
+            <AddEmployee
+              onSuccess={fetchUsers}
+              managers={users.filter((user) => user.role === "manager")}
+            />
+          </TabPane>
+        </Tabs>
+      </AdminWrapper>
+      <Modal
+        title="Delete Employee/User"
+        open={model.isOpen}
+        onCancel={handelCancelDelete}
+        onClose={handelCancelDelete}
+        centered
+        footer={
+          <div>
+            <Button
+              type="primary"
+              danger
+              onClick={handelDelete}
+              loading={modalDeleteLoading}
+            >
+              Delete
+            </Button>
+          </div>
+        }
+      >
+        {model.data && (
+          <div>
+            <p className="m-0">
+              <strong>Name:</strong> {model.data.name}
+            </p>
+            <p className="m-0">
+              <strong>Email:</strong> {model.data.email}
+            </p>
+            <p className="m-0">
+              <strong>Role:</strong> {model.data.role}
+            </p>
+            <p className="m-0">
+              <strong>Created At:</strong>{" "}
+              {new Date(model.data.createdAt).toLocaleString()}
+            </p>
+            <p className="m-0">
+              <strong>Updated At:</strong>{" "}
+              {new Date(model.data.updatedAt).toLocaleString()}
+            </p>
+          </div>
+        )}
+      </Modal>
+    </>
   );
 };
 
@@ -181,9 +211,10 @@ export default AdminAddEmployee;
 
 interface AddEmployeeProps {
   onSuccess: () => void;
+  managers: User[];
 }
 
-const AddEmployee: React.FC<AddEmployeeProps> = ({ onSuccess }) => {
+const AddEmployee: React.FC<AddEmployeeProps> = ({ onSuccess, managers }) => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm(); // Create Form instance
   const authContext = useContext(AuthContext);
@@ -228,64 +259,220 @@ const AddEmployee: React.FC<AddEmployeeProps> = ({ onSuccess }) => {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
-      <Title level={2}>Add Employee</Title>
+    <div className="p-2">
+      <Title level={2} className="text-center text-uppercase">Add Employee</Title>
       <Form
         layout="vertical"
         onFinish={onFinish}
         initialValues={{ role: "" }}
         form={form} // Assign Form instance
       >
-        <Form.Item
-          label="Name"
-          name="name"
-          rules={[
-            { required: true, message: "Please enter the employee name!" },
-          ]}
+        <Row
+          gutter={16}
+          style={{
+            width: "100%",
+          }}
         >
-          <Input placeholder="Enter employee name" />
-        </Form.Item>
-
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[
-            {
-              required: true,
-              type: "email",
-              message: "Please enter a valid email!",
-            },
-          ]}
-        >
-          <Input placeholder="Enter employee email" />
-        </Form.Item>
-
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: "Please enter a password!" }]}
-        >
-          <Input.Password placeholder="Enter password" />
-        </Form.Item>
-
-        <Form.Item
-          label="Role"
-          name="role"
-          rules={[{ required: true, message: "Please select a role!" }]}
-        >
-          <Select placeholder="Select role">
-            <Option value="">Select a role!</Option>
-            <Option value="manager">Manager</Option>
-            <Option value="employee">Employee</Option>
-          </Select>
-        </Form.Item>
-
-        <Form.Item>
-          <Button type="primary" htmlType="submit" loading={loading}>
-            Add Employee
-          </Button>
-        </Form.Item>
+          <Col span={12}>
+            <Form.Item
+              label="Name"
+              name="name"
+              rules={[
+                { required: true, message: "Please enter the employee name!" },
+              ]}
+            >
+              <Input placeholder="Enter employee name" />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[
+                {
+                  required: true,
+                  type: "email",
+                  message: "Please enter a valid email!",
+                },
+              ]}
+            >
+              <Input placeholder="Enter employee email" />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[{ required: true, message: "Please enter a password!" }]}
+            >
+              <Input.Password placeholder="Enter password" />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              label="Role"
+              name="role"
+              rules={[{ required: true, message: "Please select a role!" }]}
+            >
+              <Select placeholder="Select role">
+                <Option value="">Select a role!</Option>
+                <Option value="manager">Manager</Option>
+                <Option value="employee">Employee</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Form.Item
+              noStyle
+              shouldUpdate={(prevValues, currentValues) =>
+                prevValues.role !== currentValues.role
+              }
+            >
+              {({ getFieldValue }) =>
+                getFieldValue("role") === "employee" ? (
+                  <Form.Item
+                    label="Select Manager"
+                    name="manager"
+                    rules={[
+                      { required: true, message: "Please select a manager!" },
+                    ]}
+                  >
+                    <Select placeholder="Select manager">
+                      <Option value="">Select a manager!</Option>
+                      {managers.map((manager, index) => {
+                        return (
+                          <Option value={manager._id} key={index}>
+                            {manager.name}
+                          </Option>
+                        );
+                      })}
+                    </Select>
+                  </Form.Item>
+                ) : null
+              }
+            </Form.Item>
+            <Form.Item className="text-end">
+              <Button type="primary" htmlType="submit" loading={loading}>
+                Add Employee
+              </Button>
+            </Form.Item>
+          </Col>
+        </Row>
       </Form>
     </div>
+  );
+};
+
+interface EmployeeShow {
+  loading: boolean;
+  users: User[];
+  loadDeleteData: (d: User) => void;
+  type: "employee" | "manager" | "all";
+}
+const EmployeeShow = ({
+  loading,
+  users,
+  loadDeleteData,
+  type,
+}: EmployeeShow) => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.toLowerCase();
+    setSearchValue(value);
+  };
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchValue)
+  );
+
+  const column1: ColumnType<User>[] = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      sorter: (a, b) => a.name.localeCompare(b.name),
+      sortDirections: ["ascend", "descend"],
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+  ];
+  const column2: ColumnType<User>[] = [
+    {
+      title: "Created At",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (text) => new Date(text).toLocaleString(),
+      sorter: (a, b) =>
+        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+    },
+    {
+      title: "Actions",
+      key: "actions",
+      render: (_: any, record: User) => (
+        <div className="d-flex gap-2">
+          <Button
+            type="primary"
+            onClick={() => {
+              // Handle view logic here
+              console.log("View details of", record.name);
+            }}
+          >
+            View
+          </Button>
+          <Button danger onClick={() => loadDeleteData(record)}>
+            Delete
+          </Button>
+        </div>
+      ),
+    },
+  ];
+  const columnAll: ColumnType<User>[] = [
+    {
+      title: "Role",
+      dataIndex: "role",
+      key: "role",
+    },
+  ];
+  const columnEmployee: ColumnType<User>[] = [
+    {
+      title: "Manager",
+      dataIndex: "",
+      render: (_: any, record: User) => (
+        <div>
+          <p className="m-0">{record.manager?.name}</p>
+          <p className="m-0">{record.manager?.email}</p>
+        </div>
+      ),
+    },
+  ];
+
+  const finalColumns = [
+    ...column1,
+    ...(type === "all" ? columnAll : type === "employee" ? columnEmployee : []),
+    ...column2,
+  ];
+
+  return (
+    <>
+      <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+        <Input.Search
+          placeholder="Search by name"
+          value={searchValue}
+          onChange={handleSearch}
+          width="100%"
+        />
+      </div>
+      <div className="table-responsive p-2">
+        <Table
+          columns={finalColumns}
+          dataSource={filteredUsers}
+          loading={loading}
+          rowKey="_id"
+        />
+      </div>
+    </>
   );
 };

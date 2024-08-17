@@ -65,6 +65,8 @@ app.use("/api/v1/access-content", require("./server/Routers/public/access-data")
 app.use("/api/v2/auth", require("./server/Routers/admin/auth"));
 app.use("/api/v2/admin", require("./server/Routers/admin/admin"));
 app.use("/api/v2/employee", require("./server/Routers/admin/employee"));
+app.use("/api/v2/manager", require("./server/Routers/admin/manager"));
+app.use("/api/v2/payment", require("./server/Routers/admin/payment"));
 
 app.get("/api/v1/protected", authenticateToken, (req, res) => {
   res.status(200).json({

@@ -41,8 +41,8 @@ const MenuOptions = () => {
     {
       key: "employess",
       icon: <PeopleIcon />,
-      label: "Employee",
-      title: "Employee",
+      label: "Employees",
+      title: "Employees",
       onClick: () => navigate("/admin/employee"),
     },
 
@@ -65,6 +65,13 @@ const MenuOptions = () => {
       icon: <LibraryBooksIcon />,
       label: "Study Materials",
       onClick: () => navigate("/manager/s-m"),
+    },
+    {
+      key: "employess",
+      icon: <PeopleIcon />,
+      label: "My Employees",
+      title: "My Employees",
+      onClick: () => navigate("/manager/employee"),
     },
     {
       key: "access-content",

@@ -3,7 +3,7 @@ import { Home, Login } from "./auth";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthProvider";
 import { Dashboard404, DashboardSetting, Frame } from "./Dashboard";
-import {  CreateBooking, EmpBOpen, EmployeeDashboard } from "./Dashboard/Employee";
+import {  CreateBooking, EmpBOpen, EmployeeDashboard,  } from "./Dashboard/Employee";
 import {
   AdminAddEmployee,
   AdminBookings,
@@ -19,6 +19,7 @@ import {
   ManagerDashboard,
   ManagerPayments,
   ManagerStudyM,
+  MEmployees,
 } from "./Dashboard/Manager";
 import { AMLeadsOpen, Bookings } from "./Dashboard/common";
 
@@ -50,12 +51,14 @@ const AppComponent = () => {
             <Route path="/manager/s-m" element={<ManagerStudyM />} />
             <Route path="/manager/c-a" element={<ManagerContentA />} />
             <Route path="/manager/payments" element={<ManagerPayments />} />
+            <Route path="/manager/employee" element={<MEmployees />} />
             {/* -------------- employee -------------- */}
             <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
             <Route path="/employee/leads-bucket" element={<Bookings />} />
             <Route path="/employee/leads-bucket/create" element={<CreateBooking />} />
             <Route path="/employee/leads-bucket/:id" element={<EmpBOpen />} />
             {/* ---------------- all ------------------ */}
+            <Route path="/dashboard/payment-open" element={<DashboardSetting />} />
             <Route path="/dashboard/setting" element={<DashboardSetting />} />
             <Route path="*" element={<Dashboard404 />} />
           </Routes>

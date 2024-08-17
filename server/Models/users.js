@@ -2,14 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 
-// Define the notification schema
-const notificationSchema = new Schema({
-  message: { type: String, required: true },
-  seen: { type: Boolean, default: false },
-  timestamp: { type: Date, default: Date.now }
-}, { _id: false }); // _id: false to avoid creating an extra ID for each notification
+const notificationSchema = new Schema(
+  {
+    message: { type: String, required: true },
+    seen: { type: Boolean, default: false },
+    timestamp: { type: Date, default: Date.now },
+  },
+  { _id: false }
+); 
 
-// Define the user schema
 const userSchema = new Schema(
   {
     name: { type: String, default: "Not Set" },
@@ -20,7 +21,8 @@ const userSchema = new Schema(
       required: true,
       enum: ["admin", "employee", "manager"],
     },
-    notifications: [notificationSchema] // Add notifications array
+    manager: { type: Schema.Types.ObjectId, ref: "User" },
+    notifications: [notificationSchema],
   },
   {
     timestamps: true,
@@ -29,7 +31,6 @@ const userSchema = new Schema(
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-
   try {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(this.password, salt);
@@ -53,7 +54,7 @@ userSchema.methods.addNotification = function (message) {
 
 // Method to mark notifications as seen
 userSchema.methods.markNotificationsAsSeen = function () {
-  this.notifications.forEach(notification => notification.seen = true);
+  this.notifications.forEach((notification) => (notification.seen = true));
   return this.save();
 };
 
