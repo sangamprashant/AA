@@ -1,5 +1,8 @@
-import SearchIcon from "@mui/icons-material/Search";
+import { SearchOutlined } from "@ant-design/icons";
+import CloseIcon from "@mui/icons-material/Close";
+import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import ReloadIcon from "@mui/icons-material/Refresh";
+import SearchIcon from "@mui/icons-material/Search";
 import {
   Button,
   DatePicker,
@@ -9,55 +12,34 @@ import {
   Table,
   Tabs,
 } from "antd";
+import { ColumnType, FilterDropdownProps } from "antd/es/table/interface";
 import axios from "axios";
 import dayjs, { Dayjs } from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import { Fragment, useContext, useEffect, useMemo, useState } from "react";
-import { config } from "../../../../config";
-import { AuthContext } from "../../../context/AuthProvider";
 import { Link } from "react-router-dom";
-import CloseIcon from "@mui/icons-material/Close";
-
-// Extend dayjs with isBetween
+import { config } from "../../../../config";
+import { handlePrint } from "../../../../functions";
+import { DBPayment, Payment, PaymentResponse } from "../../../../types/payment";
+import { AuthContext } from "../../../context/AuthProvider";
+import PaymentViewContainer from "./Open";
+import Range from "./Range";
 dayjs.extend(isBetween);
 
 type Type = "payment_id" | "order_id";
 
-interface RazorpayPayment {
-  id: string;
-  amount: number;
-  currency: string;
-  status: string;
-  order_id: string;
-  notes: {
-    name: string;
-    email: string;
-    purpose: string;
-    class: string;
-    mobileNumber: string;
-  };
-}
-
-interface DBPayment {
-  _id: string;
-  name: string;
-  email: string;
-  mobileNumber: string;
-  purpose: string;
-  amount: number;
-  status: string;
-  orderCreationId: string;
-  razorpayPaymentId: string;
-}
-
-// Union type for dataSource
-type Payment = RazorpayPayment | DBPayment;
-
 type Win = "main" | "search" | "date";
+
+type reqBodyProps = {
+  payment_id?: string;
+  order_id?: string;
+};
 
 const { RangePicker } = DatePicker;
 
 const AMPayments = () => {
+  const gloabls = useContext(AuthContext);
+  if (!gloabls) return null;
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [dateRange, setDateRange] = useState<[Dayjs | null, Dayjs | null]>([
     null,
@@ -66,19 +48,65 @@ const AMPayments = () => {
   const [type, setType] = useState<Type>("payment_id");
   const [reload, setReload] = useState<boolean>(false);
   const [win, setWin] = useState<Win>("main");
+  const [searching, setSearching] = useState<boolean>(false);
+  const [searchData, setSearchData] = useState<PaymentResponse | null>(null);
+  const [pintId, setPrintId] = useState("printable-container");
 
-  const handleSearch = () => {
-    setReload((prev) => !prev); // Toggle reload to trigger data fetching
-    setWin("search");
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) {
+      notification.warning({
+        message: "Warning",
+        description: "Search input cannot be empty. Please enter a valid ID.",
+      });
+      return;
+    }
+
+    const reqBody: reqBodyProps = {};
+    if (type === "payment_id") {
+      reqBody.payment_id = searchTerm;
+    } else if (type === "order_id") {
+      reqBody.order_id = searchTerm;
+    }
+
+    try {
+      setSearching(true);
+      const response = await axios.post(
+        `${config.SERVER}/payment/view-one`,
+        reqBody,
+        {
+          headers: {
+            Authorization: `Bearer ${gloabls.token}`,
+          },
+        }
+      );
+      if (response.data.success) {
+        setSearchData(response.data);
+        setWin("search");
+      }
+    } catch (error: any) {
+      notification.error({
+        message: "Error",
+        description:
+          error?.response?.data?.message ||
+          "An error occurred while searching. Please try again.",
+      });
+    } finally {
+      setSearching(false);
+    }
   };
 
-  const handleRange = () => {
+  const handleRange = async () => {
     setWin("date");
   };
 
   const handleReload = () => {
-    setReload((prev) => !prev); // Toggle reload to trigger data fetching
+    setReload((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (win === "main") setPrintId("print-payment");
+    else setPrintId("printable-container");
+  }, [win, reload, searchData, dateRange]);
 
   return (
     <>
@@ -108,7 +136,7 @@ const AMPayments = () => {
                 icon={<SearchIcon />}
                 onClick={handleSearch}
                 className=" rounded-start-0 m-0"
-                // loading
+                loading={searching}
               ></Button>
             </div>
             <div className="d-flex align-items-center">
@@ -129,20 +157,27 @@ const AMPayments = () => {
                 icon={<SearchIcon />}
                 onClick={handleRange}
                 className=" rounded-start-0 m-0"
-                // loading
               ></Button>
             </div>
-            <Button type="default" icon={<ReloadIcon />} onClick={handleReload}>
-              Reload
-            </Button>
+            <Button
+              type="default"
+              icon={<ReloadIcon />}
+              onClick={handleReload}
+            />
             <Button
               icon={<CloseIcon />}
-              className={`opacity-100`}
+              type="primary"
+              danger
               disabled={win === "main"}
-              onClick={()=>{
-                setWin("main")
+              onClick={() => {
+                setWin("main");
               }}
-            ></Button>
+            />
+            <Button
+              type="primary"
+              icon={<LocalPrintshopIcon />}
+              onClick={() => handlePrint(pintId)}
+            />
           </div>
         </div>
       </div>
@@ -165,8 +200,14 @@ const AMPayments = () => {
           </Tabs.TabPane>
         </Tabs>
       )}
-      {win === "search" && <>Search</>}
-      {win === "date" && <>Date</>}
+      {win === "search" && <PaymentViewContainer data={searchData} />}
+      {win === "date" && (
+        <Range
+          reload={reload}
+          startDate={dateRange[0] ? dateRange[0].format("YYYY-MM-DD") : ""}
+          endDate={dateRange[1] ? dateRange[1].format("YYYY-MM-DD") : ""}
+        />
+      )}
     </>
   );
 };
@@ -273,27 +314,82 @@ const RenderPayments = ({ state, reload }: RenderPaymentsProps) => {
     []
   );
 
+  const getColumnSearchProps = (
+    dataIndex: keyof DBPayment,
+    placeholder: string
+  ): ColumnType<DBPayment> => ({
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+    }: FilterDropdownProps) => (
+      <div style={{ padding: 8 }}>
+        <Input
+          placeholder={placeholder}
+          value={selectedKeys[0]}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
+          onPressEnter={() => confirm()}
+          style={{ marginBottom: 8, display: "block" }}
+        />
+        <Button
+          type="primary"
+          onClick={() => confirm()}
+          icon={<SearchOutlined />}
+          size="small"
+          style={{ width: 90, marginRight: 8 }}
+        >
+          Search
+        </Button>
+        <Button
+          onClick={() => clearFilters && clearFilters()}
+          size="small"
+          style={{ width: 90 }}
+        >
+          Reset
+        </Button>
+      </div>
+    ),
+    filterIcon: (filtered: boolean) => (
+      <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
+    ),
+    onFilter: (value, record) =>
+      record[dataIndex]
+        ? (record[dataIndex] as string)
+            .toString()
+            .toLowerCase()
+            .includes((value as string).toLowerCase())
+        : false,
+    render: (text: string) => (text ? <span>{text}</span> : ""),
+  });
+
   const columnsDB = useMemo(
     () => [
       {
         title: "Name",
         dataIndex: "name",
         key: "name",
+        ...getColumnSearchProps("name", "Search By Name"),
       },
       {
         title: "Email",
         dataIndex: "email",
         key: "email",
+        ...getColumnSearchProps("email", "Search By Email"),
       },
       {
         title: "Contact",
         dataIndex: "mobileNumber",
         key: "mobileNumber",
+        ...getColumnSearchProps("mobileNumber", "Search By Contact Number"),
       },
       {
         title: "Purpose",
         dataIndex: "purpose",
         key: "purpose",
+        ...getColumnSearchProps("purpose", "Search By Purpose"),
       },
       {
         title: "Amount",
@@ -341,6 +437,7 @@ const RenderPayments = ({ state, reload }: RenderPaymentsProps) => {
         rowKey={state === "razorpay" ? "id" : "_id"}
         className="table-responsive"
         loading={loading}
+        id="print-payment"
       />
     </Fragment>
   );

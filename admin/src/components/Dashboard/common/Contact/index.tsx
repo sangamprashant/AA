@@ -6,6 +6,7 @@ import isBetween from "dayjs/plugin/isBetween";
 import { useContext, useEffect, useState } from "react";
 import { config } from "../../../../config";
 import { AuthContext } from "../../../context/AuthProvider";
+import ReloadIcon from "@mui/icons-material/Refresh";
 
 // Extend dayjs with isBetween
 dayjs.extend(isBetween);
@@ -19,6 +20,12 @@ const Contact = () => {
     null,
     null,
   ]);
+  const [reload, setReload] = useState<boolean>(false);
+
+  const handleReload = () => {
+    setReload((pre) => !pre);
+  };
+
   return (
     <>
       <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
@@ -42,15 +49,30 @@ const Contact = () => {
                 }
               }}
             />
+            <Button
+              type="primary"
+              icon={<ReloadIcon />}
+              onClick={handleReload}
+            />
           </div>
         </div>
       </div>
-      <Tabs defaultActiveKey="1">
+      <Tabs defaultActiveKey="1" className=" ps-1">
         <TabPane tab="Contacts Received" key="1">
-          <ContactTable type="received" searchTerm={searchTerm} dateRange={dateRange}/>
+          <ContactTable
+            type="received"
+            searchTerm={searchTerm}
+            dateRange={dateRange}
+            reload={reload}
+          />
         </TabPane>
         <TabPane tab="Contacts Responded" key="2">
-          <ContactTable type="responded" searchTerm={searchTerm} dateRange={dateRange}/>
+          <ContactTable
+            type="responded"
+            searchTerm={searchTerm}
+            dateRange={dateRange}
+            reload={reload}
+          />
         </TabPane>
       </Tabs>
     </>
@@ -63,6 +85,7 @@ type ContactTableProps = {
   type: "received" | "responded";
   searchTerm: string;
   dateRange: [Dayjs | null, Dayjs | null];
+  reload:boolean
 };
 
 type Contact = {
@@ -84,7 +107,7 @@ type ModalState = {
   type: "delete" | "respond";
 };
 
-const ContactTable = ({ type, searchTerm, dateRange }: ContactTableProps) => {
+const ContactTable = ({ type, searchTerm, dateRange ,reload}: ContactTableProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -136,7 +159,7 @@ const ContactTable = ({ type, searchTerm, dateRange }: ContactTableProps) => {
     setContacts([]);
     setFilteredContacts([]);
     fetchContacts(1);
-  }, [type, token]);
+  }, [type, reload, token]);
 
   useEffect(() => {
     let filteredData = contacts;
@@ -237,12 +260,12 @@ const ContactTable = ({ type, searchTerm, dateRange }: ContactTableProps) => {
     fetchContacts(page + 1);
   };
 
-  const loadAll = () => {
-    setPage(1);
-    setHasMore(false);
-    setContacts([]);
-    fetchContacts(1);
-  };
+  // const loadAll = () => {
+  //   setPage(1);
+  //   setHasMore(false);
+  //   setContacts([]);
+  //   fetchContacts(1);
+  // };
 
   const adminDelete = (content: Contact) => {
     setModal({
@@ -269,7 +292,7 @@ const ContactTable = ({ type, searchTerm, dateRange }: ContactTableProps) => {
   };
 
   return (
-    <div className="container">
+    <div className="">
       <Table
         dataSource={filteredContacts}
         columns={columns}
@@ -283,11 +306,7 @@ const ContactTable = ({ type, searchTerm, dateRange }: ContactTableProps) => {
             Load More
           </Button>
         )}
-        {!hasMore && (
-          <Button onClick={loadAll} disabled={loading}>
-            Load All
-          </Button>
-        )}
+        {!hasMore && <p className="text-center">No more content available</p>}
       </div>
       <Modal
         open={modal.isOpen}

@@ -21,7 +21,7 @@ import {
   ManagerStudyM,
   MEmployees,
 } from "./Dashboard/Manager";
-import { AMLeadsOpen, Bookings } from "./Dashboard/common";
+import { AMLeadsOpen, Bookings, Payment } from "./Dashboard/common";
 
 const AppComponent = () => {
   const authContext = useContext(AuthContext);
@@ -58,7 +58,7 @@ const AppComponent = () => {
             <Route path="/employee/leads-bucket/create" element={<CreateBooking />} />
             <Route path="/employee/leads-bucket/:id" element={<EmpBOpen />} />
             {/* ---------------- all ------------------ */}
-            <Route path="/dashboard/payment-open" element={<DashboardSetting />} />
+            <Route path="/dashboard/payment-open" element={<Payment />} />
             <Route path="/dashboard/setting" element={<DashboardSetting />} />
             <Route path="*" element={<Dashboard404 />} />
           </Routes>

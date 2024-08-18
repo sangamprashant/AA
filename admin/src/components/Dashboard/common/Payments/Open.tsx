@@ -1,7 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./payment.css";
 
 import {
@@ -11,9 +9,14 @@ import {
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { config } from "../../../../config";
-//   import { motion } from "framer-motion";
-//   import { Link } from "react-router-dom";
+import { handlePrint } from "../../../../functions";
+import { PaymentResponse } from "../../../../types/payment";
+import Spinner from "../Spinner";
+
+export interface Props {
+  loading?: boolean;
+  data: PaymentResponse | null;
+}
 
 const appName = "The A to Z Classes";
 
@@ -66,118 +69,12 @@ export const socialMediaLinks = [
   },
 ];
 
-interface Props {
-  payId?: string;
-  orderId?: string;
-}
-
-interface PaymentNotes {
-  name: string;
-  mobileNumber: string;
-  email: string;
-  purpose: string;
-  class: string;
-}
-
-interface AcquirerData {
-  rrn: string;
-  upi_transaction_id: string;
-}
-
-interface UpiDetails {
-  vpa: string;
-}
-
-interface CardDetails {
-  network: string;
-  last4: string;
-}
-
-interface PaymentData {
-  id: string;
-  entity: string;
-  amount: number;
-  currency: string;
-  status: string;
-  order_id: string;
-  invoice_id: string | null;
-  international: boolean;
-  method: string;
-  amount_refunded: number;
-  refund_status: string | null;
-  captured: boolean;
-  description: string | null;
-  card_id: string | null;
-  bank: string | null;
-  wallet: string | null;
-  vpa: string | null;
-  email: string;
-  contact: string;
-  notes: PaymentNotes;
-  fee: number;
-  tax: number;
-  error_code: string | null;
-  error_description: string | null;
-  error_source: string | null;
-  error_step: string | null;
-  error_reason: string | null;
-  acquirer_data: AcquirerData;
-  created_at: number;
-  upi: UpiDetails;
-  card: CardDetails;
-}
-
-interface PaymentDB {
-  _id: string;
-  name: string;
-  mobileNumber: string;
-  email: string;
-  purpose: string;
-  amount: string;
-  selectClass: string;
-  orderCreationId: string;
-  receipt: string;
-  status: string;
-  __v: number;
-  razorpayOrderId: string;
-  razorpayPaymentId: string;
-  razorpaySignature: string;
-}
-
-interface PaymentResponse {
-  success: boolean;
-  payment_: PaymentData;
-  paymentdb: PaymentDB;
-}
-
-const PaymentViewContainer = ({ payId, orderId }: Props) => {
-  const [data, setData] = useState<PaymentResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    console.log({ payId, orderId });
-    const fetchData = async () => {
-      try {
-        const response = await axios.post(`${config.SERVER}/payment/view-one`, {
-          payment_id: payId,
-          order_id: orderId,
-        });
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching payment data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [payId, orderId]);
-
+const PaymentViewContainer = ({ data, loading }: Props) => {
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === "p") {
         event.preventDefault();
-        handlePrint();
+        handlePrint("printable-container");
       }
     };
 
@@ -187,21 +84,8 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
     };
   }, []);
 
-  const handlePrint = () => {
-    const printContents = document?.getElementById(
-      "printable-container"
-    )?.innerHTML;
-    if (printContents) {
-      const originalContents = document.body.innerHTML;
-      document.body.innerHTML = printContents;
-      window.print();
-      document.body.innerHTML = originalContents;
-      window.location.reload();
-    }
-  };
-
   if (loading) {
-    return <>Loading</>;
+    return <Spinner/>;
   }
 
   if (!data) {
@@ -244,16 +128,8 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
   };
 
   return (
-    <div className="expanded">
+    <div className="expanded px-2 mb-1">
       <main className="columns">
-        <header className="text-end no-print">
-          <button className="btn theme-btn mb-2" onClick={handlePrint}>
-            <i>
-              <LocalPrintshopIcon />
-            </i>
-            Print Invoice
-          </button>
-        </header>
         <div className="card inner-container printable-container">
           <div id="printable-container">
             <div className="m-5">
@@ -296,7 +172,7 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
                     <tbody>
                       <tr className="details">
                         <td colSpan={2}>
-                          <table>
+                          <table className="table">
                             <thead>
                               <tr>
                                 <th className="bold-text desc">
@@ -328,7 +204,7 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
                       <tr className="totals">
                         <td></td>
                         <td>
-                          <table>
+                          <table className="table">
                             <tbody>
                               <tr className="subtotal">
                                 <td className="num">Subtotal</td>
@@ -360,7 +236,7 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
                   </table>
                   <section className="additional-info mt-4">
                     <div className="info-columns only-print">
-                      <table className="">
+                      <table className="table">
                         <tr>
                           <td>
                             <div className="column">
@@ -530,7 +406,6 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
                 </div>
               </section>
             </div>
-            <hr />
             <div className="d-flex list-unstyled justify-content-center gap-1">
               {socialMediaLinks.map((data, index) => (
                 <li key={index}>

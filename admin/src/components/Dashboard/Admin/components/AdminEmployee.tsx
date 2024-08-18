@@ -33,6 +33,11 @@ interface modalProps {
 }
 
 const AdminAddEmployee: React.FC = () => {
+  const [searchValue, setSearchValue] = useState("");
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.toLowerCase();
+    setSearchValue(value);
+  };
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [model, setModal] = useState<modalProps>({
@@ -126,16 +131,24 @@ const AdminAddEmployee: React.FC = () => {
     <>
       <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
         <h5>EMPLOYEES</h5>
-        <div className="d-flex gap-2">{/* render if required */}</div>
+        <div className="d-flex gap-2">
+          <Input.Search
+            placeholder="Search by name"
+            value={searchValue}
+            onChange={handleSearch}
+            width="100%"
+          />
+        </div>
       </div>
       <AdminWrapper>
-        <Tabs defaultActiveKey="1">
+        <Tabs defaultActiveKey="1" className="ps-1">
           <TabPane tab="All" key="1">
             <EmployeeShow
               loading={loading}
               users={users}
               loadDeleteData={loadDeleteData}
               type="all"
+              searchValue={searchValue}
             />
           </TabPane>
           <TabPane tab="Managers" key="2">
@@ -144,6 +157,7 @@ const AdminAddEmployee: React.FC = () => {
               users={users.filter((user) => user.role === "manager")}
               loadDeleteData={loadDeleteData}
               type="manager"
+              searchValue={searchValue}
             />
           </TabPane>
           <TabPane tab="Employees" key="3">
@@ -152,6 +166,7 @@ const AdminAddEmployee: React.FC = () => {
               users={users.filter((user) => user.role === "employee")}
               loadDeleteData={loadDeleteData}
               type="employee"
+              searchValue={searchValue}
             />
           </TabPane>
           <TabPane tab="Add" key="4">
@@ -260,7 +275,9 @@ const AddEmployee: React.FC<AddEmployeeProps> = ({ onSuccess, managers }) => {
 
   return (
     <div className="p-2">
-      <Title level={2} className="text-center text-uppercase">Add Employee</Title>
+      <Title level={2} className="text-center text-uppercase">
+        Add Employee
+      </Title>
       <Form
         layout="vertical"
         onFinish={onFinish}
@@ -368,19 +385,15 @@ interface EmployeeShow {
   users: User[];
   loadDeleteData: (d: User) => void;
   type: "employee" | "manager" | "all";
+  searchValue: string;
 }
 const EmployeeShow = ({
   loading,
   users,
   loadDeleteData,
   type,
+  searchValue,
 }: EmployeeShow) => {
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.toLowerCase();
-    setSearchValue(value);
-  };
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(searchValue)
   );
@@ -457,15 +470,7 @@ const EmployeeShow = ({
 
   return (
     <>
-      <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-        <Input.Search
-          placeholder="Search by name"
-          value={searchValue}
-          onChange={handleSearch}
-          width="100%"
-        />
-      </div>
-      <div className="table-responsive p-2">
+      <div className="table-responsive ">
         <Table
           columns={finalColumns}
           dataSource={filteredUsers}

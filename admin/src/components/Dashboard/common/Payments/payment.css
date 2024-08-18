@@ -1,25 +1,209 @@
-:where(.css-dev-only-do-not-override-m4timi).ant-drawer .ant-drawer-body {
-    padding: 0;
+
+table.invoice {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+table.invoice .num {
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8em;
+}
+table.invoice tr,
+table.invoice td {
+  background: #fff;
+  text-align: left;
+  font-weight: 400;
+  color: #322d28;
+  /* border: 1px solid #ddd; */
+  padding: 8px;
+}
+table.invoice tr.header td img {
+  max-width: 300px;
+}
+table.invoice tr.header td h2 {
+  text-align: right;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  font-size: 2rem;
+  color: #1779ba;
+}
+table.invoice tr.intro td:nth-child(2) {
+  text-align: right;
+}
+table.invoice tr.details > td {
+  padding-top: 4rem;
+  padding-bottom: 0;
+}
+table.invoice tr.details td.id,
+table.invoice tr.details td.qty,
+table.invoice tr.details th.id,
+table.invoice tr.details th.qty {
+  text-align: center;
+}
+table.invoice tr.details td:last-child,
+table.invoice tr.details th:last-child {
+  text-align: right;
+}
+table.invoice tr.details table thead,
+table.invoice tr.details table tbody {
+  position: relative;
+}
+table.invoice tr.details table thead:after,
+table.invoice tr.details table tbody:after {
+  content: "";
+  height: 1px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  margin-top: -1px;
+  background: #c8c3be;
+}
+table.invoice tr.totals td {
+  padding-top: 0;
+}
+table.invoice tr.totals table tr td {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+table.invoice tr.totals table tr td:nth-child(1) {
+  font-weight: 500;
+}
+table.invoice tr.totals table tr td:nth-child(2) {
+  text-align: right;
+  font-weight: 200;
+}
+table.invoice tr.totals table tr:nth-last-child(2) td {
+  padding-bottom: 0.5em;
+}
+table.invoice tr.totals table tr:nth-last-child(2) td:last-child {
+  position: relative;
+}
+table.invoice tr.totals table tr:nth-last-child(2) td:last-child:after {
+  content: "";
+  height: 4px;
+  width: 110%;
+  border-top: 1px solid #1779ba;
+  border-bottom: 1px solid #1779ba;
+  position: relative;
+  right: 0;
+  bottom: -0.575rem;
+  display: block;
+}
+table.invoice tr.totals table tr.total td {
+  font-size: 1.2em;
+  padding-top: 0.5em;
+  font-weight: 700;
+}
+table.invoice tr.totals table tr.total td:last-child {
+  font-weight: 700;
+}
+
+/* Additional Info */
+.additional-info h5 {
+  font-size: 0.8em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1779ba;
+}
+.additional-info {
+  margin-top: 20px;
+}
+.info-columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+.info-columns .column {
+  flex: 1;
+  padding: 10px;
+  min-width: 250px;
+}
+
+/* Miscellaneous */
+.bold-text {
+  font-weight: bold;
+}
+.text-end {
+  text-align: right;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .columns {
+    flex-direction: row;
   }
-  
-  .payment-screen {
-    background-image: url("/admin/top-header.png");
-    height: 150px;
+  .inner-container {
+    padding: 10px;
+  }
+  .invoice-container {
+    padding: 10px;
+  }
+  .additional-info {
+    margin-top: 10px;
+  }
+  .info-columns .column {
+    min-width: 100%;
+    padding: 5px;
+  }
+}
+
+.only-print {
+  display: none;
+}
+
+/* Hide elements during print */
+@media print {
+  header,
+  .no-print {
+    display: none !important;
+  }
+
+  .main-content {
+    margin-top: 0px !important;
+  }
+
+  .p-1,
+  .p-2,
+  .p-3,
+  .p-4,
+  .p-5 {
+    padding: 0 !important;
+    text-align: left;
+  }
+  .only-print {
+    display: block;
+  }
+  .pb-5 {
+    padding: 0 !important;
+  }
+
+  .main .inner-container {
+    width: 100% !important;
+    min-width: 800px;
+    /* margin-top: -20px; */
+    /* padding: 0; */
+  }
+
+  .m-5 {
+    margin: 0 !important;
+  }
+
+  .container {
+    padding: 0 !important;
+    margin: 0;
+  }
+
+  .info-columns table tr td {
+    text-align: left;
+  }
+  .printable-container {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    /* display: block !important; */
   }
-  
-  .payment-input {
-    position: relative;
-    margin-top: -80px;
-  }
-  
-  /* Media query for mobile devices */
-  @media (max-width: 768px) {
-    .payment-input {
-      margin-top: 0;
-    }
-    .row-reverse {
-      flex-direction: column-reverse;
-    }
-  }
-  
+}

@@ -7,7 +7,11 @@ import ManagerPayments from "./components/ManagerPayments";
 import ManagerStudyM from "./components/StudyMaterial";
 
 export {
-  MEmployees, ManagerBookings,
-  ManagerContact, ManagerContentA, ManagerDashboard, ManagerPayments, ManagerStudyM
+  MEmployees,  ManagerBookings,
+  ManagerContact,
+  ManagerContentA,
+  ManagerDashboard,
+  ManagerPayments,
+  ManagerStudyM
 };
 
