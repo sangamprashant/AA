@@ -1,0 +1,119 @@
+.calendar-container {
+  width: 100%;
+  max-width: 500px;
+  /* margin: auto; */
+  font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-header button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-day-name {
+  text-align: center;
+  font-weight: bold;
+}
+
+.day,
+.empty-day {
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+.day:hover {
+  background-color: #ddd;
+}
+
+.empty-day {
+  visibility: hidden;
+}
+
+.status-legend {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.legend-item .status {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status.early,
+.day.early {
+  background-color: #ffd700;
+} 
+.status.present,
+.day.present {
+  background-color: #28a745;
+} 
+.status.absent,
+.day.absent {
+  background-color: #dc3545;
+} 
+.status.late,
+.day.late {
+  background-color: #ffc107;
+} 
+.status.half-day-leave,
+.day.half-day-leave {
+  background-color: #17a2b8;
+} 
+.status.off,
+.day.off {
+  background-color: #6c757d;
+} 
+.status.holiday,
+.day.holiday {
+  background-color: #ff5722;
+} 
+.status.training,
+.day.training {
+  background-color: #8e44ad;
+} 
+.status.remote-work,
+.day.remote-work {
+  background-color: #3498db;
+} 
+.status.meeting,
+.day.meeting {
+  background-color: #2ecc71;
+} 
+.status.unpaid-leave,
+.day.unpaid-leave {
+  background-color: #9b59b6;
+} 
+
+.progress-circle svg {
+  border-radius: 50%;
+}

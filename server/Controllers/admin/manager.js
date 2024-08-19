@@ -12,7 +12,7 @@ const managerGetUsers = async (req, res) => {
 
     // Find all employees managed by the authenticated manager
     const managedEmployees = await User.find({ manager: req.user.id }).select(
-      "-notifications -password"
+      "-notifications -password -attendanceRecords"
     );
 
     res.status(200).json({

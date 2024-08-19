@@ -4,6 +4,7 @@ import {
   LogoutOutlined,
   PhoneOutlined,
 } from "@ant-design/icons";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import PaymentIcon from "@mui/icons-material/Payment";
 import PeopleIcon from "@mui/icons-material/People";
@@ -85,6 +86,21 @@ const MenuOptions = () => {
       label: "Payments",
       onClick: () => navigate("/manager/payments"),
     },
+    {
+      key: "Attendance",
+      icon: <CalendarMonthIcon />,
+      label: "My Attendance",
+      onClick: () => navigate("/manager/attendance"),
+    },
+  ];
+
+  const employeeOptions = [
+    {
+      key: "Attendance",
+      icon: <CalendarMonthIcon />,
+      label: "My Attendance",
+      onClick: () => navigate("/employee/attendance"),
+    },
   ];
 
   const commonOptions = [
@@ -129,7 +145,7 @@ const MenuOptions = () => {
       : user?.role === "manager"
       ? managerOptions
       : user?.role === "employee"
-      ? []
+      ? employeeOptions
       : []),
     ...commonBottom,
   ];

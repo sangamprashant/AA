@@ -9,7 +9,32 @@ const notificationSchema = new Schema(
     timestamp: { type: Date, default: Date.now },
   },
   { _id: false }
-); 
+);
+
+const attendanceSchema = new Schema(
+  {
+    date: { type: Date, required: true },
+    status: {
+      type: String,
+      required: true,
+      enum: [
+        "early",
+        "present",
+        "absent",
+        "late",
+        "half-day-leave",
+        "off",
+        "holiday",
+        "training",
+        "remote-work",
+        "meeting",
+        "unpaid-leave",
+      ],
+    },
+    details: { type: String, default: "" },
+  },
+  { _id: false }
+);
 
 const userSchema = new Schema(
   {
@@ -23,6 +48,7 @@ const userSchema = new Schema(
     },
     manager: { type: Schema.Types.ObjectId, ref: "User" },
     notifications: [notificationSchema],
+    attendanceRecords: [attendanceSchema],
   },
   {
     timestamps: true,

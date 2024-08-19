@@ -53,8 +53,6 @@ const login = async (req, res) => {
     });
   }
 
-  console.log(req.body);
-
   try {
     // Find user by email and role
     const user = await User.findOne({ email, role });
@@ -65,26 +63,62 @@ const login = async (req, res) => {
     }
 
     // Check if the password matches
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       return res
         .status(401)
         .json({ message: "Invalid email or password", success: false });
     }
 
-    // Create JWT token
+    // Get current date and time
+    const now = new Date();
+    const currentDate = now.toISOString().split('T')[0];
+    const currentTime = now.getHours() * 60 + now.getMinutes(); 
+    const startTime = 9 * 60 + 45; 
+    const endTime = 10 * 60; 
+
+    // Determine attendance status
+    let status = "early";
+    let details = `Arrived at ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+
+    if (currentTime >= startTime && currentTime <= endTime) {
+      status = "present";
+      details = "On time";
+    } else if (currentTime > endTime) {
+      status = "late";
+      details = `Arrived at ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+    }
+
+    // Find or create the attendance record for today
+    const existingRecord = user.attendanceRecords.find(record => record.date.toISOString().split('T')[0] === currentDate);
+
+    if (!existingRecord) {
+      user.attendanceRecords.push({
+        date: now,
+        status,
+        details,
+      });
+
+      await user.save();
+    }
+
+    // Create JWT token with attendance time
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      {
+        id: user._id,
+        role: user.role,
+        attendanceTime: now.toISOString(),
+      },
       config.JWT_SECRET,
-      { expiresIn: "5h" }
     );
 
     user.password = undefined;
+    user.notifications = undefined;
+    user.attendanceRecords = undefined;
 
-    res
-      .status(200)
-      .json({ message: "Login successful", token, success: true, user });
+    res.status(200).json({ message: "Login successful", token, success: true, user });
   } catch (error) {
+    console.error("Login error:", error);
     res.status(500).json({ message: "Server error", error, success: false });
   }
 };

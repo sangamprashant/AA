@@ -36,6 +36,7 @@ const Login: React.FC = () => {
         "You have successfully logged in.",
         "success"
       );
+      localStorage.setItem('loginTime', new Date().toISOString());
       setToken(response.data.token);
       navigate(`/${response.data.user.role}/dashboard`);
     } catch (error: any) {

@@ -67,6 +67,8 @@ app.use("/api/v2/admin", require("./server/Routers/admin/admin"));
 app.use("/api/v2/employee", require("./server/Routers/admin/employee"));
 app.use("/api/v2/manager", require("./server/Routers/admin/manager"));
 app.use("/api/v2/payment", require("./server/Routers/admin/payment"));
+app.use("/api/v2/study-materials", require("./server/Routers/admin/studyMaterials"));
+app.use("/api/v2/attendance", require("./server/Routers/admin/attendance"));
 
 app.get("/api/v1/protected", authenticateToken, (req, res) => {
   res.status(200).json({

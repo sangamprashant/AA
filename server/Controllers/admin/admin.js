@@ -43,9 +43,9 @@ const registerUser = async (req, res) => {
 // Fetch all users excluding those with the 'admin' role
 const adminGetUsers = async (req, res) => {
   try {
-    // Fetch users excluding the 'admin' role and excluding the 'notifications' field
+    // Fetch users excluding the 'admin' role and excluding the 'notifications' 'attendanceRecords' field
     const users = await User.find({ role: { $ne: "admin" } })
-      .select("-notifications")
+      .select("-notifications -attendanceRecords")
       .populate({
         path: 'manager',
         select: 'name email', 

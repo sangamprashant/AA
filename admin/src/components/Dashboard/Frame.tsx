@@ -29,7 +29,7 @@ const Frame = ({ children }: AdminPanelProps) => {
   if (!authContext) {
     return null;
   }
-  const { user } = authContext;
+  const { user, activeTime } = authContext;
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -90,11 +90,17 @@ const Frame = ({ children }: AdminPanelProps) => {
               height: "50px",
             }}
           />
-          <div>
-            <Badge count={1}>
-              <Avatar icon={<UserOutlined />} />
-            </Badge>
-            <span style={{ marginLeft: "8px" }}>{user?.name}</span>
+          <div className="d-flex gap-2">
+            <div className="text-muted">
+              <>Active Time:</> <b className="text-success">{activeTime}</b>
+            </div>
+            |
+            <div>
+              <span >{user?.name} </span>
+              <Badge count={1}>
+                <Avatar icon={<UserOutlined />} />
+              </Badge>
+            </div>
           </div>
         </Header>
         <Content

@@ -3,6 +3,7 @@ import React, {
   FC,
   ReactNode,
   createContext,
+  useEffect,
   useLayoutEffect,
   useState,
 } from "react";
@@ -26,6 +27,7 @@ interface AuthContextType {
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
   setToken: React.Dispatch<React.SetStateAction<string>>;
+  activeTime:string
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -42,6 +44,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [token, setToken] = useState<string>(
     sessionStorage.getItem("token") || ""
   );
+  const [activeTime, setActiveTime] = useState<string>('');
 
   useLayoutEffect(() => {
     setToken(token);
@@ -88,6 +91,35 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     setDashboardTitle(title);
   };
 
+  useEffect(() => {
+    const calculateActiveTime = () => {
+      const loginTimeStr = localStorage.getItem('loginTime');
+      if (loginTimeStr) {
+        const loginTime = new Date(loginTimeStr);
+        const now = new Date();
+        const diffMs = now.getTime() - loginTime.getTime();
+
+        const diffSeconds = Math.floor(diffMs / 1000);
+        const diffMinutes = Math.floor(diffSeconds / 60);
+        const diffHours = Math.floor(diffMinutes / 60);
+
+        const seconds = diffSeconds % 60;
+        const minutes = diffMinutes % 60;
+        const hours = diffHours;
+
+        setActiveTime(
+          `${hours} : ${minutes} : ${seconds}`
+        );
+      }
+    };
+
+    // Update active time every second
+    const intervalId = setInterval(calculateActiveTime, 1000);
+    calculateActiveTime(); // Initial calculation
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -101,6 +133,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         token,
         setUser,
         setToken,
+        activeTime
       }}
     >
       {children}

@@ -63,4 +63,15 @@ const handlePrint = (id: string) => {
   }
 };
 
-export { getButtonColor, openNotification, handlePrint };
+const getMonthDays = (year: number, month: number) => {
+  return new Date(year, month + 1, 0).getDate();
+};
+
+const getFirstDayOfMonth = (year: number, month: number) => {
+  return new Date(year, month, 1).getDay();
+};
+
+export {
+  getButtonColor, getFirstDayOfMonth, getMonthDays, handlePrint, openNotification
+};
+
