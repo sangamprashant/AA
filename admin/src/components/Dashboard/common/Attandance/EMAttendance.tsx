@@ -1,24 +1,30 @@
 import { useParams } from "react-router-dom";
-import Dashboard404 from "../../FrameComponents/404";
-import EMCalendar from "./EMCalendar";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../context/AuthProvider";
-import { AttendanceRecord } from "../../../../types/attendance";
 import axios from "axios";
-import { config } from "../../../../config";
 import { Button } from "antd";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import Dashboard404 from "../../FrameComponents/404";
+import EMCalendar from "./EMCalendar";
+import { AuthContext } from "../../../context/AuthProvider";
+import { AttendanceRecord } from "../../../../types/attendance";
+import { config } from "../../../../config";
+import Spinner from "../Spinner";
+import ApplyForLeave from "./ApplyForLeave";
 
-const EMAttendance = () => {
+const EMAttendance: React.FC = () => {
   const { role } = useParams<{ role: string }>();
-  if (role !== "employee" && role !== "manager") return <Dashboard404 />;
+  if (role !== "employee" && role !== "manager")
+    return <Dashboard404 auth={true} />;
+
   const globals = useContext(AuthContext);
   if (!globals) return null;
   const { token } = globals;
+
   const [currentDate, setCurrentDate] = useState(new Date());
   const [attendanceData, setAttendanceData] = useState<AttendanceRecord[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   useEffect(() => {
     if (token) {
@@ -42,7 +48,7 @@ const EMAttendance = () => {
           month: month + 1,
         },
       });
-      console.log(response.data.data.attendanceRecords);
+
       const normalizedRecords = response.data.data.attendanceRecords.map(
         (record: AttendanceRecord) => ({
           ...record,
@@ -51,20 +57,32 @@ const EMAttendance = () => {
       );
       setAttendanceData(normalizedRecords);
     } catch (error) {
+      console.error("Failed to fetch attendance data:", error);
     } finally {
       setLoading(false);
     }
   };
 
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-
   const handlePrevMonth = () => {
-    setCurrentDate(new Date(year, month - 1, 1));
+    setCurrentDate(
+      new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
+    );
   };
 
   const handleNextMonth = () => {
-    setCurrentDate(new Date(year, month + 1, 1));
+    setCurrentDate(
+      new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
+    );
+  };
+
+  const getEventsForDate = (date: Date) => {
+    return attendanceData.filter(
+      (record) => new Date(record.date).toDateString() === date.toDateString()
+    );
+  };
+
+  const handleDateClick = (date: Date) => {
+    setSelectedDate(date);
   };
 
   return (
@@ -79,9 +97,12 @@ const EMAttendance = () => {
               icon={<ArrowLeftIcon />}
               type="primary"
             />
-            <h3 style={{
-              width:"300px"
-            }} className=" text-center">
+            <h3
+              style={{
+                width: "300px",
+              }}
+              className=" text-center"
+            >
               {currentDate.toLocaleDateString("en-US", {
                 month: "long",
                 year: "numeric",
@@ -96,9 +117,54 @@ const EMAttendance = () => {
           </div>
         </div>
       </div>
-      <div className="d-flex card p-4 ms-1">
-        <EMCalendar attendanceData={attendanceData} currentDate={currentDate} />
-        div.selected data
+      <div className="card p-3 shadow-sm ms-2">
+        <div className="row">
+          <div className="col-md-6">
+            <EMCalendar
+              attendanceData={attendanceData}
+              currentDate={currentDate}
+              handleDateClick={handleDateClick}
+            />
+          </div>
+          <div className="col-md-6">
+            <div
+              className=""
+              style={{
+                minHeight: "120px",
+              }}
+            >
+              <h2 className="card-title">
+                {selectedDate
+                  ? `Events for ${selectedDate.toDateString()}`
+                  : "Select a Date"}
+              </h2>
+              <ul className="list-group">
+                {loading ? (
+                  <Spinner />
+                ) : selectedDate ? (
+                  getEventsForDate(selectedDate).map((event, i) => (
+                    <li key={i} className="list-group-item shadow-sm">
+                      <h5 className="mb-1 text-capitalize">{event.status}</h5>
+                      <p className="mb-0">
+                        {event.details || "No additional details"}
+                      </p>
+                    </li>
+                  ))
+                ) : (
+                  <>
+                    <li key="initial" className="list-group-item shadow-sm">
+                      <h5 className="mb-1">Not Selected</h5>
+                      <p className="mb-0">
+                        Select a date fron the calender to view its details
+                      </p>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+            <ApplyForLeave />
+          </div>
+        </div>
       </div>
     </>
   );

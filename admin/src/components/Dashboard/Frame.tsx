@@ -29,7 +29,7 @@ const Frame = ({ children }: AdminPanelProps) => {
   if (!authContext) {
     return null;
   }
-  const { user, activeTime } = authContext;
+  const { user, activeTime, notificationsData } = authContext;
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -96,8 +96,8 @@ const Frame = ({ children }: AdminPanelProps) => {
             </div>
             |
             <div>
-              <span >{user?.name} </span>
-              <Badge count={1}>
+              <span>{user?.name} </span>
+              <Badge count={notificationsData?.unseenCount}>
                 <Avatar icon={<UserOutlined />} />
               </Badge>
             </div>

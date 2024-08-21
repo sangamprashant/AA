@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import { getButtonColor } from "../../../functions";
-const Dashboard404 = () => {
+
+interface DashboardProps {
+  auth: boolean;
+}
+
+const Dashboard404 = ({ auth }: DashboardProps) => {
   const authContext = useContext(AuthContext);
   if (!authContext) {
     return null;
@@ -11,9 +16,6 @@ const Dashboard404 = () => {
   return (
     <div
       className="p-3 d-flex justify-content-center align-items-center mt-5"
-      style={{
-        height: "50vh",
-      }}
     >
       <div className="text-center">
         <h1
@@ -28,9 +30,9 @@ const Dashboard404 = () => {
         <p style={{ marginBottom: "20px" }}>
           Sorry, the page you are looking for does not exist.
         </p>
-        <Link to="/admin/dashboard">
+        <Link to={auth ? `/${user?.role}/dashboard` : "/"}>
           <button className={`btn btn-${getButtonColor(user?.role)}`}>
-            Go Back to Dashboard
+            {auth ? "Go Back to Dashboard" : "Back to login"}
           </button>
         </Link>
       </div>

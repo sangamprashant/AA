@@ -64,13 +64,14 @@ const AppComponent = () => {
              <Route path="/:role/attendance" element={<EMAttendance />} />
             {/* ---------------- all ------------------ */}
             <Route path="/dashboard/setting" element={<DashboardSetting />} />
-            <Route path="*" element={<Dashboard404 />} />
+            <Route path="*" element={<Dashboard404 auth={true} />} />
           </Routes>
         </Frame>
       ) : (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login/:role" element={<Login />} />
+          <Route path="*" element={<Dashboard404 auth={false}/>} />
         </Routes>
       )}
     </>

@@ -35,7 +35,7 @@ const AMSMOpen: React.FC = () => {
 
   // Check if the role is neither 'admin' nor 'manager'
   if (role !== "admin" && role !== "manager") {
-    return <Dashboard404 />;
+    return <Dashboard404 auth={true}/>;
   }
 
   useEffect(() => {

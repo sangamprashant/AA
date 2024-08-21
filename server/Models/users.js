@@ -11,6 +11,15 @@ const notificationSchema = new Schema(
   { _id: false }
 );
 
+const activeTimeSchema = new Schema(
+  {
+    minutes: { type: Number, default: 0 },
+    loginTime: { type: Date },
+    logoutTime: { type: Date }, // Added logout time for tracking session duration
+  },
+  { _id: false }
+);
+
 const attendanceSchema = new Schema(
   {
     date: { type: Date, required: true },
@@ -31,9 +40,26 @@ const attendanceSchema = new Schema(
         "unpaid-leave",
       ],
     },
+    activeTime: activeTimeSchema,
     details: { type: String, default: "" },
   },
   { _id: false }
+);
+
+const leaveRequestSchema = new Schema(
+  {
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true },
+    reason: { type: String, required: true },
+    status: {
+      type: String,
+      enum: ["pending", "approved", "rejected"],
+      default: "pending",
+    },
+    approver: { type: Schema.Types.ObjectId, ref: "User" },
+    approverRole: { type: String, enum: ["manager", "admin"] },
+  },
+  { timestamps: true }
 );
 
 const userSchema = new Schema(
@@ -44,35 +70,33 @@ const userSchema = new Schema(
     role: {
       type: String,
       required: true,
-      enum: ["admin", "employee", "manager"],
+      enum: ["admin", "employee", "manager", "teacher"],
     },
     manager: { type: Schema.Types.ObjectId, ref: "User" },
     notifications: [notificationSchema],
     attendanceRecords: [attendanceSchema],
+    leaveRequests: [leaveRequestSchema],
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   try {
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(this.password, salt);
-    this.password = hashedPassword;
+    this.password = await bcrypt.hash(this.password, salt);
     next();
   } catch (error) {
     next(error);
   }
 });
 
-// Method to compare password during login
-userSchema.methods.comparePassword = async function (candidatePassword) {
-  return await bcrypt.compare(candidatePassword, this.password);
+// Method to compare passwords
+userSchema.methods.comparePassword = function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
 };
 
-// Method to add a new notification
+// Method to add a notification
 userSchema.methods.addNotification = function (message) {
   this.notifications.push({ message });
   return this.save();
@@ -81,6 +105,51 @@ userSchema.methods.addNotification = function (message) {
 // Method to mark notifications as seen
 userSchema.methods.markNotificationsAsSeen = function () {
   this.notifications.forEach((notification) => (notification.seen = true));
+  return this.save();
+};
+
+// Method to apply for leave
+userSchema.methods.applyForLeave = async function (startDate, endDate, reason) {
+  let approverRole, approver, notificationMessage;
+
+  if (this.role === "employee") {
+    approverRole = "manager";
+    approver = await User.findById(this.manager);
+  } else if (["teacher", "manager"].includes(this.role)) {
+    approverRole = "admin";
+    approver = await User.findOne({ role: "admin" });
+  }
+
+  if (!approver) throw new Error("No approver found");
+
+  notificationMessage = `${
+    this.name
+  } has applied for leave from ${startDate.toDateString()} to ${endDate.toDateString()}.`;
+
+  this.leaveRequests.push({
+    startDate,
+    endDate,
+    reason,
+    approverRole,
+    approver,
+  });
+  await this.save();
+  await approver.addNotification(notificationMessage);
+  return this;
+};
+
+// Method to approve or reject leave
+userSchema.methods.approveLeave = async function (leaveRequestId, approved) {
+  const leaveRequest = this.leaveRequests.id(leaveRequestId);
+  if (!leaveRequest || leaveRequest.status !== "pending") {
+    throw new Error("Leave request not found or already processed.");
+  }
+  leaveRequest.status = approved ? "approved" : "rejected";
+  await this.addNotification(
+    `Your leave request from ${leaveRequest.startDate.toDateString()} to ${leaveRequest.endDate.toDateString()} has been ${
+      approved ? "approved" : "rejected"
+    }.`
+  );
   return this.save();
 };
 

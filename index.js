@@ -1,3 +1,4 @@
+process.env.TZ = 'UTC';
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -9,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const authenticateToken = require("./server/middlewares/authMiddleware");
 const trackVisitor = require("./server/middlewares/trackVisitor");
 const config = require("./server/config");
+const moment = require('moment-timezone');
 
 const app = express();
 
@@ -53,6 +55,11 @@ mongoose.connection.on("error", (err) => {
   console.error("MongoDB connection error:", err);
 });
 
+console.log('Current Timezone:', Intl.DateTimeFormat().resolvedOptions().timeZone);
+const now = new Date()
+console.log("Indian:",moment(now).tz('Asia/Kolkata').format('HH:mm:ss A'))
+console.log("UST:",moment(now).format('YYYY-MM-DD HH:mm:ss'))
+
 // routes
 app.use(trackVisitor);
 app.use("/api/v1/user", require("./server/Routers/public/user"));
@@ -69,6 +76,8 @@ app.use("/api/v2/manager", require("./server/Routers/admin/manager"));
 app.use("/api/v2/payment", require("./server/Routers/admin/payment"));
 app.use("/api/v2/study-materials", require("./server/Routers/admin/studyMaterials"));
 app.use("/api/v2/attendance", require("./server/Routers/admin/attendance"));
+app.use("/api/v2/leave", require("./server/Routers/admin/leave"));
+app.use("/api/v2/notifications", require("./server/Routers/admin/notifications"));
 
 app.get("/api/v1/protected", authenticateToken, (req, res) => {
   res.status(200).json({

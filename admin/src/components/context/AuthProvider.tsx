@@ -8,6 +8,8 @@ import React, {
   useState,
 } from "react";
 import { config } from "../../config";
+import { NotificationPropsData } from "../../types/notifications";
+import { notification } from "antd";
 
 interface User {
   _id: string;
@@ -27,7 +29,8 @@ interface AuthContextType {
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
   setToken: React.Dispatch<React.SetStateAction<string>>;
-  activeTime:string
+  activeTime: string;
+  notificationsData: NotificationPropsData | null;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -44,16 +47,41 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [token, setToken] = useState<string>(
     sessionStorage.getItem("token") || ""
   );
-  const [activeTime, setActiveTime] = useState<string>('');
+  const [activeTime, setActiveTime] = useState<string>("");
+  const [notificationsData, setNotificationsData] =
+    useState<NotificationPropsData | null>(null);
 
   useLayoutEffect(() => {
     setToken(token);
     if (token) {
-      handleFetchProtectedData();
+      Promise.all([handleFetchProtectedData(), fetchNotifications()]);
     } else {
       setLoading(false);
     }
   }, [token]);
+
+  const fetchNotifications = async () => {
+    try {
+      const response = await fetch(`${config.SERVER}/notifications`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setNotificationsData({
+          notifications: data.notifications,
+          unseenCount: data.unseenCount,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleFetchProtectedData = async (): Promise<void> => {
     try {
@@ -80,11 +108,42 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   };
 
   const logout = async (): Promise<void> => {
-    setUser(null);
-    setIsLoggedIn(false);
-    setToken("");
-    sessionStorage.clear();
-    window.location.href = "/";
+    try {
+      // Retrieve the userId from sessionStorage
+      if (!token) {
+        throw new Error("User ID not found in session.");
+      }
+
+      // Make an API call to log out and record active time
+      const response = await axios.get(`${config.SERVER}/auth/logout`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.data.success) {
+        // Show success notification
+        notification.success({
+          message: "Logout Successful",
+          description:
+            "You have been logged out successfully. Your active time has been recorded.",
+        });
+        setUser(null);
+        setToken("");
+        sessionStorage.clear();
+        window.location.href = "/";
+      }
+    } catch (error: any) {
+      console.error("Logout error:", error);
+
+      // Show error notification
+      notification.error({
+        message: "Logout Failed",
+        description:
+          error?.response?.data?.message ||
+          "There was an error logging out. Please try again.",
+      });
+    }
   };
 
   const setHeader = (title: string) => {
@@ -93,7 +152,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const calculateActiveTime = () => {
-      const loginTimeStr = localStorage.getItem('loginTime');
+      const loginTimeStr = localStorage.getItem("loginTime");
       if (loginTimeStr) {
         const loginTime = new Date(loginTimeStr);
         const now = new Date();
@@ -107,15 +166,12 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         const minutes = diffMinutes % 60;
         const hours = diffHours;
 
-        setActiveTime(
-          `${hours} : ${minutes} : ${seconds}`
-        );
+        setActiveTime(`${hours} : ${minutes} : ${seconds}`);
       }
     };
 
-    // Update active time every second
     const intervalId = setInterval(calculateActiveTime, 1000);
-    calculateActiveTime(); // Initial calculation
+    calculateActiveTime();
 
     return () => clearInterval(intervalId);
   }, []);
@@ -133,7 +189,8 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         token,
         setUser,
         setToken,
-        activeTime
+        activeTime,
+        notificationsData,
       }}
     >
       {children}
@@ -142,4 +199,3 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
-

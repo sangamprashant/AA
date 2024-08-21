@@ -4,6 +4,7 @@ const config = require("../../config");
 const User = require("../../Models/users");
 const Booking = require("../../Models/bookings");
 const Contact = require("../../Models/contact");
+const moment = require("moment-timezone");
 
 const register = async (req, res) => {
   const { email, password, role } = req.body;
@@ -70,58 +71,176 @@ const login = async (req, res) => {
         .json({ message: "Invalid email or password", success: false });
     }
 
-    // Get current date and time
-    const now = new Date();
-    const currentDate = now.toISOString().split('T')[0];
-    const currentTime = now.getHours() * 60 + now.getMinutes(); 
-    const startTime = 9 * 60 + 45; 
-    const endTime = 10 * 60; 
+    // Get current date and time in IST
+    const now = moment().tz("Asia/Kolkata");
+    const currentDate = now.format("YYYY-MM-DD");
+    const currentTime = now.hours() * 60 + now.minutes(); // Time in minutes
+    const startTime = 9 * 60 + 45; // 9:45 AM in minutes
+    const endTime = 10 * 60; // 10:00 AM in minutes
 
     // Determine attendance status
     let status = "early";
-    let details = `Arrived at ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+    let details = `Arrived at ${now.format("hh:mm A")}`;
 
     if (currentTime >= startTime && currentTime <= endTime) {
       status = "present";
       details = "On time";
     } else if (currentTime > endTime) {
       status = "late";
-      details = `Arrived at ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+      details = `Arrived at ${now.format("hh:mm A")}`;
     }
 
-    // Find or create the attendance record for today
-    const existingRecord = user.attendanceRecords.find(record => record.date.toISOString().split('T')[0] === currentDate);
+    // Check if attendance is already marked for today
+    let attendanceRecord = user.attendanceRecords.find(
+      (record) =>
+        moment(record.date).tz("Asia/Kolkata").format("YYYY-MM-DD") ===
+        currentDate
+    );
 
-    if (!existingRecord) {
-      user.attendanceRecords.push({
-        date: now,
+    // If no attendance record for today, create one
+    if (!attendanceRecord) {
+      attendanceRecord = {
+        date: now.toDate(), // Store date as a JS Date object
         status,
         details,
-      });
-
-      await user.save();
+        activeTime: { loginTime: now.toDate(), minutes: 0 }, // Ensure activeTime is initialized
+      };
+      user.attendanceRecords.push(attendanceRecord);
+    } else {
+      // If record exists, ensure activeTime is initialized
+      if (!attendanceRecord.activeTime) {
+        attendanceRecord.activeTime = { loginTime: now.toDate(), minutes: 0 };
+      } else {
+        attendanceRecord.activeTime.loginTime = now.toDate();
+      }
     }
+
+    // Debugging: log user attendanceRecords before saving
+    // console.log("User attendanceRecords before saving:", user.attendanceRecords);
+
+    // Validate and save the user
+    await user.validate(); // Explicitly validate user to catch validation issues
+    await user.save();
 
     // Create JWT token with attendance time
     const token = jwt.sign(
       {
         id: user._id,
         role: user.role,
-        attendanceTime: now.toISOString(),
+        loginTime: now.toISOString(),
       },
-      config.JWT_SECRET,
+      config.JWT_SECRET
     );
 
+    // Remove sensitive and unnecessary information before sending the response
     user.password = undefined;
     user.notifications = undefined;
     user.attendanceRecords = undefined;
 
-    res.status(200).json({ message: "Login successful", token, success: true, user });
+    res
+      .status(200)
+      .json({ message: "Login successful", token, success: true, user });
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ message: "Server error", error, success: false });
   }
 };
+
+const logout = async (req, res) => {
+  const { id } = req.user;
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: "User not found", success: false });
+    }
+
+    const now = moment().tz("Asia/Kolkata");
+
+    // Find the most recent attendance record (either today or yesterday)
+    const attendanceRecord = user.attendanceRecords
+      .sort((a, b) => moment(b.date).diff(moment(a.date)))
+      .find((record) =>
+        moment(record.date).tz("Asia/Kolkata").isSameOrBefore(now)
+      );
+
+    // Safeguard: Check if a valid attendance record exists
+    if (!attendanceRecord) {
+      return res.status(400).json({
+        message:
+          "No valid login record found. Cannot log out without logging in.",
+        success: false,
+      });
+    }
+
+    // Safeguard: Check if login time is recorded
+    const loginTime = moment(attendanceRecord.activeTime.loginTime).tz(
+      "Asia/Kolkata"
+    );
+    if (!loginTime.isValid()) {
+      return res.status(400).json({
+        message: "Login time not found. Please ensure you have logged in.",
+        success: false,
+      });
+    }
+
+    // Calculate the duration in minutes
+    const logoutTime = now;
+    const midnight = loginTime.clone().endOf("day");
+
+    let firstDayDuration = 0;
+    let secondDayDuration = 0;
+
+    if (logoutTime.isSameOrBefore(midnight)) {
+      // If the session ends before midnight, calculate the duration for the same day
+      firstDayDuration = logoutTime.diff(loginTime, "minutes");
+    } else {
+      // If the session spans across two days, calculate the split
+      firstDayDuration = midnight.diff(loginTime, "minutes"); // Time until midnight
+      secondDayDuration = logoutTime.diff(midnight, "minutes"); // Time after midnight
+    }
+
+    // Update the first day's attendance record
+    attendanceRecord.activeTime.minutes = (attendanceRecord.activeTime.minutes || 0) + firstDayDuration;
+    await user.save();
+
+    // If session spans across two days, update the second day's attendance record
+    if (secondDayDuration > 0) {
+      const nextDay = loginTime.clone().add(1, "day").startOf("day");
+
+      let nextDayAttendance = user.attendanceRecords.find(
+        (record) =>
+          moment(record.date).tz("Asia/Kolkata").format("YYYY-MM-DD") ===
+          nextDay.format("YYYY-MM-DD")
+      );
+
+      if (!nextDayAttendance) {
+        // Create an attendance record for the next day if it doesn't exist
+        nextDayAttendance = {
+          date: nextDay.toDate(),
+          status: "present", // Adjust this based on your logic
+          details: "Continued session from previous day",
+          activeTime: { minutes: secondDayDuration, loginTime: null },
+        };
+        user.attendanceRecords.push(nextDayAttendance);
+      } else {
+        nextDayAttendance.activeTime.minutes = (nextDayAttendance.activeTime.minutes || 0) + secondDayDuration;
+      }
+
+      await user.save();
+    }
+
+    res.status(200).json({
+      message: "Logout successful, active time recorded",
+      success: true,
+    });
+  } catch (error) {
+    console.error("Logout error:", error);
+    res.status(500).json({ message: "Server error", error, success: false });
+  }
+};
+
 
 const checkAuth = async (req, res) => {
   try {
@@ -252,4 +371,5 @@ module.exports = {
   BookingId,
   BookingType,
   ContactsByType,
+  logout,
 };

@@ -85,6 +85,9 @@ const getMonthlyAttendance = async (req, res) => {
       return recordDate >= startDate && recordDate <= endDate;
     });
 
+
+    // console.log({currentMonthRecords})
+
     res.status(200).json({
       success: true,
       data: {

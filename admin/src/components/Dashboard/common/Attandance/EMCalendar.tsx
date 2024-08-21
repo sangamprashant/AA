@@ -1,4 +1,3 @@
-import { Tooltip } from "antd";
 import React from "react";
 
 import { getFirstDayOfMonth, getMonthDays } from "../../../../functions";
@@ -22,11 +21,13 @@ const statusColors: Record<string, string> = {
 interface EMCalendarProps {
   currentDate: Date;
   attendanceData: AttendanceRecord[];
+  handleDateClick: (date: Date) => void;
 }
 
 const EMCalendar: React.FC<EMCalendarProps> = ({
   currentDate,
   attendanceData,
+  handleDateClick,
 }) => {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -47,23 +48,22 @@ const EMCalendar: React.FC<EMCalendarProps> = ({
       );
 
       let className = "day";
-      let tooltipTitle = "";
       if (attendanceRecord) {
         if (
           attendanceRecord.status !== "off" &&
           attendanceRecord.status !== "holiday"
         ) {
           className += ` ${attendanceRecord.status}`;
-          tooltipTitle = `${attendanceRecord.status}: ${
-            attendanceRecord.details || "No details available"
-          }`;
         }
       }
 
       days.push(
-        <Tooltip key={dateStr} title={tooltipTitle}>
-          <div className={className}>{day}</div>
-        </Tooltip>
+        <div
+          className={className}
+          onClick={() => handleDateClick(new Date(dateStr))}
+        >
+          {day}
+        </div>
       );
     }
     return days;
@@ -86,7 +86,7 @@ const EMCalendar: React.FC<EMCalendarProps> = ({
   };
 
   return (
-    <div className="calendar-container p-2">
+    <div className="calendar-container p-2 w-100">
       <div className="calendar-grid">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
           <div key={day} className="calendar-day-name">

@@ -2,6 +2,7 @@ import { useContext, useLayoutEffect } from "react";
 import AdminWrapper from "../AdminWrapper";
 import { AuthContext } from "../../../context/AuthProvider";
 import Header from "../../common/Dashboard/Header";
+import EmployeeCount from "./Dashboard/EmployeeCount";
 
 const AdminDashboard = () => {
   const authContext = useContext(AuthContext);
@@ -16,7 +17,9 @@ const AdminDashboard = () => {
   return (
     <AdminWrapper>
       <Header>
-        <div className="card">admin data herer</div>
+        <div className="card">
+          <EmployeeCount />
+        </div>
       </Header>
     </AdminWrapper>
   );
