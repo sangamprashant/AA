@@ -1,90 +1,105 @@
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import {
+  Area,
+  AreaChart,
   CartesianGrid,
-  Line,
-  LineChart,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
+import { AuthContext } from "../../../context/AuthProvider";
+import { config } from "../../../../config";
+import { Button } from "antd";
 
-interface Data {
-  date: string;
-  time: string; // Time in 'HH:mm' format
-}
-
+// Interface for graph data
 interface GraphData {
-  name: string;
+  name: string; // Date in 'YYYY-MM-DD' format
   activeHours: number; // Total active hours for the day
 }
 
-const notifi = [
-  { date: "2024-08-01", time: "00:30" },
-  { date: "2024-08-02", time: "00:43" },
-  { date: "2024-08-03", time: "01:30" },
-  { date: "2024-08-04", time: "02:15" },
-  { date: "2024-08-05", time: "12:15" },
-  { date: "2024-08-06", time: "10:15" },
-  { date: "2024-08-07", time: "01:00" },
-  { date: "2024-08-08", time: "03:45" },
-  { date: "2024-08-09", time: "05:30" },
-  { date: "2024-08-10", time: "07:00" },
-  { date: "2024-08-11", time: "09:30" },
-  { date: "2024-08-12", time: "11:15" },
-  { date: "2024-08-13", time: "08:00" },
-  { date: "2024-08-14", time: "02:30" },
-  { date: "2024-08-15", time: "10:00" },
-  { date: "2024-08-16", time: "04:45" },
-  { date: "2024-08-17", time: "06:30" },
-  { date: "2024-08-18", time: "12:00" },
-  { date: "2024-08-19", time: "09:15" },
-  { date: "2024-08-20", time: "11:45" },
-  { date: "2024-08-21", time: "03:30" },
-  { date: "2024-08-22", time: "07:15" },
-  { date: "2024-08-23", time: "02:00" },
-  { date: "2024-08-24", time: "05:30" },
-  { date: "2024-08-25", time: "09:00" },
-  { date: "2024-08-26", time: "11:00" },
-  { date: "2024-08-27", time: "08:30" },
-  { date: "2024-08-28", time: "06:45" },
-  { date: "2024-08-29", time: "03:15" },
-  { date: "2024-08-30", time: "04:00" },
-  { date: "2024-08-31", time: "12:00" },
-];
-
 const DailyActivityGraph = () => {
-  const [data, setData] = useState<Data[]>([]);
+  const [graphData, setGraphData] = useState<GraphData[]>([]);
+  const [month, setMonth] = useState<string>("");
+  const [year, setYear] = useState<number>(0);
+  const { token } = useContext(AuthContext) || {};
+  const [loading, setLoading] = useState<boolean>(false);
 
+  // Initialize the current month and year
   useEffect(() => {
-    setData(notifi);
+    const now = new Date();
+    setMonth(String(now.getMonth() + 1).padStart(2, "0")); // Months are 0-based in JavaScript
+    setYear(now.getFullYear());
   }, []);
 
-  const [graphData, setGraphData] = useState<GraphData[]>([]);
+  // Fetch data from the server
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${config.SERVER}/attendance/active-time-for-month?month=${month}&year=${year}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.data.success) {
+        setGraphData(response.data.graphData);
+      } else {
+        console.error("Failed to fetch data:", response.data.error);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const dailyActivity: { [date: string]: number } = {};
+    if (token) {
+      fetchData();
+    }
+  }, [token, month, year]);
 
-    data.forEach((item) => {
-      const { date, time } = item;
-      const [hours, minutes] = time.split(":").map(Number);
-      const totalHours = hours + minutes / 60;
+  // Change month and year
+  const changeMonth = (direction: "next" | "prev") => {
+    const currentDate = new Date(year, parseInt(month) - 1);
+    if (direction === "next") {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      if (currentDate.getMonth() === 0) {
+        // If month becomes January, adjust year accordingly
+        setYear(currentDate.getFullYear());
+      }
+    } else {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      if (currentDate.getMonth() === 11) {
+        // If month becomes December, adjust year accordingly
+        setYear(currentDate.getFullYear());
+      }
+    }
+    setMonth(String(currentDate.getMonth() + 1).padStart(2, "0")); // Months are 0-based
+  };
 
-      // Set the activity for the date
-      dailyActivity[date] = totalHours;
+  const changeYear = (direction: "next" | "prev") => {
+    setYear((prevYear) => {
+      const newYear = direction === "next" ? prevYear + 1 : prevYear - 1;
+      if (direction === "next" && month === "01") {
+        // If moving to the next year and month is January, update month to January
+        setMonth("01");
+      } else if (direction === "prev" && month === "12") {
+        // If moving to the previous year and month is December, update month to December
+        setMonth("12");
+      }
+      return newYear;
     });
-
-    const graphData: GraphData[] = Object.keys(dailyActivity).map((date) => ({
-      name: date,
-      activeHours: dailyActivity[date],
-    }));
-
-    setGraphData(graphData);
-  }, [data]);
+  };
 
   return (
     <div className="max-w-full mx-auto p-4">
       <h5 className="text-3xl font-bold mb-4">Daily Activity Chart</h5>
-      <LineChart
+      <AreaChart
         width={800}
         height={400}
         data={graphData}
@@ -94,13 +109,53 @@ const DailyActivityGraph = () => {
         <XAxis dataKey="name" tick={{ fontSize: 12 }} />
         <YAxis />
         <Tooltip />
-        <Line
+        <Area
           type="monotone"
           dataKey="activeHours"
           stroke="#8884d8"
+          fill="#8884d8"
           activeDot={{ r: 8 }}
         />
-      </LineChart>
+      </AreaChart>
+      <div className="d-flex align-items-center justify-content-center mb-4 ">
+        <div>
+          <Button
+            onClick={() => changeYear("prev")}
+            type="link"
+            loading={loading}
+          >
+            Previous Year
+          </Button>
+          <Button
+            onClick={() => changeMonth("prev")}
+            type="link"
+            loading={loading}
+          >
+            Previous Month
+          </Button>
+        </div>
+
+        <span className="mx-4 text-xl font-semibold">
+          {month}-{year}
+        </span>
+
+        <div>
+          <Button
+            onClick={() => changeMonth("next")}
+            type="link"
+            loading={loading}
+          >
+            Next Month
+          </Button>
+          <Button
+            onClick={() => changeYear("next")}
+            type="link"
+            loading={loading}
+          >
+            Next Year
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };

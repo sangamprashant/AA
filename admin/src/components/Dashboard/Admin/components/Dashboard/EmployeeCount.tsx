@@ -1,114 +1,83 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
+  Bar,
+  BarChart,
   CartesianGrid,
   Cell,
-  Legend,
-  Line,
-  LineChart,
-  Pie,
-  PieChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 
-interface DashboardProps {}
-
-interface DashboardData {
-  managerCount: number;
-  employeeCount: number;
-  teacherCount: number;
+interface Employee {
+  name: string;
+  count: number;
 }
 
-const EmployeeCount: React.FC<DashboardProps> = () => {
-  // Data for LineChart
-  // Data for PieChart
-  const [data, setData] = useState<DashboardData>({
-    managerCount: 0,
-    employeeCount: 0,
-    teacherCount: 0,
-  });
+const EmployeeCount = () => {
+  const [employees, setEmployees] = useState<Employee[]>([
+    { name: "Manager", count: 10 },
+    { name: "Employee", count: 20 },
+    { name: "Teacher", count: 30 },
+  ]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      // Replace with actual API call
-      const response = await new Promise<DashboardData>((resolve) => {
-        setTimeout(() => {
-          resolve({
-            managerCount: 2,
-            employeeCount: 4,
-            teacherCount: 1,
-          });
-        }, 1000);
-      });
-      setData(response);
-    };
-    fetchData();
+    // Delay the state update by 2 seconds
+    const timer = setTimeout(() => {
+      setEmployees([
+        { name: "Manager", count: 40 },
+        { name: "Employee", count: 50 },
+        { name: "Teacher", count: 34 },
+      ]);
+    }, 2000); // 2000 milliseconds = 2 seconds
+
+    // Cleanup timeout if component unmounts before timeout completes
+    return () => clearTimeout(timer);
   }, []);
 
-  const pieData = [
-    { name: "Manager", value: data.managerCount, color: "#4CAF50" },
-    { name: "Employee", value: data.employeeCount, color: "#03A9F4" },
-    { name: "Teacher", value: data.teacherCount, color: "#FF9800" },
-  ];
+  // Define colors for each employee type
+  const colors = ["#8884d8", "#82ca9d", "#FFC107"];
+
+  // Prepare data for the chart
+  const data = employees.map((employee, index) => ({
+    name: employee.name,
+    count: employee.count,
+    fill: colors[index], // Assign color based on index
+  }));
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-lg font-bold">Employee Distribution</h2>
-      <div className="row">
-        <div className="col-md-8">
-          <LineChart
-            width={800}
-            height={400}
-            data={pieData}
-            style={{ width: "100%", height: "100%" }}
-          >
+    <div className="p-4 bg-white rounded-lg shadow-md">
+      <h5 className="text-lg font-bold mb-4">Employee Dashboard</h5>
+      <div style={{ width: "100%", height: 300 }}>
+        <ResponsiveContainer>
+          <BarChart width={600} height={300} data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="value"
-              stroke="#8884d8"
-              activeDot={{ r: 8 }}
-            />
-          </LineChart>
-        </div>
-        <div className="col-md-4">
-          <PieChart
-            width={400}
-            height={400}
-            style={{ width: "100%", height: "auto" }}
-          >
-            <Pie
-              data={pieData}
-              cx="50%"
-              cy="50%"
-              innerRadius={70}
-              outerRadius={120}
-              fill="#8884d8"
-              paddingAngle={5}
-              dataKey="value"
-            >
-              {pieData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
+            <Bar dataKey="count">
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
               ))}
-            </Pie>
-          </PieChart>
-          <div className="flex justify-center">
-            {pieData.map((entry, index) => (
-              <div key={`legend-${index}`} className="mr-4 flex items-center">
-                <span
-                  className={`inline-block w-4 h-4 rounded-full mr-2 px-1`}
-                  style={{ backgroundColor: entry.color }}
-                ></span>
-                <span>{entry.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      <ul className="mb-4">
+        {employees.map((employee, index) => (
+          <li
+            key={index}
+            className="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <span className="fw-bold">{employee.name}</span>
+            <span>{employee.count}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="text-lg font-weight-bold mb-2">
+        Total Employees:{" "}
+        {employees.reduce((acc, employee) => acc + employee.count, 0)}
       </div>
     </div>
   );

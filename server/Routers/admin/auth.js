@@ -21,4 +21,5 @@ router.get("/booking/:bookingId", authenticateToken, BookingId);
 router.post("/bookings", authenticateToken, BookingType);
 router.get("/contacts", authenticateToken, ContactsByType);
 
+
 module.exports = router;

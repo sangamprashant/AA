@@ -1,37 +1,42 @@
-import React, { useContext } from "react";
-import { Form, Input, DatePicker, Button } from "antd";
-import moment from "moment";
+import { Button, DatePicker, Form, Input, Select } from "antd";
 import axios from "axios";
+import moment from "moment";
+import React, { useContext, useState } from "react";
 import { config } from "../../../../config";
+import { openNotification } from "../../../../functions";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
+const { Option } = Select;
 
-// Define types for form values
 interface LeaveFormValues {
   leavePeriod: [moment.Moment, moment.Moment];
   reason: string;
+  leaveType: string;
 }
 
 const ApplyForLeave: React.FC = () => {
-  const globlas = useContext(AuthContext);
+  const globals = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [form] = Form.useForm();
 
-  if (!globlas) return null;
-  const { token } = globlas;
+  if (!globals) return null;
+  const { token } = globals;
 
   const onFinish = async (values: LeaveFormValues) => {
-    const { leavePeriod, reason } = values;
+    setLoading(true);
+    const { leavePeriod, reason, leaveType } = values;
     const [startDate, endDate] = leavePeriod;
 
-    // Handle form submission logic here
     const leaveRequestPayload = {
       startDate: startDate.toISOString(),
       endDate: endDate.toISOString(),
       reason,
-      status: "pending", // Automatically set as pending
-      approver: null, // Handled on the server
-      approverRole: null, // Handled on the server
+      type: leaveType, // Add leaveType to payload
+      status: "pending",
+      approver: null,
+      approverRole: null,
     };
 
     try {
@@ -45,51 +50,81 @@ const ApplyForLeave: React.FC = () => {
         }
       );
 
+      // Notify the user on success
+      openNotification(
+        "Leave Request Submitted",
+        "Your leave request was submitted successfully.",
+        "success"
+      );
+
+      // Clear form fields
+      form.resetFields();
       console.log(response);
     } catch (error) {
       console.warn(error);
+
+      // Notify the user on error
+      openNotification(
+        "Submission Failed",
+        "There was an error submitting your leave request.",
+        "error"
+      );
+    } finally {
+      setLoading(false);
     }
 
     console.log("Submitting leave request:", leaveRequestPayload);
-
-    // Submit leaveRequestPayload to the server
   };
 
   return (
     <div className="row justify-content-center">
       <div className="col-md-12">
-        <h2 className="text-center mb-4">Apply for Leave</h2>
-        <Form
-          layout="vertical"
-          onFinish={onFinish}
-          className="p-4 border rounded shadow"
-        >
-          <Form.Item
-            name="leavePeriod"
-            label="Leave Period"
-            rules={[
-              { required: true, message: "Please select the leave period" },
-            ]}
-          >
-            <RangePicker style={{ width: "100%" }} />
-          </Form.Item>
+        <div className="card shadow-sm border-0 p-4">
+          <h2 className="text-center mb-4">Apply for Leave</h2>
+          <Form form={form} layout="vertical" onFinish={onFinish}>
+            <Form.Item
+              name="leavePeriod"
+              label="Leave Period"
+              rules={[
+                { required: true, message: "Please select the leave period" },
+              ]}
+            >
+              <RangePicker style={{ width: "100%" }} />
+            </Form.Item>
 
-          <Form.Item
-            name="reason"
-            label="Reason for Leave"
-            rules={[
-              { required: true, message: "Please provide a reason for leave" },
-            ]}
-          >
-            <TextArea rows={4} placeholder="Describe your reason for leave" />
-          </Form.Item>
+            <Form.Item
+              name="reason"
+              label="Reason for Leave"
+              rules={[
+                {
+                  required: true,
+                  message: "Please provide a reason for leave",
+                },
+              ]}
+            >
+              <TextArea rows={4} placeholder="Describe your reason for leave" />
+            </Form.Item>
 
-          <Form.Item>
-            <Button type="primary" htmlType="submit" block>
-              Submit Leave Request
-            </Button>
-          </Form.Item>
-        </Form>
+            <Form.Item
+              name="leaveType"
+              label="Leave Type"
+              rules={[
+                { required: true, message: "Please select the type of leave" },
+              ]}
+            >
+              <Select placeholder="Select leave type">
+                <Option value="paid">Paid</Option>
+                <Option value="unpaid">Unpaid</Option>
+              </Select>
+            </Form.Item>
+
+            <Form.Item>
+              <Button type="primary" htmlType="submit" block loading={loading}>
+                Submit Leave Request
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
       </div>
     </div>
   );

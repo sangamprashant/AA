@@ -1,4 +1,4 @@
-process.env.TZ = 'UTC';
+process.env.TZ = 'Asia/Kolkata';
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -13,6 +13,8 @@ const config = require("./server/config");
 const moment = require('moment-timezone');
 
 const app = express();
+
+app.set('trust proxy', 1);
 
 const allowedOrigins = [config.FRONTEND_DOMAIN, config.ADMIN_DOMAIN];
 
@@ -55,10 +57,9 @@ mongoose.connection.on("error", (err) => {
   console.error("MongoDB connection error:", err);
 });
 
-console.log('Current Timezone:', Intl.DateTimeFormat().resolvedOptions().timeZone);
-const now = new Date()
-console.log("Indian:",moment(now).tz('Asia/Kolkata').format('HH:mm:ss A'))
-console.log("UST:",moment(now).format('YYYY-MM-DD HH:mm:ss'))
+const now = moment();
+console.log('Current Timezone:', process.env.TZ);
+console.log("Indian Time:", now.tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss'));
 
 // routes
 app.use(trackVisitor);
@@ -99,3 +100,51 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+const user = {
+  "_id": "66c0dadeb1472508e7cf2b00",
+  "name": "emp 1",
+  "email": "emp1@gmail.com",
+  "role": "employee",
+  "manager": "66c0daa6b1472508e7cf2af0",
+  "createdAt": moment("2024-08-17T17:16:14.876Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
+  "updatedAt": moment("2024-08-21T19:02:23.945Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
+  "__v": 25,
+  "attendanceRecords": [
+    {
+      "date": moment("2024-08-21T17:26:34.736Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
+      "status": "late",
+      "activeTime": {
+        "minutes": 19,
+        "loginTime": moment("2024-08-21T18:13:17.028Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss")
+      },
+      "details": `Arrived at ${moment("2024-08-21T18:13:17.028Z").tz("Asia/Kolkata").format("hh:mm A")}`
+    },
+    {
+      "date": moment("2024-08-20T12:23:47.786Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
+      "status": "late",
+      "details": `Arrived at ${moment("2024-08-20T12:23:47.786Z").tz("Asia/Kolkata").format("hh:mm A")}`
+    },
+    {
+      "date": moment("2024-08-19T18:36:17.602Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
+      "status": "early",
+      "details": `Arrived at ${moment("2024-08-19T18:36:17.602Z").tz("Asia/Kolkata").format("hh:mm A")}`
+    },
+    {
+      "date": moment("2024-08-21T18:30:00.000Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
+      "status": "present",
+      "activeTime": {
+        "minutes": 3,
+        "loginTime": moment("2024-08-21T19:02:23.939Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss")
+      },
+      "details": "Continued session from previous day"
+    }
+  ],
+  "leaveRequests": []
+};
+
+
+app.get("/debug",(req,res)=>{
+  res.json(user)
+})

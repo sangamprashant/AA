@@ -4,6 +4,7 @@ const sendBookingConfirmationEmail = require("../../Mail/createBooking");
 const sendAdminNotificationEmail = require("../../Mail/sendAdminNotification");
 const sendBookingUpdateEmail = require("../../Mail/sendBookingUpdateEmail");
 const User = require("../../Models/users");
+const moment = require("moment-timezone");
 
 const userCreateBooking = async (req, res) => {
   const errors = validationResult(req);
@@ -39,13 +40,15 @@ const userCreateBooking = async (req, res) => {
       <p><b>Date of Class:</b> ${newBooking.doc}</p>
     `;
 
+    const DateOfClass = moment(newBooking.doc).tz("Asia/Kolkata").format("YYYY-MM-DD") 
+
     // Add notification to the randomly assigned employee
     const notificationMessage = `You have been assigned a new booking:
         Name: ${newBooking.firstName} ${newBooking.lastName}
         Email: ${newBooking.email}
         Phone Number: ${newBooking.phoneNumber}
         Selected Class: ${newBooking.selectedClass}
-        Date of Class: ${newBooking.doc.toISOString()}`;
+        Date of Class: ${DateOfClass}`;
 
     randomEmployee.notifications.push({
       message: notificationMessage,

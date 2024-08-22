@@ -22,6 +22,7 @@ import {
   MEmployees,
 } from "./Dashboard/Manager";
 import { AMLeadsOpen, AMSMOpen, Bookings, EMAttendance, Payment } from "./Dashboard/common";
+import LoadingOverlay from "./reuse/LoadingOverlay";
 
 const AppComponent = () => {
   const authContext = useContext(AuthContext);
@@ -74,6 +75,7 @@ const AppComponent = () => {
           <Route path="*" element={<Dashboard404 auth={false}/>} />
         </Routes>
       )}
+      <LoadingOverlay/>
     </>
   );
 };

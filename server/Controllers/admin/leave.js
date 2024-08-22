@@ -1,7 +1,7 @@
 const User = require("../../Models/users");
 
 const applyForLeave = async (req, res) => {
-  const { startDate, endDate, reason } = req.body;
+  const { startDate, endDate, reason ,type} = req.body;
 
   try {
     const user = await User.findById(req.user.id);
@@ -10,7 +10,7 @@ const applyForLeave = async (req, res) => {
         .status(404)
         .json({ message: "User not found", success: false });
     }
-    await user.applyForLeave(new Date(startDate), new Date(endDate), reason);
+    await user.applyForLeave(new Date(startDate), new Date(endDate), reason, type);
     res.status(200).json({
       message: "Leave request submitted successfully",
       success: true,

@@ -11,6 +11,9 @@ import { AttendanceRecord } from "../../../../types/attendance";
 import { config } from "../../../../config";
 import Spinner from "../Spinner";
 import ApplyForLeave from "./ApplyForLeave";
+import { formatDateYYYYMMDD, getMonthDays } from "../../../../functions";
+import CalendarCircle from "./CalendarCircle";
+import LeaveApplications from "./LeaveApplications";
 
 const EMAttendance: React.FC = () => {
   const { role } = useParams<{ role: string }>();
@@ -25,6 +28,9 @@ const EMAttendance: React.FC = () => {
   const [attendanceData, setAttendanceData] = useState<AttendanceRecord[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const daysInMonth = getMonthDays(year, month);
 
   useEffect(() => {
     if (token) {
@@ -49,10 +55,10 @@ const EMAttendance: React.FC = () => {
         },
       });
 
-      const normalizedRecords = response.data.data.attendanceRecords.map(
+      const normalizedRecords = response.data.attendanceRecords.map(
         (record: AttendanceRecord) => ({
           ...record,
-          date: new Date(record.date).toISOString().split("T")[0],
+          date: formatDateYYYYMMDD(record.date),
         })
       );
       setAttendanceData(normalizedRecords);
@@ -84,6 +90,12 @@ const EMAttendance: React.FC = () => {
   const handleDateClick = (date: Date) => {
     setSelectedDate(date);
   };
+
+  const statusCounts: Record<string, number> = {};
+
+  attendanceData.forEach((record) => {
+    statusCounts[record.status] = (statusCounts[record.status] || 0) + 1;
+  });
 
   return (
     <>
@@ -117,20 +129,26 @@ const EMAttendance: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="card p-3 shadow-sm ms-2">
-        <div className="row">
-          <div className="col-md-6">
-            <EMCalendar
-              attendanceData={attendanceData}
-              currentDate={currentDate}
-              handleDateClick={handleDateClick}
-            />
+      <div className="p-1 ms-2">
+        <div className="row m-0">
+          <div className="col-md-6 ">
+            <div className="shadow-sm card border-0">
+              <CalendarCircle
+                statusCounts={statusCounts}
+                daysInMonth={daysInMonth}
+              />
+              <EMCalendar
+                attendanceData={attendanceData}
+                currentDate={currentDate}
+                handleDateClick={handleDateClick}
+              />
+            </div>
           </div>
           <div className="col-md-6">
             <div
-              className=""
+              className="card p-3 mb-3 shadow-sm border-0"
               style={{
-                minHeight: "120px",
+                minHeight: "140px",
               }}
             >
               <h2 className="card-title">
@@ -138,12 +156,12 @@ const EMAttendance: React.FC = () => {
                   ? `Events for ${selectedDate.toDateString()}`
                   : "Select a Date"}
               </h2>
-              <ul className="list-group">
+              <ul className=" list-unstyled">
                 {loading ? (
                   <Spinner />
                 ) : selectedDate ? (
                   getEventsForDate(selectedDate).map((event, i) => (
-                    <li key={i} className="list-group-item shadow-sm">
+                    <li key={i} className="border p-2 rounded border-1">
                       <h5 className="mb-1 text-capitalize">{event.status}</h5>
                       <p className="mb-0">
                         {event.details || "No additional details"}
@@ -152,7 +170,7 @@ const EMAttendance: React.FC = () => {
                   ))
                 ) : (
                   <>
-                    <li key="initial" className="list-group-item shadow-sm">
+                    <li key="initial" className="border p-2 rounded border-1">
                       <h5 className="mb-1">Not Selected</h5>
                       <p className="mb-0">
                         Select a date fron the calender to view its details
@@ -163,6 +181,9 @@ const EMAttendance: React.FC = () => {
               </ul>
             </div>
             <ApplyForLeave />
+          </div>
+          <div className="col-md-12 mb-3">
+            <LeaveApplications />
           </div>
         </div>
       </div>

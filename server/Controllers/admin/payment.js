@@ -130,8 +130,32 @@ const viewInRange = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch payments" });
   }
-}
+};
+
+// Helper function to get the current month's start and end dates
+const getCurrentMonthRange = () => {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+  const end = new Date(now.getFullYear(), now.getMonth() + 1, 0).toISOString();
+  return { start, end };
+};
+
+// Route to get payments for the current month
+const currentMonthPayments = async (req, res) => {
+  try {
+    const { start, end } = getCurrentMonthRange();
+    const payments = await Payment.find({
+      createdAt: { $gte: start, $lte: end },
+    });
+    res.json(payments);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 module.exports = {
-  viewPaymentAccType,viewOnePayment,viewInRange
+  viewPaymentAccType,
+  viewOnePayment,
+  viewInRange,
+  currentMonthPayments,
 };

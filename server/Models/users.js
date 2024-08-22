@@ -56,6 +56,7 @@ const leaveRequestSchema = new Schema(
       enum: ["pending", "approved", "rejected"],
       default: "pending",
     },
+    type: { type: String, required: true },
     approver: { type: Schema.Types.ObjectId, ref: "User" },
     approverRole: { type: String, enum: ["manager", "admin"] },
   },
@@ -108,8 +109,15 @@ userSchema.methods.markNotificationsAsSeen = function () {
   return this.save();
 };
 
-// Method to apply for leave
-userSchema.methods.applyForLeave = async function (startDate, endDate, reason) {
+userSchema.methods.markNotificationAsSeen = function (index) {
+  if (this.notifications[index]) {
+    this.notifications[index].seen = true;
+  }
+  return this.save();
+};
+
+userSchema.methods.applyForLeave = async function (startDate, endDate, reason, type
+) {
   let approverRole, approver, notificationMessage;
 
   if (this.role === "employee") {
@@ -124,12 +132,13 @@ userSchema.methods.applyForLeave = async function (startDate, endDate, reason) {
 
   notificationMessage = `${
     this.name
-  } has applied for leave from ${startDate.toDateString()} to ${endDate.toDateString()}.`;
+  } has applied for ${type} leave from ${startDate.toDateString()} to ${endDate.toDateString()}.`;
 
   this.leaveRequests.push({
     startDate,
     endDate,
     reason,
+    type,
     approverRole,
     approver,
   });
@@ -138,7 +147,6 @@ userSchema.methods.applyForLeave = async function (startDate, endDate, reason) {
   return this;
 };
 
-// Method to approve or reject leave
 userSchema.methods.approveLeave = async function (leaveRequestId, approved) {
   const leaveRequest = this.leaveRequests.id(leaveRequestId);
   if (!leaveRequest || leaveRequest.status !== "pending") {

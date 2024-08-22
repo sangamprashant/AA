@@ -167,11 +167,13 @@ const logout = async (req, res) => {
 
     // Safeguard: Check if a valid attendance record exists
     if (!attendanceRecord) {
-      return res.status(400).json({
-        message:
-          "No valid login record found. Cannot log out without logging in.",
-        success: false,
-      });
+      return res
+        .status(400)
+        .json({
+          message:
+            "No valid login record found. Cannot log out without logging in.",
+          success: false,
+        });
     }
 
     // Safeguard: Check if login time is recorded
@@ -179,10 +181,12 @@ const logout = async (req, res) => {
       "Asia/Kolkata"
     );
     if (!loginTime.isValid()) {
-      return res.status(400).json({
-        message: "Login time not found. Please ensure you have logged in.",
-        success: false,
-      });
+      return res
+        .status(400)
+        .json({
+          message: "Login time not found. Please ensure you have logged in.",
+          success: false,
+        });
     }
 
     // Calculate the duration in minutes
@@ -202,7 +206,10 @@ const logout = async (req, res) => {
     }
 
     // Update the first day's attendance record
-    attendanceRecord.activeTime.minutes = (attendanceRecord.activeTime.minutes || 0) + firstDayDuration;
+    attendanceRecord.activeTime.minutes =
+      (attendanceRecord.activeTime.minutes || 0) + firstDayDuration;
+
+    // Save the updated user document
     await user.save();
 
     // If session spans across two days, update the second day's attendance record
@@ -225,22 +232,25 @@ const logout = async (req, res) => {
         };
         user.attendanceRecords.push(nextDayAttendance);
       } else {
-        nextDayAttendance.activeTime.minutes = (nextDayAttendance.activeTime.minutes || 0) + secondDayDuration;
+        nextDayAttendance.activeTime.minutes =
+          (nextDayAttendance.activeTime.minutes || 0) + secondDayDuration;
       }
 
+      // Save the updated user document
       await user.save();
     }
 
-    res.status(200).json({
-      message: "Logout successful, active time recorded",
-      success: true,
-    });
+    res
+      .status(200)
+      .json({
+        message: "Logout successful, active time recorded",
+        success: true,
+      });
   } catch (error) {
     console.error("Logout error:", error);
     res.status(500).json({ message: "Server error", error, success: false });
   }
 };
-
 
 const checkAuth = async (req, res) => {
   try {
@@ -259,7 +269,6 @@ const checkAuth = async (req, res) => {
     res.status(500).json({ message: "Server error", error, success: false });
   }
 };
-
 // will use for all bhut paku kaam hai :(
 const BookingId = async (req, res) => {
   try {

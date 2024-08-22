@@ -71,7 +71,24 @@ const getFirstDayOfMonth = (year: number, month: number) => {
   return new Date(year, month, 1).getDay();
 };
 
+const formatDateYYYYMMDD = (isoDateString: string) => {
+  // Create a new Date object from the ISO date string
+  const date = new Date(isoDateString);
+
+  // Get year, month, and day components
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based, so +1
+  const day = String(date.getDate()).padStart(2, "0");
+
+  // Return the formatted date string
+  return `${year}-${month}-${day}`;
+};
+
 export {
-  getButtonColor, getFirstDayOfMonth, getMonthDays, handlePrint, openNotification
+  formatDateYYYYMMDD, getButtonColor,
+  getFirstDayOfMonth,
+  getMonthDays,
+  handlePrint,
+  openNotification
 };
 

@@ -31,6 +31,9 @@ interface AuthContextType {
   setToken: React.Dispatch<React.SetStateAction<string>>;
   activeTime: string;
   notificationsData: NotificationPropsData | null;
+  markNotificationAsSeen: (index: number) => void;
+  markAllAsSeen: () => void;
+  clearAllNotifications: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -150,6 +153,88 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     setDashboardTitle(title);
   };
 
+  const markNotificationAsSeen = async (index: number) => {
+    try {
+      const response = await axios.get(
+        `${config.SERVER}/notifications/mark-as-seen`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: { index },
+        }
+      );
+
+      if (response.data.success) {
+        setNotificationsData((prev) => {
+          const notifications = prev?.notifications ?? [];
+          const newNotifications = [...notifications];
+
+          if (newNotifications[index]) {
+            newNotifications[index].seen = true;
+          }
+
+          return {
+            notifications: newNotifications,
+            unseenCount: newNotifications.filter((n) => !n.seen).length,
+          };
+        });
+      }
+    } catch (error) {
+      console.error("Error marking notification as seen:", error);
+    }
+  };
+
+  const markAllAsSeen = async () => {
+    try {
+      const response = await axios.get(
+        `${config.SERVER}/notifications/mark-all-as-seen`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.data.success) {
+        setNotificationsData((prev) => {
+          const notifications =
+            prev?.notifications?.map((n) => ({ ...n, seen: true })) ?? [];
+          return {
+            notifications,
+            unseenCount: 0,
+          };
+        });
+      }
+    } catch (error) {
+      console.error("Error marking all notifications as seen:", error);
+    } finally {
+    }
+  };
+
+  const clearAllNotifications = async () => {
+    try {
+      const response = await axios.get(
+        `${config.SERVER}/notifications/clear-all`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (response.data.success) {
+        setNotificationsData({
+          notifications: [],
+          unseenCount: 0,
+        });
+      }
+    } catch (error) {
+      console.error("Error clearing all notifications:", error);
+    } finally {
+    }
+  };
+
   useEffect(() => {
     const calculateActiveTime = () => {
       const loginTimeStr = localStorage.getItem("loginTime");
@@ -191,6 +276,9 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         setToken,
         activeTime,
         notificationsData,
+        markNotificationAsSeen,
+        markAllAsSeen,
+        clearAllNotifications,
       }}
     >
       {children}

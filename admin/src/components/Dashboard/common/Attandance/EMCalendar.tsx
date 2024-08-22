@@ -4,19 +4,19 @@ import { getFirstDayOfMonth, getMonthDays } from "../../../../functions";
 import { AttendanceRecord } from "../../../../types/attendance";
 import "./Calendar.css";
 
-const statusColors: Record<string, string> = {
-  early: "#FFD700",
-  present: "#28a745",
-  absent: "#dc3545",
-  late: "#ffc107",
-  "half-day-leave": "#17a2b8",
-  off: "#6c757d",
-  holiday: "#ff5722",
-  training: "#8e44ad",
-  "remote-work": "#3498db",
-  meeting: "#2ecc71",
-  "unpaid-leave": "#9b59b6",
-};
+// const statusColors: Record<string, string> = {
+//   early: "#FFD700",
+//   present: "#28a745",
+//   absent: "#dc3545",
+//   late: "#ffc107",
+//   "half-day-leave": "#17a2b8",
+//   off: "#6c757d",
+//   holiday: "#ff5722",
+//   training: "#8e44ad",
+//   "remote-work": "#3498db",
+//   meeting: "#2ecc71",
+//   "unpaid-leave": "#9b59b6",
+// };
 
 interface EMCalendarProps {
   currentDate: Date;
@@ -75,15 +75,15 @@ const EMCalendar: React.FC<EMCalendarProps> = ({
     statusCounts[record.status] = (statusCounts[record.status] || 0) + 1;
   });
 
-  const getCount = (status: string) => {
-    // Ensure the status is valid and is one of the keys in statusColors
-    if (!statusColors.hasOwnProperty(status)) {
-      return 0;
-    }
+  // const getCount = (status: string) => {
+  //   // Ensure the status is valid and is one of the keys in statusColors
+  //   if (!statusColors.hasOwnProperty(status)) {
+  //     return 0;
+  //   }
 
-    // Count occurrences of the given status in attendanceData
-    return attendanceData.filter((record) => record.status === status).length;
-  };
+  //   // Count occurrences of the given status in attendanceData
+  //   return attendanceData.filter((record) => record.status === status).length;
+  // };
 
   return (
     <div className="calendar-container p-2 w-100">
@@ -95,7 +95,7 @@ const EMCalendar: React.FC<EMCalendarProps> = ({
         ))}
         {renderDays()}
       </div>
-      <div className="status-legend">
+      {/* <div className="status-legend">
         <h5>Status Legend</h5>
         {Object.keys(statusColors).map((status) => (
           <div key={status} className="legend-item">
@@ -108,7 +108,7 @@ const EMCalendar: React.FC<EMCalendarProps> = ({
             {status.replace(/-/g, " ").toUpperCase()}
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,12 +1,9 @@
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Avatar, Badge, Button, Layout, theme } from "antd";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Button, Layout, theme } from "antd";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import MenuOptions from "./FrameComponents/MenuOptions";
+import NotificationComponent from "./FrameComponents/Notifications";
 
 const { Header, Sider, Content } = Layout;
 
@@ -29,7 +26,7 @@ const Frame = ({ children }: AdminPanelProps) => {
   if (!authContext) {
     return null;
   }
-  const { user, activeTime, notificationsData } = authContext;
+  const { activeTime } = authContext;
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -72,7 +69,7 @@ const Frame = ({ children }: AdminPanelProps) => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            padding: "0 24px",
+            padding: "35px 30px",
             borderBottom: "1px solid #e8e8e8",
             boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
           }}
@@ -91,16 +88,14 @@ const Frame = ({ children }: AdminPanelProps) => {
             }}
           />
           <div className="d-flex gap-2">
-            <div className="text-muted">
-              <>Active Time:</> <b className="text-success">{activeTime}</b>
+            <div className="d-flex flex-column">
+              <p className="text-muted m-0">
+                <>Activity Time:</> <b className="text-success m-0">{activeTime}</b>
+              </p>
+              <sup className="m-0">Logout to store the active time</sup>
             </div>
             |
-            <div>
-              <span>{user?.name} </span>
-              <Badge count={notificationsData?.unseenCount}>
-                <Avatar icon={<UserOutlined />} />
-              </Badge>
-            </div>
+            <NotificationComponent />
           </div>
         </Header>
         <Content
