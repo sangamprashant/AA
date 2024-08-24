@@ -1,6 +1,6 @@
 import { Button, DatePicker, Form, Input, Select } from "antd";
 import axios from "axios";
-import moment from "moment";
+import dayjs, { Dayjs } from "dayjs";
 import React, { useContext, useState } from "react";
 import { config } from "../../../../config";
 import { openNotification } from "../../../../functions";
@@ -11,7 +11,7 @@ const { TextArea } = Input;
 const { Option } = Select;
 
 interface LeaveFormValues {
-  leavePeriod: [moment.Moment, moment.Moment];
+  leavePeriod: [Dayjs, Dayjs];
   reason: string;
   leaveType: string;
 }
@@ -23,6 +23,11 @@ const ApplyForLeave: React.FC = () => {
 
   if (!globals) return null;
   const { token } = globals;
+
+  // Function to disable past dates using Dayjs
+  const disabledDate = (current: Dayjs) => {
+    return current.isBefore(dayjs().startOf("day"), "day");
+  };
 
   const onFinish = async (values: LeaveFormValues) => {
     setLoading(true);
@@ -89,7 +94,10 @@ const ApplyForLeave: React.FC = () => {
                 { required: true, message: "Please select the leave period" },
               ]}
             >
-              <RangePicker style={{ width: "100%" }} />
+              <RangePicker
+                style={{ width: "100%" }}
+                disabledDate={disabledDate}
+              />
             </Form.Item>
 
             <Form.Item

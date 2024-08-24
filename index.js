@@ -79,6 +79,7 @@ app.use("/api/v2/study-materials", require("./server/Routers/admin/studyMaterial
 app.use("/api/v2/attendance", require("./server/Routers/admin/attendance"));
 app.use("/api/v2/leave", require("./server/Routers/admin/leave"));
 app.use("/api/v2/notifications", require("./server/Routers/admin/notifications"));
+app.use("/api/v2/calendar", require("./server/Routers/admin/calendar"));
 
 app.get("/api/v1/protected", authenticateToken, (req, res) => {
   res.status(200).json({

@@ -1,9 +1,22 @@
-import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { Form, Input, Button, notification } from "antd";
 import { config } from "../../config";
-import { getButtonColor, openNotification } from "../../functions";
 import { AuthContext } from "../context/AuthProvider";
+
+// Ant Design notification helper function
+const openNotification = (
+  message: string,
+  description: string,
+  type: "success" | "error"
+) => {
+  notification[type]({
+    message,
+    description,
+    placement: "topRight",
+  });
+};
 
 const Login: React.FC = () => {
   const authContext = useContext(AuthContext);
@@ -13,14 +26,11 @@ const Login: React.FC = () => {
 
   const { setIsLoggedIn, setUser, setToken } = authContext;
   const { role } = useParams<{ role: string }>();
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const handleSubmit = async (values: { email: string; password: string }) => {
+    const { email, password } = values;
     try {
       setLoading(true);
       const response = await axios.post(`${config.SERVER}/auth/login`, {
@@ -36,7 +46,7 @@ const Login: React.FC = () => {
         "You have successfully logged in.",
         "success"
       );
-      localStorage.setItem('loginTime', new Date().toISOString());
+      localStorage.setItem("loginTime", new Date().toISOString());
       setToken(response.data.token);
       navigate(`/${response.data.user.role}/dashboard`);
     } catch (error: any) {
@@ -46,7 +56,6 @@ const Login: React.FC = () => {
         error?.response?.data?.message || "There was an issue with your login.",
         "error"
       );
-      // Handle login errors
     } finally {
       setLoading(false);
     }
@@ -55,45 +64,46 @@ const Login: React.FC = () => {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div
-        className="card p-4 shadow-sm"
+        className="card p-4 shadow border-0"
         style={{ maxWidth: "400px", width: "100%" }}
       >
         <h3 className="text-center mb-4 text-uppercase">{role} Login</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className={`btn btn-${getButtonColor(role)} w-100`}
-            disabled={loading}
+        <Form
+          layout="vertical"
+          onFinish={handleSubmit}
+          initialValues={{ email: "", password: "" }}
+        >
+          <Form.Item
+            label="Email address"
+            name="email"
+            rules={[
+              {
+                required: true,
+                type: "email",
+                message: "Please input a valid email!",
+              },
+            ]}
           >
-            {loading ? "Loading" : "Login"}
-          </button>
-        </form>
+            <Input placeholder="Enter your email" />
+          </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: "Please input your password!" }]}
+          >
+            <Input.Password placeholder="Enter your password" />
+          </Form.Item>
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className={`w-100`}
+              loading={loading}
+            >
+              {loading ? "Loading" : "Login"}
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
     </div>
   );

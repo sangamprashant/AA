@@ -7,6 +7,7 @@ import {  CreateBooking, EmpBOpen, EmployeeDashboard,  } from "./Dashboard/Emplo
 import {
   AdminAddEmployee,
   AdminBookings,
+  AdminCalendarManage,
   AdminContacts,
   AdminDashboard,
   AdminPayments,
@@ -21,7 +22,7 @@ import {
   ManagerStudyM,
   MEmployees,
 } from "./Dashboard/Manager";
-import { AMLeadsOpen, AMSMOpen, Bookings, EMAttendance, Payment } from "./Dashboard/common";
+import { AMLeadsOpen, AMSMOpen, AttamdanceManagement, Bookings, EMAttendance, Payment } from "./Dashboard/common";
 import LoadingOverlay from "./reuse/LoadingOverlay";
 
 const AppComponent = () => {
@@ -42,8 +43,9 @@ const AppComponent = () => {
             <Route path="/admin/leads-bucket/:id" element={<AMLeadsOpen />} />
             <Route path="/admin/contact" element={<AdminContacts />} />
             <Route path="/admin/s-m" element={<AdminStudyM />} />
-            <Route path="/admin/employee" element={<AdminAddEmployee />} />
+            <Route path="/admin/employees" element={<AdminAddEmployee />} />
             <Route path="/admin/payments" element={<AdminPayments />} />
+            <Route path="/admin/calendar-management" element={<AdminCalendarManage />} />
             {/* -------------- manager -------------- */}
             <Route path="/manager/dashboard" element={<ManagerDashboard />} />
             <Route path="/manager/leads-bucket" element={<ManagerBookings />} />
@@ -52,7 +54,7 @@ const AppComponent = () => {
             <Route path="/manager/s-m" element={<ManagerStudyM />} />
             <Route path="/manager/c-a" element={<ManagerContentA />} />
             <Route path="/manager/payments" element={<ManagerPayments />} />
-            <Route path="/manager/employee" element={<MEmployees />} />
+            <Route path="/manager/employees" element={<MEmployees />} />
             {/* -------------- employee -------------- */}
             <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
             <Route path="/employee/leads-bucket" element={<Bookings />} />
@@ -60,11 +62,12 @@ const AppComponent = () => {
             <Route path="/employee/leads-bucket/:id" element={<EmpBOpen />} />
             {/* ----------- admin/manager ------------- */}
             <Route path="/dashboard/payment-open" element={<Payment />} />
+            <Route path="/:role/leave-management" element={<AttamdanceManagement />} />
             <Route path="/:role/s-m/:id" element={<AMSMOpen />} />
              {/* ----------- employee/manager ------------- */}
              <Route path="/:role/attendance" element={<EMAttendance />} />
             {/* ---------------- all ------------------ */}
-            <Route path="/dashboard/setting" element={<DashboardSetting />} />
+            <Route path="/dashboard/settings" element={<DashboardSetting />} />
             <Route path="*" element={<Dashboard404 auth={true} />} />
           </Routes>
         </Frame>

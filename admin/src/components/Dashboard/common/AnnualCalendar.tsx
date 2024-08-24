@@ -1,28 +1,16 @@
-import { Button, Tooltip } from "antd";
+import { Button } from "antd";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { config } from "../../../../config";
-import { AuthContext } from "../../../context/AuthProvider";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
-import "./Calendar.css";
-import { formatDateYYYYMMDD, getMonthDays } from "../../../../functions";
-import CalendarCircle from "./CalendarCircle";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import { AuthContext } from "../../context/AuthProvider";
+import { config } from "../../../config";
+import { formatDateYYYYMMDD, getMonthDays } from "../../../functions";
 
 interface AttendanceRecord {
   date: string; // ISO date string with time component
-  status:
-    | "early"
-    | "present"
-    | "absent"
-    | "late"
-    | "half-day-leave"
-    | "off"
-    | "holiday"
-    | "training"
-    | "remote-work"
-    | "meeting"
-    | "unpaid-leave";
+  status: "off" | "holiday" | "training" | "remote-work" | "meeting";
   details?: string;
 }
 
@@ -31,20 +19,13 @@ const getFirstDayOfMonth = (year: number, month: number) => {
 };
 
 const statusColors: Record<string, string> = {
-  early: "#FFD700",
-  present: "#28a745",
-  absent: "#dc3545",
-  late: "#ffc107",
-  "half-day-leave": "#17a2b8",
   off: "#6c757d",
   holiday: "#ff5722",
   training: "#8e44ad",
-  "remote-work": "#3498db",
   meeting: "#2ecc71",
-  "unpaid-leave": "#9b59b6",
 };
 
-const ManualCalendar: React.FC = () => {
+const AnnualCalendar: React.FC = () => {
   const globals = useContext(AuthContext);
   if (!globals) return null;
   const { token } = globals;
@@ -114,19 +95,16 @@ const ManualCalendar: React.FC = () => {
         (record) => record.date === dateStr
       );
 
-      let className = "day";
-      let tooltipTitle = "";
-      if (attendanceRecord) {
-        className += ` ${attendanceRecord.status}`;
-        tooltipTitle = `${attendanceRecord.status}: ${
-          attendanceRecord.details || "No details available"
-        }`;
-      }
-
       days.push(
-        <Tooltip key={dateStr} title={tooltipTitle}>
-          <div className={className}>{day}</div>
-        </Tooltip>
+        <div
+          key={`day-${day}`}
+          className="day"
+          style={{
+            backgroundColor: statusColors[attendanceRecord?.status || ""],
+          }}
+        >
+          {day}
+        </div>
       );
     }
     return days;
@@ -148,7 +126,7 @@ const ManualCalendar: React.FC = () => {
 
   return (
     <div className="-container p-2">
-      <CalendarCircle statusCounts={statusCounts} daysInMonth={daysInMonth} />
+      <h2 className="text-uppercase text-center">Annual Calendar</h2>
       <div className="calendar-header">
         <Button
           loading={loading}
@@ -177,20 +155,22 @@ const ManualCalendar: React.FC = () => {
       </div>
       <div className="status-legend">
         <h5>Status Legend</h5>
-        {Object.keys(statusColors).map((status) => (
-          <div key={status} className="legend-item">
-            <div
-              className="status"
-              style={{ backgroundColor: statusColors[status] }}
-            >
-              {getCount(status)}
+        <div className="row">
+          {Object.keys(statusColors).map((status) => (
+            <div key={status} className="legend-item col-md-6">
+              <div
+                className="status"
+                style={{ backgroundColor: statusColors[status] }}
+              >
+                {getCount(status)}
+              </div>
+              {status.replace(/-/g, " ").toUpperCase()}
             </div>
-            {status.replace(/-/g, " ").toUpperCase()}
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default ManualCalendar;
+export default AnnualCalendar;

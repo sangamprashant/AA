@@ -46,6 +46,20 @@ const attendanceSchema = new Schema(
   { _id: false }
 );
 
+const calenderSchema = new Schema(
+  {
+    date: { type: String, required: true },
+    status: {
+      type: String,
+      required: true,
+      enum: ["off", "holiday", "training", "meeting"],
+    },
+
+    details: { type: String, default: "" },
+  },
+  { _id: false }
+);
+
 const leaveRequestSchema = new Schema(
   {
     startDate: { type: Date, required: true },
@@ -77,6 +91,7 @@ const userSchema = new Schema(
     notifications: [notificationSchema],
     attendanceRecords: [attendanceSchema],
     leaveRequests: [leaveRequestSchema],
+    annualCalendar: [calenderSchema],
   },
   { timestamps: true }
 );
@@ -116,7 +131,11 @@ userSchema.methods.markNotificationAsSeen = function (index) {
   return this.save();
 };
 
-userSchema.methods.applyForLeave = async function (startDate, endDate, reason, type
+userSchema.methods.applyForLeave = async function (
+  startDate,
+  endDate,
+  reason,
+  type
 ) {
   let approverRole, approver, notificationMessage;
 
@@ -159,6 +178,31 @@ userSchema.methods.approveLeave = async function (leaveRequestId, approved) {
     }.`
   );
   return this.save();
+};
+
+userSchema.methods.managerGetsHisUsersWithLeaveRequests = async function (
+  status
+) {
+  if (this.role !== "manager") {
+    throw new Error("Only managers can access this information.");
+  }
+
+  const users = await User.find({ manager: this._id }).populate(
+    "leaveRequests"
+  );
+
+  const filteredUsers = users.map((user) => {
+    const filteredLeaveRequests = user.leaveRequests.filter(
+      (leaveRequest) => !status || leaveRequest.status === status
+    );
+
+    return {
+      ...user.toObject(),
+      leaveRequests: filteredLeaveRequests,
+    };
+  });
+
+  return filteredUsers;
 };
 
 const User = mongoose.model("User", userSchema);

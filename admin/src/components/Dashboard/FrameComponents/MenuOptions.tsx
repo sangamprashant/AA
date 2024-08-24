@@ -5,6 +5,8 @@ import {
   PhoneOutlined,
 } from "@ant-design/icons";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import DateRangeIcon from "@mui/icons-material/DateRange";
+import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import PaymentIcon from "@mui/icons-material/Payment";
 import PeopleIcon from "@mui/icons-material/People";
@@ -24,8 +26,11 @@ const MenuOptions = () => {
   if (!authContext) {
     return null;
   }
+
   const { logout, user } = authContext;
   const navigate = useNavigate();
+
+  // Define options for each role
   const adminOptions = [
     {
       key: "contact",
@@ -34,26 +39,37 @@ const MenuOptions = () => {
       onClick: () => navigate("/admin/contact"),
     },
     {
-      key: "s-m",
+      key: "study-materials",
       icon: <LibraryBooksIcon />,
       label: "Study Materials",
       onClick: () => navigate("/admin/s-m"),
     },
     {
-      key: "employess",
+      key: "employees",
       icon: <PeopleIcon />,
       label: "Employees",
-      title: "Employees",
-      onClick: () => navigate("/admin/employee"),
+      onClick: () => navigate("/admin/employees"),
     },
-
     {
-      key: "4",
+      key: "payments",
       icon: <PaymentIcon />,
       label: "Payments",
       onClick: () => navigate("/admin/payments"),
     },
+    {
+      key: "leave",
+      icon: <DateRangeIcon />,
+      label: "Leave Management",
+      onClick: () => navigate("/admin/leave-management"),
+    },
+    {
+      key: "Calender",
+      icon: <EditCalendarIcon />,
+      label: "Calendar Management",
+      onClick: () => navigate("/admin/calendar-management"),
+    },
   ];
+
   const managerOptions = [
     {
       key: "contact",
@@ -62,20 +78,19 @@ const MenuOptions = () => {
       onClick: () => navigate("/manager/contact"),
     },
     {
-      key: "s-m",
+      key: "study-materials",
       icon: <LibraryBooksIcon />,
       label: "Study Materials",
       onClick: () => navigate("/manager/s-m"),
     },
     {
-      key: "employess",
+      key: "my-employees",
       icon: <PeopleIcon />,
       label: "My Employees",
-      title: "My Employees",
-      onClick: () => navigate("/manager/employee"),
+      onClick: () => navigate("/manager/employees"),
     },
     {
-      key: "access-content",
+      key: "content-access",
       icon: <PeopleAltIcon />,
       label: "Content Access",
       onClick: () => navigate("/manager/c-a"),
@@ -87,53 +102,57 @@ const MenuOptions = () => {
       onClick: () => navigate("/manager/payments"),
     },
     {
-      key: "Attendance",
+      key: "my-attendance",
       icon: <CalendarMonthIcon />,
       label: "My Attendance",
       onClick: () => navigate("/manager/attendance"),
+    },
+    {
+      key: "leave",
+      icon: <DateRangeIcon />,
+      label: "Leave Management",
+      onClick: () => navigate("/manager/leave-management"),
     },
   ];
 
   const employeeOptions = [
     {
-      key: "Attendance",
+      key: "my-attendance",
       icon: <CalendarMonthIcon />,
       label: "My Attendance",
       onClick: () => navigate("/employee/attendance"),
     },
   ];
 
+  // Common options available for all users
   const commonOptions = [
     {
-      key: "Dashboard",
+      key: "dashboard",
       icon: <DashboardOutlined />,
       label: "Dashboard",
-      title: "Go to Dashboard",
       onClick: () => navigate(`/${user?.role}/dashboard`),
     },
     {
-      key: "Leads Bucket",
+      key: "leads-bucket",
       icon: <CalendarOutlined />,
       label: "Leads Bucket",
       onClick: () => navigate(`/${user?.role}/leads-bucket`),
     },
   ];
 
+  // Options at the bottom of the menu
   const commonBottom = [
     {
-      key: "Setting",
+      key: "settings",
       icon: <SettingsIcon />,
-      label: "Setting",
-      onClick: () => navigate("/dashboard/setting"),
+      label: "Settings",
+      onClick: () => navigate("/dashboard/settings"),
     },
     {
-      key: "Logout",
+      key: "logout",
       icon: <LogoutOutlined />,
       label: "Logout",
-      title: "Logout from admin panel",
-      onClick: () => {
-        setIslogOutOpen(true);
-      },
+      onClick: () => setIslogOutOpen(true),
     },
   ];
 
@@ -160,7 +179,6 @@ const MenuOptions = () => {
       />
       <Modal
         open={isLogOutOpen}
-        onClose={() => setIslogOutOpen(false)}
         onCancel={() => setIslogOutOpen(false)}
         onOk={logout}
         centered
