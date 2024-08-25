@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
+const Leave = require("./leave");
 
 const notificationSchema = new Schema(
   {
@@ -60,23 +61,6 @@ const calenderSchema = new Schema(
   { _id: false }
 );
 
-const leaveRequestSchema = new Schema(
-  {
-    startDate: { type: Date, required: true },
-    endDate: { type: Date, required: true },
-    reason: { type: String, required: true },
-    status: {
-      type: String,
-      enum: ["pending", "approved", "rejected"],
-      default: "pending",
-    },
-    type: { type: String, required: true },
-    approver: { type: Schema.Types.ObjectId, ref: "User" },
-    approverRole: { type: String, enum: ["manager", "admin"] },
-  },
-  { timestamps: true }
-);
-
 const userSchema = new Schema(
   {
     name: { type: String, default: "Not Set" },
@@ -90,7 +74,6 @@ const userSchema = new Schema(
     manager: { type: Schema.Types.ObjectId, ref: "User" },
     notifications: [notificationSchema],
     attendanceRecords: [attendanceSchema],
-    leaveRequests: [leaveRequestSchema],
     annualCalendar: [calenderSchema],
   },
   { timestamps: true }
@@ -153,56 +136,23 @@ userSchema.methods.applyForLeave = async function (
     this.name
   } has applied for ${type} leave from ${startDate.toDateString()} to ${endDate.toDateString()}.`;
 
-  this.leaveRequests.push({
+  // Create a new leave request
+  const newLeave = new Leave({
     startDate,
     endDate,
     reason,
+    status: "pending",
     type,
+    requester: this._id,
+    approver: approver._id,
     approverRole,
-    approver,
   });
-  await this.save();
+
+  // Save the leave request
+  await newLeave.save();
+
   await approver.addNotification(notificationMessage);
   return this;
-};
-
-userSchema.methods.approveLeave = async function (leaveRequestId, approved) {
-  const leaveRequest = this.leaveRequests.id(leaveRequestId);
-  if (!leaveRequest || leaveRequest.status !== "pending") {
-    throw new Error("Leave request not found or already processed.");
-  }
-  leaveRequest.status = approved ? "approved" : "rejected";
-  await this.addNotification(
-    `Your leave request from ${leaveRequest.startDate.toDateString()} to ${leaveRequest.endDate.toDateString()} has been ${
-      approved ? "approved" : "rejected"
-    }.`
-  );
-  return this.save();
-};
-
-userSchema.methods.managerGetsHisUsersWithLeaveRequests = async function (
-  status
-) {
-  if (this.role !== "manager") {
-    throw new Error("Only managers can access this information.");
-  }
-
-  const users = await User.find({ manager: this._id }).populate(
-    "leaveRequests"
-  );
-
-  const filteredUsers = users.map((user) => {
-    const filteredLeaveRequests = user.leaveRequests.filter(
-      (leaveRequest) => !status || leaveRequest.status === status
-    );
-
-    return {
-      ...user.toObject(),
-      leaveRequests: filteredLeaveRequests,
-    };
-  });
-
-  return filteredUsers;
 };
 
 const User = mongoose.model("User", userSchema);
