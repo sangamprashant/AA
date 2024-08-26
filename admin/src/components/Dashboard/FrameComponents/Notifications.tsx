@@ -1,21 +1,10 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Badge, Dropdown, Button, Typography } from "antd";
+import type { MenuProps } from "antd";
+import { Avatar, Badge, Button, Dropdown, Typography } from "antd";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
-import type { MenuProps } from "antd";
 
 const { Text } = Typography;
-
-export interface NotificationProps {
-  message: string;
-  seen: boolean;
-  timestamp: Date;
-}
-
-export interface NotificationPropsData {
-  notifications: NotificationProps[];
-  unseenCount: number;
-}
 
 const NotificationComponent = () => {
   const authContext = useContext(AuthContext);
@@ -35,9 +24,9 @@ const NotificationComponent = () => {
     clearAllNotifications,
   } = authContext;
 
-  const handleMarkAsSeen = async (index: number) => {
+  const handleMarkAsSeen = async (notificationId: string, index: number) => {
     setLoadingIndexes((prev) => [...prev, index]);
-    await markNotificationAsSeen(index);
+    await markNotificationAsSeen(notificationId, index);
     setLoadingIndexes((prev) => prev.filter((i) => i !== index));
   };
 
@@ -81,7 +70,7 @@ const NotificationComponent = () => {
                     loading={loadingIndexes.includes(index)}
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent dropdown from closing
-                      handleMarkAsSeen(index);
+                      handleMarkAsSeen(notification._id, index);
                     }}
                     style={{ padding: 0 }}
                   >

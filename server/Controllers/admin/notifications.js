@@ -17,7 +17,7 @@ const userGetsTheirNotificationsAndUnSeenCount = async (req, res) => {
     ).length;
 
     res.json({
-      notifications,
+      notifications: notifications.reverse(),
       unseenCount,
       success: true,
     });
@@ -28,10 +28,24 @@ const userGetsTheirNotificationsAndUnSeenCount = async (req, res) => {
 
 const markOneSeen = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
-    const { index } = req.query;
+    const userId = req.user.id;
+    const { notificationId } = req.query;
 
-    await user.markNotificationAsSeen(index);
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found", success: false });
+    }
+
+    // Find and update the specific notification
+    const notification = user.notifications.id(notificationId); // Find by _id
+    if (!notification) {
+      return res
+        .status(404)
+        .json({ error: "Notification not found", success: false });
+    }
+
+    notification.seen = true;
+    await user.save();
 
     res
       .status(200)
@@ -55,12 +69,10 @@ const markAllSeen = async (req, res) => {
       .json({ message: "All notifications marked as seen.", success: true });
   } catch (error) {
     console.error("Error marking all notifications as seen:", error);
-    res
-      .status(500)
-      .json({
-        error: "Failed to mark all notifications as seen.",
-        success: false,
-      });
+    res.status(500).json({
+      error: "Failed to mark all notifications as seen.",
+      success: false,
+    });
   }
 };
 
@@ -76,14 +88,19 @@ const clearAllNotifications = async (req, res) => {
     user.notifications = [];
     await user.save();
 
-    res.status(200).json({ message: "All notifications cleared.", success: true });
+    res
+      .status(200)
+      .json({ message: "All notifications cleared.", success: true });
   } catch (error) {
-    res.status(500).json({ error: "Failed to clear notifications.", success: false });
+    res
+      .status(500)
+      .json({ error: "Failed to clear notifications.", success: false });
   }
 };
 
 module.exports = {
   userGetsTheirNotificationsAndUnSeenCount,
-  markOneSeen,clearAllNotifications,
+  markOneSeen,
+  clearAllNotifications,
   markAllSeen,
 };

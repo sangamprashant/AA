@@ -121,8 +121,8 @@ const ApplyForLeave: React.FC = () => {
               ]}
             >
               <Select placeholder="Select leave type">
-                <Option value="paid">Paid</Option>
-                <Option value="unpaid">Unpaid</Option>
+                <Option value="paid-leave">Paid leave</Option>
+                <Option value="unpaid-leave">Unpaid leave</Option>
               </Select>
             </Form.Item>
 

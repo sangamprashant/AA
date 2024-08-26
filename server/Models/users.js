@@ -9,14 +9,14 @@ const notificationSchema = new Schema(
     seen: { type: Boolean, default: false },
     timestamp: { type: Date, default: Date.now },
   },
-  { _id: false }
+  { _id: true }
 );
 
 const activeTimeSchema = new Schema(
   {
     minutes: { type: Number, default: 0 },
     loginTime: { type: Date },
-    logoutTime: { type: Date }, // Added logout time for tracking session duration
+    logoutTime: { type: Date },
   },
   { _id: false }
 );
@@ -39,6 +39,7 @@ const attendanceSchema = new Schema(
         "remote-work",
         "meeting",
         "unpaid-leave",
+        "paid-leave",
       ],
     },
     activeTime: activeTimeSchema,
@@ -72,6 +73,7 @@ const userSchema = new Schema(
       enum: ["admin", "employee", "manager", "teacher"],
     },
     manager: { type: Schema.Types.ObjectId, ref: "User" },
+    subject: { type: Schema.Types.ObjectId, ref: "Subject" },
     notifications: [notificationSchema],
     attendanceRecords: [attendanceSchema],
     annualCalendar: [calenderSchema],

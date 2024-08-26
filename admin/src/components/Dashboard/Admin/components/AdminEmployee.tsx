@@ -1,12 +1,25 @@
-import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
-import { Tabs, Table, Modal, Row, Col } from "antd";
-import AdminWrapper from "../AdminWrapper";
-import axios from "axios";
+import {
+  Button,
+  Col,
+  Form,
+  Input,
+  Modal,
+  Row,
+  Select,
+  Table,
+  Tabs,
+  Typography,
+  notification,
+} from "antd";
 import { ColumnType } from "antd/es/table";
-import { config } from "../../../../config";
-import { Form, Input, Button, Select, Typography, notification } from "antd";
-import { AuthContext } from "../../../context/AuthProvider";
 import TabPane from "antd/es/tabs/TabPane";
+import axios from "axios";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { config } from "../../../../config";
+import { openNotification } from "../../../../functions";
+import { Subject } from "../../../../types/subject";
+import { AuthContext } from "../../../context/AuthProvider";
+import AdminWrapper from "../AdminWrapper";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -169,6 +182,15 @@ const AdminAddEmployee: React.FC = () => {
               searchValue={searchValue}
             />
           </TabPane>
+          <TabPane tab="Teacher" key="teacher">
+            <EmployeeShow
+              loading={loading}
+              users={users.filter((user) => user.role === "teacher")}
+              loadDeleteData={loadDeleteData}
+              type="teacher"
+              searchValue={searchValue}
+            />
+          </TabPane>
           <TabPane tab="Add" key="4">
             <AddEmployee
               onSuccess={fetchUsers}
@@ -232,10 +254,30 @@ interface AddEmployeeProps {
 const AddEmployee: React.FC<AddEmployeeProps> = ({ onSuccess, managers }) => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm(); // Create Form instance
+  const [subjects, setSubjects] = useState<Subject[]>([]);
   const authContext = useContext(AuthContext);
   if (!authContext) {
     return null;
   }
+
+  const { token } = authContext;
+
+  useEffect(() => {
+    fetchSubjects();
+  }, [token]);
+
+  const fetchSubjects = async () => {
+    try {
+      const response = await axios.get<Subject[]>(`${config.SERVER}/subject`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setSubjects(response.data);
+    } catch (error) {
+      openNotification("Error", "Failed to fetch subjects", "error");
+    }
+  };
 
   const onFinish = async (values: any) => {
     try {
@@ -333,8 +375,9 @@ const AddEmployee: React.FC<AddEmployeeProps> = ({ onSuccess, managers }) => {
             >
               <Select placeholder="Select role">
                 <Option value="">Select a role!</Option>
-                <Option value="manager">Manager</Option>
+                <Option value="teacher">Teacher</Option>
                 <Option value="employee">Employee</Option>
+                <Option value="manager">Manager</Option>
               </Select>
             </Form.Item>
           </Col>
@@ -368,6 +411,35 @@ const AddEmployee: React.FC<AddEmployeeProps> = ({ onSuccess, managers }) => {
                 ) : null
               }
             </Form.Item>
+            <Form.Item
+              noStyle
+              shouldUpdate={(prevValues, currentValues) =>
+                prevValues.role !== currentValues.role
+              }
+            >
+              {({ getFieldValue }) =>
+                getFieldValue("role") === "teacher" ? (
+                  <Form.Item
+                    label="Select Subject"
+                    name="subject"
+                    rules={[
+                      { required: true, message: "Please select a subject!" },
+                    ]}
+                  >
+                    <Select placeholder="Select subject">
+                      <Option value="">Select a subject!</Option>
+                      {subjects.map((subject, index) => {
+                        return (
+                          <Option value={subject._id} key={index}>
+                            {subject.title}
+                          </Option>
+                        );
+                      })}
+                    </Select>
+                  </Form.Item>
+                ) : null
+              }
+            </Form.Item>
             <Form.Item className="text-end">
               <Button type="primary" htmlType="submit" loading={loading}>
                 Add Employee
@@ -384,7 +456,7 @@ interface EmployeeShow {
   loading: boolean;
   users: User[];
   loadDeleteData: (d: User) => void;
-  type: "employee" | "manager" | "all";
+  type: "teacher" | "employee" | "manager" | "all";
   searchValue: string;
 }
 const EmployeeShow = ({

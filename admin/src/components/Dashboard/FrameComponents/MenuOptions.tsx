@@ -4,10 +4,13 @@ import {
   LogoutOutlined,
   PhoneOutlined,
 } from "@ant-design/icons";
+import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
+import EventNoteIcon from "@mui/icons-material/EventNote";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 import PaymentIcon from "@mui/icons-material/Payment";
 import PeopleIcon from "@mui/icons-material/People";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -33,6 +36,12 @@ const MenuOptions = () => {
   // Define options for each role
   const adminOptions = [
     {
+      key: "leads-bucket",
+      icon: <CalendarOutlined />,
+      label: "Leads Bucket",
+      onClick: () => navigate(`/${user?.role}/leads-bucket`),
+    },
+    {
       key: "contact",
       icon: <PhoneOutlined />,
       label: "Contact",
@@ -51,6 +60,18 @@ const MenuOptions = () => {
       onClick: () => navigate("/admin/employees"),
     },
     {
+      key: "subjects",
+      icon: <MenuBookIcon />,
+      label: "Subjects",
+      onClick: () => navigate("/admin/subjects"),
+    },
+    {
+      key: "teaching-notes",
+      icon: <AutoStoriesIcon />,
+      label: "Teaching Notes",
+      onClick: () => navigate("/admin/teaching-notes"),
+    },
+    {
       key: "payments",
       icon: <PaymentIcon />,
       label: "Payments",
@@ -62,15 +83,15 @@ const MenuOptions = () => {
       label: "Leave Management",
       onClick: () => navigate("/admin/leave-management"),
     },
-    {
-      key: "Calender",
-      icon: <EditCalendarIcon />,
-      label: "Calendar Management",
-      onClick: () => navigate("/admin/calendar-management"),
-    },
   ];
 
   const managerOptions = [
+    {
+      key: "leads-bucket",
+      icon: <CalendarOutlined />,
+      label: "Leads Bucket",
+      onClick: () => navigate(`/${user?.role}/leads-bucket`),
+    },
     {
       key: "contact",
       icon: <PhoneOutlined />,
@@ -117,6 +138,27 @@ const MenuOptions = () => {
 
   const employeeOptions = [
     {
+      key: "leads-bucket",
+      icon: <CalendarOutlined />,
+      label: "Leads Bucket",
+      onClick: () => navigate(`/${user?.role}/leads-bucket`),
+    },
+    {
+      key: "my-attendance",
+      icon: <CalendarMonthIcon />,
+      label: "My Attendance",
+      onClick: () => navigate("/employee/attendance"),
+    },
+  ];
+
+  const teachersOptions = [
+    {
+      key: "teaching-notes",
+      icon: <AutoStoriesIcon />,
+      label: "Teaching Notes",
+      onClick: () => navigate("/teacher/teaching-notes"),
+    },
+    {
       key: "my-attendance",
       icon: <CalendarMonthIcon />,
       label: "My Attendance",
@@ -132,16 +174,16 @@ const MenuOptions = () => {
       label: "Dashboard",
       onClick: () => navigate(`/${user?.role}/dashboard`),
     },
-    {
-      key: "leads-bucket",
-      icon: <CalendarOutlined />,
-      label: "Leads Bucket",
-      onClick: () => navigate(`/${user?.role}/leads-bucket`),
-    },
   ];
 
   // Options at the bottom of the menu
   const commonBottom = [
+    {
+      key: "Calender",
+      icon: user?.role === "admin" ? <EditCalendarIcon /> : <EventNoteIcon />,
+      label: user?.role === "admin" ? "Calendar Management" : "Annual Calendar",
+      onClick: () => navigate(`/${user?.role}/annual-calendar`),
+    },
     {
       key: "settings",
       icon: <SettingsIcon />,
@@ -165,6 +207,8 @@ const MenuOptions = () => {
       ? managerOptions
       : user?.role === "employee"
       ? employeeOptions
+      : user?.role === "teacher"
+      ? teachersOptions
       : []),
     ...commonBottom,
   ];

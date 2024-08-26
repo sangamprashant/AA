@@ -28,7 +28,7 @@ const statusColors: Record<string, string> = {
 const AnnualCalendar: React.FC = () => {
   const globals = useContext(AuthContext);
   if (!globals) return null;
-  const { token } = globals;
+  const { token, user } = globals;
   const [currentDate, setCurrentDate] = useState(new Date());
   const [attendanceData, setAttendanceData] = useState<AttendanceRecord[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -126,7 +126,9 @@ const AnnualCalendar: React.FC = () => {
 
   return (
     <div className="-container p-2">
-      <h2 className="text-uppercase text-center">Annual Calendar</h2>
+      {user?.role === "admin" && (
+        <h2 className="text-uppercase text-center">Annual Calendar</h2>
+      )}
       <div className="calendar-header">
         <Button
           loading={loading}

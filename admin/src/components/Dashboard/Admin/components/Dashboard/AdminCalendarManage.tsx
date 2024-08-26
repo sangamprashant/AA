@@ -29,10 +29,9 @@ const statusColors: Record<string, string> = {
 const AdminCalendarManage: React.FC = () => {
   const globals = useContext(AuthContext);
   if (!globals) return null;
-  const { token } = globals;
+  const { token, user } = globals;
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-
 
   const handleAddEvent = async (values: {
     date: moment.Moment;
@@ -77,77 +76,81 @@ const AdminCalendarManage: React.FC = () => {
   return (
     <AdminWrapper>
       <div className="nav-bar mb-3 d-flex justify-content-between align-items-center">
-        <h5 className="text-uppercase">Calendar Management</h5>
+        <h5 className="text-uppercase">
+          {user?.role === "admin" ? "Calendar Management" : "Annual Calendar"}
+        </h5>
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-md-6">
-            <Card className="shadow-sm">
-              <Form
-                form={form}
-                layout="vertical"
-                onFinish={handleAddEvent}
-                className="p-3 bg-white rounded"
-              >
-                <Form.Item
-                  label="Date"
-                  name="date"
-                  rules={[
-                    { required: true, message: "Please select the date" },
-                  ]}
+          {user?.role === "admin" && (
+            <div className="col-md-6">
+              <Card className="shadow-sm">
+                <Form
+                  form={form}
+                  layout="vertical"
+                  onFinish={handleAddEvent}
+                  className="p-3 bg-white rounded"
                 >
-                  <DatePicker
-                    format="YYYY-MM-DD"
-                    placeholder="Select date"
-                    style={{ width: "100%" }}
-                    suffixIcon={<CalendarOutlined />}
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  label="Description"
-                  name="description"
-                  rules={[
-                    { required: true, message: "Please enter a description" },
-                  ]}
-                >
-                  <Input
-                    placeholder="Enter description"
-                    suffix={<InfoCircleOutlined />}
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  label="Status"
-                  name="status"
-                  rules={[
-                    { required: true, message: "Please select a status" },
-                  ]}
-                >
-                  <Select placeholder="Select status">
-                    {Object.keys(statusColors).map((status) => (
-                      <Option key={status} value={status}>
-                        {status}
-                      </Option>
-                    ))}
-                  </Select>
-                </Form.Item>
-
-                <Form.Item>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="w-100"
-                    size="large"
-                    loading={loading}
+                  <Form.Item
+                    label="Date"
+                    name="date"
+                    rules={[
+                      { required: true, message: "Please select the date" },
+                    ]}
                   >
-                    Add Event
-                  </Button>
-                </Form.Item>
-              </Form>
-            </Card>
-          </div>
-          <div className="col-md-6">
+                    <DatePicker
+                      format="YYYY-MM-DD"
+                      placeholder="Select date"
+                      style={{ width: "100%" }}
+                      suffixIcon={<CalendarOutlined />}
+                    />
+                  </Form.Item>
+
+                  <Form.Item
+                    label="Description"
+                    name="description"
+                    rules={[
+                      { required: true, message: "Please enter a description" },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Enter description"
+                      suffix={<InfoCircleOutlined />}
+                    />
+                  </Form.Item>
+
+                  <Form.Item
+                    label="Status"
+                    name="status"
+                    rules={[
+                      { required: true, message: "Please select a status" },
+                    ]}
+                  >
+                    <Select placeholder="Select status">
+                      {Object.keys(statusColors).map((status) => (
+                        <Option key={status} value={status}>
+                          {status}
+                        </Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+
+                  <Form.Item>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      className="w-100"
+                      size="large"
+                      loading={loading}
+                    >
+                      Add Event
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </Card>
+            </div>
+          )}
+          <div className={`col-md-${user?.role === "admin" ? 6 : 12}`}>
             <AnnualCalendar />
           </div>
         </div>

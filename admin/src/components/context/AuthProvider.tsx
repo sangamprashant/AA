@@ -1,3 +1,4 @@
+import { notification } from "antd";
 import axios from "axios";
 import React, {
   FC,
@@ -9,7 +10,6 @@ import React, {
 } from "react";
 import { config } from "../../config";
 import { NotificationPropsData } from "../../types/notifications";
-import { notification } from "antd";
 
 interface User {
   _id: string;
@@ -31,7 +31,7 @@ interface AuthContextType {
   setToken: React.Dispatch<React.SetStateAction<string>>;
   activeTime: string;
   notificationsData: NotificationPropsData | null;
-  markNotificationAsSeen: (index: number) => void;
+  markNotificationAsSeen: (notificationId: string, index: number) => void;
   markAllAsSeen: () => void;
   clearAllNotifications: () => void;
 }
@@ -153,7 +153,10 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     setDashboardTitle(title);
   };
 
-  const markNotificationAsSeen = async (index: number) => {
+  const markNotificationAsSeen = async (
+    notificationId: string,
+    index: number
+  ) => {
     try {
       const response = await axios.get(
         `${config.SERVER}/notifications/mark-as-seen`,
@@ -161,7 +164,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          params: { index },
+          params: { notificationId },
         }
       );
 
@@ -222,7 +225,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
           },
         }
       );
-  
+
       if (response.data.success) {
         setNotificationsData({
           notifications: [],
@@ -287,3 +290,4 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
+

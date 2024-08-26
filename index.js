@@ -80,6 +80,7 @@ app.use("/api/v2/attendance", require("./server/Routers/admin/attendance"));
 app.use("/api/v2/leave", require("./server/Routers/admin/leave"));
 app.use("/api/v2/notifications", require("./server/Routers/admin/notifications"));
 app.use("/api/v2/calendar", require("./server/Routers/admin/calendar"));
+app.use("/api/v2/subject", require("./server/Routers/admin/subjects"));
 
 app.get("/api/v1/protected", authenticateToken, (req, res) => {
   res.status(200).json({
@@ -103,49 +104,4 @@ app.listen(PORT, () => {
 });
 
 
-const user = {
-  "_id": "66c0dadeb1472508e7cf2b00",
-  "name": "emp 1",
-  "email": "emp1@gmail.com",
-  "role": "employee",
-  "manager": "66c0daa6b1472508e7cf2af0",
-  "createdAt": moment("2024-08-17T17:16:14.876Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
-  "updatedAt": moment("2024-08-21T19:02:23.945Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
-  "__v": 25,
-  "attendanceRecords": [
-    {
-      "date": moment("2024-08-21T17:26:34.736Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
-      "status": "late",
-      "activeTime": {
-        "minutes": 19,
-        "loginTime": moment("2024-08-21T18:13:17.028Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss")
-      },
-      "details": `Arrived at ${moment("2024-08-21T18:13:17.028Z").tz("Asia/Kolkata").format("hh:mm A")}`
-    },
-    {
-      "date": moment("2024-08-20T12:23:47.786Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
-      "status": "late",
-      "details": `Arrived at ${moment("2024-08-20T12:23:47.786Z").tz("Asia/Kolkata").format("hh:mm A")}`
-    },
-    {
-      "date": moment("2024-08-19T18:36:17.602Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
-      "status": "early",
-      "details": `Arrived at ${moment("2024-08-19T18:36:17.602Z").tz("Asia/Kolkata").format("hh:mm A")}`
-    },
-    {
-      "date": moment("2024-08-21T18:30:00.000Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
-      "status": "present",
-      "activeTime": {
-        "minutes": 3,
-        "loginTime": moment("2024-08-21T19:02:23.939Z").tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss")
-      },
-      "details": "Continued session from previous day"
-    }
-  ],
-  "leaveRequests": []
-};
-
-
-app.get("/debug",(req,res)=>{
-  res.json(user)
-})
+// TODO: half-day leave only admin and manager cam give 

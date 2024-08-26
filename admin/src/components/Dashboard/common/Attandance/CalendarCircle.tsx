@@ -7,25 +7,12 @@ import {
   Legend,
   Tooltip,
 } from "recharts";
+import { statusColors } from "../../../../functions";
 
 interface CalendarCircleProps {
   statusCounts: Record<string, number>;
   daysInMonth: number;
 }
-
-const statusColors: Record<string, string> = {
-  early: "#FFD700",
-  present: "#28a745",
-  absent: "#dc3545",
-  late: "#ffc107",
-  "half-day-leave": "#17a2b8",
-  off: "#6c757d",
-  holiday: "#ff5722",
-  training: "#8e44ad",
-  "remote-work": "#3498db",
-  meeting: "#2ecc71",
-  "unpaid-leave": "#9b59b6",
-};
 
 const CalendarCircle: React.FC<CalendarCircleProps> = ({ statusCounts }) => {
   // Convert statusCounts to data format for recharts

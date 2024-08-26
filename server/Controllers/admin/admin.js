@@ -1,7 +1,7 @@
 const User = require("../../Models/users");
 
 const registerUser = async (req, res) => {
-  const { email, password, role, name, manager } = req.body;
+  const { email, password, role, name, manager, subject } = req.body;
 
   // Input validation
   if (!email || !password || !role || !name) {
@@ -25,6 +25,7 @@ const registerUser = async (req, res) => {
       password,
       role,
       name,
+      subject: subject || undefined,
       manager: manager || undefined,
     });
 
@@ -47,9 +48,9 @@ const adminGetUsers = async (req, res) => {
     const users = await User.find({ role: { $ne: "admin" } })
       .select("-notifications -attendanceRecords")
       .populate({
-        path: 'manager',
-        select: 'name email', 
-        match: { role: 'manager' } 
+        path: "manager",
+        select: "name email",
+        match: { role: "manager" },
       });
     res.json(users);
   } catch (error) {
@@ -63,16 +64,24 @@ const adminDeleteUser = async (req, res) => {
   try {
     const user = await User.findById(id);
     if (!user) {
-      return res.status(404).json({ message: "User not found",success:false });
+      return res
+        .status(404)
+        .json({ message: "User not found", success: false });
     }
     if (user.role === "admin") {
-      return res.status(403).json({ message: "Cannot delete an admin user",success:false });
+      return res
+        .status(403)
+        .json({ message: "Cannot delete an admin user", success: false });
     }
     await User.findByIdAndDelete(id);
-    res.status(200).json({ message: "User deleted successfully",success:true });
+    res
+      .status(200)
+      .json({ message: "User deleted successfully", success: true });
   } catch (error) {
     console.error("Error deleting user:", error);
-    res.status(500).json({ message: "Error deleting user" ,success:false,error});
+    res
+      .status(500)
+      .json({ message: "Error deleting user", success: false, error });
   }
 };
 

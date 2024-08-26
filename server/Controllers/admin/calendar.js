@@ -4,7 +4,7 @@ const moment = require("moment-timezone");
 const addAnnualCalendar = async (req, res) => {
   try {
     const { id } = req.user; // User ID from request user object
-    const { date, status, details } = req.body;
+    const { date, status, description } = req.body;
 
     // Validate input
     if (!date || !status) {
@@ -27,10 +27,10 @@ const addAnnualCalendar = async (req, res) => {
     if (existingEntry) {
       // Update existing entry
       existingEntry.status = status;
-      existingEntry.details = details;
+      existingEntry.details = description;
     } else {
       // Add new entry
-      user.annualCalendar.push({ date: localDate, status, details });
+      user.annualCalendar.push({ date: localDate, status, details:description });
     }
 
     // Save the user's updated annual calendar
@@ -56,12 +56,12 @@ const addAnnualCalendar = async (req, res) => {
         // Update or add attendance record for the "off" or "holiday" date
         if (existingAttendance) {
           existingAttendance.status = status;
-          existingAttendance.details = details;
+          existingAttendance.details = description;
         } else {
           eachUser.attendanceRecords.push({
             date: localDate,
             status,
-            details,
+            details:description,
           });
         }
 

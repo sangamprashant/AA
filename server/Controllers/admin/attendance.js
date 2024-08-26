@@ -169,22 +169,6 @@ const getActiveTimeForMonth = async (req, res) => {
   }
 };
 
-const usersLeaveRequest = async (req, res) => {
-  try {
-    const userId = req.user.id; // Assume the user ID is available in req.user after authentication
-    const user = await User.findById(userId).select("leaveRequests");
-
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
-    res.status(200).json({ leaveRequests: user.leaveRequests });
-  } catch (error) {
-    console.error("Error fetching leave requests:", error);
-    res.status(500).json({ error: "Failed to fetch leave requests" });
-  }
-};
-
 // Route handler for getting daily attendance summary
 const adminDailyAttendance = async (req, res) => {
   try {
@@ -295,6 +279,5 @@ module.exports = {
   getCurrentMonthAttendance,
   getMonthlyAttendance,
   getActiveTimeForMonth,
-  usersLeaveRequest,
   adminDailyAttendance,
 };

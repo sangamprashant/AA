@@ -1,3 +1,8 @@
+import {
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+  SyncOutlined,
+} from "@ant-design/icons";
 import { Alert, Table, Tag, Typography } from "antd";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
@@ -7,8 +12,8 @@ import { AuthContext } from "../../../context/AuthProvider";
 const { Title } = Typography;
 
 interface LeaveRequest {
-  startDate: string; // Changed to string to match API response
-  endDate: string; // Changed to string to match API response
+  startDate: string;
+  endDate: string;
   reason: string;
   status: "pending" | "approved" | "rejected";
   approver: string;
@@ -27,14 +32,14 @@ const LeaveApplications = () => {
     const fetchLeaveRequests = async () => {
       try {
         const response = await axios.get(
-          `${config.SERVER}/attendance/leave-requests`,
+          `${config.SERVER}/leave/applications`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        setLeaveRequests(response.data.leaveRequests);
+        setLeaveRequests(response.data.applications);
       } catch (err) {
         setError("Failed to fetch leave requests.");
       } finally {
@@ -67,20 +72,24 @@ const LeaveApplications = () => {
       title: "Status",
       dataIndex: "status",
       key: "status",
-      render: (status: "pending" | "approved" | "rejected") => {
-        let color = "";
-        switch (status) {
-          case "approved":
-            color = "green";
-            break;
-          case "rejected":
-            color = "red";
-            break;
-          case "pending":
-            color = "orange";
-            break;
-        }
-        return <Tag color={color}>{status}</Tag>;
+      render: (_: any, data: LeaveRequest) => {
+        return (
+          <>
+            {data.status === "pending" ? (
+              <Tag icon={<SyncOutlined spin />} color="processing">
+                Pending
+              </Tag>
+            ) : data.status === "approved" ? (
+              <Tag icon={<CheckCircleOutlined />} color="success">
+                Success
+              </Tag>
+            ) : (
+              <Tag icon={<CloseCircleOutlined />} color="error">
+                Rejected
+              </Tag>
+            )}
+          </>
+        );
       },
     },
     // {

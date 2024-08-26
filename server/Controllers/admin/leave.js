@@ -34,10 +34,23 @@ const applyForLeave = async (req, res) => {
   }
 };
 
+const userGetTheirApplications = async (req, res) => {
+  try {
+    const { id } = req.user;
+    const applications = await Leave.find({
+      requester: id,
+    }).sort({ createdAt: -1 }); 
+    res.status(200).json({ applications, success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message, success: false });
+  }
+};
+
 const managerApprovesEmployeeLeave = async (req, res) => {
   try {
     const { id } = req.user;
-    const { leaveId, status } = req.params;
+    const { leaveId, status } = req.query;
     const manager = await User.findById(id);
 
     if (!manager) {
@@ -49,14 +62,10 @@ const managerApprovesEmployeeLeave = async (req, res) => {
     if (leaveId.toString() === manager._id.toString()) {
       return res
         .status(400)
-        .json({ message: "You cannot approve your own leave", success });
+        .json({ message: "You cannot approve your own leave", success: false });
     }
 
-    const leave = await Leave.findOne({
-      _id: leaveId,
-      approver: manager._id,
-    });
-
+    const leave = await Leave.findOne({ _id: leaveId, approver: manager._id });
     if (!leave) {
       return res
         .status(404)
@@ -64,7 +73,6 @@ const managerApprovesEmployeeLeave = async (req, res) => {
     }
 
     const requester = await User.findById(leave.requester);
-
     if (!requester) {
       return res
         .status(404)
@@ -74,13 +82,30 @@ const managerApprovesEmployeeLeave = async (req, res) => {
     leave.status = status === "approved" ? "approved" : "rejected";
     await leave.save();
 
+    if (leave.status === "approved") {
+      // Update attendance records for each day within the leave period
+      let currentDate = moment.tz(leave.startDate, indianTimeZone);
+      const endDate = moment.tz(leave.endDate, indianTimeZone);
+
+      while (currentDate.isSameOrBefore(endDate, "day")) {
+        requester.attendanceRecords.push({
+          date: currentDate.toDate(),
+          status: leave.type,
+          details: `Leave approved for ${leave.type} leave`,
+        });
+        currentDate.add(1, "day");
+      }
+      await requester.save();
+    }
+
     requester.addNotification(`
       Your leave request from ${moment
         .tz(leave.startDate, indianTimeZone)
         .format("YYYY-MM-DD")} to ${moment
       .tz(leave.endDate, indianTimeZone)
       .format("YYYY-MM-DD")} was ${leave.status}.
-      `);
+    `);
+
     res.json({ message: "Leave status updated", success: true });
   } catch (error) {
     console.error(error);
@@ -90,8 +115,8 @@ const managerApprovesEmployeeLeave = async (req, res) => {
 
 const adminApprovesManagerLeave = async (req, res) => {
   try {
-    const { id } = req.user; // Admin ID
-    const { leaveId, status } = req.params;
+    const { id } = req.user;
+    const { leaveId, status } = req.query;
 
     const admin = await User.findById(id);
     if (!admin || admin.role !== "admin") {
@@ -100,11 +125,7 @@ const adminApprovesManagerLeave = async (req, res) => {
         .json({ message: "Admin not found", success: false });
     }
 
-    const leave = await Leave.findOne({
-      _id: leaveId,
-      approverRole: "admin",
-    });
-
+    const leave = await Leave.findOne({ _id: leaveId, approverRole: "admin" });
     if (!leave) {
       return res
         .status(404)
@@ -112,15 +133,30 @@ const adminApprovesManagerLeave = async (req, res) => {
     }
 
     const manager = await User.findById(leave.requester);
-    if (!manager || manager.role !== "manager") {
+    if (!manager || !["teacher", "manager"].includes(manager.role)) {
       return res
         .status(404)
-        .json({ message: "Manager not found", success: false });
+        .json({ message: "Employee not found", success: false });
     }
 
     leave.status = status === "approved" ? "approved" : "rejected";
-    leave.approverRole = admin.role; // Ensure the role is set to admin
+    leave.approverRole = admin.role;
     await leave.save();
+
+    if (leave.status === "approved") {
+      let currentDate = moment.tz(leave.startDate, indianTimeZone);
+      const endDate = moment.tz(leave.endDate, indianTimeZone);
+
+      while (currentDate.isSameOrBefore(endDate, "day")) {
+        manager.attendanceRecords.push({
+          date: currentDate.toDate(),
+          status: "unpaid-leave",
+          details: `Leave approved for ${leave.type} leave`,
+        });
+        currentDate.add(1, "day");
+      }
+      await manager.save();
+    }
 
     manager.addNotification(`
       Your leave request from ${moment
@@ -142,8 +178,6 @@ const monthlyRequestStatusFiltered = async (req, res) => {
     const { id } = req.user;
     const { year, month, status } = req.query;
 
-    console.log({ query: req.query });
-
     // Calculate the start of the month
     const startDate = moment
       .tz(`${year}-${month}-01`, "YYYY-MM-DD", indianTimeZone)
@@ -161,7 +195,7 @@ const monthlyRequestStatusFiltered = async (req, res) => {
       approver: id,
       status: status,
       createdAt: { $gte: startDate, $lte: endDate },
-    });
+    }).populate("requester", "name");
 
     console.log(leaves);
 
@@ -177,4 +211,5 @@ module.exports = {
   managerApprovesEmployeeLeave,
   adminApprovesManagerLeave,
   monthlyRequestStatusFiltered,
+  userGetTheirApplications,
 };

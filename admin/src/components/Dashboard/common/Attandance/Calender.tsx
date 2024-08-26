@@ -1,12 +1,16 @@
-import { Button, Tooltip } from "antd";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import { Button } from "antd";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { config } from "../../../../config";
+import {
+  formatDateYYYYMMDD,
+  getMonthDays,
+  statusColors,
+} from "../../../../functions";
 import { AuthContext } from "../../../context/AuthProvider";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import "./Calendar.css";
-import { formatDateYYYYMMDD, getMonthDays } from "../../../../functions";
 import CalendarCircle from "./CalendarCircle";
 
 interface AttendanceRecord {
@@ -28,20 +32,6 @@ interface AttendanceRecord {
 
 const getFirstDayOfMonth = (year: number, month: number) => {
   return new Date(year, month, 1).getDay();
-};
-
-const statusColors: Record<string, string> = {
-  early: "#FFD700",
-  present: "#28a745",
-  absent: "#dc3545",
-  late: "#ffc107",
-  "half-day-leave": "#17a2b8",
-  off: "#6c757d",
-  holiday: "#ff5722",
-  training: "#8e44ad",
-  "remote-work": "#3498db",
-  meeting: "#2ecc71",
-  "unpaid-leave": "#9b59b6",
 };
 
 const ManualCalendar: React.FC = () => {
@@ -113,20 +103,18 @@ const ManualCalendar: React.FC = () => {
       const attendanceRecord = attendanceData.find(
         (record) => record.date === dateStr
       );
-
-      let className = "day";
-      let tooltipTitle = "";
-      if (attendanceRecord) {
-        className += ` ${attendanceRecord.status}`;
-        tooltipTitle = `${attendanceRecord.status}: ${
-          attendanceRecord.details || "No details available"
-        }`;
-      }
+      const status = attendanceRecord?.status ?? "unknown";
+      const backgroundColor = statusColors[status] || "#f8f9fa";
 
       days.push(
-        <Tooltip key={dateStr} title={tooltipTitle}>
-          <div className={className}>{day}</div>
-        </Tooltip>
+        <div
+          className={`day`}
+          style={{
+            backgroundColor: backgroundColor,
+          }}
+        >
+          {day}
+        </div>
       );
     }
     return days;

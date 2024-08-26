@@ -2,12 +2,11 @@ import { useContext, useLayoutEffect } from "react";
 import { AuthContext } from "../../../../context/AuthProvider";
 import {
   AttendanceCalendar,
-  LeadsCountChart,
-  ProfileCard,
+  LeadsCountChart
 } from "../../../common";
-import EmployeeWrapper from "../../EmployeeWrapper";
 import Header from "../../../common/Dashboard/Header";
 import DailyActivityGraph from "../../../common/Graph";
+import EmployeeWrapper from "../../EmployeeWrapper";
 
 const EmployeeDashboard = () => {
   const authContext = useContext(AuthContext);
@@ -31,7 +30,6 @@ const EmployeeDashboard = () => {
             </div>
           </div>
           <div className="col-md-4">
-            <ProfileCard />
             <div className="card shadow">
               <AttendanceCalendar />
             </div>

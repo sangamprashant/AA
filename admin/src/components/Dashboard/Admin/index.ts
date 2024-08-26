@@ -2,16 +2,20 @@ import AdminDashboard from "./components/AdminDashboard";
 import AdminAddEmployee from "./components/AdminEmployee";
 import AdminBookings from "./components/Bookings";
 import AdminContacts from "./components/Contacts";
-import AdminStudyM from "./components/StudyMaterials";
-import AdminPayments from "./components/Payments";
 import AdminCalendarManage from "./components/Dashboard/AdminCalendarManage";
+import AdminSubjects from "./components/Dashboard/AdminSubjects";
+import ATeachingNotes from "./components/Dashboard/TeachingNotes";
+import AdminPayments from "./components/Payments";
+import AdminStudyM from "./components/StudyMaterials";
 
 export {
-  AdminDashboard,
+  ATeachingNotes,
   AdminAddEmployee,
   AdminBookings,
+  AdminCalendarManage,
   AdminContacts,
+  AdminDashboard,
   AdminPayments,
   AdminStudyM,
-  AdminCalendarManage,
+  AdminSubjects,
 };

@@ -116,10 +116,13 @@ const login = async (req, res) => {
     }
 
     // Debugging: log user attendanceRecords before saving
-    // console.log("User attendanceRecords before saving:", user.attendanceRecords);
+    console.log(
+      "User attendanceRecords before saving:",
+      user.attendanceRecords
+    );
 
     // Validate and save the user
-    await user.validate(); // Explicitly validate user to catch validation issues
+    await user.validate();
     await user.save();
 
     // Create JWT token with attendance time
@@ -167,26 +170,24 @@ const logout = async (req, res) => {
 
     // Safeguard: Check if a valid attendance record exists
     if (!attendanceRecord) {
-      return res
-        .status(400)
-        .json({
-          message:
-            "No valid login record found. Cannot log out without logging in.",
-          success: false,
-        });
+      return res.status(400).json({
+        message:
+          "No valid login record found. Cannot log out without logging in.",
+        success: false,
+      });
     }
 
-    // Safeguard: Check if login time is recorded
-    const loginTime = moment(attendanceRecord.activeTime.loginTime).tz(
-      "Asia/Kolkata"
-    );
-    if (!loginTime.isValid()) {
-      return res
-        .status(400)
-        .json({
-          message: "Login time not found. Please ensure you have logged in.",
-          success: false,
-        });
+    // Safeguard: Check if activeTime and loginTime are recorded
+    const activeTime = attendanceRecord.activeTime || {};
+    const loginTime = activeTime.loginTime
+      ? moment(activeTime.loginTime).tz("Asia/Kolkata")
+      : null;
+
+    if (!loginTime || !loginTime.isValid()) {
+      return res.status(400).json({
+        message: "Login time not found. Please ensure you have logged in.",
+        success: false,
+      });
     }
 
     // Calculate the duration in minutes
@@ -240,12 +241,10 @@ const logout = async (req, res) => {
       await user.save();
     }
 
-    res
-      .status(200)
-      .json({
-        message: "Logout successful, active time recorded",
-        success: true,
-      });
+    res.status(200).json({
+      message: "Logout successful, active time recorded",
+      success: true,
+    });
   } catch (error) {
     console.error("Logout error:", error);
     res.status(500).json({ message: "Server error", error, success: false });

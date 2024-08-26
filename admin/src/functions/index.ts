@@ -83,12 +83,30 @@ const formatDateYYYYMMDD = (isoDateString: string) => {
   // Return the formatted date string
   return `${year}-${month}-${day}`;
 };
+const statusColors: Record<string, string> = {
+  early: "#FFD700",
+  present: "#28a745",
+  absent: "#dc3545",
+  late: "#ffc107",
+  off: "#6c757d",
+  holiday: "#ff5722",
+  training: "#8e44ad",
+  "remote-work": "#3498db",
+  meeting: "#2ecc71",
+  "paid-leave": "#ff7ade",
+  "unpaid-leave": "#9b59b6",
+  "half-day-leave": "#17a2b8",
+};
+
+const fallbackColor = "#f8f9fa"; // Light gray as a fallback
 
 export {
-  formatDateYYYYMMDD, getButtonColor,
+  formatDateYYYYMMDD,
+  getButtonColor,
   getFirstDayOfMonth,
   getMonthDays,
   handlePrint,
-  openNotification
+  openNotification,
+  statusColors,
+  fallbackColor,
 };
-

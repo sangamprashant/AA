@@ -1,11 +1,10 @@
 import { useContext, useLayoutEffect } from "react";
-import AdminWrapper from "../AdminWrapper";
 import { AuthContext } from "../../../context/AuthProvider";
 import Header from "../../common/Dashboard/Header";
-import EmployeeCount from "./Dashboard/EmployeeCount";
-import { ProfileCard } from "../../common";
+import AdminWrapper from "../AdminWrapper";
 import AdminDailyAttendance from "./Dashboard/AdminDailyAttendance";
 import PaymentChart from "./Dashboard/AdminPayments";
+import EmployeeCount from "./Dashboard/EmployeeCount";
 
 const AdminDashboard = () => {
   const authContext = useContext(AuthContext);
@@ -32,7 +31,6 @@ const AdminDashboard = () => {
             </div>
           </div>
           <div className="col-md-4">
-            <ProfileCard />
             <div className="card shadow">
               <EmployeeCount />
             </div>

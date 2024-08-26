@@ -1,8 +1,8 @@
+import TeachingNotes from "./A_T_teaching-note/TeachingNotes";
 import AnnualCalendar from "./AnnualCalendar";
 import AttamdanceManagement from "./Attandance/AttandanceManagement";
 import AttendanceCalendar from "./Attandance/Calender";
 import EMAttendance from "./Attandance/EMAttendance";
-import ProfileCard from "./Dashboard/Details/ProfileCard";
 import AMLeadsOpen from "./Leads/AMLeadsOpen";
 import Bookings from "./Leads/Booking";
 import LeadsCountChart from "./Leads/LeadsCount";
@@ -24,6 +24,7 @@ export {
   LeadsCountChart,
   LeadsStatus,
   Payment,
-  ProfileCard,
   StudyMaterials,
+  TeachingNotes
 };
+

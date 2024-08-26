@@ -12,6 +12,8 @@ import {
   AdminDashboard,
   AdminPayments,
   AdminStudyM,
+  AdminSubjects,
+  ATeachingNotes,
 } from "./Dashboard/Admin";
 import {
   ManagerBookings,
@@ -24,6 +26,7 @@ import {
 } from "./Dashboard/Manager";
 import { AMLeadsOpen, AMSMOpen, AttamdanceManagement, Bookings, EMAttendance, Payment } from "./Dashboard/common";
 import LoadingOverlay from "./reuse/LoadingOverlay";
+import { TTeachingNotes } from "./Dashboard/Teacher";
 
 const AppComponent = () => {
   const authContext = useContext(AuthContext);
@@ -44,8 +47,10 @@ const AppComponent = () => {
             <Route path="/admin/contact" element={<AdminContacts />} />
             <Route path="/admin/s-m" element={<AdminStudyM />} />
             <Route path="/admin/employees" element={<AdminAddEmployee />} />
+            <Route path="/admin/subjects" element={<AdminSubjects />} />
             <Route path="/admin/payments" element={<AdminPayments />} />
             <Route path="/admin/calendar-management" element={<AdminCalendarManage />} />
+            <Route path="/admin/teaching-notes" element={<ATeachingNotes />} />
             {/* -------------- manager -------------- */}
             <Route path="/manager/dashboard" element={<ManagerDashboard />} />
             <Route path="/manager/leads-bucket" element={<ManagerBookings />} />
@@ -60,6 +65,8 @@ const AppComponent = () => {
             <Route path="/employee/leads-bucket" element={<Bookings />} />
             <Route path="/employee/leads-bucket/create" element={<CreateBooking />} />
             <Route path="/employee/leads-bucket/:id" element={<EmpBOpen />} />
+            {/* ----------- teacher ------------- */}
+            <Route path="/teacher/teaching-notes" element={<TTeachingNotes />} />
             {/* ----------- admin/manager ------------- */}
             <Route path="/dashboard/payment-open" element={<Payment />} />
             <Route path="/:role/leave-management" element={<AttamdanceManagement />} />
@@ -68,6 +75,7 @@ const AppComponent = () => {
              <Route path="/:role/attendance" element={<EMAttendance />} />
             {/* ---------------- all ------------------ */}
             <Route path="/dashboard/settings" element={<DashboardSetting />} />
+            <Route path="/:role/annual-calendar" element={<AdminCalendarManage />} />
             <Route path="*" element={<Dashboard404 auth={true} />} />
           </Routes>
         </Frame>
