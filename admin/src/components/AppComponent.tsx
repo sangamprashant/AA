@@ -14,6 +14,7 @@ import {
   AdminStudyM,
   AdminSubjects,
   ATeachingNotes,
+  ATNOpen,
 } from "./Dashboard/Admin";
 import {
   ManagerBookings,
@@ -26,7 +27,7 @@ import {
 } from "./Dashboard/Manager";
 import { AMLeadsOpen, AMSMOpen, AttamdanceManagement, Bookings, EMAttendance, Payment } from "./Dashboard/common";
 import LoadingOverlay from "./reuse/LoadingOverlay";
-import { TTeachingNotes } from "./Dashboard/Teacher";
+import { TTeachingNotes, TTNOpen } from "./Dashboard/Teacher";
 
 const AppComponent = () => {
   const authContext = useContext(AuthContext);
@@ -51,6 +52,7 @@ const AppComponent = () => {
             <Route path="/admin/payments" element={<AdminPayments />} />
             <Route path="/admin/calendar-management" element={<AdminCalendarManage />} />
             <Route path="/admin/teaching-notes" element={<ATeachingNotes />} />
+            <Route path="/admin/teaching-notes/:id" element={<ATNOpen />} />
             {/* -------------- manager -------------- */}
             <Route path="/manager/dashboard" element={<ManagerDashboard />} />
             <Route path="/manager/leads-bucket" element={<ManagerBookings />} />
@@ -67,6 +69,7 @@ const AppComponent = () => {
             <Route path="/employee/leads-bucket/:id" element={<EmpBOpen />} />
             {/* ----------- teacher ------------- */}
             <Route path="/teacher/teaching-notes" element={<TTeachingNotes />} />
+            <Route path="/teacher/teaching-notes/:id" element={<TTNOpen />} />
             {/* ----------- admin/manager ------------- */}
             <Route path="/dashboard/payment-open" element={<Payment />} />
             <Route path="/:role/leave-management" element={<AttamdanceManagement />} />

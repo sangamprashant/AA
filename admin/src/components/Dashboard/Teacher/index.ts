@@ -1,3 +1,4 @@
 import TTeachingNotes from "./TeachingNotes";
+import TTNOpen from "./TeachingNotes/TNOpen";
 
-export { TTeachingNotes };
+export { TTeachingNotes ,TTNOpen};

@@ -74,6 +74,7 @@ const userSchema = new Schema(
     },
     manager: { type: Schema.Types.ObjectId, ref: "User" },
     subject: { type: Schema.Types.ObjectId, ref: "Subject" },
+    savedNotes: [{ type: Schema.Types.ObjectId, ref: "Note" }],
     notifications: [notificationSchema],
     attendanceRecords: [attendanceSchema],
     annualCalendar: [calenderSchema],
@@ -154,6 +155,18 @@ userSchema.methods.applyForLeave = async function (
   await newLeave.save();
 
   await approver.addNotification(notificationMessage);
+  return this;
+};
+
+userSchema.methods.toggleSavedNote = async function (noteId) {
+  const noteIndex = this.savedNotes.indexOf(noteId);
+
+  if (noteIndex === -1) {
+    this.savedNotes.push(noteId);
+  } else {
+    this.savedNotes.splice(noteIndex, 1);
+  }
+  await this.save();
   return this;
 };
 

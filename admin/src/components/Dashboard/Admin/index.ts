@@ -5,10 +5,12 @@ import AdminContacts from "./components/Contacts";
 import AdminCalendarManage from "./components/Dashboard/AdminCalendarManage";
 import AdminSubjects from "./components/Dashboard/AdminSubjects";
 import ATeachingNotes from "./components/Dashboard/TeachingNotes";
+import ATNOpen from "./components/Dashboard/TeachingNotes/TNOpen";
 import AdminPayments from "./components/Payments";
 import AdminStudyM from "./components/StudyMaterials";
 
 export {
+  ATNOpen,
   ATeachingNotes,
   AdminAddEmployee,
   AdminBookings,

@@ -13,7 +13,7 @@ import { NotificationPropsData } from "../../types/notifications";
 
 interface User {
   _id: string;
-  role: "admin" | "manager" | "employee";
+  role: "admin" | "manager" | "employee" | "teacher";
   name: string | null;
   email: string;
 }
@@ -290,4 +290,3 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
-

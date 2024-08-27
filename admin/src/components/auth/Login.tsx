@@ -1,7 +1,8 @@
+import EmailIcon from "@mui/icons-material/Email";
+import { Button, Form, Input, notification } from "antd";
+import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import { Form, Input, Button, notification } from "antd";
 import { config } from "../../config";
 import { AuthContext } from "../context/AuthProvider";
 
@@ -84,7 +85,7 @@ const Login: React.FC = () => {
               },
             ]}
           >
-            <Input placeholder="Enter your email" />
+            <Input placeholder="Enter your email" suffix={<EmailIcon fontSize="small" />} />
           </Form.Item>
           <Form.Item
             label="Password"
