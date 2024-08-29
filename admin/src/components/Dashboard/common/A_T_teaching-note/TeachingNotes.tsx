@@ -22,7 +22,7 @@ import { Subject } from "../../../../types/subject";
 import { AuthContext } from "../../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
-interface TeachingNoteData {
+export interface TeachingNoteData {
   _id: string;
   title: string;
   pdfUrl: string;

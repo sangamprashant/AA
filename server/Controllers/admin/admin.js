@@ -59,6 +59,41 @@ const adminGetUsers = async (req, res) => {
   }
 };
 
+const adminGetUsersCount = async (req, res) => {
+  try {
+
+    const result = await User.aggregate([
+      { 
+        $match: { role: { $ne: "admin" } }
+      },
+      {
+        $group: {
+          _id: "$role",
+          count: { $sum: 1 } 
+        }
+      },
+      {
+        $project: {
+          _id: 0, 
+          role: "$_id", 
+          count: 1 
+        }
+      }
+    ]);
+
+    // Convert result array to key-value object
+    const roleCounts = result.reduce((acc, { role, count }) => {
+      acc[role] = count;
+      return acc;
+    }, {});
+
+    res.json(roleCounts);
+  } catch (error) {
+    console.error("Error fetching users count:", error);
+    res.status(500).json({ message: "Error fetching users count" });
+  }
+};
+
 const adminDeleteUser = async (req, res) => {
   const { id } = req.params;
   try {
@@ -85,4 +120,9 @@ const adminDeleteUser = async (req, res) => {
   }
 };
 
-module.exports = { adminGetUsers, registerUser, adminDeleteUser };
+module.exports = {
+  adminGetUsers,
+  registerUser,
+  adminDeleteUser,
+  adminGetUsersCount,
+};

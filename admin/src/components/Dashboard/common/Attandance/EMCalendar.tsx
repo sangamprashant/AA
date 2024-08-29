@@ -1,10 +1,9 @@
 import React from "react";
-
 import {
   formatDateYYYYMMDD,
   getFirstDayOfMonth,
   getMonthDays,
-  statusColors
+  statusColors,
 } from "../../../../functions";
 import { AttendanceRecord } from "../../../../types/attendance";
 import "./Calendar.css";
@@ -61,16 +60,6 @@ const EMCalendar: React.FC<EMCalendarProps> = ({
   attendanceData.forEach((record) => {
     statusCounts[record.status] = (statusCounts[record.status] || 0) + 1;
   });
-
-  // const getCount = (status: string) => {
-  //   // Ensure the status is valid and is one of the keys in statusColors
-  //   if (!statusColors.hasOwnProperty(status)) {
-  //     return 0;
-  //   }
-
-  //   // Count occurrences of the given status in attendanceData
-  //   return attendanceData.filter((record) => record.status === status).length;
-  // };
 
   return (
     <div className="calendar-container p-2 w-100">

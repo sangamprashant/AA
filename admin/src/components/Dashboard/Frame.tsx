@@ -56,7 +56,7 @@ const Frame = ({ children }: AdminPanelProps) => {
             alt="Logo"
             style={{
               transition: "all 0.3s",
-              maxWidth: "100%",
+              maxWidth: collapsed ? "100%" : "40%",
             }}
           />
         </div>
@@ -90,7 +90,8 @@ const Frame = ({ children }: AdminPanelProps) => {
           <div className="d-flex gap-2">
             <div className="d-flex flex-column">
               <p className="text-muted m-0">
-                <>Activity Time:</> <b className="text-success m-0">{activeTime}</b>
+                <>Activity Time:</>{" "}
+                <b className="text-success m-0">{activeTime}</b>
               </p>
               <sup className="m-0">Logout to store the active time</sup>
             </div>

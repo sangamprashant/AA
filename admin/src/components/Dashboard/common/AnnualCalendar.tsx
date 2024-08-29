@@ -1,16 +1,15 @@
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { Button } from "antd";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-
-import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { AuthContext } from "../../context/AuthProvider";
 import { config } from "../../../config";
 import { formatDateYYYYMMDD, getMonthDays } from "../../../functions";
+import { AuthContext } from "../../context/AuthProvider";
 
 interface AttendanceRecord {
   date: string; // ISO date string with time component
-  status: "off" | "holiday" | "training" | "remote-work" | "meeting";
+  status: "off" | "holiday" | "training" | "meeting";
   details?: string;
 }
 
@@ -46,17 +45,20 @@ const AnnualCalendar: React.FC = () => {
     try {
       setLoading(true);
       setAttendanceData([]);
-      const response = await axios.get(`${config.SERVER}/attendance/monthly`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        params: {
-          year,
-          month: month + 1,
-        },
-      });
-      console.log(response.data.attendanceRecords);
-      const normalizedRecords = response.data.attendanceRecords.map(
+      const response = await axios.get(
+        `${config.SERVER}/calendar/monthly-event`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            year,
+            month: month + 1,
+          },
+        }
+      );
+      console.log(response.data.data);
+      const normalizedRecords = response.data.data.map(
         (record: AttendanceRecord) => ({
           ...record,
           date: formatDateYYYYMMDD(record.date),
@@ -95,12 +97,15 @@ const AnnualCalendar: React.FC = () => {
         (record) => record.date === dateStr
       );
 
+      const status = attendanceRecord?.status ?? "unknown";
+      const backgroundColor = statusColors[status] || "#f8f9fa";
+
       days.push(
         <div
           key={`day-${day}`}
           className="day"
           style={{
-            backgroundColor: statusColors[attendanceRecord?.status || ""],
+            backgroundColor: backgroundColor,
           }}
         >
           {day}

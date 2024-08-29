@@ -4,6 +4,7 @@ import {
   LogoutOutlined,
   PhoneOutlined,
 } from "@ant-design/icons";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import DateRangeIcon from "@mui/icons-material/DateRange";
@@ -173,6 +174,12 @@ const MenuOptions = () => {
       icon: <DashboardOutlined />,
       label: "Dashboard",
       onClick: () => navigate(`/${user?.role}/dashboard`),
+    },
+    {
+      key: "profile",
+      icon: <AccountCircleIcon />,
+      label: "Profile",
+      onClick: () => navigate(`/${user?.role}/profile`),
     },
   ];
 

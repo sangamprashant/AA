@@ -20,7 +20,7 @@ const TeachingNotesOpen = () => {
   const { id } = useParams<{ id: string }>();
   const [note, setNote] = useState<TeachingNoteData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [pdfLoading, setPdfLoading] = useState<boolean>(true); // New state for PDF loading
+  // const [pdfLoading, setPdfLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchNote = async () => {
@@ -44,9 +44,19 @@ const TeachingNotesOpen = () => {
     fetchNote();
   }, [id, token]);
 
-  const handleIframeLoad = () => {
-    setPdfLoading(false);
-  };
+  useEffect(() => {
+    if (note && note.pdfUrl) {
+      const link = document.createElement("link");
+      link.rel = "prefetch";
+      link.href = note.pdfUrl;
+      link.as = "document";
+      document.head.appendChild(link);
+    }
+  }, [note]);
+
+  // const handleIframeLoad = () => {
+  //   setPdfLoading(false);
+  // };
 
   return (
     <>
@@ -66,13 +76,13 @@ const TeachingNotesOpen = () => {
           className="note-details"
           style={{ position: "relative", height: "100%" }}
         >
-          {pdfLoading && <p>Loading PDF...</p>}
+          {/* {pdfLoading && <p>Loading PDF...</p>} */}
           <iframe
             src={`https://docs.google.com/gview?url=${encodeURIComponent(
               note.pdfUrl
             )}&embedded=true`}
             width="100%"
-            onLoad={handleIframeLoad}
+            // onLoad={handleIframeLoad}
             style={{
               height: "80vh",
               position: "absolute",

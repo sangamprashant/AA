@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -9,6 +10,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { config } from "../../../../../config";
+import { AuthContext } from "../../../../context/AuthProvider";
 
 interface Employee {
   name: string;
@@ -16,25 +19,36 @@ interface Employee {
 }
 
 const EmployeeCount = () => {
+  const globles = useContext(AuthContext);
+  if (!globles) return null;
+  const { token } = globles;
   const [employees, setEmployees] = useState<Employee[]>([
-    { name: "Manager", count: 10 },
-    { name: "Employee", count: 20 },
-    { name: "Teacher", count: 30 },
+    { name: "Manager", count: 0 },
+    { name: "Employee", count: 0 },
+    { name: "Teacher", count: 0 },
   ]);
 
   useEffect(() => {
-    // Delay the state update by 2 seconds
-    const timer = setTimeout(() => {
-      setEmployees([
-        { name: "Manager", count: 40 },
-        { name: "Employee", count: 50 },
-        { name: "Teacher", count: 34 },
-      ]);
-    }, 2000); // 2000 milliseconds = 2 seconds
+    fetchCount();
+  }, [token]);
 
-    // Cleanup timeout if component unmounts before timeout completes
-    return () => clearTimeout(timer);
-  }, []);
+  const fetchCount = async () => {
+    try {
+      const response = await axios.get(`${config.SERVER}/admin/user-count`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      });
+      setEmployees([
+        { name: "Manager", count: response.data.manager },
+        { name: "Employee", count: response.data.employee },
+        { name: "Teacher", count: response.data.teacher },
+      ]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // Define colors for each employee type
   const colors = ["#8884d8", "#82ca9d", "#FFC107"];

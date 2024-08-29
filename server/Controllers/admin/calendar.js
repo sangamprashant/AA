@@ -30,7 +30,11 @@ const addAnnualCalendar = async (req, res) => {
       existingEntry.details = description;
     } else {
       // Add new entry
-      user.annualCalendar.push({ date: localDate, status, details:description });
+      user.annualCalendar.push({
+        date: localDate,
+        status,
+        details: description,
+      });
     }
 
     // Save the user's updated annual calendar
@@ -61,7 +65,7 @@ const addAnnualCalendar = async (req, res) => {
           eachUser.attendanceRecords.push({
             date: localDate,
             status,
-            details:description,
+            details: description,
           });
         }
 
@@ -104,6 +108,63 @@ const addAnnualCalendar = async (req, res) => {
   }
 };
 
+const getMonthlyData = async (req, res) => {
+  try {
+    const { year, month } = req.query;
+
+    if (!year || !month) {
+      return res.status(400).json({
+        success: false,
+        message: "Year and month are required",
+      });
+    }
+
+    // Ensure month is in 'MM' format
+    const monthIndex = String(month).padStart(2, "0");
+    const startDate = `${year}-${monthIndex}-01`;
+    const endDate = `${year}-${monthIndex}-${new Date(
+      year,
+      monthIndex,
+      0
+    ).getDate()}`;
+
+    // Fetch the admin user with all calendar data
+    const user = await User.findOne({
+      role: "admin",
+      "annualCalendar.date": { $gte: startDate, $lte: endDate },
+    }).exec();
+
+    if (!user || !user.annualCalendar || user.annualCalendar.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No data found for the specified month",
+      });
+    }
+
+    // Filter calendar data for the specified date range
+    const filteredCalendar = user.annualCalendar.filter(
+      (entry) => entry.date >= startDate && entry.date <= endDate
+    );
+
+    if (filteredCalendar.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No data found for the specified month",
+      });
+    }
+
+    // Return the filtered calendar data
+    res.status(200).json({
+      success: true,
+      data: filteredCalendar,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error", success: false });
+  }
+};
+
 module.exports = {
   addAnnualCalendar,
+  getMonthlyData,
 };

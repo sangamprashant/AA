@@ -9,10 +9,13 @@ import LeadsCountChart from "./Leads/LeadsCount";
 import LeadsStatus from "./Leads/LeadsCount/LeadsStatus";
 import AMPayments from "./Payments";
 import Payment from "./Payments/Payment";
+import AMETProfie from "./Profile/AMETProfie";
 import StudyMaterials from "./StudyMaterials";
 import AMSMOpen from "./StudyMaterials/AMSMOpen";
+import AMProfile from "./Profile/AMProfile";
 
 export {
+  AMETProfie,
   AMLeadsOpen,
   AMPayments,
   AMSMOpen,
@@ -25,6 +28,5 @@ export {
   LeadsStatus,
   Payment,
   StudyMaterials,
-  TeachingNotes
+  TeachingNotes,AMProfile
 };
-
