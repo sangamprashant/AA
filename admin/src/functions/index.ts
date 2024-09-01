@@ -100,6 +100,30 @@ const statusColors: Record<string, string> = {
 
 const fallbackColor = "#f8f9fa"; // Light gray as a fallback
 
+const getMonthName = (key: number): string => {
+  let index = key - 1;
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  if (index >= 0 && index < 12) {
+    return monthNames[index];
+  } else {
+    throw new Error("Invalid month index");
+  }
+};
+
 export {
   formatDateYYYYMMDD,
   getButtonColor,
@@ -109,4 +133,5 @@ export {
   openNotification,
   statusColors,
   fallbackColor,
+  getMonthName,
 };

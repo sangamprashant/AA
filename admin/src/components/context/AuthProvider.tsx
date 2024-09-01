@@ -10,12 +10,16 @@ import React, {
 } from "react";
 import { config } from "../../config";
 import { NotificationPropsData } from "../../types/notifications";
+import { SessionDates } from "../../types/profile";
+
+
 
 interface User {
   _id: string;
   role: "admin" | "manager" | "employee" | "teacher";
   name: string | null;
   email: string;
+  createdAt: Date;
 }
 
 interface AuthContextType {
@@ -34,6 +38,7 @@ interface AuthContextType {
   markNotificationAsSeen: (notificationId: string, index: number) => void;
   markAllAsSeen: () => void;
   clearAllNotifications: () => void;
+  sessionDates: SessionDates[];
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -44,6 +49,7 @@ interface AuthProviderProps {
 
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [sessionDates, setSessionDated] = useState<SessionDates[] | []>([]);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [dashboardTitle, setDashboardTitle] = useState<string>("Dashboard");
@@ -264,6 +270,33 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     return () => clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    const createdAt = user?.createdAt ? new Date(user.createdAt) : undefined;
+    if (!createdAt) {
+      return;
+    }
+
+    const createdYear = createdAt.getFullYear();
+    const createdMonth = createdAt.getMonth() + 1;
+
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth() + 1;
+
+    const data = [];
+
+    for (let year = createdYear; year <= currentYear; year++) {
+      let startMonth = year === createdYear ? createdMonth : 1;
+      let endMonth = year === currentYear ? currentMonth : 12;
+
+      for (let month = startMonth; month <= endMonth; month++) {
+        data.push({ year, month });
+      }
+    }
+
+    setSessionDated(data.reverse());
+  }, [user]);
+
   return (
     <AuthContext.Provider
       value={{
@@ -282,6 +315,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         markNotificationAsSeen,
         markAllAsSeen,
         clearAllNotifications,
+        sessionDates,
       }}
     >
       {children}
@@ -290,3 +324,4 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
+
