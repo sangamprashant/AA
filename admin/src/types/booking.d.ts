@@ -1,5 +1,3 @@
-// types/booking.d.ts
-
 export type User = {
   _id: string;
   name: string;

@@ -8,7 +8,9 @@ const {
   BookingType,
   ContactsByType,
   logout,
+  userProfileById,
 } = require("../../Controllers/admin/auth");
+const requireManagerOrAdmin = require("../../middlewares/requireManagerOrAdmin");
 
 const router = express.Router();
 
@@ -20,6 +22,6 @@ router.get("/booking/:bookingId", authenticateToken, BookingId);
 // geting loged users leads by type
 router.post("/bookings", authenticateToken, BookingType);
 router.get("/contacts", authenticateToken, ContactsByType);
-
+router.get("/user-profile/:id", requireManagerOrAdmin, userProfileById);
 
 module.exports = router;

@@ -1,5 +1,5 @@
 export interface NotificationProps {
-  _id: string; // Ensure _id is included
+  _id: string; 
   message: string;
   seen: boolean;
   timestamp: Date;

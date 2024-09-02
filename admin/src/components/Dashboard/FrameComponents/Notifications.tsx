@@ -1,4 +1,4 @@
-import { UserOutlined } from "@ant-design/icons";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import type { MenuProps } from "antd";
 import { Avatar, Badge, Button, Dropdown, Typography } from "antd";
 import { useContext, useState } from "react";
@@ -17,7 +17,6 @@ const NotificationComponent = () => {
   }
 
   const {
-    user,
     notificationsData,
     markNotificationAsSeen,
     markAllAsSeen,
@@ -137,9 +136,8 @@ const NotificationComponent = () => {
   return (
     <Dropdown menu={{ items }} trigger={["click"]}>
       <div style={{ cursor: "pointer" }}>
-        <span>{user?.name}</span>
         <Badge count={notificationsData?.unseenCount}>
-          <Avatar icon={<UserOutlined />} />
+          <Avatar icon={<NotificationsNoneIcon />} />
         </Badge>
       </div>
     </Dropdown>

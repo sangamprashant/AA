@@ -115,12 +115,6 @@ const login = async (req, res) => {
       }
     }
 
-    // Debugging: log user attendanceRecords before saving
-    console.log(
-      "User attendanceRecords before saving:",
-      user.attendanceRecords
-    );
-
     // Validate and save the user
     await user.validate();
     await user.save();
@@ -372,6 +366,24 @@ const ContactsByType = async (req, res) => {
   }
 };
 
+const userProfileById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id).select("name email role createdAt");
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: "User not found", success: false });
+    }
+
+    res.status(200).json({ user, success: true });
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    res.status(500).json({ message: "Server error", success: false });
+  }
+};
+
 module.exports = {
   login,
   register,
@@ -380,4 +392,5 @@ module.exports = {
   BookingType,
   ContactsByType,
   logout,
+  userProfileById,
 };

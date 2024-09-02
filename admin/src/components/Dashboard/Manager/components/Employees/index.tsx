@@ -1,10 +1,11 @@
-import { Button, Input, Table, message } from "antd";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { Button, Input, Table } from "antd";
 import axios from "axios";
 import { useContext, useLayoutEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { config } from "../../../../../config";
 import { AuthContext } from "../../../../context/AuthProvider";
 import ManagerWrapper from "../../ManagerWrapper";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 
 interface User {
   _id: string;
@@ -22,6 +23,7 @@ const MEmployees = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useLayoutEffect(() => {
     fetchEmployees();
@@ -35,7 +37,7 @@ const MEmployees = () => {
           Authorization: `Bearer ${globals.token}`,
         },
       });
-      setUsers(response.data.users); // Adjusted according to response structure
+      setUsers(response.data.users);
     } catch (error) {
       console.error("Failed to fetch employees", error);
     } finally {
@@ -88,7 +90,9 @@ const MEmployees = () => {
           <Button
             type="primary"
             icon={<VisibilityIcon />}
-            onClick={() => handleView(user)}
+            onClick={() =>
+              navigate(`/${globals.user?.role}/profile/${user._id}`)
+            }
           >
             View
           </Button>
@@ -96,10 +100,6 @@ const MEmployees = () => {
       ),
     },
   ];
-
-  const handleView = (user: User) => {
-    message.info(`View functionality for ${user.name} not implemented yet.`);
-  };
 
   return (
     <ManagerWrapper>

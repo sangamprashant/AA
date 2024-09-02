@@ -11,12 +11,7 @@ import {
 import { AuthContext } from "../../../context/AuthProvider";
 import { config } from "../../../../config";
 import { Button } from "antd";
-
-// Interface for graph data
-interface GraphData {
-  name: string; // Date in 'YYYY-MM-DD' format
-  activeHours: number; // Total active hours for the day
-}
+import { GraphData } from "../../../../types/activity";
 
 const DailyActivityGraph = () => {
   const [graphData, setGraphData] = useState<GraphData[]>([]);

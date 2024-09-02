@@ -20,6 +20,7 @@ import { openNotification } from "../../../../functions";
 import { Subject } from "../../../../types/subject";
 import { AuthContext } from "../../../context/AuthProvider";
 import AdminWrapper from "../AdminWrapper";
+import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -469,6 +470,13 @@ const EmployeeShow = ({
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(searchValue)
   );
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    return null;
+  }
+
+  const { user } = authContext;
+  const navigate = useNavigate()
 
   const column1: ColumnType<User>[] = [
     {
@@ -501,8 +509,7 @@ const EmployeeShow = ({
           <Button
             type="primary"
             onClick={() => {
-              // Handle view logic here
-              console.log("View details of", record.name);
+              navigate(`/${user?.role}/profile/${record._id}`)
             }}
           >
             View

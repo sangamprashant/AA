@@ -10,17 +10,7 @@ import React, {
 } from "react";
 import { config } from "../../config";
 import { NotificationPropsData } from "../../types/notifications";
-import { SessionDates } from "../../types/profile";
-
-
-
-interface User {
-  _id: string;
-  role: "admin" | "manager" | "employee" | "teacher";
-  name: string | null;
-  email: string;
-  createdAt: Date;
-}
+import { SessionDates, User } from "../../types/profile";
 
 interface AuthContextType {
   user: User | null;

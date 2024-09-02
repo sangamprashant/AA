@@ -1,6 +1,6 @@
 import { Tabs } from "antd";
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import ProfileCard from "./ProfileCard";
+import Spinner from "../../Spinner";
 import {
   Area,
   AreaChart,
@@ -9,49 +9,52 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { config } from "../../../../config";
 import {
   formatDateYYYYMMDD,
   getFirstDayOfMonth,
   getMonthDays,
   getMonthName,
   statusColors,
-} from "../../../../functions";
-import { GraphData } from "../../../../types/activity";
-import { AttendanceRecord } from "../../../../types/attendance";
-import { SessionDates } from "../../../../types/profile";
-import { AuthContext } from "../../../context/AuthProvider";
-import Spinner from "../Spinner";
-import CalendarCircle from "./Calender";
-import ProfileCard from "./ProfileCard";
+} from "../../../../../functions";
+import { config } from "../../../../../config";
+import axios from "axios";
+import { SessionDates } from "../../../../../types/profile";
+import { useContext, useEffect, useState } from "react";
+import { GraphData } from "../../../../../types/activity";
+import { AuthContext } from "../../../../context/AuthProvider";
+import CalendarCircle from "../Calender";
+import { AttendanceRecord } from "../../../../../types/attendance";
+import { ProfileContext } from "../AMProfile";
 
-const ProfileRender = () => {
+const ProfileWrapper = () => {
   return (
-    <div className="px-1">
-      <div className="row m-0">
-        <div className="col-md-8">
-          <Tabs defaultActiveKey="1" className="ps-1">
-            <Tabs.TabPane tab="Monthly Attandance" key="Notes">
-              <MonthlyAttandance />
-            </Tabs.TabPane>
+    <>
+      <div className="px-1">
+        <div className="row m-0">
+          <div className="col-md-8">
+            <Tabs defaultActiveKey="Notes" className="ps-1">
+              <Tabs.TabPane tab="Monthly Attandance" key="Notes">
+                <MonthlyAttandance />
+              </Tabs.TabPane>
 
-            <Tabs.TabPane tab="Daily Activity Chart" key="saved">
-              <DailyActivityChart />
-            </Tabs.TabPane>
-          </Tabs>
-        </div>
-        <div className="col-md-4 mt-2">
-          <ProfileCard />
+              <Tabs.TabPane tab="Daily Activity Chart" key="saved">
+                <DailyActivityChart />
+              </Tabs.TabPane>
+            </Tabs>
+          </div>
+          <div className="col-md-4 mt-2">
+            <ProfileCard />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default ProfileRender;
+export default ProfileWrapper;
 
 const MonthlyAttandance = () => {
-  const globles = useContext(AuthContext);
+  const globles = useContext(ProfileContext);
   if (!globles) return null;
 
   const { sessionDates } = globles;
@@ -69,11 +72,13 @@ const MonthlyAttandance = () => {
 };
 
 const DailyActivityChart = () => {
-  const globles = useContext(AuthContext);
+  const globles = useContext(ProfileContext);
   if (!globles) return null;
+
   const { sessionDates } = globles;
   return (
     <>
+      {" "}
       <div className="row m-0 ">
         {sessionDates.map((session) => (
           <div className="col-md-12 mb-2">
@@ -91,6 +96,9 @@ const MonthlyAttandanceData = ({ year, month }: SessionDates) => {
   const globals = useContext(AuthContext);
   if (!globals) return null;
   const { token } = globals;
+
+  const profileContext = useContext(ProfileContext);
+  if (!profileContext) return null;
 
   const [attendanceData, setAttendanceData] = useState<AttendanceRecord[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -199,8 +207,11 @@ const DailyActivityChartData = ({ year, month }: SessionDates) => {
   const globals = useContext(AuthContext);
   if (!globals) return null;
   const { token } = globals;
-  const [graphData, setGraphData] = useState<GraphData[]>([]);
 
+  const profileContext = useContext(ProfileContext);
+  if (!profileContext) return null;
+
+  const [graphData, setGraphData] = useState<GraphData[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   // Fetch data from the server
