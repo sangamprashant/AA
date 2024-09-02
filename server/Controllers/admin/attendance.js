@@ -50,8 +50,8 @@ const getCurrentMonthAttendance = async (req, res) => {
 
 const getMonthlyAttendance = async (req, res) => {
   try {
-    const { id } = req.user; // Get the user ID from the authenticated user
-    const { year, month } = req.query; // Get year and month from query parameters
+    const { id } = req.user;
+    const { year, month } = req.query;
 
     if (!year || !month) {
       return res.status(400).json({
@@ -122,9 +122,6 @@ const getActiveTimeForMonth = async (req, res) => {
       .endOf("month")
       .toDate(); // End of the month
 
-    console.log("Start Date:", startDate);
-    console.log("End Date:", endDate);
-
     // Query to get user's attendance records within the date range
     const user = await User.findById(id).select("attendanceRecords");
     if (!user) {
@@ -138,9 +135,6 @@ const getActiveTimeForMonth = async (req, res) => {
       const recordDateObj = moment(record.date).tz(timeZone).toDate(); // Ensure record date is in the same time zone
       const recordDate = moment(record.date).tz(timeZone).format("YYYY-MM-DD");
 
-      console.log("Record Date:", recordDate);
-      console.log("Record Date Object:", recordDateObj);
-
       if (recordDateObj >= startDate && recordDateObj <= endDate) {
         const { activeTime } = record;
         if (!dailyActivity[recordDate]) {
@@ -148,9 +142,7 @@ const getActiveTimeForMonth = async (req, res) => {
         }
         if (activeTime) {
           const { minutes } = activeTime;
-          dailyActivity[recordDate] += minutes / 60; // Convert minutes to hours
-
-          console.log("Minutes Active:", minutes);
+          dailyActivity[recordDate] += minutes / 60;
         }
       }
     });
@@ -159,8 +151,6 @@ const getActiveTimeForMonth = async (req, res) => {
       name: date,
       activeHours: dailyActivity[date],
     }));
-
-    console.log("Graph Data:", graphData);
 
     res.json({ success: true, graphData: graphData.reverse() });
   } catch (error) {
@@ -275,9 +265,119 @@ const adminDailyAttendance = async (req, res) => {
   }
 };
 
+// for profile
+const getMonthlyAttendanceProfile = async (req, res) => {
+  try {
+    const { year, month, id } = req.query;
+
+    if (!year || !month) {
+      return res.status(400).json({
+        success: false,
+        message: "Year and month are required",
+      });
+    }
+
+    // Ensure month is zero-based
+    const monthIndex = parseInt(month, 10) - 1;
+    const startDate = new Date(year, monthIndex, 1);
+    const endDate = new Date(year, monthIndex + 1, 0);
+
+    // Fetch the user with attendance records for the current month
+    const user = await User.findOne({
+      _id: id,
+      "attendanceRecords.date": { $gte: startDate, $lte: endDate },
+    }).select("name email attendanceRecords");
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message:
+          "User not found or no attendance records for the current month",
+      });
+    }
+
+    // Filter and format the attendance records for the current month
+    const currentMonthRecords = user.attendanceRecords.filter((record) => {
+      const recordDate = new Date(record.date);
+      return recordDate >= startDate && recordDate <= endDate;
+    });
+
+    // console.log({currentMonthRecords})
+
+    res.status(200).json({
+      success: true,
+      attendanceRecords: currentMonthRecords,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
+  }
+};
+
+const getActiveTimeForMonthProfile = async (req, res) => {
+  try {
+    const { year, month, id } = req.query;
+
+    if (!year || !month) {
+      return res.status(400).json({ error: "Year and month are required." });
+    }
+
+    // Define the time zone
+    const timeZone = "Asia/Kolkata";
+
+    // Convert dates to Kolkata time zone
+    const startDate = moment
+      .tz(`${year}-${month}-01`, timeZone)
+      .startOf("day")
+      .toDate(); // Start of the month
+    const endDate = moment
+      .tz(`${year}-${month}-01`, timeZone)
+      .endOf("month")
+      .toDate(); // End of the month
+
+    const user = await User.findById(id).select("attendanceRecords");
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
+
+    const dailyActivity = {};
+
+    user.attendanceRecords.forEach((record) => {
+      const recordDateObj = moment(record.date).tz(timeZone).toDate(); 
+      const recordDate = moment(record.date).tz(timeZone).format("YYYY-MM-DD");
+
+      if (recordDateObj >= startDate && recordDateObj <= endDate) {
+        const { activeTime } = record;
+        if (!dailyActivity[recordDate]) {
+          dailyActivity[recordDate] = 0;
+        }
+        if (activeTime) {
+          const { minutes } = activeTime;
+          dailyActivity[recordDate] += minutes / 60;
+        }
+      }
+    });
+
+    const graphData = Object.keys(dailyActivity).map((date) => ({
+      name: date,
+      activeHours: dailyActivity[date],
+    }));
+
+    res.json({ success: true, graphData: graphData.reverse() });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error", success: false });
+  }
+};
+
 module.exports = {
   getCurrentMonthAttendance,
   getMonthlyAttendance,
   getActiveTimeForMonth,
   adminDailyAttendance,
+  getMonthlyAttendanceProfile,
+  getActiveTimeForMonthProfile,
 };

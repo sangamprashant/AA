@@ -126,14 +126,6 @@ const ManualCalendar: React.FC = () => {
     statusCounts[record.status] = (statusCounts[record.status] || 0) + 1;
   });
 
-  const getCount = (status: string) => {
-    // Ensure the status is valid and is one of the keys in statusColors
-    if (!statusColors.hasOwnProperty(status)) {
-      return 0;
-    }
-    return attendanceData.filter((record) => record.status === status).length;
-  };
-
   return (
     <div className="-container p-2">
       <CalendarCircle statusCounts={statusCounts} daysInMonth={daysInMonth} />
@@ -162,20 +154,6 @@ const ManualCalendar: React.FC = () => {
           </div>
         ))}
         {renderDays()}
-      </div>
-      <div className="status-legend">
-        <h5>Status Legend</h5>
-        {Object.keys(statusColors).map((status) => (
-          <div key={status} className="legend-item">
-            <div
-              className="status"
-              style={{ backgroundColor: statusColors[status] }}
-            >
-              {getCount(status)}
-            </div>
-            {status.replace(/-/g, " ").toUpperCase()}
-          </div>
-        ))}
       </div>
     </div>
   );

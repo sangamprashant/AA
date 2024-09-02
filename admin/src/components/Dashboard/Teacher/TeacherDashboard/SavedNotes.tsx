@@ -86,6 +86,17 @@ const TeachingNotesRender: React.FC = () => {
       key: "title",
     },
     {
+      title: "Subject",
+      dataIndex: "subject",
+      key: "subject",
+      render: (subject: { _id: string; title: string }) => subject.title,
+    },
+    {
+      title: "Class",
+      dataIndex: "class",
+      key: "class",
+    },
+    {
       title: "Action",
       dataIndex: "_id",
       key: "_id",

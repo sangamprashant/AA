@@ -1,9 +1,10 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Layout, theme } from "antd";
+import { Button, Layout, theme, Tooltip } from "antd";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import MenuOptions from "./FrameComponents/MenuOptions";
 import NotificationComponent from "./FrameComponents/Notifications";
+import AdjustIcon from "@mui/icons-material/Adjust";
 
 const { Header, Sider, Content } = Layout;
 
@@ -87,14 +88,17 @@ const Frame = ({ children }: AdminPanelProps) => {
               height: "50px",
             }}
           />
-          <div className="d-flex gap-2">
-            <div className="d-flex flex-column">
+          <div className="d-flex gap-2 align-items-center">
+            <AdjustIcon style={{color:"green"}}/>
+            <Tooltip
+              placement="bottom"
+              title="Logout to save the in daily activity"
+            >
               <p className="text-muted m-0">
                 <>Activity Time:</>{" "}
                 <b className="text-success m-0">{activeTime}</b>
               </p>
-              <sup className="m-0">Logout to store the active time</sup>
-            </div>
+            </Tooltip>
             |
             <NotificationComponent />
           </div>

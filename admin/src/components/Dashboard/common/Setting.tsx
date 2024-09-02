@@ -1,7 +1,5 @@
+import { Button, Col, Form, Input, message } from "antd";
 import React from "react";
-import { Button, Col, Form, Input, Typography, message } from "antd";
-
-const { Title } = Typography;
 
 const Setting: React.FC = () => {
   const [form] = Form.useForm();
@@ -24,9 +22,8 @@ const Setting: React.FC = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center h-100 mt-5">
+    <div className="d-flex justify-content-center align-items-center h-75 mt-5">
       <Col span={15} className=" border p-4 shadow">
-        <Title level={3}>Change Password</Title>
         <Form
           form={form}
           layout="vertical"

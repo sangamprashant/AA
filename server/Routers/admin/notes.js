@@ -80,7 +80,8 @@ router.get("/saved-notes", requireTeacher, async (req, res) => {
       .select("savedNotes")
       .populate({
         path: "savedNotes",
-        select: "title pdfUrl subject",
+        select: "title pdfUrl subject class",
+        populate: { path: "subject", select: "title" },
       });
 
     if (!user) {

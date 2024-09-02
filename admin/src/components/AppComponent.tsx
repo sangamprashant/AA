@@ -78,7 +78,7 @@ const AppComponent = () => {
              {/* ----------- employee/manager ------------- */}
              <Route path="/:role/attendance" element={<EMAttendance />} />
             {/* ---------------- all ------------------ */}
-            <Route path="/dashboard/settings" element={<DashboardSetting />} />
+            <Route path="/:role/password" element={<DashboardSetting />} />
             <Route path="/:role/profile" element={<AMETProfie />} />
             <Route path="/:role/profile/:id" element={<AMProfile />} />
             <Route path="/:role/annual-calendar" element={<AdminCalendarManage />} />

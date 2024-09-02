@@ -99,6 +99,7 @@ const MonthlyAttandanceData = ({ year, month }: SessionDates) => {
 
   const profileContext = useContext(ProfileContext);
   if (!profileContext) return null;
+  const { profileUser } = profileContext;
 
   const [attendanceData, setAttendanceData] = useState<AttendanceRecord[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -106,22 +107,30 @@ const MonthlyAttandanceData = ({ year, month }: SessionDates) => {
   const firstDayOfMonth = getFirstDayOfMonth(year, month);
 
   useEffect(() => {
-    fetchAttendanceForMonth(year, month);
-  }, [year, month]);
+    fetchAttendanceForMonth(year, month, profileUser?._id);
+  }, [year, month, profileUser]);
 
-  const fetchAttendanceForMonth = async (year: number, month: number) => {
+  const fetchAttendanceForMonth = async (
+    year: number,
+    month: number,
+    id: string | undefined
+  ) => {
     try {
       setLoading(true);
       setAttendanceData([]);
-      const response = await axios.get(`${config.SERVER}/attendance/monthly`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        params: {
-          year,
-          month: month,
-        },
-      });
+      const response = await axios.get(
+        `${config.SERVER}/attendance/monthly/profile-attendance`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            year,
+            month: month,
+            id,
+          },
+        }
+      );
       console.log(response.data.attendanceRecords);
       const normalizedRecords = response.data.attendanceRecords.map(
         (record: AttendanceRecord) => ({
@@ -203,6 +212,7 @@ const MonthlyAttandanceData = ({ year, month }: SessionDates) => {
     </div>
   );
 };
+
 const DailyActivityChartData = ({ year, month }: SessionDates) => {
   const globals = useContext(AuthContext);
   if (!globals) return null;
@@ -210,6 +220,7 @@ const DailyActivityChartData = ({ year, month }: SessionDates) => {
 
   const profileContext = useContext(ProfileContext);
   if (!profileContext) return null;
+  const { profileUser } = profileContext;
 
   const [graphData, setGraphData] = useState<GraphData[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -219,7 +230,7 @@ const DailyActivityChartData = ({ year, month }: SessionDates) => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${config.SERVER}/attendance/active-time-for-month?month=${month}&year=${year}`,
+        `${config.SERVER}/attendance/active-time-for-month/profile-attendance?month=${month}&year=${year}&id=${profileUser?._id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -243,7 +254,7 @@ const DailyActivityChartData = ({ year, month }: SessionDates) => {
     if (token) {
       fetchData();
     }
-  }, [token, month, year]);
+  }, [token, month, year, profileUser]);
 
   return (
     <>

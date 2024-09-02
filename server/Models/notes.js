@@ -4,6 +4,7 @@ const notesSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     pdfUrl: { type: String, required: true },
+    class: { type: Number, required: true },
     subject: { type: mongoose.Schema.Types.ObjectId, ref: "Subject" },
   },
   {

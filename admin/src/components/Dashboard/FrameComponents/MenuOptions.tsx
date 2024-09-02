@@ -11,11 +11,11 @@ import DateRangeIcon from "@mui/icons-material/DateRange";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
+import LockResetIcon from "@mui/icons-material/LockReset";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import PaymentIcon from "@mui/icons-material/Payment";
 import PeopleIcon from "@mui/icons-material/People";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import SettingsIcon from "@mui/icons-material/Settings";
 import { Menu, Modal, Typography } from "antd";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -192,10 +192,10 @@ const MenuOptions = () => {
       onClick: () => navigate(`/${user?.role}/annual-calendar`),
     },
     {
-      key: "settings",
-      icon: <SettingsIcon />,
-      label: "Settings",
-      onClick: () => navigate("/dashboard/settings"),
+      key: "Password",
+      icon: <LockResetIcon />,
+      label: "Password",
+      onClick: () => navigate(`/${user?.role}/password`),
     },
     {
       key: "logout",

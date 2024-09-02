@@ -26,6 +26,7 @@ export interface TeachingNoteData {
   _id: string;
   title: string;
   pdfUrl: string;
+  class: number;
   subject: {
     _id: string;
     title: string;
@@ -33,9 +34,7 @@ export interface TeachingNoteData {
 }
 
 const TeachingNotes: React.FC = () => {
-  const globles = useContext(AuthContext);
-  if (!globles) return null;
-  const { token, user } = globles;
+  const { token, user } = useContext(AuthContext) || {};
   const [loading, setLoading] = useState<boolean>(false);
   const [loadingL, setLoadingL] = useState<boolean>(false);
   const [teachingNotes, setTeachingNotes] = useState<TeachingNoteData[]>([]);
@@ -45,6 +44,7 @@ const TeachingNotes: React.FC = () => {
   const [savedNoteIds, setSavedNoteIds] = useState<Set<string>>(
     new Set<string>()
   );
+  const [selectedClass, setSelectedClass] = useState<number | null>(null);
 
   useEffect(() => {
     fetchData();
@@ -118,18 +118,37 @@ const TeachingNotes: React.FC = () => {
   };
 
   const handleLoading = () => {
-    setLoadingL((pre) => !pre);
+    setLoadingL((prev) => !prev);
   };
+
+  // Filter notes by the selected class
+  const filteredNotes = selectedClass
+    ? teachingNotes.filter((note) => note.class === selectedClass)
+    : teachingNotes;
 
   return (
     <div>
       <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
         <h5 className="text-uppercase">Teaching Notes</h5>
+        <div>
+          <Select
+            placeholder="Select Class"
+            onChange={(value: number) => setSelectedClass(value)}
+            style={{ width: 200 }}
+          >
+            {Array.from({ length: 12 }, (_, i) => (
+              <Select.Option value={i + 1} key={i + 1}>
+                Class {i + 1}
+              </Select.Option>
+            ))}
+          </Select>
+        </div>
       </div>
+
       <Tabs defaultActiveKey="1" className="ps-1">
         <Tabs.TabPane tab="Notes" key="Notes">
           <TeachingNotesRender
-            teachingNotes={teachingNotes}
+            teachingNotes={filteredNotes}
             loading={loading}
             togggleSaved={togggleSaved}
             savedNoteIds={savedNoteIds}
@@ -167,10 +186,7 @@ const TeachingNotesRender: React.FC<TeachingNoteRenderProps> = ({
   togggleSaved,
   savedNoteIds,
 }) => {
-  const globles = useContext(AuthContext);
-  if (!globles) return null;
-  const { user } = globles;
-
+  const { user } = useContext(AuthContext) || {};
   const navigate = useNavigate();
 
   const columns = [
@@ -178,6 +194,17 @@ const TeachingNotesRender: React.FC<TeachingNoteRenderProps> = ({
       title: "Title",
       dataIndex: "title",
       key: "title",
+    },
+    {
+      title: "Subject",
+      dataIndex: "subject",
+      key: "subject",
+      render: (subject: { title: string }) => subject.title,
+    },
+    {
+      title: "Class",
+      dataIndex: "class",
+      key: "class",
     },
     {
       title: "Action",
@@ -223,10 +250,8 @@ const AddNotes: React.FC = () => {
   const [uploading, setUploading] = useState<boolean>(false);
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const authContext = useContext(AuthContext);
-  if (!authContext) return null;
-
-  const { token } = authContext;
+  const [subjectClass, setSubjectClass] = useState<number | null>(null);
+  const { token } = useContext(AuthContext) || {};
 
   useEffect(() => {
     fetchSubjects();
@@ -266,7 +291,6 @@ const AddNotes: React.FC = () => {
     }
 
     setUploading(true);
-
     try {
       const downloadURL = await uploadFileToFirebase(
         selectedFile,
@@ -275,6 +299,7 @@ const AddNotes: React.FC = () => {
       const noteData = {
         title: values.title,
         subject: values.subject,
+        class: subjectClass,
         pdfUrl: downloadURL,
       };
 
@@ -321,50 +346,55 @@ const AddNotes: React.FC = () => {
             </Select>
           </Form.Item>
         </Col>
-      </Row>
-
-      <Form.Item
-        label="Upload PDF"
-        name="pdf"
-        rules={[{ required: true, message: "Please upload a PDF file" }]}
-      >
-        <Input
-          type="file"
-          accept=".pdf"
-          onChange={handleFileChange}
-          style={{ display: "none" }}
-          id="upload"
-        />
-        <label htmlFor="upload">
-          <Button
-            icon={<UploadOutlined />}
-            loading={uploading}
-            onClick={() => document.getElementById("upload")?.click()}
+        <Col span={12}>
+          <Form.Item
+            label="Class"
+            name="class"
+            rules={[{ required: true, message: "Please select a class!" }]}
           >
-            {selectedFile ? selectedFile.name : "Choose File"}
-          </Button>
-        </label>
-        {fileUrl && (
-          <embed
-            src={fileUrl}
-            type="application/pdf"
-            width="100%"
-            height="500px"
-            className="mt-2"
-          />
-        )}
-      </Form.Item>
-
-      <Form.Item>
-        <Button
-          type="primary"
-          htmlType="submit"
-          loading={uploading}
-          disabled={uploading}
-        >
-          Add Note
-        </Button>
-      </Form.Item>
+            <Select
+              placeholder="Select class"
+              onChange={(value: number) => setSubjectClass(value)}
+            >
+              {Array.from({ length: 12 }, (_, i) => (
+                <Select.Option value={i + 1} key={i + 1}>
+                  Class {i + 1}
+                </Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item label="Upload PDF">
+            <Input
+              type="file"
+              accept="application/pdf"
+              onChange={handleFileChange}
+              suffix={<UploadOutlined />}
+            />
+          </Form.Item>
+          {fileUrl && (
+            <div>
+              <a
+                href={fileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="my-3"
+              >
+                Preview PDF
+              </a>
+            </div>
+          )}
+        </Col>
+      </Row>
+      <Button
+        type="primary"
+        htmlType="submit"
+        loading={uploading}
+        disabled={!selectedFile}
+      >
+        Submit
+      </Button>
     </Form>
   );
 };

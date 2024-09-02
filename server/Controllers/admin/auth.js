@@ -250,7 +250,9 @@ const checkAuth = async (req, res) => {
     if (!req.user || !req.user.id) {
       return res.status(401).json({ message: "Unauthorized", success: false });
     }
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user.id).select(
+      "name email role createdAt"
+    );
     if (!user) {
       return res
         .status(404)

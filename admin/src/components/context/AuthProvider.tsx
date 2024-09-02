@@ -250,7 +250,12 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         const minutes = diffMinutes % 60;
         const hours = diffHours;
 
-        setActiveTime(`${hours} : ${minutes} : ${seconds}`);
+        setActiveTime(
+          `${String(hours).padStart(2, "0")} : ${String(minutes).padStart(
+            2,
+            "0"
+          )} : ${String(seconds).padStart(2, "0")}`
+        );
       }
     };
 
@@ -314,4 +319,3 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
-
