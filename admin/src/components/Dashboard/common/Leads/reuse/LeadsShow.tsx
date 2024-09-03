@@ -1,37 +1,80 @@
-import { Spin } from "antd";
-import { Booking } from "../../../../../types/booking";
-import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../../context/AuthProvider";
+import { Pagination, Spin } from "antd";
 import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { config } from "../../../../../config";
+import { Booking } from "../../../../../types/booking";
+import { AuthContext } from "../../../../context/AuthProvider";
+import { useLeads } from "../../../../context/LeadsProvider";
 
 interface BookingTableProps {
   type: string;
+  setTotalData: (val: number) => void;
 }
 
-const BookingTable = ({ type }: BookingTableProps) => {
+const BookingTable = ({ type, setTotalData }: BookingTableProps) => {
   const authContext = useContext(AuthContext);
   if (!authContext) {
     return null;
   }
   const { token, user } = authContext;
+  const { sort, reload, dateFilter, customDateRange } = useLeads();
   const [data, setData] = useState<Booking[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [total, setTotal] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
+  const limit = 10;
 
   useEffect(() => {
     fetchData();
-  }, [type, token]);
+  }, [type, token, page, sort, reload, dateFilter, customDateRange]);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `${config.SERVER}/auth/bookings`,
+        {
+          type: type,
+          page: page,
+          limit: limit,
+          sort,
+          dateFilter,
+          customDateRange,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setData(response.data.bookings);
+      setTotal(response.data.total);
+      setTotalData(response.data.total);
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
 
   if (loading) {
     return (
-      <>
-        <div className="d-flex justify-content-center align-items-center h-50 bg-null">
-          <Spin tip="Loading bookings..." />
-        </div>
-      </>
+      <div
+        className="d-flex justify-content-center align-items-center bg-null"
+        style={{ height: "60vh" }}
+      >
+        <Spin tip="Loading bookings..." />
+      </div>
     );
   }
+
   return (
     <div className="d-flex flex-column gap-2">
       {data.length > 0 ? (
@@ -61,8 +104,7 @@ const BookingTable = ({ type }: BookingTableProps) => {
               <br />
               {user?.role !== "employee" && (
                 <>
-                  <strong>Allocated to:</strong>{" "}
-                  {item?.assignedEmployee?.name}
+                  <strong>Allocated to:</strong> {item?.assignedEmployee?.name}
                   <br />
                 </>
               )}
@@ -77,35 +119,22 @@ const BookingTable = ({ type }: BookingTableProps) => {
       ) : (
         <div
           className="d-flex justify-content-center align-items-center bg-null"
-          style={{ height: "65vh" }}
+          style={{ height: "60vh" }}
         >
           <b>No Leads found.</b>
         </div>
       )}
+      {data.length > 0 && (
+        <Pagination
+          current={page}
+          pageSize={limit}
+          total={total}
+          onChange={handlePageChange}
+          className="mt-3 align-self-center"
+        />
+      )}
     </div>
   );
-
-  async function fetchData() {
-    try {
-      setLoading(true);
-      const response = await axios.post(
-        `${config.SERVER}/auth/bookings`,
-        { type: type },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      console.log(response);
-      setData(response.data);
-    } catch (error) {
-    } finally {
-      setLoading(false);
-    }
-  }
 };
 
 export default BookingTable;

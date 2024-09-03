@@ -4,6 +4,31 @@
 }
 
 body {
-  background: rgb(255,243,247);
-  background: linear-gradient(45deg, rgba(255,243,247,1) 0%, rgba(223,255,242,1) 26%, rgba(242,250,255,1) 52%, rgba(246,240,255,1) 80%, rgba(254,243,255,1) 100%);
+  background: rgb(255, 243, 247);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 243, 247, 1) 0%,
+    rgba(223, 255, 242, 1) 26%,
+    rgba(242, 250, 255, 1) 52%,
+    rgba(246, 240, 255, 1) 80%,
+    rgba(254, 243, 255, 1) 100%
+  );
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
 }

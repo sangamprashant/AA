@@ -5,13 +5,16 @@ import "./assets/booking.css";
 import "./App.css";
 import AppComponent from "./components/AppComponent";
 import { AuthProvider } from "./components/context/AuthProvider";
+import { LeadsProvider } from "./components/context/LeadsProvider";
 
 const App = () => {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <AppComponent />
-      </BrowserRouter>
+      <LeadsProvider>
+        <BrowserRouter>
+          <AppComponent />
+        </BrowserRouter>
+      </LeadsProvider>
     </AuthProvider>
   );
 };

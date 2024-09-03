@@ -2,6 +2,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import DeleteIcon from "@mui/icons-material/Delete";
+import SyncIcon from "@mui/icons-material/Sync";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import {
   Button,
@@ -16,11 +17,11 @@ import {
 } from "antd";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { config } from "../../../../config";
 import { uploadFileToFirebase } from "../../../../firebase";
 import { Subject } from "../../../../types/subject";
 import { AuthContext } from "../../../context/AuthProvider";
-import { useNavigate } from "react-router-dom";
 
 export interface TeachingNoteData {
   _id: string;
@@ -130,7 +131,7 @@ const TeachingNotes: React.FC = () => {
     <div>
       <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
         <h5 className="text-uppercase">Teaching Notes</h5>
-        <div>
+        <div className="d-flex gap-2">
           <Select
             placeholder="Select Class"
             onChange={(value: number) => setSelectedClass(value)}
@@ -142,6 +143,12 @@ const TeachingNotes: React.FC = () => {
               </Select.Option>
             ))}
           </Select>
+          <Button
+            type="primary"
+            icon={<SyncIcon />}
+            onClick={fetchData}
+            loading={loading}
+          />
         </div>
       </div>
 

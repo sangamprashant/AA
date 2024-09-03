@@ -5,6 +5,7 @@ const User = require("../../Models/users");
 const Booking = require("../../Models/bookings");
 const Contact = require("../../Models/contact");
 const moment = require("moment-timezone");
+const moment_time = require('moment');
 
 const register = async (req, res) => {
   const { email, password, role } = req.body;
@@ -299,6 +300,8 @@ const BookingId = async (req, res) => {
   }
 };
 
+
+
 const BookingType = async (req, res) => {
   if (!req.user || !req.user.id) {
     return res.status(401).json({ message: "Unauthorized", success: false });
@@ -325,12 +328,72 @@ const BookingType = async (req, res) => {
     }
   }
 
+  // Date filter logic
+  const dateFilter = req.body.dateFilter;
+  const customDateRange = req.body.customDateRange;
+
+  if (dateFilter === "today") {
+    query.createdAt = {
+      $gte: moment_time().startOf('day').toDate(),
+      $lte: moment_time().endOf('day').toDate(),
+    };
+  } else if (dateFilter === "yesterday") {
+    query.createdAt = {
+      $gte: moment_time().subtract(1, 'days').startOf('day').toDate(),
+      $lte: moment_time().subtract(1, 'days').endOf('day').toDate(),
+    };
+  } else if (dateFilter === "in-7-days") {
+    query.createdAt = {
+      $gte: moment_time().subtract(7, 'days').startOf('day').toDate(),
+      $lte: moment_time().endOf('day').toDate(),
+    };
+  } else if (dateFilter === "in-a-month") {
+    query.createdAt = {
+      $gte: moment_time().subtract(1, 'months').startOf('day').toDate(),
+      $lte: moment_time().endOf('day').toDate(),
+    };
+  } else if (dateFilter === "in-a-year") {
+    query.createdAt = {
+      $gte: moment_time().subtract(1, 'years').startOf('day').toDate(),
+      $lte: moment_time().endOf('day').toDate(),
+    };
+  } else if (dateFilter === "custom-date-range" && customDateRange) {
+    const [startDate, endDate] = customDateRange;
+    query.createdAt = {
+      $gte: moment_time(startDate).startOf('day').toDate(),
+      $lte: moment_time(endDate).endOf('day').toDate(),
+    };
+  }
+
+  const page = parseInt(req.body.page, 10) || 1;
+  const limit = parseInt(req.body.limit, 10) || 10;
+  const sortType = req.body.sort || "ascending";
+  const skip = (page - 1) * limit;
+
+  let sortOptions = {};
+  if (sortType === "ascending") {
+    sortOptions = { createdAt: 1 };
+  } else if (sortType === "descending") {
+    sortOptions = { createdAt: -1 };
+  } else if (sortType === "most-recent") {
+    sortOptions = { updatedAt: -1 };
+  }
+
   try {
-    const bookings = await Booking.find(query).populate(
-      "assignedEmployee",
-      "name email"
-    );
-    res.status(200).json(bookings);
+    const bookings = await Booking.find(query)
+      .populate("assignedEmployee", "name email")
+      .sort(sortOptions)
+      .skip(skip)
+      .limit(limit);
+
+    const total = await Booking.countDocuments(query);
+
+    res.status(200).json({
+      bookings,
+      total,
+      page,
+      limit,
+    });
   } catch (error) {
     console.error("Error fetching bookings:", error);
     res.status(500).json({
@@ -339,6 +402,7 @@ const BookingType = async (req, res) => {
     });
   }
 };
+
 
 const ContactsByType = async (req, res) => {
   try {

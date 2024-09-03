@@ -1,72 +1,62 @@
-import type { TabsProps } from "antd";
-import BookingTable from "./reuse/LeadsShow";
-import { colors } from "../exports";
+import { useState } from "react";
 import TopBar from "../../Employee/components/Bookings/TopBar";
+import { colors } from "../exports";
+import BookingTable from "./reuse/LeadsShow";
 
 const Bookings = () => {
-  const items: TabsProps["items"] = [
-    {
-      key: "New leads",
-      label: "New leads",
-      children: <BookingTable type="New leads" />,
-    },
-    {
-      key: "Attempt to contacted (1)",
-      label: "Attempt to contacted (1)",
-      children: <BookingTable type="Attempt to contacted (1)" />,
-    },
-    {
-      key: "Attempt to contacted (2)",
-      label: "Attempt to contacted (2)",
-      children: <BookingTable type="Attempt to contacted (2)" />,
-    },
-    {
-      key: "Connected",
-      label: "Connected",
-      children: <BookingTable type="Connected" />,
-    },
-    {
-      key: "Prospect",
-      label: "Prospect",
-      children: <BookingTable type="Prospect" />,
-    },
-    {
-      key: "Hot leads",
-      label: "Hot leads",
-      children: <BookingTable type="Hot leads" />,
-    },
-    {
-      key: "Payment Received",
-      label: "Payment Received",
-      children: <BookingTable type="Payment Received" />,
-    },
-    {
-      key: "Not Interested",
-      label: "Not Interested",
-      children: <BookingTable type="Not Interested" />,
-    },
+  const items = [
+    { label: "New leads" },
+    { label: "Attempt to contacted (1)" },
+    { label: "Attempt to contacted (2)" },
+    { label: "Connected" },
+    { label: "Prospect" },
+    { label: "Hot leads" },
+    { label: "Payment Received" },
+    { label: "Not Interested" },
   ];
 
   return (
     <>
       <TopBar />
       <div className="leads">
-        {items.map((data, index) => {
-          return (
-            <div key={index} className="leads-container">
-              <div
-                className="top mb-2 text-white-50"
-                style={{ backgroundColor: colors[index] }}
-              >
-                <b>{data.label}</b>
-              </div>
-              <div className="bottom">{data.children}</div>
-            </div>
-          );
-        })}
+        {items.map((data, index) => (
+          <LeadsContainer key={index} label={data.label} index={index} />
+        ))}
       </div>
     </>
   );
 };
 
 export default Bookings;
+
+interface LeadsContainerProps {
+  label: string;
+  index: number;
+}
+
+const LeadsContainer: React.FC<LeadsContainerProps> = ({ label, index }) => {
+  const [totalData, setTotalData] = useState<number>(0);
+
+  return (
+    <div className="leads-container">
+      <div
+        className="top mb-2 text-white-50 d-flex justify-content-between"
+        style={{ backgroundColor: colors[index % colors.length] }}
+      >
+        <b>{label}</b>
+        <div
+          className="fw-bolder"
+          style={{
+            color: colors[index % colors.length],
+            backgroundColor: "#ffffff80",
+          }}
+        >
+          <span className="p-2">{totalData}</span>
+        </div>
+      </div>
+      <div className="bottom">
+        <BookingTable type={label} setTotalData={setTotalData} />
+      </div>
+    </div>
+  );
+};
