@@ -70,9 +70,10 @@ const EmpBOpen = () => {
 
   return (
     <EmployeeWrapper>
-      <div className="card p-4 my-4">
-        <h1 className="">Leads Update</h1>
-        <hr />
+      <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
+        <h5 className="text-uppercase">LEADS - Update</h5>
+      </div>
+      <div className="card p-4">
         {selectedData && <RenderData selectedData={selectedData} />}
         <hr />
         <Title level={3}>Data Entry</Title>

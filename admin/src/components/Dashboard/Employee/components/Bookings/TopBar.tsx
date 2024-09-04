@@ -1,8 +1,9 @@
 import SyncIcon from "@mui/icons-material/Sync";
 import { Button, DatePicker, Modal, Select } from "antd";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { DateFilter, DateRangeProps } from "../../../../../types/leads";
+import { AuthContext } from "../../../../context/AuthProvider";
 import { useLeads } from "../../../../context/LeadsProvider";
 
 const { RangePicker } = DatePicker;
@@ -58,6 +59,9 @@ const TopBar: React.FC = () => {
     setDateFilter,
     setCustomDateRange,
   } = useLeads();
+  const auth = useContext(AuthContext);
+  if (!auth) return null;
+  const { user } = auth;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [ctr, setCtr] = useState<DateFilter>("today");
   const [dates, setDates] = useState<DateRangeProps>(null);
@@ -106,12 +110,14 @@ const TopBar: React.FC = () => {
               </Select.Option>
             ))}
           </Select>
-          <Button
-            type="primary"
-            onClick={() => navigate(`/employee/leads-bucket/create`)}
-          >
-            Create New Lead
-          </Button>
+          {user?.role === "employee" && (
+            <Button
+              type="primary"
+              onClick={() => navigate(`/employee/leads-bucket/create`)}
+            >
+              Create New Lead
+            </Button>
+          )}
           <Button icon={<SyncIcon />} onClick={handleReload} />
         </div>
       </div>
