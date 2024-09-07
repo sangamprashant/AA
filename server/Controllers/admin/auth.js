@@ -5,7 +5,7 @@ const User = require("../../Models/users");
 const Booking = require("../../Models/bookings");
 const Contact = require("../../Models/contact");
 const moment = require("moment-timezone");
-const moment_time = require('moment');
+const moment_time = require("moment");
 
 const register = async (req, res) => {
   const { email, password, role } = req.body;
@@ -300,7 +300,32 @@ const BookingId = async (req, res) => {
   }
 };
 
+const BookingUpdate = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { state, comment, documents, receipts } = req.body;
 
+    console.log({
+      id,
+      state,
+      comment,
+      documents,
+      receipts,
+    });
+
+    const booking = await Booking.findOne({
+      _id: id,
+      assignedEmployee:req.user.id
+    });
+    if (!booking) {
+      return res
+        .status(404)
+        .json({ message: "Booking not found", success: false });
+    }
+  } catch (err) {
+    console.error("Error in BookingUpdate:", err);
+  }
+};
 
 const BookingType = async (req, res) => {
   if (!req.user || !req.user.id) {
@@ -334,34 +359,34 @@ const BookingType = async (req, res) => {
 
   if (dateFilter === "today") {
     query.createdAt = {
-      $gte: moment_time().startOf('day').toDate(),
-      $lte: moment_time().endOf('day').toDate(),
+      $gte: moment_time().startOf("day").toDate(),
+      $lte: moment_time().endOf("day").toDate(),
     };
   } else if (dateFilter === "yesterday") {
     query.createdAt = {
-      $gte: moment_time().subtract(1, 'days').startOf('day').toDate(),
-      $lte: moment_time().subtract(1, 'days').endOf('day').toDate(),
+      $gte: moment_time().subtract(1, "days").startOf("day").toDate(),
+      $lte: moment_time().subtract(1, "days").endOf("day").toDate(),
     };
   } else if (dateFilter === "in-7-days") {
     query.createdAt = {
-      $gte: moment_time().subtract(7, 'days').startOf('day').toDate(),
-      $lte: moment_time().endOf('day').toDate(),
+      $gte: moment_time().subtract(7, "days").startOf("day").toDate(),
+      $lte: moment_time().endOf("day").toDate(),
     };
   } else if (dateFilter === "in-a-month") {
     query.createdAt = {
-      $gte: moment_time().subtract(1, 'months').startOf('day').toDate(),
-      $lte: moment_time().endOf('day').toDate(),
+      $gte: moment_time().subtract(1, "months").startOf("day").toDate(),
+      $lte: moment_time().endOf("day").toDate(),
     };
   } else if (dateFilter === "in-a-year") {
     query.createdAt = {
-      $gte: moment_time().subtract(1, 'years').startOf('day').toDate(),
-      $lte: moment_time().endOf('day').toDate(),
+      $gte: moment_time().subtract(1, "years").startOf("day").toDate(),
+      $lte: moment_time().endOf("day").toDate(),
     };
   } else if (dateFilter === "custom-date-range" && customDateRange) {
     const [startDate, endDate] = customDateRange;
     query.createdAt = {
-      $gte: moment_time(startDate).startOf('day').toDate(),
-      $lte: moment_time(endDate).endOf('day').toDate(),
+      $gte: moment_time(startDate).startOf("day").toDate(),
+      $lte: moment_time(endDate).endOf("day").toDate(),
     };
   }
 
@@ -402,7 +427,6 @@ const BookingType = async (req, res) => {
     });
   }
 };
-
 
 const ContactsByType = async (req, res) => {
   try {
@@ -459,4 +483,5 @@ module.exports = {
   ContactsByType,
   logout,
   userProfileById,
+  BookingUpdate,
 };

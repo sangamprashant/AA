@@ -12,7 +12,7 @@ interface Document {
 interface AddDocumentsProps {
   data: Document[];
   setData: React.Dispatch<React.SetStateAction<Document[]>>;
-  type: "detail" | "recipt";
+  type: "detail" | "receipt";
 }
 
 const AddDocuments: React.FC<AddDocumentsProps> = ({ data, setData, type }) => {
@@ -48,7 +48,7 @@ const AddDocuments: React.FC<AddDocumentsProps> = ({ data, setData, type }) => {
         <Col span={12}>
           <>
             <Form.Item
-              label={`Select ${type === "recipt" ? "Recipt" : "File"} ${
+              label={`Select ${type === "receipt" ? "Receipt" : "File"} ${
                 index + 1
               }`}
               layout="vertical"
@@ -111,7 +111,7 @@ const AddDocuments: React.FC<AddDocumentsProps> = ({ data, setData, type }) => {
     <>
       <Form layout="vertical">
         <Form.Item
-          label={`Select ${type === "recipt" ? "Recipt" : "File"}`}
+          label={`Select ${type === "receipt" ? "Receipt" : "File"}`}
           name="files"
         >
           <Button
@@ -128,7 +128,7 @@ const AddDocuments: React.FC<AddDocumentsProps> = ({ data, setData, type }) => {
         <>
           <hr />
           <Title level={5}>
-            Selected {type === "recipt" ? "Recipt" : "File"} and Descriptions
+            Selected {type === "receipt" ? "Receipt" : "File"} and Descriptions
           </Title>
           <div className="row gap-2">{renderImagePreviews()}</div>
         </>

@@ -9,6 +9,7 @@ const {
   ContactsByType,
   logout,
   userProfileById,
+  BookingUpdate,
 } = require("../../Controllers/admin/auth");
 const requireManagerOrAdmin = require("../../middlewares/requireManagerOrAdmin");
 
@@ -19,6 +20,7 @@ router.post("/login", login);
 router.get("/logout", authenticateToken, logout);
 router.get("/check", authenticateToken, checkAuth);
 router.get("/booking/:bookingId", authenticateToken, BookingId);
+router.put("/booking/:id", authenticateToken, BookingUpdate);
 // geting loged users leads by type
 router.post("/bookings", authenticateToken, BookingType);
 router.get("/contacts", authenticateToken, ContactsByType);
