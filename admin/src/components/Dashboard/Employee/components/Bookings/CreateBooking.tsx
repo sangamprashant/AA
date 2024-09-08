@@ -150,7 +150,7 @@ const CreateBooking: React.FC = () => {
                 <AutoComplete
                   style={{ width: "100%" }}
                   options={CountryOption.map((option) => ({
-                    value: option.value,
+                    value: option.phoneCode,
                     label: `${option.label} ${option.phoneCode}`,
                   }))}
                   placeholder="Select a Country"

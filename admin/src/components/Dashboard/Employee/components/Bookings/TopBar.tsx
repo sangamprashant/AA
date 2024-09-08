@@ -1,7 +1,10 @@
+import SearchIcon from '@mui/icons-material/Search';
 import SyncIcon from "@mui/icons-material/Sync";
-import { Button, DatePicker, Modal, Select } from "antd";
+import { Alert, Button, DatePicker, Form, Input, Modal, Select } from "antd";
+import axios from 'axios';
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { config } from '../../../../../config';
 import { DateFilter, DateRangeProps } from "../../../../../types/leads";
 import { AuthContext } from "../../../../context/AuthProvider";
 import { useLeads } from "../../../../context/LeadsProvider";
@@ -61,8 +64,15 @@ const TopBar: React.FC = () => {
   } = useLeads();
   const auth = useContext(AuthContext);
   if (!auth) return null;
-  const { user } = auth;
+  const { user, token } = auth;
+
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [searchModalVisible, setSearchModalVisible] = useState(false);
+  const [mobileNumber, setMobileNumber] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchPerformed, setSearchPerformed] = useState<boolean>(false);
+
   const [ctr, setCtr] = useState<DateFilter>("today");
   const [dates, setDates] = useState<DateRangeProps>(null);
   const navigate = useNavigate();
@@ -82,6 +92,36 @@ const TopBar: React.FC = () => {
     setIsModalVisible(false);
     setCustomDateRange(dates);
   };
+
+  const handleSearchModal = () => {
+    setSearchModalVisible(!searchModalVisible);
+    setSearchPerformed(false);
+    setSearchResults([]);
+  };
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`${config.SERVER}/auth/bookings/search`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        params: {
+          mobileNumber,
+          email,
+        },
+      });
+
+      setSearchResults(response.data);
+
+    } catch (error: any) {
+      if (error.response && error.response.status === 404) {
+        setSearchResults([]);
+      } else {
+      }
+    } finally {
+      setSearchPerformed(true);
+    }
+  }
 
   return (
     <>
@@ -118,7 +158,8 @@ const TopBar: React.FC = () => {
               Create New Lead
             </Button>
           )}
-          <Button icon={<SyncIcon />} onClick={handleReload} />
+          <Button icon={<SearchIcon />} onClick={handleSearchModal} type="dashed" />
+          <Button icon={<SyncIcon />} onClick={handleReload} danger />
         </div>
       </div>
 
@@ -134,14 +175,65 @@ const TopBar: React.FC = () => {
           onChange={(dates) => {
             setDates(
               dates
-                ? (dates.map((date) => date?.format("YYYY-MM-DD")) as [
-                    string,
-                    string
-                  ])
+                ? (dates.map((date) => date?.format("YYYY-MM-DD")) as [string, string])
                 : null
             );
           }}
         />
+      </Modal>
+
+      <Modal
+        title="Search Leads"
+        open={searchModalVisible}
+        onOk={handleSearchModal}
+        onCancel={handleSearchModal}
+        centered
+        width={1000}
+        style={{ maxHeight: "80vh", overflowY: "auto" }}
+        footer={[
+          <Button key="close" type="primary" danger onClick={handleSearchModal}>
+            Close
+          </Button>,
+          <Button key="search" type="primary" onClick={handleSearch}>
+            Search
+          </Button>,
+        ]}
+      >
+        <Form layout="vertical">
+          <Form.Item label="Enter Mobile Number to search">
+            <Input
+              placeholder="Enter Mobile number"
+              value={mobileNumber}
+              onChange={(e) => setMobileNumber(e.target.value)}
+            />
+          </Form.Item>
+          <Form.Item label="Enter Email to search">
+            <Input
+              placeholder="Enter Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Item>
+        </Form>
+
+        {searchPerformed && (
+          <div>
+            {searchResults.length > 0 ? (
+              <>
+                <Alert message="Leads found!" type="success" showIcon />
+                <ul>
+                  {searchResults.map((lead) => (
+                    <li key={lead._id}>
+                      <Link to={`/${user?.role}/leads-bucket/${lead._id}`}>{lead.firstName} {lead.lastName} - {lead.phoneNumber} - {lead.email}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <Alert message="No leads found" type="error" showIcon />
+            )}
+          </div>
+        )}
       </Modal>
     </>
   );

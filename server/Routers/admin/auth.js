@@ -10,6 +10,7 @@ const {
   logout,
   userProfileById,
   BookingUpdate,
+  BookingSearch,
 } = require("../../Controllers/admin/auth");
 const requireManagerOrAdmin = require("../../middlewares/requireManagerOrAdmin");
 
@@ -21,8 +22,8 @@ router.get("/logout", authenticateToken, logout);
 router.get("/check", authenticateToken, checkAuth);
 router.get("/booking/:bookingId", authenticateToken, BookingId);
 router.put("/booking/:id", authenticateToken, BookingUpdate);
-// geting loged users leads by type
 router.post("/bookings", authenticateToken, BookingType);
+router.get("/bookings/search", authenticateToken, BookingSearch);
 router.get("/contacts", authenticateToken, ContactsByType);
 router.get("/user-profile/:id", requireManagerOrAdmin, userProfileById);
 

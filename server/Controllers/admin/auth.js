@@ -315,15 +315,90 @@ const BookingUpdate = async (req, res) => {
 
     const booking = await Booking.findOne({
       _id: id,
-      assignedEmployee:req.user.id
+      assignedEmployee: req.user.id,
     });
+
     if (!booking) {
       return res
         .status(404)
         .json({ message: "Booking not found", success: false });
     }
+
+    // Check if the new state or comment is different from the last stateHistory entry
+    const lastStateHistory =
+      booking.stateHistory[booking.stateHistory.length - 1];
+    const isStateDifferent = lastStateHistory
+      ? lastStateHistory.state !== state
+      : true;
+    const isCommentDifferent = lastStateHistory
+      ? lastStateHistory.comment !== comment
+      : true;
+
+    // Only push a new stateHistory entry if state or comment has changed
+    if (isStateDifferent || isCommentDifferent) {
+      const stateHistoryEntry = {
+        state,
+        comment,
+        updatedBy: req.user.id,
+      };
+      booking.state = state;
+      booking.stateHistory.push(stateHistoryEntry);
+    }
+
+    // Ensure booking.files exists
+    if (!booking.files) {
+      booking.files = {};
+    }
+
+    // Append new documents/receipts to existing ones instead of overwriting
+    if (documents) {
+      booking.files.documents = [
+        ...(booking.files.documents || []),
+        ...documents,
+      ];
+    }
+    if (receipts) {
+      booking.files.receipts = [...(booking.files.receipts || []), ...receipts];
+    }
+
+    await booking.save();
+    res.json({ message: "Booking updated successfully", booking });
   } catch (err) {
     console.error("Error in BookingUpdate:", err);
+    res.status(500).json({ message: "Internal server error", success: false });
+  }
+};
+
+const BookingSearch = async (req, res) => {
+  const { mobileNumber, email } = req.query;
+
+  try {
+    let criteria = {};
+
+    if (req.user.role === "employee") {
+      criteria.assignedEmployee = req.user.id;
+    }
+    if (mobileNumber) {
+      criteria.phoneNumber = { $regex: mobileNumber, $options: "i" };
+    }
+    if (email) {
+      criteria.email = { $regex: email, $options: "i" };
+    }
+
+    const bookings = await Booking.find(criteria).select(
+      "firstName lastName email phoneNumber"
+    );
+
+    console.log("Bookings Found:", bookings);
+
+    if (bookings.length === 0) {
+      return res.status(404).json({ message: "No bookings found." });
+    }
+
+    res.status(200).json(bookings);
+  } catch (error) {
+    console.error("Search Error:", error);
+    res.status(500).json({ message: "Server error", error });
   }
 };
 
@@ -484,4 +559,5 @@ module.exports = {
   logout,
   userProfileById,
   BookingUpdate,
+  BookingSearch,
 };
