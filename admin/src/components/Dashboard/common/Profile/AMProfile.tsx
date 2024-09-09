@@ -67,6 +67,7 @@ interface ProfileContextType {
   profileId: string | undefined;
   profileUser: User | null;
   sessionDates: SessionDates[];
+  setProfileUser: (user: User) => void
 }
 
 export const ProfileContext = createContext<ProfileContextType | undefined>(
@@ -121,7 +122,7 @@ const ProfileOpenProvider = ({
 
   return (
     <ProfileContext.Provider
-      value={{ profileId: currentProfileId, profileUser, sessionDates }}
+      value={{ profileId: currentProfileId, profileUser, sessionDates, setProfileUser }}
     >
       {children}
     </ProfileContext.Provider>

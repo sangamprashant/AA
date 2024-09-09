@@ -16,63 +16,37 @@ const { RangePicker } = DatePicker;
 
 const Contact = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [dateRange, setDateRange] = useState<[Dayjs | null, Dayjs | null]>([
-    null,
-    null,
-  ]);
+  const [dateRange, setDateRange] = useState<[Dayjs | null, Dayjs | null]>([null, null]);
   const [reload, setReload] = useState<boolean>(false);
 
-  const handleReload = () => {
-    setReload((pre) => !pre);
-  };
+  const handleReload = () => setReload((prev) => !prev);
 
   return (
     <>
       <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
         <h5>CONTACTS</h5>
         <div className="d-flex gap-2">
-          <div className="d-flex justify-content-center gap-2">
-            <Input
-              placeholder="Search by name or email"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ width: "200px" }}
-            />
-            <RangePicker
-              placeholder={["Start Date", "End Date"]}
-              value={dateRange}
-              onChange={(dates) => {
-                if (dates && dates.length === 2) {
-                  setDateRange(dates as [Dayjs, Dayjs]);
-                } else {
-                  setDateRange([null, null]);
-                }
-              }}
-            />
-            <Button
-              type="primary"
-              icon={<ReloadIcon />}
-              onClick={handleReload}
-            />
-          </div>
+          <Input
+            placeholder="Search by name or email"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{ width: "200px" }}
+          />
+          <RangePicker
+            placeholder={["Start Date", "End Date"]}
+            value={dateRange}
+            onChange={(dates) => setDateRange(dates?.length === 2 ? dates : [null, null])}
+          />
+          <Button type="primary" icon={<ReloadIcon />} onClick={handleReload} />
         </div>
       </div>
-      <Tabs defaultActiveKey="1" className=" ps-1">
+
+      <Tabs defaultActiveKey="1">
         <TabPane tab="Contacts Received" key="1">
-          <ContactTable
-            type="received"
-            searchTerm={searchTerm}
-            dateRange={dateRange}
-            reload={reload}
-          />
+          <ContactTable type="received" searchTerm={searchTerm} dateRange={dateRange} reload={reload} />
         </TabPane>
         <TabPane tab="Contacts Responded" key="2">
-          <ContactTable
-            type="responded"
-            searchTerm={searchTerm}
-            dateRange={dateRange}
-            reload={reload}
-          />
+          <ContactTable type="responded" searchTerm={searchTerm} dateRange={dateRange} reload={reload} />
         </TabPane>
       </Tabs>
     </>
@@ -80,13 +54,6 @@ const Contact = () => {
 };
 
 export default Contact;
-
-type ContactTableProps = {
-  type: "received" | "responded";
-  searchTerm: string;
-  dateRange: [Dayjs | null, Dayjs | null];
-  reload: boolean
-};
 
 type Contact = {
   _id: string;
@@ -103,8 +70,15 @@ type Contact = {
 
 type ModalState = {
   isOpen: boolean;
-  content: Contact | null; // This allows any valid React node (e.g., elements, strings, etc.)
+  content: Contact | null;
   type: "delete" | "respond";
+};
+
+type ContactTableProps = {
+  type: "received" | "responded";
+  searchTerm: string;
+  dateRange: [Dayjs | null, Dayjs | null];
+  reload: boolean;
 };
 
 const ContactTable = ({ type, searchTerm, dateRange, reload }: ContactTableProps) => {
@@ -114,39 +88,24 @@ const ContactTable = ({ type, searchTerm, dateRange, reload }: ContactTableProps
   const [page, setPage] = useState<number>(1);
   const [pageSize] = useState<number>(10);
   const [hasMore, setHasMore] = useState<boolean>(true);
-  const [modal, setModal] = useState<ModalState>({
-    isOpen: false,
-    content: null, // Initialize content to null or any default value
-    type: "respond",
-  });
-  const [responseMessage, setResponeMessage] = useState<string>("")
+  const [modal, setModal] = useState<ModalState>({ isOpen: false, content: null, type: "respond" });
+  const [responseMessage, setResponseMessage] = useState<string>("");
+  const [responseLoading, setResponseLoading] = useState<boolean>(false);
+  const [reloadAction, setReloadAction] = useState<boolean>(false)
 
-  const global = useContext(AuthContext);
-
-  if (!global) return null;
-
-  const { token, user } = global;
+  const { token, user } = useContext(AuthContext) || {};
   const role = user?.role;
 
   const fetchContacts = async (page: number) => {
     setLoading(true);
     try {
       const response = await axios.get(`${config.SERVER}/auth/contacts`, {
-        params: {
-          type,
-          page,
-          pageSize,
-        },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        params: { type, page, pageSize },
+        headers: { Authorization: `Bearer ${token}` },
       });
       const fetchedContacts = response.data;
-      if (fetchedContacts.length < pageSize) {
-        setHasMore(false);
-      }
+      if (fetchedContacts.length < pageSize) setHasMore(false);
       setContacts((prev) => [...prev, ...fetchedContacts]);
-      // setFilteredContacts(prev => [...prev, ...fetchedContacts]);
     } catch (error) {
       console.error("Error fetching contacts:", error);
     } finally {
@@ -160,11 +119,10 @@ const ContactTable = ({ type, searchTerm, dateRange, reload }: ContactTableProps
     setContacts([]);
     setFilteredContacts([]);
     fetchContacts(1);
-  }, [type, reload, token]);
+  }, [type, reload, token, reloadAction]);
 
   useEffect(() => {
     let filteredData = contacts;
-
     if (searchTerm) {
       filteredData = filteredData.filter(
         (contact) =>
@@ -173,18 +131,11 @@ const ContactTable = ({ type, searchTerm, dateRange, reload }: ContactTableProps
           contact.email.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-
     if (dateRange[0] && dateRange[1]) {
       filteredData = filteredData.filter((contact) =>
-        dayjs(contact.createdAt).isBetween(
-          dateRange[0],
-          dateRange[1],
-          "day",
-          "[]"
-        )
+        dayjs(contact.createdAt).isBetween(dateRange[0], dateRange[1], "day", "[]")
       );
     }
-
     setFilteredContacts(filteredData);
   }, [searchTerm, dateRange, contacts]);
 
@@ -196,28 +147,14 @@ const ContactTable = ({ type, searchTerm, dateRange, reload }: ContactTableProps
       sorter: (a, b) => a.firstName.localeCompare(b.firstName),
       render: (record) => `${record.firstName} ${record.lastName}`,
     },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-    },
-    {
-      title: "Phone Number",
-      dataIndex: "phoneNumber",
-      key: "phoneNumber",
-    },
-    {
-      title: "Message",
-      dataIndex: "message",
-      key: "message",
-    },
+    { title: "Email", dataIndex: "email", key: "email" },
+    { title: "Phone Number", dataIndex: "phoneNumber", key: "phoneNumber" },
+    { title: "Message", dataIndex: "message", key: "message" },
     {
       title: type === "responded" ? "Response Message" : "Received At",
       key: type === "responded" ? "responseMessage" : "createdAt",
       render: (record) =>
-        type === "responded"
-          ? record?.responseMessage
-          : dayjs(record?.createdAt).format("YYYY-MM-DD HH:mm"),
+        type === "responded" ? record?.responseMessage : dayjs(record?.createdAt).format("YYYY-MM-DD HH:mm"),
     },
   ];
 
@@ -229,16 +166,12 @@ const ContactTable = ({ type, searchTerm, dateRange, reload }: ContactTableProps
         <div className="d-flex gap-2">
           {type === "received" && (
             <Tooltip title="Mark as Responded">
-              <Button type="primary" onClick={() => openModal(record)}>
-                Respond
-              </Button>
+              <Button type="primary" onClick={() => openModal(record)}>Respond</Button>
             </Tooltip>
           )}
           {role === "admin" && (
             <Tooltip title="Delete Contact">
-              <Button type="primary" danger onClick={() => adminDelete(record)}>
-                Delete
-              </Button>
+              <Button type="primary" danger onClick={() => openModal(record, "delete")}>Delete</Button>
             </Tooltip>
           )}
         </div>
@@ -246,154 +179,99 @@ const ContactTable = ({ type, searchTerm, dateRange, reload }: ContactTableProps
     });
   }
 
-  const handleRespond = (id: string | undefined) => {
-    if (!responseMessage) {
-      notification.warning({
-        message: 'Response Required',
-        description: 'Response message is required.',
-      });
+  const handleRespond = async (id: string | undefined) => {
+    if (!responseMessage.trim()) {
+      notification.warning({ message: "Response Required", description: "Response message is required." });
       return;
     }
-    
-    if (id) {
-      console.log(`Responding to contact with id: ${id} and message: ${responseMessage}`);
-    } else {
-      notification.error({
-        message: 'Error',
-        description: 'No contact ID provided.',
-      });
+
+    try {
+      setResponseLoading(true)
+      const response = await axios.post(
+        `${config.SERVER}/auth/contact/reply/${id}`,
+        { responseMessage: responseMessage.trim() },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (response.data.success) {
+        notification.success({ message: "Response Sent", description: "Response sent successfully." });
+        setResponseMessage("");
+        closeModal();
+        setReloadAction((prev) => !prev);
+      }
+    } catch (error: any) {
+      console.error(error);
+      notification.error({ message: "Error", description: error.response?.data?.message || "Server error." });
+    } finally {
+      setResponseLoading(false)
     }
   };
 
-  const handleDelete = (id: string | undefined) => {
-    // Implement delete logic here
-    console.log(`Delete contact with id: ${id}`);
-  };
+
+  const handleDelete = async (id: string | undefined) => {
+    try {
+      const response = await axios.delete(`${config.SERVER}/auth/contact/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (response.data.success) {
+        notification.success({
+          message: "Contact Deleted",
+          description: "Contact deleted successfully."
+        })
+        setReloadAction((prev) => !prev);
+        closeModal();
+      }
+    }
+    catch (error: any) {
+      console.error(error);
+      notification.error({
+        message: "Error",
+        description: error.response?.data?.message || "Server error."
+      });
+    };
+  }
 
   const loadMore = () => {
     setPage((prevPage) => prevPage + 1);
     fetchContacts(page + 1);
   };
 
-  // const loadAll = () => {
-  //   setPage(1);
-  //   setHasMore(false);
-  //   setContacts([]);
-  //   fetchContacts(1);
-  // };
-
-  const adminDelete = (content: Contact) => {
-    setModal({
-      isOpen: true,
-      content,
-      type: "delete",
-    });
+  const openModal = (content: Contact, type: "respond" | "delete" = "respond") => {
+    setModal({ isOpen: true, content, type });
   };
 
-  const openModal = (content: Contact) => {
-    setModal({
-      isOpen: true,
-      content,
-      type: "respond",
-    });
-  };
-
-  const closeModal = () => {
-    setModal({
-      isOpen: false,
-      content: null,
-      type: "respond",
-    });
-  };
+  const closeModal = () => setModal({ isOpen: false, content: null, type: "respond" });
 
   return (
-    <div className="">
-      <Table
-        dataSource={filteredContacts}
-        columns={columns}
-        rowKey={(record) => record._id}
-        pagination={false}
-        loading={loading}
-      />
+    <div>
+      <Table dataSource={filteredContacts} columns={columns} rowKey={(record) => record._id} pagination={false} loading={loading} />
       <div className="d-flex justify-content-center mt-3">
-        {hasMore && (
-          <Button onClick={loadMore} loading={loading}>
-            Load More
-          </Button>
-        )}
-        {!hasMore && <p className="text-center">No more content available</p>}
-      </div>
-      <Modal
-        open={modal.isOpen}
-        onCancel={closeModal}
-        centered
-        title={
-          modal.type === "delete" ? "Delete the message" : "Reply to message"
-        }
-        footer={
-          <>
-            {modal.type === "delete" ? (
-              <Button
-                type="primary"
-                danger
-                onClick={() => modal.content && handleDelete(modal.content._id)}
-              >
-                Delete
-              </Button>
-            ) : (
-              <Button
-                type="primary"
-                onClick={() =>
-                  modal.content && handleRespond(modal.content._id)
-                }
-              >
-                Submit
-              </Button>
-            )}
-            <Button type="default" onClick={closeModal}>
-              Cancel
-            </Button>
-          </>
-        }
-      >
-        {modal.content ? (
-          <div>
-            <p>
-              <strong>Name:</strong> {modal.content.firstName}{" "}
-              {modal.content.lastName}
-            </p>
-            <p>
-              <strong>Email:</strong> {modal.content.email}
-            </p>
-            <p>
-              <strong>Phone Number:</strong> {modal.content.phoneNumber}
-            </p>
-            <p>
-              <strong>Message:</strong> {modal.content.message}
-            </p>
-            {modal.content.responseMessage ? (
-              <p>
-                <strong>Response Message:</strong>{" "}
-                {modal.content.responseMessage}
-              </p>
-            ) : (
-              <>
-                <p>
-                  <strong>Response Message:</strong>
-                </p>
-                <textarea
-                  name=""
-                  id=""
-                  className="form-control"
-                  placeholder="write a reply.."
-                  value={responseMessage}
-                  onChange={(e) => setResponeMessage(e.target.value)}
-                />
-              </>
-            )}
-          </div>
+        {hasMore ? (
+          <Button onClick={loadMore} loading={loading}>Load More</Button>
         ) : (
-          <p>No content available</p>
+          <p className="text-center">No more content available</p>
+        )}
+      </div>
+
+      <Modal open={modal.isOpen} onCancel={closeModal} centered title={modal.type === "delete" ? "Delete the message" : "Reply to message"} footer={modal.type === "delete" ? (
+        <Button type="primary" danger onClick={() => handleDelete(modal.content?._id)} loading={responseLoading}>Delete</Button>
+      ) : (
+        <Button type="primary" onClick={() => handleRespond(modal.content?._id)} loading={responseLoading}>Send Response</Button>
+      )}>
+        {modal.type === "respond" ? (
+          <>
+            <p className="fw-bold mb-1">User Message:</p>
+            <p>{modal.content?.message}</p>
+            <Input.TextArea
+              rows={4}
+              placeholder="Enter your response here"
+              value={responseMessage}
+              onChange={(e) => setResponseMessage(e.target.value)}
+            />
+          </>
+        ) : (
+          <p>Are you sure you want to delete this message? This action cannot be undone.</p>
         )}
       </Modal>
     </div>

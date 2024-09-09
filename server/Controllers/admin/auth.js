@@ -6,6 +6,7 @@ const Booking = require("../../Models/bookings");
 const Contact = require("../../Models/contact");
 const moment = require("moment-timezone");
 const moment_time = require("moment");
+const sendContactResponse = require("../../Mail/sendContactResponse");
 
 const register = async (req, res) => {
   const { email, password, role } = req.body;
@@ -242,6 +243,32 @@ const logout = async (req, res) => {
     });
   } catch (error) {
     console.error("Logout error:", error);
+    res.status(500).json({ message: "Server error", error, success: false });
+  }
+};
+
+const changePassword = async (req, res) => {
+  try {
+    const { oldPassword, newPassword } = req.body;
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: "User not found", success: false });
+    }
+    const isValidPassword = await user.comparePassword(oldPassword);
+    if (!isValidPassword) {
+      return res
+        .status(401)
+        .json({ message: "Invalid old password", success: false });
+    }
+    user.password = newPassword;
+    await user.save();
+    res
+      .status(200)
+      .json({ message: "Password changed successfully", success: true });
+  } catch (error) {
+    console.error("Change password error:", error);
     res.status(500).json({ message: "Server error", error, success: false });
   }
 };
@@ -537,7 +564,7 @@ const replyContact = async (req, res) => {
     const { responseMessage } = req.body;
     const contact = await Contact.findByIdAndUpdate(
       id,
-      { responseMessage },
+      { responseMessage: responseMessage, checked: true },
       { new: true }
     );
     if (!contact) {
@@ -545,12 +572,36 @@ const replyContact = async (req, res) => {
         .status(404)
         .json({ message: "Contact not found", success: false });
     }
+    await Promise.all([contact.save(), sendContactResponse(contact)]);
     res.status(200).json({
-      message: "Contact replied successfully",
+      message: "Contact replied successfully.",
       success: true,
     });
   } catch (error) {
-    console.error("Error updating contact:", error);
+    console.log("Error updating contact:", error);
+    res.status(500).json({
+      message: "Server error, please try again later.",
+      error,
+      success: false,
+    });
+  }
+};
+
+const deleteContact = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const contact = await Contact.findByIdAndDelete(id);
+    if (!contact) {
+      return res
+        .status(404)
+        .json({ message: "Contact not found", success: false });
+    }
+    res.status(200).json({
+      message: "Contact deleted successfully.",
+      success: true,
+    });
+  } catch (error) {
+    console.log("Error deleting contact:", error);
     res.status(500).json({
       message: "Server error, please try again later.",
       error,
@@ -589,4 +640,6 @@ module.exports = {
   BookingUpdate,
   BookingSearch,
   replyContact,
+  deleteContact,
+  changePassword,
 };

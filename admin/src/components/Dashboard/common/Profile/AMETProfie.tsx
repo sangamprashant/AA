@@ -1,11 +1,6 @@
-import { useContext } from "react";
-import { AuthContext } from "../../../context/AuthProvider";
 import ProfileRender from "./ProfileRender";
 
 const AMETProfie = () => {
-  const globles = useContext(AuthContext);
-  if (!globles) return null;
-  console.log(globles.user);
   return (
     <>
       <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
