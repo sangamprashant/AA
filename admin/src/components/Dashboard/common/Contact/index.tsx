@@ -1,4 +1,4 @@
-import { Button, DatePicker, Input, Modal, Table, Tabs, Tooltip } from "antd";
+import { Button, DatePicker, Input, Modal, notification, Table, Tabs, Tooltip } from "antd";
 import { ColumnsType } from "antd/es/table";
 import axios from "axios";
 import dayjs, { Dayjs } from "dayjs";
@@ -85,7 +85,7 @@ type ContactTableProps = {
   type: "received" | "responded";
   searchTerm: string;
   dateRange: [Dayjs | null, Dayjs | null];
-  reload:boolean
+  reload: boolean
 };
 
 type Contact = {
@@ -107,7 +107,7 @@ type ModalState = {
   type: "delete" | "respond";
 };
 
-const ContactTable = ({ type, searchTerm, dateRange ,reload}: ContactTableProps) => {
+const ContactTable = ({ type, searchTerm, dateRange, reload }: ContactTableProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -119,6 +119,7 @@ const ContactTable = ({ type, searchTerm, dateRange ,reload}: ContactTableProps)
     content: null, // Initialize content to null or any default value
     type: "respond",
   });
+  const [responseMessage, setResponeMessage] = useState<string>("")
 
   const global = useContext(AuthContext);
 
@@ -246,8 +247,22 @@ const ContactTable = ({ type, searchTerm, dateRange ,reload}: ContactTableProps)
   }
 
   const handleRespond = (id: string | undefined) => {
-    // Implement respond logic here
-    console.log(`Respond to contact with id: ${id}`);
+    if (!responseMessage) {
+      notification.warning({
+        message: 'Response Required',
+        description: 'Response message is required.',
+      });
+      return;
+    }
+    
+    if (id) {
+      console.log(`Responding to contact with id: ${id} and message: ${responseMessage}`);
+    } else {
+      notification.error({
+        message: 'Error',
+        description: 'No contact ID provided.',
+      });
+    }
   };
 
   const handleDelete = (id: string | undefined) => {
@@ -371,7 +386,9 @@ const ContactTable = ({ type, searchTerm, dateRange ,reload}: ContactTableProps)
                   id=""
                   className="form-control"
                   placeholder="write a reply.."
-                ></textarea>
+                  value={responseMessage}
+                  onChange={(e) => setResponeMessage(e.target.value)}
+                />
               </>
             )}
           </div>

@@ -29,6 +29,7 @@ interface AuthContextType {
   markAllAsSeen: () => void;
   clearAllNotifications: () => void;
   sessionDates: SessionDates[];
+  activeColor: string
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -47,6 +48,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     sessionStorage.getItem("token") || ""
   );
   const [activeTime, setActiveTime] = useState<string>("");
+  const [activeColor, setActiveColor] = useState<string>('');
   const [notificationsData, setNotificationsData] =
     useState<NotificationPropsData | null>(null);
 
@@ -252,10 +254,29 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
         setActiveTime(
           `${String(hours).padStart(2, "0")} : ${String(minutes).padStart(
-            2,
-            "0"
+            2, "0"
           )} : ${String(seconds).padStart(2, "0")}`
         );
+
+        // Determine the color based on active time
+        let color = '';
+        if (diffHours < 0.05) { // Less than 3 minutes
+          const shade = Math.min(Math.floor((diffSeconds / 180) * 255), 255); // Shades of green
+          color = `rgb(0, ${shade}, 0)`;
+        } else if (diffHours < 0.25) { // Between 3 and 15 minutes
+          const shade = Math.min(Math.floor(((diffMinutes - 3) / 12) * 255), 255); // Shades of light green
+          color = `rgb(144, ${shade}, 144)`;
+        } else if (diffHours < 1) { // Between 15 minutes and 1 hour
+          color = 'yellowgreen'; // More vibrant yellow
+        } else if (diffHours < 3) { // Between 1 and 3 hours
+          color = 'yellow'; // Standard yellow
+        } else if (diffHours < 6) { // Between 3 and 6 hours
+          const shade = Math.min(Math.floor(((diffHours - 3) / 3) * 255), 255); // Shades of orange
+          color = `rgb(${shade}, 165, 0)`; // Orange color
+        } else { // More than 6 hours
+          color = 'red'; // Standard red
+        }
+        setActiveColor(color);
       }
     };
 
@@ -311,6 +332,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         markAllAsSeen,
         clearAllNotifications,
         sessionDates,
+        activeColor
       }}
     >
       {children}

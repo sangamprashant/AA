@@ -11,6 +11,7 @@ const {
   userProfileById,
   BookingUpdate,
   BookingSearch,
+  replyContact,
 } = require("../../Controllers/admin/auth");
 const requireManagerOrAdmin = require("../../middlewares/requireManagerOrAdmin");
 
@@ -25,6 +26,7 @@ router.put("/booking/:id", authenticateToken, BookingUpdate);
 router.post("/bookings", authenticateToken, BookingType);
 router.get("/bookings/search", authenticateToken, BookingSearch);
 router.get("/contacts", authenticateToken, ContactsByType);
+router.post("/contact/reply/:id", requireManagerOrAdmin, replyContact);
 router.get("/user-profile/:id", requireManagerOrAdmin, userProfileById);
 
 module.exports = router;

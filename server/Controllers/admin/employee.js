@@ -32,7 +32,12 @@ const employeeCreateBooking = async (req, res) => {
     const { phoneNumber, email } = req.body;
 
     if (!phoneNumber && !email) {
-      return res.status(400).json({ message: "Phone number or email is required." });
+      return res
+        .status(400)
+        .json({
+          message: "Phone number or email is required.",
+          success: false,
+        });
     }
 
     let existingBookingByPhoneNumber = null;
@@ -40,22 +45,31 @@ const employeeCreateBooking = async (req, res) => {
 
     if (phoneNumber) {
       existingBookingByPhoneNumber = await Booking.findOne({
-        phoneNumber: { $regex: phoneNumber, $options: 'i' }
+        phoneNumber: { $regex: phoneNumber, $options: "i" },
       });
     }
 
     if (email) {
       existingBookingByEmail = await Booking.findOne({
-        email: { $regex: email, $options: 'i' }
+        email: { $regex: email, $options: "i" },
       });
     }
 
     if (existingBookingByPhoneNumber && existingBookingByEmail) {
-      return res.status(400).json({ message: "A booking with this phone number and email already exists." });
+      return res.status(400).json({
+        message: "A booking with this phone number and email already exists.",
+        success: false,
+      });
     } else if (existingBookingByPhoneNumber) {
-      return res.status(400).json({ message: "A booking with this phone number already exists." });
+      return res.status(400).json({
+        message: "A booking with this phone number already exists.",
+        success: false,
+      });
     } else if (existingBookingByEmail) {
-      return res.status(400).json({ message: "A booking with this email already exists." });
+      return res.status(400).json({
+        message: "A booking with this email already exists.",
+        success: false,
+      });
     }
 
     const newBooking = new Booking({
@@ -67,13 +81,16 @@ const employeeCreateBooking = async (req, res) => {
 
     await newBooking.save();
 
-    res.status(201).json({ message: "Booking created successfully", booking: newBooking });
+    res.status(201).json({
+      message: "Booking created successfully",
+      booking: newBooking,
+      success: true,
+    });
   } catch (err) {
     console.error("Error creating booking:", err);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error", success: false });
   }
 };
-
 
 module.exports = {
   employeeGetTheirBookings,

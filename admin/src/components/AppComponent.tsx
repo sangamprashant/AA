@@ -17,6 +17,7 @@ import {
   ATNOpen,
 } from "./Dashboard/Admin";
 import {
+  LeadsApproval,
   ManagerBookings,
   ManagerContact,
   ManagerContentA,
@@ -56,6 +57,7 @@ const AppComponent = () => {
             {/* -------------- manager -------------- */}
             <Route path="/manager/dashboard" element={<ManagerDashboard />} />
             <Route path="/manager/leads-bucket" element={<ManagerBookings />} />
+            <Route path="/manager/leads-bucket/approval" element={<LeadsApproval />} />
             <Route path="/manager/leads-bucket/:id" element={<AMLeadsOpen />} />
             <Route path="/manager/contact" element={<ManagerContact />} />
             <Route path="/manager/s-m" element={<ManagerStudyM />} />

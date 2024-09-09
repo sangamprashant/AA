@@ -531,6 +531,34 @@ const ContactsByType = async (req, res) => {
   }
 };
 
+const replyContact = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { responseMessage } = req.body;
+    const contact = await Contact.findByIdAndUpdate(
+      id,
+      { responseMessage },
+      { new: true }
+    );
+    if (!contact) {
+      return res
+        .status(404)
+        .json({ message: "Contact not found", success: false });
+    }
+    res.status(200).json({
+      message: "Contact replied successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.error("Error updating contact:", error);
+    res.status(500).json({
+      message: "Server error, please try again later.",
+      error,
+      success: false,
+    });
+  }
+};
+
 const userProfileById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -560,4 +588,5 @@ module.exports = {
   userProfileById,
   BookingUpdate,
   BookingSearch,
+  replyContact,
 };

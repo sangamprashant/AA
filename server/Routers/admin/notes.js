@@ -112,4 +112,16 @@ router.get("/:id", authenticateToken, async (req, res) => {
   }
 });
 
+router.delete("", requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.query;
+    await Note.findByIdAndDelete(id);
+    return res
+      .status(200)
+      .json({ success: true, message: "Note deleted successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message, success: false });
+  }
+});
+
 module.exports = router;

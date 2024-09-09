@@ -27,7 +27,7 @@ const Frame = ({ children }: AdminPanelProps) => {
   if (!authContext) {
     return null;
   }
-  const { activeTime } = authContext;
+  const { activeTime, activeColor } = authContext;
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -89,7 +89,7 @@ const Frame = ({ children }: AdminPanelProps) => {
             }}
           />
           <div className="d-flex gap-2 align-items-center">
-            <AdjustIcon style={{color:"green"}}/>
+            <AdjustIcon style={{ color: activeColor }} />
             <Tooltip
               placement="bottom"
               title="Logout to save the in daily activity"

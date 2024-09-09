@@ -1,8 +1,9 @@
+import ChecklistIcon from '@mui/icons-material/Checklist';
 import SearchIcon from '@mui/icons-material/Search';
 import SyncIcon from "@mui/icons-material/Sync";
-import { Alert, Button, DatePicker, Form, Input, Modal, Select } from "antd";
+import { Alert, Badge, Button, DatePicker, Form, Input, Modal, Select, Tooltip } from "antd";
 import axios from 'axios';
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { config } from '../../../../../config';
 import { DateFilter, DateRangeProps } from "../../../../../types/leads";
@@ -76,6 +77,11 @@ const TopBar: React.FC = () => {
   const [ctr, setCtr] = useState<DateFilter>("today");
   const [dates, setDates] = useState<DateRangeProps>(null);
   const navigate = useNavigate();
+  const [count, setCount] = useState<number>(0)
+
+  useEffect(() => {
+    fetchCount()
+  }, [token])
 
   const handleFilterChange = (val: DateFilter) => {
     if (val === "custom-date-range") {
@@ -123,6 +129,25 @@ const TopBar: React.FC = () => {
     }
   }
 
+  const fetchCount = async () => {
+    try {
+      const response = await axios.get(`${config.SERVER}/manager/bookings/count`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        params: {
+          type: "count"
+        }
+      });
+      setCount(response.data);
+    } catch (error: any) {
+      if (error.response && error.response.status === 404) {
+        setCount(0);
+      } else {
+      }
+    }
+  }
+
   return (
     <>
       <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
@@ -157,6 +182,13 @@ const TopBar: React.FC = () => {
             >
               Create New Lead
             </Button>
+          )}
+          {user?.role === "manager" && (
+            <Tooltip title="Click to see leads created by employee" placement='top'>
+              <Badge count={count}>
+                <Button icon={<ChecklistIcon />} type='primary' onClick={() => navigate(`/manager/leads-bucket/approval`)} />
+              </Badge>
+            </Tooltip>
           )}
           <Button icon={<SearchIcon />} onClick={handleSearchModal} type="dashed" />
           <Button icon={<SyncIcon />} onClick={handleReload} danger />

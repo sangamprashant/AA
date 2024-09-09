@@ -10,6 +10,7 @@ import {
   Form,
   Input,
   message,
+  Popconfirm,
   Row,
   Select,
   Table,
@@ -118,6 +119,25 @@ const TeachingNotes: React.FC = () => {
     }
   };
 
+  const handleDelete = async (id: string) => {
+    try {
+      const response = await axios.delete(`${config.SERVER}/teaching-notes`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          id: id
+        }
+      });
+      if (response.data.success) {
+        setTeachingNotes((prevNotes) => prevNotes.filter((note) => note._id !== id))
+
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const handleLoading = () => {
     setLoadingL((prev) => !prev);
   };
@@ -159,6 +179,7 @@ const TeachingNotes: React.FC = () => {
             loading={loading}
             togggleSaved={togggleSaved}
             savedNoteIds={savedNoteIds}
+            handleDelete={handleDelete}
           />
         </Tabs.TabPane>
         {user?.role === "admin" ? (
@@ -172,6 +193,7 @@ const TeachingNotes: React.FC = () => {
               loading={loading}
               togggleSaved={togggleSaved}
               savedNoteIds={savedNoteIds}
+              handleDelete={handleDelete}
             />
           </Tabs.TabPane>
         )}
@@ -184,6 +206,7 @@ interface TeachingNoteRenderProps {
   teachingNotes: TeachingNoteData[];
   loading: boolean;
   togggleSaved: (id: string) => void;
+  handleDelete: (id: string) => void;
   savedNoteIds: Set<string>;
 }
 
@@ -192,9 +215,19 @@ const TeachingNotesRender: React.FC<TeachingNoteRenderProps> = ({
   loading,
   togggleSaved,
   savedNoteIds,
+  handleDelete
 }) => {
   const { user } = useContext(AuthContext) || {};
   const navigate = useNavigate();
+  const [deleteId, setDeleteId] = useState<string>("")
+
+
+  const confirmDelete = () => {
+    if (deleteId) {
+      handleDelete(deleteId)
+      setDeleteId("");
+    }
+  }
 
   const columns = [
     {
@@ -225,7 +258,16 @@ const TeachingNotesRender: React.FC<TeachingNoteRenderProps> = ({
             onClick={() => navigate(`./${id}`)}
           />
           {user?.role === "admin" ? (
-            <Button type="text" danger icon={<DeleteIcon />} />
+            <Popconfirm
+              title="Delete the task"
+              description="Are you sure to delete this task?"
+              onConfirm={confirmDelete}
+              // onCancel={ }
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button type="text" danger icon={<DeleteIcon />} onClick={() => setDeleteId(id)} />
+            </Popconfirm>
           ) : (
             <Button
               type="text"
