@@ -9,6 +9,7 @@ import { config } from "../../../config";
 import Section from "../../Reuse/Section";
 import "./contentExplore.css";
 import { ContentData } from "./HHH";
+import Loading from "../../Reuse/Loading";
 
 interface StudyMaterial {
   _id: string;
@@ -30,6 +31,7 @@ const ContentExplore: React.FC = () => {
   const [content, setContent] = useState<StudyMaterial[]>([]);
   const [selectedClass, setSelectedClass] = useState<string>("");
   const [filteredData, setFilteredData] = useState<StudyMaterial[]>([]);
+  const [loading, setLoading] = useState<boolean>(false)
 
   useLayoutEffect(() => {
     fetchData();
@@ -49,6 +51,7 @@ const ContentExplore: React.FC = () => {
 
   const fetchData = async () => {
     try {
+      setLoading(true)
       const response = await fetch(`${config.SERVER}/study-materials`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -78,6 +81,8 @@ const ContentExplore: React.FC = () => {
       setContent([...data.materials, ...ContentData]);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -85,14 +90,14 @@ const ContentExplore: React.FC = () => {
     localStorage.setItem("studyMaterials", JSON.stringify(materials));
   };
 
-  if (content.length === 0) {
-    return null;
+  if (content.length === 0 || loading) {
+    return <LoadingContent />;
   }
 
   return (
     <Section className="py-5">
       {/* <h1>Study Materials</h1> */}
-      <h1 className="mt-4">Featured Study Materials</h1>
+      <h1 className="mt-1">Featured Study Materials</h1>
       <p>
         Explore our extensive collection of study materials for each class. From
         detailed notes to practice problems, we have everything you need to
@@ -123,9 +128,8 @@ const ContentExplore: React.FC = () => {
       <h2>Classes</h2>
       <div className="scroll-content-container">
         <button
-          className={`btn btn-study-materials ${
-            `` === selectedClass ? "active" : ""
-          }`}
+          className={`btn btn-study-materials ${`` === selectedClass ? "active" : ""
+            }`}
           onClick={() => setSelectedClass("")}
         >
           <img
@@ -138,15 +142,13 @@ const ContentExplore: React.FC = () => {
         {[...Array(12)].map((_, index) => (
           <button
             key={index}
-            className={`btn btn-study-materials ${
-              `class ${index + 1}` === selectedClass ? "active" : ""
-            }`}
+            className={`btn btn-study-materials ${`class ${index + 1}` === selectedClass ? "active" : ""
+              }`}
             onClick={() => setSelectedClass(`class ${index + 1}`)}
           >
             <img
-              src={`/home/study-materials/icon/${
-                index + 1
-              }.png?cache-control=max-age=31536000`}
+              src={`/home/study-materials/icon/${index + 1
+                }.png?cache-control=max-age=31536000`}
               alt={`Class ${index + 1}`}
               height="35"
             />{" "}
@@ -208,3 +210,10 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
     </Link>
   );
 };
+
+
+const LoadingContent = () => {
+  return <>
+    <Loading />
+  </>
+}

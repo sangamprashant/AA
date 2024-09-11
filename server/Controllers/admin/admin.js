@@ -61,24 +61,23 @@ const adminGetUsers = async (req, res) => {
 
 const adminGetUsersCount = async (req, res) => {
   try {
-
     const result = await User.aggregate([
-      { 
-        $match: { role: { $ne: "admin" } }
+      {
+        $match: { role: { $ne: "admin" } },
       },
       {
         $group: {
           _id: "$role",
-          count: { $sum: 1 } 
-        }
+          count: { $sum: 1 },
+        },
       },
       {
         $project: {
-          _id: 0, 
-          role: "$_id", 
-          count: 1 
-        }
-      }
+          _id: 0,
+          role: "$_id",
+          count: 1,
+        },
+      },
     ]);
 
     // Convert result array to key-value object
@@ -120,9 +119,43 @@ const adminDeleteUser = async (req, res) => {
   }
 };
 
+const updateUsersProfile = async (req, res) => {
+  try {
+    const { id } = req.query;
+    const { email } = req.body;
+
+    if (email) {
+      const existingUser = await User.findOne({ email: { $ne: id } });
+      if (existingUser) {
+        return res.status(400).json({
+          message: "Email is already in use by another user",
+          success: false,
+        });
+      }
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(id, req.body, {
+      new: true,
+    }).select("name email password role createdAt");
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({
+      user: updatedUser,
+      message: "Profile updated successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.error("Error updating user profile:", error);
+    res.status(500).json({ message: "Error updating user profile" });
+  }
+};
+
 module.exports = {
   adminGetUsers,
   registerUser,
   adminDeleteUser,
   adminGetUsersCount,
+  updateUsersProfile,
 };

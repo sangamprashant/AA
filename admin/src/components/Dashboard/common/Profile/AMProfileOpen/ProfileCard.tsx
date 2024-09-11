@@ -1,54 +1,58 @@
 import { Button, Input, Form, notification } from "antd";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../context/AuthProvider";
 import { ProfileContext } from "../AMProfile";
 import axios from "axios";
-import { User } from "../../../../../types/booking";
+import { User } from "../../../../../types/profile";
+import { config } from "../../../../../config";
 
 const ProfileCard = () => {
   const admin = useContext(AuthContext);
   if (!admin) return null;
   const globles = useContext(ProfileContext);
   if (!globles) return null;
+  const { token } = admin
   const { profileUser, setProfileUser } = globles;
-
   const [update, setUpdate] = useState<boolean>(false);
-  const [form] = Form.useForm();
+  const [email, setEmail] = useState<string | undefined>("")
+  const [password, setPassword] = useState("")
 
-  const onFinish = async (values: { email: string; password: string }) => {
+  useEffect(() => {
+    setEmail(profileUser?.email)
+  }, [profileUser])
+
+  const onFinish = async () => {
     try {
-      // Determine which fields to update (email or password)
-      const updateData: { email?: string; password?: string } = {};
-      if (values.email && values.email !== profileUser?.email) {
-        updateData.email = values.email;
-      }
-      if (values.password) {
-        updateData.password = values.password;
-      }
+      let updateData = {
+        email: email || undefined,
+        password: password || undefined
+      };
 
-      // Make an API call to update user email or password
-      await axios.post('/api/update-profile', updateData);
-
-      // Update the profile locally if the email was changed
-      if (updateData.email) {
-        setProfileUser((prev: User) => ({
-          ...prev,
-          email: updateData.email,
-        }));
-      }
-
-      notification.success({
-        message: "Success",
-        description: "Profile updated successfully!",
+      const response = await axios.post(`${config.SERVER}/admin/user-update-profile`, updateData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          id: profileUser?._id
+        }
       });
-      setUpdate(false); // Exit edit mode after successful update
-    } catch (error) {
+
+      if (response.data.success) {
+        notification.success({
+          message: "Success",
+          description: "Profile updated successfully!",
+        });
+        setProfileUser(response.data.user)
+      }
+      setUpdate(false);
+    } catch (error: any) {
       notification.error({
         message: "Error",
-        description: "Failed to update profile. Please try again.",
+        description: error.response.data.message || "Failed to update profile. Please try again.",
       });
     }
   };
+
 
   return (
     <div>
@@ -59,48 +63,51 @@ const ProfileCard = () => {
             <p className="card-text m-0">{profileUser?.name}</p>
           </div>
           <div className="mb-3">
+            <label className="form-label fw-bold m-0">Role:</label>
+            <p className="card-text m-0">{profileUser?.role}</p>
+          </div>
+          <div className="mb-3">
             <label className="form-label fw-bold m-0">Email:</label>
             {!update ? (
               <p className="card-text m-0">{profileUser?.email}</p>
             ) : (
               <Form.Item
                 name="email"
-                initialValue={profileUser?.email}
                 rules={[{ required: true, message: "Please input the email!" }]}
               >
-                <Input placeholder="Enter new email" />
+                <Input placeholder="Enter new email" value={email} onChange={(e) => setEmail(e.target.value)} />
               </Form.Item>
             )}
           </div>
-          <div className="mb-3">
-            <label className="form-label fw-bold m-0">Role:</label>
-            <p className="card-text m-0">{profileUser?.role}</p>
-          </div>
         </div>
-
-        {admin.user?.role === "admin" && (
-          <Button type="primary" onClick={() => setUpdate((prev) => !prev)}>
-            {update ? "Cancel" : "Edit"}
-          </Button>
-        )}
-
         {update && (
-          <Form form={form} layout="vertical" onFinish={onFinish}>
+          <Form layout="vertical">
             <div className="mb-3">
               <label className="form-label fw-bold m-0">Password:</label>
               <Form.Item
                 name="password"
                 rules={[{ required: true, message: "Please input the password!" }]}
               >
-                <Input.Password placeholder="Enter new password" />
+                <Input.Password placeholder="Enter new password" onChange={(e) => setPassword(e.target.value)} value={password} />
               </Form.Item>
             </div>
 
-            <Button type="primary" htmlType="submit">
-              Save Changes
-            </Button>
+
           </Form>
         )}
+        {admin.user?.role === "admin" && <>
+          {
+            update ? <div className="d-flex gap-2"> <Button type="primary" htmlType="submit" onClick={onFinish}>
+              Save Changes
+            </Button>
+              <Button type="primary" danger className="w-100" onClick={() => setUpdate((prev) => !prev)}>
+                Cancel
+              </Button>
+            </div> : <> <Button type="primary" className="w-100" onClick={() => setUpdate((prev) => !prev)}>
+              Edit
+            </Button></>
+          }
+        </>}
       </div>
     </div>
   );

@@ -54,11 +54,26 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className={`collapse navbar-collapse mt-4 mt-lg-0 ${
-              isNavCollapsed ? "" : "show"
-            }`}
+            className={`collapse navbar-collapse mt-4 mt-lg-0 ${isNavCollapsed ? "" : "show"
+              }`}
           >
             <ul className="navbar-nav ms-auto gap-2 align-items-center justify-content-start">
+              <motion.li
+                className="nav-item"
+                key="about-us"
+                variants={navItemVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 0.1, duration: 0.7 }}
+              >
+                <Link
+                  className="nav-link"
+                  to="/about-us"
+                  onClick={handleNavItemClick}
+                >
+                  About Us
+                </Link>
+              </motion.li>
               <motion.li
                 className="nav-item"
                 variants={navItemVariants}
@@ -74,7 +89,6 @@ const Navbar = () => {
                   Contact Us
                 </Link>
               </motion.li>
-
               <motion.li
                 className="nav-item"
                 key="about-us"
@@ -85,10 +99,26 @@ const Navbar = () => {
               >
                 <Link
                   className="nav-link"
-                  to="/about-us"
+                  to="/demo-class"
                   onClick={handleNavItemClick}
                 >
-                  About Us
+                  Free Classes
+                </Link>
+              </motion.li>
+              <motion.li
+                className="nav-item"
+                key="about-us"
+                variants={navItemVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 0.1, duration: 0.7 }}
+              >
+                <Link
+                  className="nav-link"
+                  to="/study-material"
+                  onClick={handleNavItemClick}
+                >
+                  Study Materials
                 </Link>
               </motion.li>
               <motion.li
