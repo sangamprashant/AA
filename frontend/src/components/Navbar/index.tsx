@@ -67,6 +67,40 @@ const Navbar = () => {
                 transition={{ delay: 0.1, duration: 0.7 }}
               >
                 <Link
+                  className="nav-link rainbow-text-nav"
+                  to="/demo-class"
+                  onClick={handleNavItemClick}
+                >
+                  <img src="/navbar/megaphone.png" alt="" height={20} /> {" "}
+                  Free Demo Classes
+                </Link>
+              </motion.li>
+              <motion.li
+                className="nav-item"
+                key="about-us"
+                variants={navItemVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 0.1, duration: 0.7 }}
+              >
+                <Link
+                  className="nav-link rainbow-text-nav"
+                  to="/study-material"
+                  onClick={handleNavItemClick}
+                >
+                  <img src="/navbar/megaphone (1).png" alt="" height={20} /> {" "}
+                  Free Study Materials
+                </Link>
+              </motion.li>
+              <motion.li
+                className="nav-item"
+                key="about-us"
+                variants={navItemVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 0.1, duration: 0.7 }}
+              >
+                <Link
                   className="nav-link"
                   to="/about-us"
                   onClick={handleNavItemClick}
@@ -89,38 +123,7 @@ const Navbar = () => {
                   Contact Us
                 </Link>
               </motion.li>
-              <motion.li
-                className="nav-item"
-                key="about-us"
-                variants={navItemVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 0.1, duration: 0.7 }}
-              >
-                <Link
-                  className="nav-link"
-                  to="/demo-class"
-                  onClick={handleNavItemClick}
-                >
-                  Free Classes
-                </Link>
-              </motion.li>
-              <motion.li
-                className="nav-item"
-                key="about-us"
-                variants={navItemVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 0.1, duration: 0.7 }}
-              >
-                <Link
-                  className="nav-link"
-                  to="/study-material"
-                  onClick={handleNavItemClick}
-                >
-                  Study Materials
-                </Link>
-              </motion.li>
+
               <motion.li
                 className="nav-item"
                 key="mobile number"

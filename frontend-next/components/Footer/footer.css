@@ -1,0 +1,15 @@
+.footer-animation {
+  background-image: url("/valley-white.svg");
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  margin: 20px 0px 40px 0px;
+}
+
+.text-wrap {
+  white-space: normal;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: break-all;
+}

@@ -13,7 +13,7 @@ const Classes = () => {
   const classNumbers = ["1-4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
   return (
-    <Section className="py-5">
+    <Section className="py-5 banner-show">
       <div className="classes-container" ref={ref}>
         <motion.h2
           initial={{ opacity: 0, y: -50 }}

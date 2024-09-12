@@ -84,10 +84,11 @@ function App() {
             <div className="main-content">
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/about-us" element={<AboutUs />} />
+                {/*  */}
                 <Route path="/class" element={<Class />} />
                 <Route path="/demo-class" element={<Demo />} />
                 <Route path="/contact-us" element={<Contact />} />
-                <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/payment" element={<ViewPayment />} />
                 <Route path="/pay" element={<Payment />} />
                 <Route path="/jee" element={<JEEE />} />

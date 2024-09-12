@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import { LoadingUI } from "../../../App";
 import { AppContext } from "../../../AppProvider";
 import { config } from "../../../config";
+import Loading from "../../Reuse/Loading";
 import Section from "../../Reuse/Section";
 import "./contentExplore.css";
 import { ContentData } from "./HHH";
-import Loading from "../../Reuse/Loading";
 
 interface StudyMaterial {
   _id: string;
@@ -96,7 +96,6 @@ const ContentExplore: React.FC = () => {
 
   return (
     <Section className="py-5">
-      {/* <h1>Study Materials</h1> */}
       <h1 className="mt-1">Featured Study Materials</h1>
       <p>
         Explore our extensive collection of study materials for each class. From
