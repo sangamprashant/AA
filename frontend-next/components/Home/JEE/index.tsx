@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Section from "../../Reuse/Section";
 import "./whatNext.css";
 
@@ -22,9 +23,9 @@ const WhatNext = () => {
                 In the coming weeks, look out for live Q&A sessions, specialized workshops, and mock test series to further support your preparation and boost your confidence.
               </p>
               <div className="text-end mb-4">
-                <a className="btn theme-btn" href="/jee">
+                <Link className="btn theme-btn" href="/jee">
                   Continue JEE Preparation
-                </a>
+                </Link>
               </div>
               <h3>For NEET</h3>
               <p>
@@ -34,9 +35,9 @@ const WhatNext = () => {
                 Stay tuned for upcoming live Q&A sessions, focused workshops, and a series of mock tests to enhance your preparation and build confidence.
               </p>
               <div className="text-end">
-                <a className="btn theme-btn" href="/neet">
+                <Link className="btn theme-btn" href="/neet">
                   Continue NEET Preparation
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,11 +1,12 @@
+"use client"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Button, Form, Input, Modal, notification } from "antd";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { LoadingUI } from "../../../App";
-import { AppContext } from "../../../AppProvider";
 import { config } from "../../../config";
+import { AppContext } from "@/context/AppProvider";
+import LoadingUI from "@/components/LoadingUI";
+import { useRouter } from 'next/navigation';
 
 interface FormValues {
   email?: string;
@@ -31,13 +32,14 @@ const AccessModal: React.FC = () => {
   const [form] = Form.useForm();
   const [step, setStep] = useState<Steps>(1);
   const [formValues, setFormValues] = useState<FormValues>({});
-  const navigate = useNavigate();
+  const navigate = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const appContext = useContext(AppContext);
   if (!appContext) {
     return <LoadingUI />;
   }
   const { locked, handleLock } = appContext;
+
   useEffect(() => {
     setVisible(locked);
   }, [locked]);
@@ -348,7 +350,7 @@ const AccessModal: React.FC = () => {
         description:
           "You have canceled the process. Please complete the action to unlock the content and view it.",
       });
-      navigate("/study-material");
+      navigate.push("/free-study-material");
     }
   }
 };

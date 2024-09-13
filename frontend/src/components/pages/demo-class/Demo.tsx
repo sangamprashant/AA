@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Partner from "../../Class/Partner";
 import Footer from "../../Footer";
 import BookClass from "../../Home/Book";
@@ -8,9 +7,6 @@ import { featuresData, NumbersCountFeatures } from "../../Home/Features";
 import Section from "../../Reuse/Section";
 
 const Demo = () => {
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, []);
   return (
     <>
       <BookClass />

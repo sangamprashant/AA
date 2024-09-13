@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Link from "next/link";
 import Section from "../../Reuse/Section";
 
 const ContactHome = () => {
@@ -23,7 +24,7 @@ const ContactHome = () => {
                 </p>
               </div>
               <div>
-                <Link to="/contact-us" className="btn theme-btn">
+                <Link href="/contact-us" className="btn theme-btn">
                   CONTACT US
                 </Link>
               </div>

@@ -1,6 +1,6 @@
 import Terms from "..";
 import Section from "../../../Reuse/Section";
-import { webDomain } from "../../../Strings";
+import { webDomain } from "@/strings";
 import TermsHeader from "../TermsHeader";
 
 const DISCLAIMER = () => {

@@ -1,13 +1,14 @@
 "use client"
+import { address, appName, email, phone } from "@/strings";
 import {
   faEnvelope,
   faLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import SocialLinks from "./SocialLinks";
 import "./footer.css";
-import { address, appName, email, phone } from "@/strings";
 
 const contactDetails = [
   {
@@ -38,11 +39,11 @@ export const impLinks = [
   },
   {
     title: "Privacy Policy",
-    link: "/privacy-policy",
+    link: "/terms/privacy-policy",
   },
   {
     title: "Cookie Policy",
-    link: "/cookie-policy",
+    link: "/terms/cookie-policy",
   },
   {
     title: "Terms and Conditions",
@@ -50,15 +51,15 @@ export const impLinks = [
   },
   {
     title: "Return Policy",
-    link: "/return-policy",
+    link: "/terms/return-policy",
   },
   {
     title: "Disclaimer",
-    link: "/disclaimer",
+    link: "/terms/disclaimer",
   },
   {
     title: "Acceptable Use Policy",
-    link: "/acceptable-use",
+    link: "/terms/acceptable-use",
   },
 ];
 
@@ -90,9 +91,9 @@ const Footer = () => {
           </div>
           <div className="col-md-4 footer-col p-2">
             <div className="footer_detail">
-              <a href="/" className="footer-logo text-decoration-none">
+              <Link href="/" className="footer-logo text-decoration-none">
                 The A to Z Classes
-              </a>
+              </Link>
               <p className="text-center">
                 At The A to Z Classes, we are dedicated to providing
                 comprehensive and personalized education to our students. Our
@@ -108,9 +109,9 @@ const Footer = () => {
               <h4>Important Links</h4>
               <div className="contact_link_box ">
                 {impLinks.map((contact, index) => (
-                  <a key={index} href={contact.link}>
+                  <Link key={index} href={contact.link}>
                     <span>{contact.title}</span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

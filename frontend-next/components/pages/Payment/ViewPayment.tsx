@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 import Section from "../../Reuse/Section";
 import PaymentViewContainer from "../../Reuse/PaymentViewContainer";

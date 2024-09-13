@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://theatozclasses.com/</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About Us Page -->
+  <url>
+    <loc>https://theatozclasses.com/about-us</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact Us Page -->
+  <url>
+    <loc>https://theatozclasses.com/contact-us</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Free Demo Class Page -->
+  <url>
+    <loc>https://theatozclasses.com/free-demo-class</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Free Study Material Page -->
+  <url>
+    <loc>https://theatozclasses.com/free-study-material</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- JEE Page -->
+  <url>
+    <loc>https://theatozclasses.com/jee</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- NEET Page -->
+  <url>
+    <loc>https://theatozclasses.com/neet</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Payment Page -->
+  <url>
+    <loc>https://theatozclasses.com/payment</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Terms Page -->
+  <url>
+    <loc>https://theatozclasses.com/terms</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+</urlset>

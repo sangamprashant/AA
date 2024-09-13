@@ -1,6 +1,6 @@
 import Terms, { ListStyle } from "..";
 import Section from "../../../Reuse/Section";
-import { address, email, phone, webDomain } from "../../../Strings";
+import { address, email, phone, webDomain } from "@/strings";
 import TermsHeader from "../TermsHeader";
 
 const AcceptableUsePolicy = () => {

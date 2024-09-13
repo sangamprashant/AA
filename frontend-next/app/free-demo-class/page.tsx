@@ -1,8 +1,10 @@
-import React from 'react'
+import { Demo } from '@/components/pages'
 
 const FreeDemoClass = () => {
     return (
-        <div>FreeDemoClass</div>
+        <>
+            <Demo />
+        </>
     )
 }
 

@@ -8,7 +8,6 @@ import Footer from "../../Footer";
 import { featuresData } from "../../Home/Features";
 import Section from "../../Reuse/Section";
 import PageHeaders from "../PageHeaders";
-import "./about.css";
 
 const AboutUs: React.FC = () => {
   const listItems = [

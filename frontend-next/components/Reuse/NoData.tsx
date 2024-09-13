@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-
+import Link from "next/link";
 interface NoDataProps {
   heading: string;
   content: string;
@@ -14,7 +13,7 @@ const NoData = ({ heading, content }: NoDataProps) => {
         </div>
         <h2 className="mb-3">{heading}</h2>
         <p className="lead">{content}</p>
-        <Link to="/" className="btn btn-primary mt-3">
+        <Link href="/" className="btn btn-primary mt-3">
           Go to Homepage
         </Link>
       </div>

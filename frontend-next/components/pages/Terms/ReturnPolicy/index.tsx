@@ -1,6 +1,6 @@
 import Terms from "..";
 import Section from "../../../Reuse/Section";
-import { email, phone } from "../../../Strings";
+import { email, phone } from "@/strings";
 import TermsHeader from "../TermsHeader";
 
 const RETURNPOLICY = () => {

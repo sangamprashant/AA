@@ -3,14 +3,13 @@ import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import StarIcon from "@mui/icons-material/Star";
 import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import { LoadingUI } from "../../../App";
-// import { AppContext } from "../../../AppProvider";
 import { config } from "../../../config";
 import Loading from "../../Reuse/Loading";
 import Section from "../../Reuse/Section";
-import "./contentExplore.css";
 import { ContentData } from "./HHH";
+import { AppContext } from "@/context/AppProvider";
+import Link from "next/link";
+import LoadingUI from "@/components/LoadingUI";
 
 interface StudyMaterial {
   _id: string;
@@ -91,7 +90,7 @@ const ContentExplore: React.FC = () => {
     localStorage.setItem("studyMaterials", JSON.stringify(materials));
   };
 
-  if (content.length === 0 || loading) {
+  if (content.length === 0 && loading) {
     return <LoadingContent />;
   }
 
@@ -180,7 +179,7 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
 
   const { locked } = appContext;
   return (
-    <Link to={`/study-material/${item._id}`} className="card-content-explore">
+    <Link href={`/free-study-material/${item._id}`} className="card-content-explore">
       <img
         src={`${item?.imageUrl}?cache-control=max-age=31536000`}
         className="card-img-top-content-explore"

@@ -1,16 +1,16 @@
+"use client"
 import PaymentIcon from "@mui/icons-material/Payment";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import { notification } from "antd";
 import axios from "axios";
-import { FormEvent, useLayoutEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { FormEvent, useState } from "react";
+import { appName } from "@/strings";
+import Link from "next/link";
 import { config } from "../../../config";
 import Footer from "../../Footer";
 import Section from "../../Reuse/Section";
-import { appName } from "../../Strings";
 import FerjiDetails from "./FerjiDetails";
-import "./payment.css";
-
+  
 type NotificationType = "success" | "info" | "warning" | "error";
 
 const Payment: React.FC = () => {
@@ -25,10 +25,6 @@ const Payment: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const [api, contextHolder] = notification.useNotification();
-
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const openNotification = (
     type: NotificationType,
@@ -291,7 +287,7 @@ const Payment: React.FC = () => {
                     </button>
                     {state === "success" && (
                       <Link
-                        to={`/payment?payment_id=${stateId}`}
+                        href={`/payment?payment_id=${stateId}`}
                         className="mt-2 btn btn-success w-100 mt-2"
                       >
                         View the Invoice <ReceiptIcon fontSize="large" />
@@ -300,7 +296,7 @@ const Payment: React.FC = () => {
 
                     {state === "error" && (
                       <Link
-                        to={`/payment?order_id=${stateId}`}
+                        href={`/payment?order_id=${stateId}`}
                         className="mt-2 btn btn-warning w-100 mt-2"
                       >
                         View the Invoice <ReceiptIcon fontSize="large" />

@@ -4,9 +4,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { config } from "../../config";
 import { socialMediaLinks } from "../Footer/SocialLinks";
-import { address, appName, email, phone } from "../Strings";
+import { address, appName, email, phone } from "@/strings";
 import Loading from "./Loading";
-import "./payment.css";
 import NoData from "./NoData";
 
 interface Props {
@@ -98,7 +97,7 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log({ payId, orderId });
+    // console.log({ payId, orderId });
     const fetchData = async () => {
       try {
         const response = await axios.post(`${config.SERVER}/payment/view-one`, {
@@ -244,7 +243,7 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
                     <tbody>
                       <tr className="details">
                         <td colSpan={2}>
-                          <table>
+                          <table className="w-100">
                             <thead>
                               <tr>
                                 <th className="bold-text desc">

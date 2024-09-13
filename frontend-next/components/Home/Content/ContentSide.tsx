@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 interface ContentSideProps {
   category: string;
@@ -56,7 +56,7 @@ const ContentSide: React.FC<ContentSideProps> = ({ category }) => {
         {studyMaterials.length > 0 ? (
           studyMaterials.map((material) => (
             <Link
-              to={`/study-material/${material._id}`}
+              href={`/free-study-material/${material._id}`}
               key={material._id}
               className="d-flex gap-3 material-item align-items-center"
             >

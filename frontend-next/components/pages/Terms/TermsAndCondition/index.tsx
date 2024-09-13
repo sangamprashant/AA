@@ -1,13 +1,8 @@
+import { address, email, phone, webDomain } from "@/strings";
 import Terms, { ListStyle } from "..";
-import TermsHeader from "../TermsHeader";
-import { address, email, phone, webDomain } from "../../../Strings";
 import Section from "../../../Reuse/Section";
-import { useLayoutEffect } from "react";
+import TermsHeader from "../TermsHeader";
 const TERMSANDCONDITIONS = () => {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <Terms>
       <Section>

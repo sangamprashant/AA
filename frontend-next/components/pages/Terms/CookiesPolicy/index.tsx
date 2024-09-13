@@ -1,13 +1,10 @@
-import { useLayoutEffect } from "react";
+// import { useLayoutEffect } from "react";
 import Terms, { ListStyle } from "..";
 import Section from "../../../Reuse/Section";
-import { phone, webDomain } from "../../../Strings";
+import { phone, webDomain } from "@/strings";
 import TermsHeader from "../TermsHeader";
 
 const COOKIESPOLICY = () => {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
   return (
     <Terms>
       <Section>

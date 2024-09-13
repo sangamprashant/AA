@@ -1,14 +1,10 @@
-import { useLayoutEffect } from "react";
+
 import Terms, { ListStyle } from "..";
 import Section from "../../../Reuse/Section";
 import TermsHeader from "../TermsHeader";
-import { address, email, webDomain } from "../../../Strings";
+import { address, email, webDomain } from "@/strings";
 
 const PRIVACYPOLICY = () => {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <Terms>
       <Section>

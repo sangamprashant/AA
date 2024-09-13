@@ -3,7 +3,7 @@ import { email, phone } from "@/strings";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import NextNProgress from 'nextjs-progressbar';
+import NextTopLoader from 'nextjs-toploader';
 
 const Navbar = () => {
     const [isNavCollapsed, setIsNavCollapsed] = useState(true);
@@ -87,7 +87,7 @@ const Navbar = () => {
                             >
                                 <Link
                                     className="rainbow-text-nav"
-                                    href="/study-material"
+                                    href="/free-study-material"
                                     onClick={handleNavItemClick}
                                 >
                                     <img src="/navbar/megaphone (1).png" alt="" height={20} /> {" "}
@@ -161,10 +161,26 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-                <NextNProgress
-                    color="black" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true}
-                />
+
+                <div>
+
+                </div>
             </motion.nav>
+            <NextTopLoader
+                color="red"
+                initialPosition={0.08}
+                crawlSpeed={200}
+                height={4}
+                crawl={true}
+                showSpinner={true}
+                easing="ease"
+                speed={100}
+                shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+                template='<div class="bar" role="bar"><div class="peg"></div></div> 
+                     <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+                zIndex={1600}
+                showAtBottom={false}
+            />
         </>
     );
 };

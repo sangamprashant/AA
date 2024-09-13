@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -21,7 +22,9 @@
     "framer-motion": "^11.5.4",
     "jquery": "^3.7.1",
     "next": "14.2.9",
+    "next-sitemap": "^4.2.3",
     "nextjs-progressbar": "^0.0.16",
+    "nextjs-toploader": "^3.6.15",
     "react": "^18",
     "react-countup": "^6.5.3",
     "react-dom": "^18",

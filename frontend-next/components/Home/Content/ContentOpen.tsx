@@ -1,10 +1,8 @@
+"use client"
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { LoadingUI } from "../../../App";
-import { AppContext } from "../../../AppProvider";
 import { config } from "../../../config";
 import Footer from "../../Footer";
 import Loading from "../../Reuse/Loading";
@@ -13,6 +11,9 @@ import Section from "../../Reuse/Section";
 import AccessModal from "./AccessModal";
 import ContentSide from "./ContentSide";
 import { ContentData } from "./HHH";
+import { useParams } from "next/navigation";
+import { AppContext } from "@/context/AppProvider";
+import LoadingUI from "@/components/LoadingUI";
 
 const ContentOpen: React.FC = () => {
   const { id } = useParams<{ id: string }>();
