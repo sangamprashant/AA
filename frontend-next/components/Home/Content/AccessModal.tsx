@@ -1,6 +1,6 @@
 "use client"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Button, Form, Input, Modal, notification } from "antd";
+import { Button, Form, Input, Modal, notification, Select } from "antd";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { config } from "../../../config";
@@ -17,20 +17,22 @@ interface FormValues {
 interface handleGenerateOtpProps {
   email?: string;
   phone?: string;
+  Class?: number
 }
 
 interface handleVerifyOtpProps {
   email?: string;
   phone?: string;
   otp?: string;
+  Class?: number
 }
 
-type Steps = 1 | 2 | 3 | 4 | 5;
+type Steps = 0 | 1 | 2 | 3 | 4 | 5;
 
 const AccessModal: React.FC = () => {
   const [visible, setVisible] = useState(true);
   const [form] = Form.useForm();
-  const [step, setStep] = useState<Steps>(1);
+  const [step, setStep] = useState<Steps>(0);
   const [formValues, setFormValues] = useState<FormValues>({});
   const navigate = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
@@ -81,7 +83,7 @@ const AccessModal: React.FC = () => {
       width={400}
     >
       <div style={{ minHeight: "250px" }}>
-        {(step === 1 || step === 2) && (
+        {(step === 0 || step === 1 || step === 2) && (
           <>
             <p>
               To access the content, please provide us with your email and phone
@@ -89,6 +91,39 @@ const AccessModal: React.FC = () => {
               to enhance your user experience.
             </p>
             <Form form={form} layout="vertical" onFinish={handleSubmit}>
+              {step === 0 && (<>
+                <Image url="class" h={100} />
+                <Form.Item
+                  label="Class"
+                  name="Class"
+                  rules={[
+                    {
+                      required: true,
+                      type: "number",
+                      message: "Please select a valid class!",
+                    },
+                  ]}
+                >
+                  <Select placeholder="Please select a class">
+                    {Array.from({ length: 12 }, (_, index) => (
+                      <Select.Option key={index + 1} value={index + 1}>
+                        Class {index + 1}
+                      </Select.Option>
+                    ))}
+                  </Select>
+                </Form.Item>
+
+                <Form.Item>
+                  <Button
+                    type="primary"
+                    htmlType="button"
+                    block
+                    onClick={handleNext}
+                  >
+                    Next Step <ArrowForwardIosIcon fontSize="small" />
+                  </Button>
+                </Form.Item>
+              </>)}
               {step === 1 && (
                 <>
                   <Image url="phone" h={100} />
@@ -247,10 +282,10 @@ const AccessModal: React.FC = () => {
           </>
         )}
       </div>
-    </Modal>
+    </Modal >
   );
 
-  async function handleVerifyOtp({ email, phone, otp }: handleVerifyOtpProps) {
+  async function handleVerifyOtp({ email, phone, otp, Class }: handleVerifyOtpProps) {
     try {
       setLoading(true);
       const response = await fetch(`${config.SERVER}/access-content/verify`, {
@@ -258,30 +293,31 @@ const AccessModal: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, phone, otp }),
+        body: JSON.stringify({ email, phone, otp, Class }),
       });
+
       const data = await response.json();
       if (data.success) {
-        const user = {
-          email,
-          phone,
-        };
+        const user = { email, phone };
+        await saveAccessesClasses(Class); // Ensure to save the class properly
         localStorage.setItem("access-content", JSON.stringify(user));
+
         notification.success({
           message: "Verification Successful",
           description: "You have successfully verified your details.",
         });
-        setStep(5);
+
+        setStep(5); // Move to the next step after success
       } else {
         notification.warning({
           message: "Warning",
-          description:
-            data.message || "Something went wrong. Please try again later.",
+          description: data.message || "Something went wrong. Please try again later.",
         });
       }
     } catch (error: any) {
-      console.error(error);
-      if (error.response.status === 500) {
+      console.error("Error during OTP verification:", error);
+
+      if (error.response && error.response.status === 500) {
         notification.error({
           message: "Error",
           description: "Something went wrong. Please try again later.",
@@ -290,8 +326,7 @@ const AccessModal: React.FC = () => {
         notification.warning({
           message: "Warning",
           description:
-            error.response.data.message ||
-            "Something went wrong. Please try again later.",
+            error.response?.data?.message || "Something went wrong. Please try again later.",
         });
       }
     } finally {
@@ -302,28 +337,23 @@ const AccessModal: React.FC = () => {
   async function handleGenerateOtp({ email, phone }: handleGenerateOtpProps) {
     try {
       setLoading(true);
-      const res = await axios.post(`${config.SERVER}/access-content`, {
-        email,
-        phone,
-      });
+      const res = await axios.post(`${config.SERVER}/access-content`, { email, phone });
+
       if (res.data.success) {
         if (res.data.verified) {
-          const user = {
-            email,
-            phone,
-          };
-          localStorage.setItem("access-content", JSON.stringify(user));
-          setStep(5);
+          setStep(5); // Move to the next step after verification
           notification.success({
             message: "OTP Verified",
             description: res.data.message,
           });
+
+          localStorage.setItem("access-classes", JSON.stringify(res.data.classes));
         } else {
           notification.success({
             message: "OTP Generated",
             description: "An OTP has been sent to your email.",
           });
-          setStep(3);
+          setStep(3); // Move to the OTP input step
         }
       } else {
         notification.error({
@@ -342,17 +372,43 @@ const AccessModal: React.FC = () => {
   }
 
   async function handleCancel() {
-    await handleLock();
-    const initialData = await localStorage.getItem("access-content");
-    if (!initialData) {
+    await handleLock(); // Call lock handler to lock access
+
+    const initialData = JSON.parse(localStorage.getItem("access-classes") || "[]");
+    if (initialData.length === 0) {
       notification.warning({
         message: "Action Canceled",
         description:
           "You have canceled the process. Please complete the action to unlock the content and view it.",
       });
-      navigate.push("/free-study-material");
+      navigate.push("/free-study-material"); // Redirect to free material page
     }
   }
+
+  async function saveAccessesClasses(Class: number | undefined): Promise<number | void> {
+    // Check if Class is undefined or null
+    if (Class === undefined) {
+      return;
+    }
+  
+    try {
+      const classes = JSON.parse(localStorage.getItem("access-classes") || "[]");
+  
+      if (classes.includes(Class)) {
+        return 1; // Return 1 if the class is already saved
+      }
+  
+      classes.push(Class); // Add the class to the list
+      localStorage.setItem("access-classes", JSON.stringify(classes)); // Save updated class list
+  
+      return 0; // Return 0 on success
+    } catch (error) {
+      console.error("Error accessing localStorage:", error);
+      return -1; // Return -1 in case of an error
+    }
+  }
+  
+
 };
 
 export default AccessModal;

@@ -30,8 +30,8 @@ const AppProvider: FC<AuthProviderProps> = ({ children }) => {
     }, []);
 
     const handleLock = async () => {
-        const initialData = await localStorage.getItem("access-content");
-        if (initialData) {
+        const classes = JSON.parse(localStorage.getItem("access-classes") || "[]");
+        if (classes.length === 0) {
             setLocked(false);
         } else {
             setLocked(true);

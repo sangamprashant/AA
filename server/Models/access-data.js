@@ -23,6 +23,7 @@ const AccessDataSchema = new mongoose.Schema(
         default: Date.now(),
       },
     },
+    Class: [{ type: Number, default: [] }],
     verified: {
       type: Boolean,
       default: false,

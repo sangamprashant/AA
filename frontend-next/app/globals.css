@@ -1912,5 +1912,5 @@ tbody td {
 
 
 .hero-title {
-  font-size: clamp(20px, 5vw, 60px) !important;
+  font-size: clamp(30px, 5vw, 60px) !important;
 }
