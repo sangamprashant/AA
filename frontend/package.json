@@ -17,6 +17,7 @@
     "@mui/icons-material": "^6.1.0",
     "@mui/material": "^6.1.0",
     "antd": "^5.20.6",
+    "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "framer-motion": "^11.5.4",
     "jquery": "^3.7.1",
