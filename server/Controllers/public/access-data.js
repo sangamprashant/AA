@@ -16,7 +16,6 @@ const sendOtp = async (req, res) => {
     const existingUser = await AccessData.findOne({ email, phone });
 
     if (existingUser) {
-      // Add class if it's not already in the user's Class array
       if (!existingUser.Class.includes(Class)) {
         existingUser.Class.push(Class);
         await existingUser.save();
@@ -155,83 +154,7 @@ const verifyOtp = async (req, res) => {
   }
 };
 
-const viewAccessByCategory = async (req, res) => {
-  try {
-    const category = req.body.category;
-    const query = {};
-
-    switch (category) {
-      case "v":
-        query.verified = true;
-        break;
-      case "r":
-        query.reached = true;
-        break;
-      case "v-r":
-        query.verified = true;
-        query.reached = true;
-        break;
-      case "v-nr":
-        query.verified = true;
-        query.reached = false;
-        break;
-      case "nv-r":
-        query.verified = false;
-        query.reached = true;
-        break;
-      case "nv-nr":
-        query.verified = false;
-        query.reached = false;
-        break;
-      default:
-        return res
-          .status(400)
-          .json({ message: "Invalid category", success: false });
-    }
-    const users = await AccessData.find(query);
-    return res.status(200).json({ users, success: true });
-  } catch (error) {
-    console.error("Error viewing access by category:", error);
-    return res
-      .status(500)
-      .json({ message: "Server error", success: false, error });
-  }
-};
-
-const updateReachedStatus = async (req, res) => {
-  const { email, phone } = req.body;
-
-  try {
-    const user = await AccessData.findOneAndUpdate(
-      { email, phone },
-      { reached: true },
-      { new: true }
-    );
-
-    if (!user) {
-      return res
-        .status(404)
-        .json({ message: "User not found", success: false });
-    }
-
-    return res.status(200).json({
-      message: "User reached status updated successfully",
-      success: true,
-      user,
-    });
-  } catch (error) {
-    console.error("Error updating reached status:", error);
-    return res.status(500).json({
-      message: "Server error",
-      success: false,
-      error,
-    });
-  }
-};
-
 module.exports = {
   sendOtp,
   verifyOtp,
-  viewAccessByCategory,
-  updateReachedStatus,
 };

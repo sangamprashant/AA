@@ -82,6 +82,7 @@ app.use("/api/v2/notifications", require("./server/Routers/admin/notifications")
 app.use("/api/v2/calendar", require("./server/Routers/admin/calendar"));
 app.use("/api/v2/subject", require("./server/Routers/admin/subjects"));
 app.use("/api/v2/teaching-notes", require("./server/Routers/admin/notes"));
+app.use("/api/v2/access-content", require("./server/Routers/admin/access-data"));
 
 app.get("/api/v1/protected", authenticateToken, (req, res) => {
   res.status(200).json({

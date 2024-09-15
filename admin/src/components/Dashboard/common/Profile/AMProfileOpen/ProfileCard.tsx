@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../context/AuthProvider";
 import { ProfileContext } from "../AMProfile";
 import axios from "axios";
-import { User } from "../../../../../types/profile";
 import { config } from "../../../../../config";
 
 const ProfileCard = () => {

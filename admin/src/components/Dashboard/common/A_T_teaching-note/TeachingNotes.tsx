@@ -148,7 +148,7 @@ const TeachingNotes: React.FC = () => {
     : teachingNotes;
 
   return (
-    <div>
+    <>
       <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
         <h5 className="text-uppercase">Teaching Notes</h5>
         <div className="d-flex gap-2">
@@ -198,7 +198,7 @@ const TeachingNotes: React.FC = () => {
           </Tabs.TabPane>
         )}
       </Tabs>
-    </div>
+    </>
   );
 };
 
