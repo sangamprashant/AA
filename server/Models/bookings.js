@@ -125,6 +125,9 @@ const bookingSchema = new mongoose.Schema(
       required: true,
       default: Date.now,
     },
+    reminder: {
+      type: String,
+    },
   },
   {
     timestamps: true,

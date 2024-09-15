@@ -628,6 +628,105 @@ const userProfileById = async (req, res) => {
   }
 };
 
+const bookingReminder = async (req, res) => {
+  const { id } = req.params;
+  const { reminder } = req.body;
+
+  try {
+    const booking = await Booking.findById(id);
+    if (!booking) {
+      return res
+        .status(404)
+        .json({ message: "Booking not found", success: false });
+    }
+
+    if (reminder === null || reminder === undefined || reminder.trim() === "") {
+      booking.reminder = undefined;
+    } else {
+      booking.reminder = reminder;
+    }
+
+    await booking.save();
+    res
+      .status(200)
+      .json({ message: "Reminder updated successfully", success: true });
+  } catch (err) {
+    console.error("Error updating booking reminder:", err);
+    res.status(500).json({ message: "Server error", success: false });
+  }
+};
+
+const bookingCount = async (req, res) => {
+  try {
+    const { month, year } = req.query;
+    const { id } = req.user;
+
+    const user = await User.findById(id);
+
+    if (!month || !year) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Month and year are required" });
+    }
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found!",
+        success: false,
+      });
+    }
+
+    const monthNum = parseInt(month) - 1;
+    const yearNum = parseInt(year);
+
+    const startDate = new Date(yearNum, monthNum, 1);
+    const endDate = new Date(yearNum, monthNum + 1, 1);
+
+    let query = {};
+
+    if (user.role === "employee") {
+      query.assignedEmployee = user._id;
+    } else if (user.role === "manager") {
+      const managedEmployees = await User.find({ manager: user._id }, "_id");
+      const employeeIds = managedEmployees.map((emp) => emp._id);
+
+      if (employeeIds.length > 0) {
+        query.assignedEmployee = { $in: employeeIds };
+      } else {
+        return res.status(200).json({ success: true, graphData: [] });
+      }
+    }
+
+    const graphData = await Booking.aggregate([
+      {
+        $match: {
+          createdAt: { $gte: startDate, $lt: endDate },
+          ...query,
+          approvedBYHigher: true,
+        },
+      },
+      {
+        $group: {
+          _id: "$state",
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          state: "$_id",
+          count: 1,
+          _id: 0,
+        },
+      },
+    ]);
+
+    return res.status(200).json({ success: true, graphData });
+  } catch (error) {
+    console.error("Error fetching booking count:", error);
+    return res.status(500).json({ success: false, error: "Server error" });
+  }
+};
+
 module.exports = {
   login,
   register,
@@ -642,4 +741,6 @@ module.exports = {
   replyContact,
   deleteContact,
   changePassword,
+  bookingReminder,
+  bookingCount,
 };

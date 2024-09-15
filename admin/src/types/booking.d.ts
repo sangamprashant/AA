@@ -56,6 +56,7 @@ export type Booking = {
   allocationDate: Date;
   createdAt: Date;
   updatedAt: Date;
+  reminder?: string;
 };
 
 export interface BookingTableProps {

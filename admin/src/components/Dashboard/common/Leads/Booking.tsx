@@ -55,7 +55,7 @@ const LeadsContainer: React.FC<LeadsContainerProps> = ({ label, index }) => {
         </div>
       </div>
       <div className="bottom">
-        <BookingTable type={label} setTotalData={setTotalData} />
+        <BookingTable type={label} setTotalData={setTotalData} index={index}/>
       </div>
     </div>
   );

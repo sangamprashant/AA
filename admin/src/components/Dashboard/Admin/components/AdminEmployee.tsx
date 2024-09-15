@@ -59,6 +59,7 @@ const AdminAddEmployee: React.FC = () => {
     data: null,
   });
   const [modalDeleteLoading, setModalDeleteLoading] = useState(false);
+  const [replacementId, setReplacementId] = useState<string>("")
   const authContext = useContext(AuthContext);
   if (!authContext) {
     return null;
@@ -110,6 +111,9 @@ const AdminAddEmployee: React.FC = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${authContext.token}`,
           },
+          params: {
+            replacementId
+          }
         }
       );
 
@@ -238,6 +242,22 @@ const AdminAddEmployee: React.FC = () => {
               <strong>Updated At:</strong>{" "}
               {new Date(model.data.updatedAt).toLocaleString()}
             </p>
+            {model.data.role !== "teacher" && <Form.Item label={
+              <span className="text-danger mt-2">
+                Select a Replacement
+              </span>
+            } layout="vertical"
+              required
+            >
+              <Select value={replacementId} onChange={(e) => setReplacementId(e)}>
+                <Select.Option value="">Select a replacement</Select.Option>
+                {(users.filter((user) => user.role === model?.data?.role && user._id !== model.data._id)).map((data, index) => (
+                  <>
+                    <Select.Option key={index} value={data._id}>{data.name}</Select.Option>
+                  </>
+                ))}
+              </Select>
+            </Form.Item>}
           </div>
         )}
       </Modal>

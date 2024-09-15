@@ -1,9 +1,16 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { authImage } from "../../assets/images";
+
 const Home: React.FC = () => {
   const navigate = useNavigate();
+
+  const roles = [
+    { role: "teacher", label: "Teacher Login", image: authImage.teacherImage, variant: "secondary" },
+    { role: "employee", label: "Employee Login", image: authImage.employeeImage, variant: "secondary" },
+    { role: "manager", label: "Manager Login", image: authImage.managerImage, variant: "success" },
+    { role: "admin", label: "Admin Login", image: authImage.adminImage, variant: "primary" }
+  ];
 
   const navigateToLogin = (role: string) => {
     navigate(`/login/${role}`);
@@ -12,63 +19,17 @@ const Home: React.FC = () => {
   return (
     <div className="d-flex flex-column justify-content-center align-items-center vh-100">
       <h1>Select Your Role</h1>
-      <div className="row mt-3">
-        <div className="col-md-6 d-flex flex-column align-items-center mt-4">
-          <img
-            src={authImage.teacherImage}
-            alt="Teacher"
-            style={{ width: "100px", height: "100px" }}
-          />
-          <Button
-            variant="secondary"
-            className="mt-2"
-            onClick={() => navigateToLogin("teacher")}
-          >
-            Teacher Login
-          </Button>
-        </div>
-        <div className="col-md-6 d-flex flex-column align-items-center mt-4">
-          <img
-            src={authImage.employeeImage}
-            alt="Employee"
-            style={{ width: "100px", height: "100px" }}
-          />
-          <Button
-            variant="secondary"
-            className="mt-2"
-            onClick={() => navigateToLogin("employee")}
-          >
-            Employee Login
-          </Button>
-        </div>
-        <div className="col-md-6 d-flex flex-column align-items-center mt-4">
-          <img
-            src={authImage.managerImage}
-            alt="Manager"
-            style={{ width: "100px", height: "100px" }}
-          />
-          <Button
-            variant="success"
-            className="mt-2"
-            onClick={() => navigateToLogin("manager")}
-          >
-            Manager Login
-          </Button>
-        </div>
-        <div className="col-md-6 d-flex flex-column align-items-center mt-4">
-          <img
-            src={authImage.adminImage}
-            alt="Admin"
-            style={{ width: "100px", height: "100px" }}
-          />
-          <Button
-            variant="primary"
-            className="mt-2"
-            onClick={() => navigateToLogin("admin")}
-          >
-            Admin Login
-          </Button>
-        </div>
+      <div className="mt-3 auth-grid">
+        {roles.map(({ role, label, image }) => (
+          <div key={role} className="">
+            <div className="d-flex flex-column align-items-center p-2 m-1 shadow border border-1 rounded outh-container" onClick={() => navigateToLogin(role)}>
+              <img src={image} alt={label} />
+              <h5 className=" text-center text-uppercase">
+                <b>{label}</b>
+              </h5>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

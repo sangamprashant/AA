@@ -8,3 +8,44 @@ a:hover {
 .card-my {
   background-color: #f0f2f5;
 }
+
+.outh-container {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.outh-container:hover {
+  cursor: pointer;
+  background-color: #ffffff84;
+  transform: scale(1.05);
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.outh-container img {
+  width: 100%;
+  max-width: 130px;
+  aspect-ratio: 1/1;
+}
+
+.icon-wrapper-leads {
+  font-size: 1.1rem;
+  color: #666;
+  transition: color 0.3s ease;
+  z-index: 2;
+  display: none;
+}
+
+.card-hover-leads:hover,
+.card-hover-leads:active {
+  transform: scale(1.02);
+  background-color: rgba(223, 223, 223, 0.05);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card-hover-leads:hover .icon-wrapper-leads,
+.card-hover-leads:active .icon-wrapper-leads {
+  display: block;
+}

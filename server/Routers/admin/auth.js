@@ -14,6 +14,8 @@ const {
   replyContact,
   deleteContact,
   changePassword,
+  bookingReminder,
+  bookingCount,
 } = require("../../Controllers/admin/auth");
 const requireManagerOrAdmin = require("../../middlewares/requireManagerOrAdmin");
 const requireAdmin = require("../../middlewares/requireAdmin");
@@ -28,7 +30,9 @@ router.get("/check", authenticateToken, checkAuth);
 router.get("/booking/:bookingId", authenticateToken, BookingId);
 router.put("/booking/:id", authenticateToken, BookingUpdate);
 router.post("/bookings", authenticateToken, BookingType);
+router.put("/bookings/:id/reminder", authenticateToken, bookingReminder);
 router.get("/bookings/search", authenticateToken, BookingSearch);
+router.get("/bookings-count", authenticateToken, bookingCount);
 router.get("/contacts", authenticateToken, ContactsByType);
 router.post("/contact/reply/:id", requireManagerOrAdmin, replyContact);
 router.delete("/contact/delete/:id", requireAdmin, deleteContact);

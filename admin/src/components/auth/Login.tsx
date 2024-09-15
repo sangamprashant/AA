@@ -1,23 +1,12 @@
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import EmailIcon from "@mui/icons-material/Email";
-import { Button, Form, Input, notification } from "antd";
+import { Button, Form, Input } from "antd";
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { config } from "../../config";
+import { openNotification } from '../../functions';
 import { AuthContext } from "../context/AuthProvider";
-
-// Ant Design notification helper function
-const openNotification = (
-  message: string,
-  description: string,
-  type: "success" | "error"
-) => {
-  notification[type]({
-    message,
-    description,
-    placement: "topRight",
-  });
-};
 
 const Login: React.FC = () => {
   const authContext = useContext(AuthContext);
@@ -85,7 +74,7 @@ const Login: React.FC = () => {
               },
             ]}
           >
-            <Input placeholder="Enter your email" suffix={<EmailIcon fontSize="small" />} />
+            <Input placeholder="Enter your email" suffix={<EmailIcon fontSize="small" />} autoFocus />
           </Form.Item>
           <Form.Item
             label="Password"
@@ -95,14 +84,17 @@ const Login: React.FC = () => {
             <Input.Password placeholder="Enter your password" />
           </Form.Item>
           <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className={`w-100`}
-              loading={loading}
-            >
-              {loading ? "Loading" : "Login"}
-            </Button>
+            <div className="d-flex gap-0">
+              <Button icon={<ArrowBackIosNewIcon fontSize="small" />} type="primary" danger htmlType="button" className=" rounded-end-0" onClick={() => navigate("/")} />
+              <Button
+                type="primary"
+                htmlType="submit"
+                className={`w-100 rounded-start-0`}
+                loading={loading}
+              >
+                {loading ? "Loading" : "Login"}
+              </Button>
+            </div>
           </Form.Item>
         </Form>
       </div>
