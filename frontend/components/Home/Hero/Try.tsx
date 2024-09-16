@@ -74,19 +74,20 @@ const Try = () => {
   // ];
 
   const listItems = [
-    "Expert instructors",
-    "Comprehensive curriculum",
-    "Personalized plans",
-    "Engaging methods",
-    "Proven success",
-    "Modern facilities",
-    "Progress tracking",
-    "Flexible schedules",
-    "Online and offline",
-    "Affordable pricing",
-    "Exclusive materials",
-    "Supportive community",
+    "Highly qualified instructors",
+    "Comprehensive math curriculum",
+    "Personalized learning plans",
+    "Interactive teaching methods",
+    "Proven student success",
+    "State-of-the-art facilities",
+    "Regular progress reports",
+    "Flexible scheduling options",
+    "Online and in-person classes",
+    "Affordable pricing plans",
+    "Exclusive study materials",
+    "Supportive learning community",
   ];
+
 
 
   return (
@@ -113,7 +114,7 @@ const Try = () => {
               <div className={`carousel-item ${active === 0 ? "active" : ""}`}>
                 <div className="container">
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-12">
                       <div className="detail-box">
                         <h1 className="text-white hero-title">
                           Welcome to{" "}
@@ -121,6 +122,12 @@ const Try = () => {
                             The A to Z Classes
                           </span>
                         </h1>
+                        <p className="text-white">
+                          Empowering students with knowledge and skills to
+                          succeed. <br />
+                          Watch our introduction video to learn more about what
+                          we offer.
+                        </p>
                         <ul className="list-unstyled my-3">
                           {listItems.slice(0, 4).map((item, index) => (
                             <motion.li
@@ -190,12 +197,7 @@ const Try = () => {
                         <h1 className="hero-title">
                           <span>The A To Z Classes</span>
                         </h1>
-                        <p className="text-white">
-                          Empowering students with knowledge and skills to
-                          succeed. <br />
-                          Watch our introduction video to learn more about what
-                          we offer.
-                        </p>
+                 
                         <ul className="list-unstyled my-3">
                           {listItems.slice(8, 12).map((item, index) => (
                             <motion.li

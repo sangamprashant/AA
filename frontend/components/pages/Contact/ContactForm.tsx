@@ -155,7 +155,7 @@ const ContactForm = () => {
             <div className="col-xs-12 col-sm-6 contact-info">
               <div className="row">
                 <div className="col-xs-12 col-sm-6">
-                  <h2 className=" ">Education Press</h2>
+                  <h2 className=" ">Education Hub</h2>
                   <p className="address d-flex gap-2">
                     <FontAwesomeIcon icon={faLocationDot} />{" "}
                     <span> {address}</span>

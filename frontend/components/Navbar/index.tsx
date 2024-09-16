@@ -78,7 +78,7 @@ const Navbar = () => {
                                     onClick={handleNavItemClick}
                                 >
                                     <Image src="/navbar/megaphone.png" alt="" height={20} width={20} /> {" "}
-                                    Free Demo Classes
+                                    Book A Free Demo Classes
                                 </Link>
                             </motion.li>
                             <motion.li
@@ -94,7 +94,7 @@ const Navbar = () => {
                                     href="/free-study-material"
                                     onClick={handleNavItemClick}
                                 >
-                                    <Image src="/navbar/megaphone (1).png" alt="" height={20} width={20} /> {" "}
+                                    <Image src="/navbar/megaphone.png" alt="" height={20} width={20} /> {" "}
                                     Free Study Materials
                                 </Link>
                             </motion.li>

@@ -1,17 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    async rewrites() {
-      return [
-        {
-          source: "/:path*",
-          destination: "/_next/static/:path*",
-        },
-      ];
-    },
+    // async rewrites() {
+    //   return [
+    //     {
+    //       source: "/:path*",
+    //       destination: "/_next/static/:path*",
+    //     },
+    //   ];
+    // },
     typescript: {
       ignoreBuildErrors: true,
     },
-    eslint: {
+    eslint: {   
       ignoreDuringBuilds: true,
     },
   };
