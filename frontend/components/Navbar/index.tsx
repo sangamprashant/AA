@@ -78,7 +78,7 @@ const Navbar = () => {
                                     onClick={handleNavItemClick}
                                 >
                                     <Image src="/navbar/megaphone.png" alt="" height={20} width={20} /> {" "}
-                                    Book A Free Demo Classes
+                                    <b>Book A Free Demo Classes</b>
                                 </Link>
                             </motion.li>
                             <motion.li
@@ -90,11 +90,11 @@ const Navbar = () => {
                                 transition={{ delay: 0.1, duration: 0.7 }}
                             >
                                 <Link
-                                    className="rainbow-text-nav"
+                                    className="nav-link"
                                     href="/free-study-material"
                                     onClick={handleNavItemClick}
                                 >
-                                    <Image src="/navbar/megaphone.png" alt="" height={20} width={20} /> {" "}
+                                    {/* <Image src="/navbar/megaphone.png" alt="" height={20} width={20} /> {" "} */}
                                     Free Study Materials
                                 </Link>
                             </motion.li>
@@ -127,6 +127,21 @@ const Navbar = () => {
                                     onClick={handleNavItemClick}
                                 >
                                     Contact Us
+                                </Link>
+                            </motion.li>
+                            <motion.li
+                                className="nav-item"
+                                variants={navItemVariants}
+                                initial="hidden"
+                                animate="visible"
+                                transition={{ delay: 0.1, duration: 0.7 }}
+                            >
+                                <Link
+                                    href="/blog"
+                                    className="nav-link"
+                                    onClick={handleNavItemClick}
+                                >
+                                    Our Blogs
                                 </Link>
                             </motion.li>
 

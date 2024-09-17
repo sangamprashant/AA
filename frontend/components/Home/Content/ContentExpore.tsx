@@ -4,7 +4,6 @@ import { AppContext } from "@/context/AppProvider";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import StarIcon from "@mui/icons-material/Star";
-// import Image from "next/image";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { config } from "../../../config";
@@ -29,10 +28,9 @@ interface SavedMaterial {
 }
 
 const ContentExplore: React.FC = () => {
-  const [content, setContent] = useState<StudyMaterial[]>([]);
+  const [content, setContent] = useState<StudyMaterial[]>([...ContentData]);
   const [selectedClass, setSelectedClass] = useState<string>("");
   const [filteredData, setFilteredData] = useState<StudyMaterial[]>([]);
-  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     fetchData();
@@ -52,7 +50,6 @@ const ContentExplore: React.FC = () => {
 
   async function fetchData() {
     try {
-      setLoading(true)
       const response = await fetch(`${config.SERVER}/study-materials`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -83,17 +80,12 @@ const ContentExplore: React.FC = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
-      setLoading(false)
     }
   };
 
   const saveToLocalStorage = (materials: SavedMaterial[]) => {
     localStorage.setItem("studyMaterials", JSON.stringify(materials));
   };
-
-  if (content.length === 0 && loading) {
-    return <LoadingContent />;
-  }
 
   return (
     <Section className="py-5">
@@ -181,7 +173,7 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
   const { classesUnlocked } = appContext;
 
   return (
-    <Link href={`/free-study-material/${item._id}`} className="card-content-explore">
+    <Link href={`/free-study-material/access?code=${item._id}`} className="card-content-explore">
       <img
         src={`${item?.imageUrl}?cache-control=max-age=31536000`}
         className="card-img-top-content-explore"

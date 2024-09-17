@@ -22,6 +22,7 @@ const ClassList = ({ classNumber }: ClassListProps) => {
               src={`classes/${classNumber}.png?cache-control=max-age=31536000`}
               alt={`Class ${classNumber}`}
               className="class-image"
+              loading="lazy"
 
             />
             <div className="overlay">

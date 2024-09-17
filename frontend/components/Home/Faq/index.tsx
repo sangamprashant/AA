@@ -12,29 +12,11 @@ const faqData = [
     data: [
       {
         key: "1",
-        label: "What are the benefits of online tuition for school students?",
+        label: 'What makes "The AtoZ Classes" different from other online math tuition platforms?',
         children: (
-          <div>
-            <p>
-              <b>
-                Online tuition can provide several benefits to school students,
-                including:
-              </b>
-            </p>
-
-            <p>
-              <b>Convenience and flexibility:</b> Students can attend classes
-              with the best teachers from anywhere and at any time, without
-              having to travel to a physical location.
-            </p>
-
-            <p>
-              <b>Personalized learning:</b> Online tuition allows students to
-              learn at their own pace and receive individualized attention from
-              their teachers. This can help students to better understand
-              difficult concepts and improve their academic performance.
-            </p>
-          </div>
+          <p>
+            At The AtoZ Classes, we don’t just teach math-we build confidence. Every student has a unique way of learning, and we embrace that. Whether your child needs extra practice or a challenge, we tailor our approach to fit them. Our small class sizes, experienced tutors, and interactive methods make learning math enjoyable. We’re not just focused on improving grades—we’re here to help your child fall in love with math and believe in their own abilities.
+          </p>
         ),
       },
     ],
@@ -43,13 +25,10 @@ const faqData = [
     data: [
       {
         key: "2",
-        label: "How does online tuition work?",
+        label: "How do the classes work?",
         children: (
           <p>
-            Online tuition is one-to-one tuition where the tutor and student are
-            not in the same room or even the same location. Tutor and student
-            connect which allows them to see each other, hear each other, share
-            documents, and collaborate on problems together.
+            We know life can be busy, so we’ve designed our classes to be flexible and easy to join. Your child can log into our live sessions from the comfort of your home, and don’t worry if you miss a class—recordings are available. We keep our sessions interactive, so students can ask questions, solve problems in real-time, and never feel left out. It’s like having a personal tutor right there with them, but online!
           </p>
         ),
       },
@@ -59,14 +38,10 @@ const faqData = [
     data: [
       {
         key: "3",
-        label: "What subjects can I study through online tuition?",
+        label: "Will my child receive individual attention during the sessions?",
         children: (
           <p>
-            Online tuition is available for a wide range of subjects, including
-            Math, Science, Arts, Commerce, and languages. It is also available
-            for creative subjects such as music, art, drawing, painting, and
-            singing. Students can find experienced teachers for any subject at
-            affordable prices.
+            Yes! We keep our class sizes small for a reason. We believe every student deserves to be heard, and we make sure no question goes unanswered. Our tutors are patient, attentive, and skilled at giving personalized feedback. Your child won’t just be another face in the crowd—they’ll be our priority.
           </p>
         ),
       },
@@ -76,11 +51,10 @@ const faqData = [
     data: [
       {
         key: "4",
-        label: "How do I sign up for a demo class?",
+        label: "How do you handle doubts and queries outside of class hours?",
         children: (
           <p>
-            A student who wants a free demo. simply sign up and choose your
-            subject and teacher to start your class.
+            We understand that questions don’t always come up during class—sometimes they pop up late at night or while doing homework. That’s why we’ve set up a special system where students can message us their doubts anytime, and our tutors will get back to them quickly. Plus, we hold regular doubt-clearing sessions to make sure no one is left confused.
           </p>
         ),
       },
@@ -91,11 +65,10 @@ const faqData = [
       {
         key: "5",
         label:
-          "Can I access online tuition classes on a tablet or mobile phone?",
+          "How do you track the progress of students?",
         children: (
           <p>
-            Yes, you can access online tuition classes on a mobile phone, tablet
-            or laptop/desktop.
+            We keep parents in the loop every step of the way. After regular assessments, we share detailed reports that highlight your child’s progress. We don’t just focus on grades—we talk about their understanding of concepts, their confidence level, and how we can continue to support their growth. It’s about creating a learning path that works best for your child.
           </p>
         ),
       },
@@ -105,31 +78,11 @@ const faqData = [
     data: [
       {
         key: "6",
-        label: "How can online tuition help students prepare for exams?",
+        label: "Are the classes aligned with the school curriculum?",
         children: (
           <>
             <p>
-              Online tuition classes can be an effective medium for students
-              preparing for exams, as they can provide them with access to
-              additional resources and individualized attention from their
-              tutors or teachers.
-            </p>
-
-            <p>
-              {" "}
-              <b>Online tuition can help students with:</b>
-            </p>
-
-            <p>
-              <b>Identify areas of weakness:</b> Online tutors can help students
-              identify areas for improvement and provide targeted feedback and
-              guidance.
-            </p>
-
-            <p>
-              <b>Practice exam techniques:</b> Expert teachers can help students
-              develop effective exam-taking strategies and provide practice
-              questions and mock exams to prepare.
+              Yes, absolutely! We make sure our classes cover everything your child needs to excel in their school exams. Whether your child is studying CBSE, ICSE, or a state board, we’ve got them covered. We also like to go a step further, preparing students not just for their exams, but to truly understand the subject.
             </p>
           </>
         ),
@@ -140,6 +93,99 @@ const faqData = [
     data: [
       {
         key: "7",
+        label: "What if my child finds math challenging or has math anxiety?",
+        children: (
+          <p>
+            We understand math anxiety—it’s more common than people think. But at The AtoZ Classes, we have a solution. Our tutors are trained not only to teach math but to teach it with patience and compassion. We break down complex concepts into simple, digestible steps. We celebrate small victories, and before your child knows it, they’ll start feeling more confident and less anxious about math. It’s about progress, not perfection!
+
+          </p>
+        ),
+      },
+    ],
+  },
+  {
+    data: [
+      {
+        key: "8",
+        label: "How do I enroll my child, and what is the fee structure?",
+        children: (
+          <p>
+            Getting started is easy! You can either fill out the enrollment form on our website, give us a call at 9454509368, or drop us an email at connect@theatozclasses.com. Our fee structure is flexible to fit your needs, and we offer different packages depending on the number of sessions and the class level of your child. We’re always happy to talk and find a plan that works best for you.
+          </p>
+        ),
+      },
+    ],
+  },
+  {
+    data: [
+      {
+        key: "9",
+        label: "Do you offer trial classes?",
+        children: (
+          <p>
+            Yes! We understand that choosing the right tutor is important, so we offer a free trial class. This way, you and your child can experience firsthand how we teach and see if it’s a good fit. No pressure, just a chance to explore what we offer.
+          </p>
+        ),
+      },
+    ],
+  },
+  {
+    data: [
+      {
+        key: "10",
+        label: "How are your tutors selected?",
+        children: (
+          <p>
+            Our tutors are not just experts in math, they’re experts in teaching it too. We select tutors who are passionate about helping students and have a knack for making math interesting. All our tutors go through a careful screening process to ensure they are not only knowledgeable but also patient, approachable, and dedicated to making sure every student succeeds.
+          </p>
+        ),
+      },
+    ],
+  },
+  {
+    data: [
+      {
+        key: "11",
+        label: "How do you ensure my child stays motivated?",
+        children: (
+          <p>
+            We believe in making learning fun! At The AtoZ Classes, we use interactive methods like quizzes, math games, and real-world examples to keep students engaged. We celebrate progress and give constant encouragement. Our goal is to show students that math is not something to fear, but something they can conquer—and maybe even enjoy!
+          </p>
+        ),
+      },
+    ],
+  },
+  {
+    data: [
+      {
+        key: "12",
+        label: "My child is struggling in math. Can your classes really help?",
+        children: (
+          <p>
+            Absolutely! Every student struggles at some point, but that’s exactly why we’re here. We start by understanding where your child is facing difficulties and then build a learning plan around that. Our tutors break down concepts into simple, manageable pieces, so your child doesn’t feel overwhelmed. Step by step, we’ll help them regain confidence and start seeing math in a new light.
+          </p>
+        ),
+      },
+    ],
+  },
+  {
+    data: [
+      {
+        key: "13",
+        label: "How do you handle students who are advanced in math and want more challenges?",
+        children: (
+          <p>
+            We love helping students who want to go beyond the curriculum! For those who are ready for more challenges, we offer advanced problem-solving sessions and higher-level concepts. Our tutors work with students individually to push them to reach their full potential, whether that means preparing for competitive exams or just diving deeper into complex topics.
+          </p>
+        ),
+      },
+    ],
+  },
+  // 
+  {
+    data: [
+      {
+        key: "14",
         label: `What is ${appName} refund policy?`,
         children: (
           <>
@@ -174,7 +220,7 @@ const faqData = [
   {
     data: [
       {
-        key: "8",
+        key: "15",
         label: `How can I get a refund? (in cases where applicable)`,
         children: (
           <>
@@ -194,7 +240,7 @@ const faqData = [
   {
     data: [
       {
-        key: "9",
+        key: "16",
         label: `What if I have any concerns related to live classes or other services?`,
         children: (
           <>

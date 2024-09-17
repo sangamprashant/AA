@@ -157,7 +157,7 @@ const Try = () => {
               <div className={`carousel-item ${active === 1 ? "active" : ""}`}>
                 <div className="container">
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-12">
                       <div className="detail-box">
                         <h1 className="hero-title">
                           <span>Best Teachers for You</span>
@@ -192,12 +192,12 @@ const Try = () => {
               <div className={`carousel-item ${active === 2 ? "active" : ""}`}>
                 <div className="container">
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-12">
                       <div className="detail-box">
                         <h1 className="hero-title">
                           <span>The A To Z Classes</span>
                         </h1>
-                 
+
                         <ul className="list-unstyled my-3">
                           {listItems.slice(8, 12).map((item, index) => (
                             <motion.li

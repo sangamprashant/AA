@@ -4,7 +4,6 @@ import { AppContext } from "@/context/AppProvider";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
-import { useParams } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 import { config } from "../../../config";
 import Footer from "../../Footer";
@@ -14,9 +13,10 @@ import Section from "../../Reuse/Section";
 import AccessModal from "./AccessModal";
 import ContentSide from "./ContentSide";
 import { ContentData } from "./HHH";
+import { useSearchParams } from "next/navigation";
 
 const ContentOpen: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+
   const [content, setContent] = useState<{
     title: string;
     pdfUrl: string;
@@ -32,11 +32,19 @@ const ContentOpen: React.FC = () => {
   const [isSaved, setIsSaved] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [showAccessModal, setShowAccessModal] = useState<boolean>(false);
+  const [id, setId] = useState<string>("")
+  const searchParams = useSearchParams();
   const appContext = useContext(AppContext);
   if (!appContext) {
     return <LoadingUI />;
   }
   const { classesUnlocked, handleLock } = appContext;
+
+  useEffect(() => {
+    const classIdFromParams = searchParams.get("code") || "";
+    setId(classIdFromParams);
+    window.scrollTo(0, 0);
+  }, [searchParams]);
 
   useEffect(() => {
     if (id && id.length === 24) {
@@ -90,7 +98,7 @@ const ContentOpen: React.FC = () => {
       alert("Clipboard feature is not supported in this environment.");
     }
   };
-  
+
 
   if (loading) {
     return (

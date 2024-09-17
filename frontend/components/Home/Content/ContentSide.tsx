@@ -60,7 +60,7 @@ const ContentSide: React.FC<ContentSideProps> = ({ category }) => {
         {studyMaterials.length > 0 ? (
           studyMaterials.map((material) => (
             <Link
-              href={`/free-study-material/${material._id}`}
+              href={`/free-study-material/access?code=${material._id}`}
               key={material._id}
               className="d-flex gap-3 material-item align-items-center"
             >

@@ -7,223 +7,202 @@ const JEEE = () => {
       <Section className="py-5 ">
         <div className="d-flex justify-content-center align-items-center">
           <div style={{ maxWidth: "1000px" }}>
-            <h1>What is IIT JEE Main & Advanced Exam?</h1>
+            <h1>What is the IIT JEE Main & Advanced Exam?</h1>
             <p>
-              Dosto, sabhi aspiring engineers ke liye ek khaas announcement hai!
-              Tayaar ho jao apne dreams ko pure karne ke liye, kyunki ab aapke
-              samne hai Joint Entrance Examination (JEE) ka safar. Yeh exam hi
-              hai woh chabi, jisse aap IIT aur other engineering colleges ke
-              darwaaze khol sakte ho. Doubtnut par hum aapko JEE ki taiyaari,
-              eligibility criteria, important dates, admit card ki jaankari,
-              recommended books aur exam pattern ke baare mein poori jankari
-              denge.
+              The IIT JEE (Joint Entrance Examination) is like the gateway to a dream for students who aspire to study in India's prestigious engineering institutes. It's a two-part exam—JEE Main and JEE Advanced-and both are required for admission to the Indian Institutes of Technology (IITs).
             </p>
             <p>
-              IIT JEE, India mein conduct hone wala national-level engineering
-              entrance examination hai. Yeh hai woh raasta, jisse aap IITs, NITs
-              aur dusre achhe engineering colleges mein admission pa sakte hai.
-              IIT-JEE ka exam do stages mein bata hai, JEE Main aur JEE Advance,
-              jahaan par aapki knowledge,Problem Solving ability and analytical
-              skills ka test hota hai.
+              JEE Main is the first step, open to all students, and it’s used for admissions to NITs, IIITs, and other engineering colleges as well. It tests students on subjects like Physics, Chemistry, and Math-focusing on fundamental concepts.
             </p>
+            <p>JEE Advanced is the next level, but only those who score well in JEE Main can sit for it. This is where the competition heats up! The questions here are more challenging, designed to test not only knowledge but problem-solving skills and the ability to apply concepts in tricky situations. It’s the exam that gets you into the IITs, the dream destination for many aspiring engineers.
+            </p>
+            <p>
+              But more than just an exam, JEE is a journey. It’s about hard work, dedication, and the belief that you can achieve something incredible. At The AtoZ Classes, we help students prepare for this journey by simplifying complex concepts and offering guidance every step of the way. Whether your child is just starting to prepare or needs help with those final stretches, we’re here to support them in every way we can.</p>
             <h2>IIT JEE Main Eligibility Criteria</h2>
             <div className="space-y-6">
               <div>
                 <dl>
                   <dt className="font-semibold">
-                    Q1: JEE Main 2025 mein appear hone ke liye kya eligibility
-                    criteria hai? (What are the eligibility criteria for
-                    appearing in JEE Main 2024?
+                    Q1: What are the eligibility criteria for appearing in JEE Main 2025?
                   </dt>
                   <dd className="ml-0">
-                    A1:JEE Main 2025 ke liye koi age limit nahi hai. Candidates
-                    jo ki class 12/equivalent examination mein 2023, 2024 mein
-                    pass ho gaye hain ya 2025 mein appear kar rahe hain, unhe
-                    bina umar ke JEE Main 2025 exam mein appear hone ki
-                    permission hai. Haan, agar woh institute mein admission lena
-                    chahte hain, toh unhe institute(s) ke age criteria ko pura
-                    karna padega.
-                  </dd>
-                </dl>
-              </div>
-              <div>
-                <dl>
-                  <dt className="font-semibold">
-                    Q2: JEE Main 2025 ke liye qualifying examinations kaun-kaun
-                    se hain? (What are the qualifying examinations for JEE Main
-                    2025?
-                  </dt>
-                  <dd className="ml-0">
-                    A2: JEE Main 2025 ke liye following exams qualifying mane
-                    jate hain:{" "}
+                    A1: Preparing for the JEE Main 2025 is exciting, and knowing the eligibility criteria is the first step toward a smooth application process. Here’s what your child needs to know:
                     <ul>
-                      {" "}
+                      <li><b>Educational Qualifications:</b> Students should have completed their Class 12th or equivalent exam from a recognized board. They should have studied Physics, Chemistry, and Mathematics as their main subjects.
+                      </li>
+                      <li><b>Year of Passing:</b> To sit for JEE Main 2025, students should have passed their Class 12th exam in 2023, 2024, or should be appearing in 2025. This means both recent graduates and current students can apply.
+                      </li>
+                      <li><b>Age Limit:</b> There is no strict age limit for JEE Main, but typically, students should be within the age group of 17 to 25 years. Some specific age relaxations might apply based on the rules set by different institutions.
+                      </li>
                       <li>
-                        Recognized Central/State Boards jaise CBSE, CISCE, etc.
-                        dvara conduct ki gayi 10+2 system ki final examination.
-                      </li>{" "}
+                        <b> Number of Attempts:</b> Students can appear for JEE Main up to three times in consecutive years. This allows some flexibility for students to attempt the exam in multiple years if needed.
+                      </li>
+                      <li><b>Nationality:</b> Indian and foreign students can both apply for JEE Main. Foreign candidates may have slightly different procedures and requirements, so it’s good to check specific guidelines if this applies.
+                      </li>
                       <li>
-                        {" "}
-                        Recognized Board/University dvara conduct ki gayi
-                        Intermediate ya do saal ka Pre-University examination{" "}
-                      </li>{" "}
-                      <li>
-                        National Defence Academy ke Joint Services Wing ka do
-                        saal ka course ka final examination.{" "}
-                      </li>{" "}
-                      <li>
-                        {" "}
-                        National Institute of Open Schooling dvara kam se kam
-                        paanch subjects ke saath conduct ki gayi Senior
-                        Secondary School Examination{" "}
-                      </li>{" "}
-                      <li>
-                        India ya kisi foreign country mein koi bhi Public
-                        School/Board/University examination, jise Association of
-                        Indian Universities (AIU) 10+2 system ke equivalent ke
-                        roop mein recognize karti hai.{" "}
-                      </li>{" "}
-                      <li>
-                        {" "}
-                        Higher Secondary Certificate Vocational Examination.{" "}
-                      </li>{" "}
-                      <li>
-                        {" "}
-                        AICTE ke through recognize ki gayi Diploma ya State
-                        board of technical education ki minimum 3 saal ki
-                        validity wali diploma.{" "}
-                      </li>{" "}
-                      <li>
-                        {" "}
-                        General Certificate Education (GCE) examination
-                        (London/Cambridge/Sri Lanka) ke Advanced (A) level.
-                      </li>{" "}
-                      <li>
-                        {" "}
-                        Cambridge University ki High School Certificate
-                        Examination ya International Baccalaureate Office,
-                        Geneva ki International Baccalaureate Diploma.{" "}
-                      </li>{" "}
-                      <li>
-                        {" "}
-                        Agar koi candidate Bharat ke bahar se ya upar meentioned
-                        Boards se nahi hokar Class 12 (or equivalent)
-                        examination complete kiya hai, toh unhe Association of
-                        Indian Universities (AIU) dwara ek certificate pradan
-                        karna hoga jisme bataya gaya ho ki unhone Class 12
-                        Examination ke equivalent examination pass kiya hai.{" "}
-                      </li>{" "}
-                      <li>
-                        Agar Class 12 Examination koi public examination nahi
-                        hai, toh candidate ko kam se kam ek public (Board or
-                        Pre-University) examination pahle se pass karna hoga.
+                        <b>Minimum Marks:</b> While there’s no specific minimum mark requirement for JEE Main, the general trend is that students should have scored at least 75% in their Class 12th exams (or be in the top 20 percentile of their board exam) to qualify for admission to NITs and IIITs. However, for other institutions, the criteria might vary.
+                      </li>
+                      <li><b>Important Note:</b> Eligibility criteria can sometimes change, so it's always a good idea to check the latest information from the official JEE Main website or trusted sources.
                       </li>
                     </ul>
+                    <p className="m-0 p-0">
+                      At The AtoZ Classes, we help students navigate these requirements and prepare effectively, so they can focus on doing their best in the exam without any stress about the eligibility details. If you have any more questions or need further clarification, feel free to reach out!</p>
                   </dd>
                 </dl>
               </div>
               <div>
                 <dl>
                   <dt className="font-semibold">
-                    Q3: What is the minimum marks required for qualifying
-                    examination?
+                    Q2: What are the qualifying examinations for JEE Main 2025?
                   </dt>
                   <dd className="ml-0">
-                    A3: Students ko minimum 75% (general category) and
-                    65%(SC/ST/OBC Category) score karne honge class 12th board
-                    mein, JEE Main 2025 ke liye eligible hone ke liye. or
-                    Students class 12th mein top 20 percentile mein hone
-                    chahiye..
+                    A2: To sit for JEE Main 2025, students need to ensure they meet certain educational requirements. Here’s a straightforward guide to the qualifying examinations:
+                    <ul>
+                      <li>
+                        <strong>Class 12th Examination:</strong> The primary qualifying examination is the Class 12th board exam (or equivalent) from a recognized educational board. Students should have completed or be appearing for this examination in 2023, 2024, or 2025. The subjects should include Physics, Chemistry, and Mathematics, as these are crucial for the JEE Main syllabus.
+                      </li>
+                      <li>
+                        <strong>Diploma Holders:</strong> Students who have completed a three-year diploma course in engineering from a recognized institution are also eligible to apply. This option is for those who may have pursued a diploma after completing their 10th grade.
+                      </li>
+                      <li>
+                        <strong>Equivalent Examinations:</strong> If a student has completed an equivalent examination, such as the International Baccalaureate (IB) or a similar program recognized by the JEE Main authorities, they are also eligible. It’s important that their coursework includes Physics, Chemistry, and Mathematics.
+                      </li>
+                      <li>
+                        <strong>National Open Schooling:</strong> Students who have completed their education through National Institute of Open Schooling (NIOS) are also eligible to take JEE Main, provided they meet the subject requirements.
+                      </li>
+                      <li>
+                        <strong>Foreign Candidates:</strong> For foreign students or those who have studied abroad, the qualification needs to be equivalent to the Indian Class 12th exam, with subjects including Physics, Chemistry, and Mathematics.
+                      </li>
+                    </ul>
+                    <p><b>Key Points:</b></p>
+                    <p>Ensure that the institution where the exam was taken is recognized and the subjects align with JEE Main requirements.
+                      The exact equivalency criteria and details might vary, so checking with the official JEE Main information brochure or website for the most accurate and updated details is always a good idea. <br />
+                      At The AtoZ Classes, we guide students through every step of their JEE preparation, including understanding and meeting these qualification requirements. If there’s anything more you’d like to know, just ask!</p>
                   </dd>
                 </dl>
               </div>
               <div>
                 <dl>
                   <dt className="font-semibold">
-                    Q4: State of eligibility kya hai? (What is the state of
-                    eligibility?)
+                    Q3: What is the minimum marks required for the qualifying examination for JEE Main 2025?
                   </dt>
                   <dd className="ml-0">
-                    A4: State of eligibility ka matlab hota hai ki candidate ne
-                    kaunse State se Class 12 (or equivalent) qualifying
-                    examination pass ki hai, jiske wajah se woh JEE Main 2025 ke
-                    liye eligible hai. Yeh Important hai ki state of eligibility
-                    candidate ki Birth place ya rehne ki jagah par depend nahi
-                    karti hai. For example, agar koi candidate New Delhi mein
-                    situated institution se Class 12 (or equivalent) qualifying
-                    examination deta hai aur woh Uttar Pradesh ke Noida mein
-                    rehne wale hai, toh candidate ka state of eligibility Delhi
-                    hoga, Uttar Pradesh nahi..
+                    A3: The minimum marks required in the qualifying examination for JEE Main 2025 can vary slightly depending on the specific requirements set by various institutions. Here’s a general overview:
+                    <ul>
+                      <li>
+                        <strong>General Category:</strong> Typically, students from the General category need to have scored at least 75% in their Class 12th board exams. Alternatively, they should be in the top 20 percentile of their respective board exams.
+                      </li>
+                      <li>
+                        <strong>SC/ST Categories:</strong> For students belonging to Scheduled Castes (SC) and Scheduled Tribes (ST), the minimum percentage required is 65% in their Class 12th board exams.
+                      </li>
+                      <li>
+                        <strong>Top 20 Percentile:</strong> In addition to the percentage requirement, students need to be in the top 20 percentile of their respective board exam results. This percentile cutoff is determined based on the overall performance of students in the board exams each year.
+                      </li>
+                      <li>
+                        <strong>Diploma Holders:</strong> For those with a three-year diploma in engineering, the qualifying criteria often involve having a good academic record, but the specific percentage requirements can vary by the institution to which you are applying.
+                      </li>
+                      <li>
+                        <strong>Important Note:</strong> These requirements are typically set for admissions to institutions like NITs and IIITs. The eligibility for different institutions or for other types of admissions might have slightly different criteria. Always check the latest information from official sources or specific institutions.
+                      </li>
+                    </ul>
+                    <p>At The AtoZ Classes, we help students understand these requirements and prepare accordingly, so they can focus on doing their best without worrying about eligibility criteria. If you have any more questions or need further clarification, feel free to reach out!</p>
                   </dd>
                 </dl>
               </div>
               <div>
                 <dl>
                   <dt className="font-semibold">
-                    Q5: Agar candidate ne ek State se Class 12 pass kiya hai
-                    lekin improvement ke liye dusre State se exam diya hai, toh
-                    state of eligibility kya hogi? (If a candidate passed Class
-                    12 from one state but appeared for improvement from another
-                    state, what will be the state of eligibility?)
+                    Q4: What is the state of eligibility for JEE Main 2025?
                   </dt>
                   <dd className="ml-0">
-                    A5: Agar candidate ne ek State se Class 12 (or equivalent)
-                    qualifying examination pass kiya hai lekin improvement ke
-                    liye dusre State se exam diya hai, toh candidate ka state of
-                    eligibility wahi hoga jahan se unhone pehli baar Class 12
-                    (or equivalent) examination pass kiya hai, dusre State nahi
-                    jahan se unhone improvement ke liye exam diya hai.
+                    A4: The "state of eligibility" for JEE Main refers to the state in which a student is eligible to apply for admission based on their place of residence or the location of their qualifying examination. Here’s a breakdown:
+                    <ul>
+                      <li>
+                        <strong>State of Residence:</strong> This is the state where the student has been a resident for a significant period or the state in which they have completed their Class 12th or equivalent examination. It’s important because some states may have specific reservation policies or eligibility criteria for local residents.
+                      </li>
+                      <li>
+                        <strong>State of Schooling:</strong> This refers to the state where the student has studied and completed their qualifying examination (Class 12th or equivalent). For instance, if a student has completed their Class 12th from a school in Maharashtra, then Maharashtra is considered their state of schooling.
+                      </li>
+                      <li>
+                        <strong>Home State and Other State Quotas:</strong> During the admission process, particularly for government-funded institutions like NITs and IIITs, there are often two types of quotas:
+                        <ul>
+                          <li>
+                            <strong>Home State Quota:</strong> This is for students who are residents of the state where the institution is located. For example, if you are from Uttar Pradesh and are applying to an NIT in Uttar Pradesh, you will be considered under the home state quota.
+                          </li>
+                          <li>
+                            <strong>Other State Quota:</strong> This applies to students from other states who are applying to institutions outside their home state.
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <strong>Domicile Requirements:</strong> Some institutions might have specific domicile requirements, meaning the student must have been a resident of the state for a certain number of years or have completed their schooling there. These details can vary, so it’s good to check the specific requirements of the institution to which you’re applying.
+                      </li>
+                    </ul>
+                    <p><b>Key Points:
+                    </b></p>
+                    <p>The state of eligibility impacts how students are considered during the admission process and can affect their chances of getting admission based on state quotas. <br />
+                      Always check the official guidelines and brochures for the most accurate and up-to-date information regarding state eligibility. <br />
+                      At The AtoZ Classes, we help students navigate these eligibility criteria and ensure they are well-prepared for the application process. If you need any more details or have further questions, feel free to ask!</p>
                   </dd>
                 </dl>
               </div>
               <div>
                 <dl>
                   <dt className="font-semibold">
-                    Q6: NIOS se Class 12 pass ya appear kar rahe candidates ko
-                    state of eligibility kaise select karna chahiye? (How should
-                    candidates from NIOS select their state of eligibility?)
+                    Q5: If a candidate passed Class 12 from one state but appeared for improvement from another state, what will be the state of eligibility?
                   </dt>
                   <dd className="ml-0">
-                    A6: NIOS se Class 12 pass ya appear kar rahe candidates ko
-                    state of eligibility NIOS ke study center ki condition ke
-                    accordingly select karni chahiye..
+                    A5: In cases where a candidate has passed their Class 12th examination from one state but appeared for improvement exams in another state, the "state of eligibility" for JEE Main is generally determined based on the following factors:
+                    <ul>
+                      <li>
+                        <strong>State of Residence:</strong> Typically, the state where the student has been a resident or has their primary place of residence is considered. This is often the state that is used for eligibility and quota purposes.
+                      </li>
+                      <li>
+                        <strong>State of Schooling:</strong> For JEE Main, the state where the student completed their regular Class 12th examination is usually considered. This means if a student passed Class 12th from a school in State A but appeared for improvement exams in State B, State A, where they completed their original schooling, is generally considered their state of eligibility.
+                      </li>
+                      <li>
+                        <strong>Institutional Policies:</strong> Some institutions might have specific rules regarding the state of eligibility, especially if improvement exams are taken. It’s always a good idea to check the guidelines of the specific institution or the JEE Main official website for any specific instructions related to improvement exams.
+                      </li>
+                      <li>
+                        <strong>Application Form Details:</strong> When filling out the JEE Main application form, students should provide accurate information about their state of schooling and residence. This information is used to determine their eligibility and to apply any state-specific quotas or reservations.
+                      </li>
+                    </ul>
+                    <p><b>
+                      In Summary:
+                    </b></p>
+                    <p>For most purposes, the state where the student originally passed Class 12th is considered their state of eligibility. <br />
+                      If there are any doubts or if the improvement exam impacts eligibility in any special way, checking with the official JEE Main guidelines or contacting the examination authorities can provide clarity. <br />
+                      At The AtoZ Classes, we assist students in understanding and managing these nuances to ensure they meet all the eligibility requirements correctly. If you have any more questions or need further details, feel free to ask!</p>
                   </dd>
                 </dl>
               </div>
               <div>
                 <dl>
                   <dt className="font-semibold">
-                    Q7: Nepal/Bhutan se Class 12 (or equivalent) examination
-                    pass karne wale Indian nationals ke liye state of
-                    eligibility kaise decide ki jati hai? (How is the state of
-                    eligibility determined for Indian nationals passing the
-                    qualifying examination from Nepal/Bhutan?)
+                    Q6: How should candidates from NIOS select their state of eligibility?
                   </dt>
                   <dd className="ml-0">
-                    A7: Nepal/Bhutan se Class 12 (or equivalent) examination
-                    pass karne wale Indian nationals ke liye state of
-                    eligibility unke passport mein diye gaye India ke permanent
-                    address ke adhar par decide ki jati hai.
+                    A6: Candidates from NIOS should select the state where they completed their Class 12th exams as their state of eligibility.
                   </dd>
                 </dl>
               </div>
               <div>
                 <dl>
                   <dt className="font-semibold">
-                    Q8. OCI candidates jo ki India mein Class 12 (or equivalent)
-                    examination pass karte hain, unke liye state of eligibility
-                    kya hota hai? (What is the state of eligibility for OCI
-                    candidates passing the Class 12 (or equivalent) examination
-                    in India?)
+                    Q7: How is the state of eligibility determined for Indian nationals passing the qualifying examination from Nepal/Bhutan?
                   </dt>
                   <dd className="ml-0">
-                    A8: OCI candidates jo ki India mein Class 12 (or equivalent)
-                    examination pass karte hain, unke liye state of eligibility
-                    Indian nationals ke barabar hoti hai. Lekin agar OCI
-                    candidates examination ko bahar se kisi institution se pass
-                    karte hain, toh woh Other State quota seats ya All India
-                    quota seats ke liye eligible hote hain (Home State quota
-                    seats ke liye nahi) NITs, IIITs aur Other-CFTIs mein.
+                    A7: For Indian nationals who pass their qualifying examination from Nepal or Bhutan, their state of eligibility is generally considered to be their state of residence in India.
+                  </dd>
+                </dl>
+              </div>
+              <div>
+                <dl>
+                  <dt className="font-semibold">
+                    Q8. What is the state of eligibility for OCI candidates passing the Class 12 (or equivalent) examination in India?
+                  </dt>
+                  <dd className="ml-0">
+                    A8: For OCI candidates who pass the Class 12 (or equivalent) examination in India, their state of eligibility is usually the state where they completed their Class 12th exams.
                   </dd>
                 </dl>
               </div>
@@ -338,7 +317,7 @@ const JEEE = () => {
                 </div>
                 <div className="overflow-x-scroll px-4 mt-10">
                   <h2 className="m-0 mb-4 text-xl sm:text-2xl">
-                    JEE Main Admit Card Details{" "}
+                    JEE Main Admit Card Details
                   </h2>
                   <table className="border-2 border-gray-200 table-fixed">
                     <thead>
@@ -452,86 +431,73 @@ const JEEE = () => {
               <div>
                 <div className="px-4 mt-10 scroll-mt-28">
                   <h2 className="m-0 mb-4 text-xl sm:text-2xl">
-                    JEE Main Exam Pattern &amp; Marking Scheme
+                    JEE Main Exam Pattern & Marking Scheme
                   </h2>
                   <div className="space-y-6">
                     <div>
                       <dl>
                         <dt className="font-semibold">
-                          Q1: JEE Main exam ke liye marking scheme kya hai?{" "}
+                          Q1: What is the marking scheme for the JEE Main exam?
                         </dt>
                         <dd className="ml-0">
-                          A1: JEE Main exam ki marking scheme mein Positive and
-                          Negative dono tarah ke marking hote hai
+                          A1: In the JEE Main exam, each correct answer earns 4 marks. For each incorrect answer, 1 mark is deducted. Unanswered questions receive no penalty.
                         </dd>
                       </dl>
                     </div>
                     <div>
                       <dl>
                         <dt className="font-semibold">
-                          Q2: Sahi answers ke liye JEE Main exam mein kitne
-                          marks milte hain?{" "}
+                          Q2: How many marks are awarded for correct answers in the JEE Main exam?
                         </dt>
                         <dd className="ml-0">
-                          A2: Har sahi answer ke liye, students ko +4 marks
-                          milte hain.
+                          A2: For each correct answer, students are awarded +4 marks.
                         </dd>
                       </dl>
                     </div>
                     <div>
                       <dl>
                         <dt className="font-semibold">
-                          Q3: JEE Main exam mein negative marking hoti hai?
+                          Q3: Is there negative marking in the JEE Main exam?
                         </dt>
                         <dd className="ml-0">
-                          A3: Haan, JEE Main exam mein negative marking hoti
-                          hai. Har galat answer ke liye, -1 mark deduct kiya
-                          jata hai
+                          A3: Yes, there is negative marking in the JEE Main exam. Each incorrect answer results in a deduction of -1 mark.
                         </dd>
                       </dl>
                     </div>
                     <div>
                       <dl>
                         <dt className="font-semibold">
-                          Q4: Kya unattempted questions par Negative Marking
-                          hoti hai?
+                          Q4: Is there negative marking for unattempted questions?
                         </dt>
                         <dd className="ml-0">
-                          A4: Nahi, JEE Main exam mein unattempted questions par
-                          negative marking nahi hoti hai..
+                          A4: No, there is no negative marking for unattempted questions in the JEE Main exam.
                         </dd>
                       </dl>
                     </div>
                     <div>
                       <dl>
                         <dt className="font-semibold">
-                          Q5: Marking scheme samajhna kyu important hai?
+                          Q5: Why is understanding the marking scheme important?
                         </dt>
                         <dd className="ml-0">
-                          A5: Marking scheme samajhna isliye important hai
-                          kyunki ek competetive exam ki strategy banane and apne
-                          marks ko badhane ke liye marking scheme pata honi
-                          chahiye.
+                          A5: Understanding the marking scheme is crucial for developing a strategy and maximizing your score in a competitive exam.
                         </dd>
                       </dl>
                     </div>
                     <div>
                       <dl>
                         <dt className="font-semibold">
-                          Q6: Students kis tarah se JEE Main exam ke liye
-                          taiyari kar sakte hain?
+                          Q6: How can students prepare for the JEE Main exam?
                         </dt>
                         <dd className="ml-0">
-                          A6: Students sample papers aur mock tests ke saath
-                          practice karke JEE Main exam ke liye ache se
-                          preparation kar sakte hain.
+                          A6: Students can prepare well by practicing with sample papers and mock tests.
                         </dd>
                       </dl>
                     </div>
                     <div>
                       <dl>
                         <dt className="font-semibold">
-                          Q7: What is total marks of JEE Main?
+                          Q7: What is the total marks for JEE Main?
                         </dt>
                         <dd className="ml-0">
                           A7: The total marks for the JEE Main exam is 300.
@@ -541,17 +507,14 @@ const JEEE = () => {
                     <div>
                       <dl>
                         <dt className="font-semibold">
-                          Q8. What is the total number of questions in JEE
-                          Mains?
+                          Q8: What is the total number of questions in JEE Main?
                         </dt>
                         <dd className="ml-0">
-                          A8: JEE Main Exam mein Physics, Chemistry &amp; Maths
-                          ke total 75 Questions aate hain.{" "}
+                          A8: The JEE Main exam consists of 75 questions:
                           <ul>
-                            {" "}
-                            <li> Physics- 25 Questions (MCQ) </li>{" "}
-                            <li> Chemistry- 25 Questions (MCQ) </li>{" "}
-                            <li> Maths- 25 Questions (MCQ) </li>
+                            <li>Physics: 25 Questions (MCQ)</li>
+                            <li>Chemistry: 25 Questions (MCQ)</li>
+                            <li>Maths: 25 Questions (MCQ)</li>
                           </ul>
                         </dd>
                       </dl>
@@ -559,16 +522,14 @@ const JEEE = () => {
                     <div>
                       <dl>
                         <dt className="font-semibold">
-                          Q9 : What is the total marks of each subject in JEE
-                          Mains??
+                          Q9: What are the total marks for each subject in JEE Main?
                         </dt>
                         <dd className="ml-0">
                           A9:
                           <ul>
-                            {" "}
-                            <li> Physics- 100 marks </li>{" "}
-                            <li> Chemistry- 100 marks </li>{" "}
-                            <li> Maths- 100 marks </li>.
+                            <li>Physics: 100 marks</li>
+                            <li>Chemistry: 100 marks</li>
+                            <li>Maths: 100 marks</li>
                           </ul>
                         </dd>
                       </dl>

@@ -10,7 +10,7 @@
     background-color: var(--theme-color);
     padding: 20px;
     color: white;
-    text-align: center;
+    text-align: center; 
   }
   
   #what-next .what-next-container .left p {
