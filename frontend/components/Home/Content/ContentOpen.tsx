@@ -1,22 +1,22 @@
 "use client"
-import LoadingUI from "@/components/LoadingUI";
-import { AppContext } from "@/context/AppProvider";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import ShareIcon from "@mui/icons-material/Share";
-import React, { useContext, useEffect, useState } from "react";
-import { config } from "../../../config";
-import Footer from "../../Footer";
-import Loading from "../../Reuse/Loading";
-import NoData from "../../Reuse/NoData";
-import Section from "../../Reuse/Section";
-import AccessModal from "./AccessModal";
-import ContentSide from "./ContentSide";
-import { ContentData } from "./HHH";
-import { useSearchParams } from "next/navigation";
+import LoadingUI from '@/components/LoadingUI';
+import { AppContext } from '@/context/AppProvider';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import ShareIcon from '@mui/icons-material/Share';
+import { useSearchParams } from 'next/navigation';
+import React, { useContext, useEffect, useState } from 'react';
+import { config } from '../../../config';
+import Footer from '../../Footer';
+import Loading from '../../Reuse/Loading';
+import NoData from '../../Reuse/NoData';
+import Section from '../../Reuse/Section';
+import AccessModal from './AccessModal';
+import ContentSide from './ContentSide';
+import { ContentData } from './HHH';
+import ClientOnlyWrapper from './ClientOnlyWrapper';
 
 const ContentOpen: React.FC = () => {
-
   const [content, setContent] = useState<{
     title: string;
     pdfUrl: string;
@@ -32,18 +32,18 @@ const ContentOpen: React.FC = () => {
   const [isSaved, setIsSaved] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [showAccessModal, setShowAccessModal] = useState<boolean>(false);
-  const [id, setId] = useState<string>("")
+  const [id, setId] = useState<string>('');
   const searchParams = useSearchParams();
   const appContext = useContext(AppContext);
+
   if (!appContext) {
     return <LoadingUI />;
   }
   const { classesUnlocked, handleLock } = appContext;
 
   useEffect(() => {
-    const classIdFromParams = searchParams.get("code") || "";
+    const classIdFromParams = searchParams.get('code') || '';
     setId(classIdFromParams);
-    window.scrollTo(0, 0);
   }, [searchParams]);
 
   useEffect(() => {
@@ -58,19 +58,18 @@ const ContentOpen: React.FC = () => {
     if (id) {
       const localData = ContentData.find((item) => item._id === id) || null;
       setContent(localData);
-    } else {
     }
   };
 
   const handleSave = async () => {
-    const savedItems = JSON.parse(localStorage.getItem("savedItems") || "[]");
+    const savedItems = JSON.parse(localStorage.getItem('savedItems') || '[]');
 
     if (isSaved) {
       const updatedItems = savedItems.filter((item: string) => item !== id);
-      localStorage.setItem("savedItems", JSON.stringify(updatedItems));
+      localStorage.setItem('savedItems', JSON.stringify(updatedItems));
     } else {
       savedItems.push(id);
-      localStorage.setItem("savedItems", JSON.stringify(savedItems));
+      localStorage.setItem('savedItems', JSON.stringify(savedItems));
     }
 
     setIsSaved(!isSaved);
@@ -78,10 +77,10 @@ const ContentOpen: React.FC = () => {
 
   useEffect(() => {
     if (content && !content.free && !classesUnlocked.includes(Number(content.category.split(' ')[1]))) {
-      handleLock(true)
+      handleLock(true);
       setShowAccessModal(true);
     } else {
-      handleLock(false)
+      handleLock(false);
     }
   }, [content, classesUnlocked]);
 
@@ -89,16 +88,15 @@ const ContentOpen: React.FC = () => {
     if (typeof window !== 'undefined' && navigator.clipboard) {
       try {
         await navigator.clipboard.writeText(window.location.href);
-        alert("Link copied to clipboard!");
+        alert('Link copied to clipboard!');
       } catch (error) {
-        console.error("Failed to copy link:", error);
-        alert("Failed to copy link.");
+        console.error('Failed to copy link:', error);
+        alert('Failed to copy link.');
       }
     } else {
-      alert("Clipboard feature is not supported in this environment.");
+      alert('Clipboard feature is not supported in this environment.');
     }
   };
-
 
   if (loading) {
     return (
@@ -118,7 +116,7 @@ const ContentOpen: React.FC = () => {
   }
 
   return (
-    <>
+    <ClientOnlyWrapper>
       {showAccessModal && <AccessModal />}
       <Section className="py-3">
         <div className="row">
@@ -163,8 +161,9 @@ const ContentOpen: React.FC = () => {
         </div>
       </Section>
       <Footer />
-    </>
+    </ClientOnlyWrapper>
   );
+
   async function fetchContentFromServer() {
     try {
       setLoading(true);
