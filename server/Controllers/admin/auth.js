@@ -458,35 +458,37 @@ const BookingType = async (req, res) => {
   // Date filter logic
   const dateFilter = req.body.dateFilter;
   const customDateRange = req.body.customDateRange;
+  const createdOrUpdated = req.body.createdOrUpdated || "createdAt";
+  const dateField = createdOrUpdated === "updatedAt" ? "updatedAt" : "createdAt";
 
   if (dateFilter === "today") {
-    query.createdAt = {
+    query[dateField] = {
       $gte: moment_time().startOf("day").toDate(),
       $lte: moment_time().endOf("day").toDate(),
     };
   } else if (dateFilter === "yesterday") {
-    query.createdAt = {
+    query[dateField] = {
       $gte: moment_time().subtract(1, "days").startOf("day").toDate(),
       $lte: moment_time().subtract(1, "days").endOf("day").toDate(),
     };
   } else if (dateFilter === "in-7-days") {
-    query.createdAt = {
+    query[dateField] = {
       $gte: moment_time().subtract(7, "days").startOf("day").toDate(),
       $lte: moment_time().endOf("day").toDate(),
     };
   } else if (dateFilter === "in-a-month") {
-    query.createdAt = {
+    query[dateField] = {
       $gte: moment_time().subtract(1, "months").startOf("day").toDate(),
       $lte: moment_time().endOf("day").toDate(),
     };
   } else if (dateFilter === "in-a-year") {
-    query.createdAt = {
+    query[dateField] = {
       $gte: moment_time().subtract(1, "years").startOf("day").toDate(),
       $lte: moment_time().endOf("day").toDate(),
     };
   } else if (dateFilter === "custom-date-range" && customDateRange) {
     const [startDate, endDate] = customDateRange;
-    query.createdAt = {
+    query[dateField] = {
       $gte: moment_time(startDate).startOf("day").toDate(),
       $lte: moment_time(endDate).endOf("day").toDate(),
     };

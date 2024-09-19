@@ -5,6 +5,8 @@ interface LeadsProviderProps {
   children: ReactNode;
 }
 
+type RadioOptionsLeadsProps = "createdAt" | "updatedAt"
+
 interface LeadsContextProps {
   sort: Sort;
   setSort: (val: Sort) => void;
@@ -14,6 +16,8 @@ interface LeadsContextProps {
   setDateFilter: (val: DateFilter) => void;
   customDateRange: DateRangeProps;
   setCustomDateRange: (val: DateRangeProps) => void;
+  radioOptionsLeads: RadioOptionsLeadsProps;
+  setRadioOptionsLeads: (val: RadioOptionsLeadsProps) => void
 }
 
 const LeadsContext = createContext<LeadsContextProps | undefined>(undefined);
@@ -23,6 +27,7 @@ const LeadsProvider = ({ children }: LeadsProviderProps) => {
   const [dateFilter, setDateFilter] = useState<DateFilter>("today");
   const [customDateRange, setCustomDateRange] = useState<DateRangeProps>(null);
   const [reload, setReload] = useState<boolean>(false);
+  const [radioOptionsLeads, setRadioOptionsLeads] = useState<RadioOptionsLeadsProps>("createdAt")
 
   const handleReload = () => {
     setReload((pre) => !pre);
@@ -39,6 +44,8 @@ const LeadsProvider = ({ children }: LeadsProviderProps) => {
         setDateFilter,
         customDateRange,
         setCustomDateRange,
+        radioOptionsLeads,
+        setRadioOptionsLeads
       }}
     >
       {children}

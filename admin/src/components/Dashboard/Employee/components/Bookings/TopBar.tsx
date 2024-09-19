@@ -1,7 +1,7 @@
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import SearchIcon from '@mui/icons-material/Search';
 import SyncIcon from "@mui/icons-material/Sync";
-import { Alert, Badge, Button, DatePicker, Form, Input, Modal, Select, Tooltip } from "antd";
+import { Alert, Badge, Button, DatePicker, Form, Input, Modal, Radio, RadioChangeEvent, Select, Tooltip } from "antd";
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -62,6 +62,8 @@ const TopBar: React.FC = () => {
     dateFilter,
     setDateFilter,
     setCustomDateRange,
+    radioOptionsLeads,
+    setRadioOptionsLeads,
   } = useLeads();
   const auth = useContext(AuthContext);
   if (!auth) return null;
@@ -148,11 +150,19 @@ const TopBar: React.FC = () => {
     }
   }
 
+  const onRadioSelect = (e: RadioChangeEvent) => {
+    setRadioOptionsLeads(e.target.value);
+  };
+
   return (
     <>
       <div className="nav-bar mb-2 d-flex justify-content-between align-items-center">
         <h5>LEADS</h5>
         <div className="d-flex gap-2 align-items-center">
+          <Radio.Group onChange={onRadioSelect} value={radioOptionsLeads}>
+            <Radio value="createdAt">Created</Radio>
+            <Radio value="updatedAt">Updated</Radio>
+          </Radio.Group>
           <Select
             style={{ width: "170px" }}
             value={dateFilter}

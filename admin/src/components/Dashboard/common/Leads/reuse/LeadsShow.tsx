@@ -23,7 +23,7 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
     return null;
   }
   const { token, user } = authContext;
-  const { sort, reload, dateFilter, customDateRange } = useLeads();
+  const { sort, reload, dateFilter, customDateRange, radioOptionsLeads } = useLeads();
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [modalContent, setModalContent] = useState<Booking | null>(null);
   const [lodingReminder, setLoadingReminder] = useState<boolean>(false)
@@ -36,7 +36,7 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
 
   useEffect(() => {
     fetchData();
-  }, [type, token, page, sort, reload, dateFilter, customDateRange]);
+  }, [type, token, page, sort, reload, dateFilter, customDateRange, radioOptionsLeads]);
 
   const fetchData = async () => {
     try {
@@ -50,6 +50,7 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
           sort,
           dateFilter,
           customDateRange,
+          createdOrUpdated: radioOptionsLeads
         },
         {
           headers: {
@@ -170,7 +171,7 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
                 {item.reminder && (
                   <span className='text-success'>
                     <br />
-                    <strong><NotificationsActiveIcon fontSize='small'/> Reminder:</strong> {item.reminder}
+                    <strong><NotificationsActiveIcon fontSize='small' /> Reminder:</strong> {item.reminder}
                   </span>
                 )}
               </p>
