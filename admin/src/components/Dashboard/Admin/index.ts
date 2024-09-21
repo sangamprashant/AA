@@ -4,6 +4,7 @@ import AdminBookings from "./components/Bookings";
 import AdminContacts from "./components/Contacts";
 import AdminCalendarManage from "./components/Dashboard/AdminCalendarManage";
 import AdminSubjects from "./components/Dashboard/AdminSubjects";
+import Blog from "./components/Dashboard/blogs.admin/Blog";
 import ATeachingNotes from "./components/Dashboard/TeachingNotes";
 import ATNOpen from "./components/Dashboard/TeachingNotes/TNOpen";
 import AdminPayments from "./components/Payments";
@@ -20,4 +21,5 @@ export {
   AdminPayments,
   AdminStudyM,
   AdminSubjects,
+  Blog,
 };

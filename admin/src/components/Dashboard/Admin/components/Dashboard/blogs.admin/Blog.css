@@ -1,0 +1,33 @@
+.editor-toolbar .btn {
+  margin-right: 5px;
+}
+
+.editor-toolbar .btn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.editor-content {
+  min-height: 150px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.editor-content .tiptap {
+  min-height: 150px;
+}
+
+.preview-area {
+  min-height: 150px;
+  background: #f8f9fa;
+}
+
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

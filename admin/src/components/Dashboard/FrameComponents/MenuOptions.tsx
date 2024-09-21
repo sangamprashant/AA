@@ -10,6 +10,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import EventNoteIcon from "@mui/icons-material/EventNote";
+import FeedIcon from '@mui/icons-material/Feed';
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import LockResetIcon from "@mui/icons-material/LockReset";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
@@ -83,6 +84,12 @@ const MenuOptions = () => {
       icon: <DateRangeIcon />,
       label: "Leave Management",
       onClick: () => navigate("/admin/leave-management"),
+    },
+    {
+      key: "blogs",
+      icon: <FeedIcon />,
+      label: "Blogs",
+      onClick: () => navigate("/admin/blog"),
     },
   ];
 
@@ -211,12 +218,12 @@ const MenuOptions = () => {
     ...(user?.role === "admin"
       ? adminOptions
       : user?.role === "manager"
-      ? managerOptions
-      : user?.role === "employee"
-      ? employeeOptions
-      : user?.role === "teacher"
-      ? teachersOptions
-      : []),
+        ? managerOptions
+        : user?.role === "employee"
+          ? employeeOptions
+          : user?.role === "teacher"
+            ? teachersOptions
+            : []),
     ...commonBottom,
   ];
 

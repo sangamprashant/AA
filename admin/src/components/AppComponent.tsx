@@ -1,9 +1,8 @@
+import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Home, Login } from "./auth";
-import { useContext } from "react";
 import { AuthContext } from "./context/AuthProvider";
 import { Dashboard404, DashboardSetting, Frame } from "./Dashboard";
-import {  CreateBooking, EmpBOpen, EmployeeDashboard,  } from "./Dashboard/Employee";
 import {
   AdminAddEmployee,
   AdminBookings,
@@ -15,7 +14,10 @@ import {
   AdminSubjects,
   ATeachingNotes,
   ATNOpen,
+  Blog,
 } from "./Dashboard/Admin";
+import { AMETProfie, AMLeadsOpen, AMProfile, AMSMOpen, AttamdanceManagement, Bookings, EMAttendance, Payment } from "./Dashboard/common";
+import { CreateBooking, EmpBOpen, EmployeeDashboard, } from "./Dashboard/Employee";
 import {
   LeadsApproval,
   ManagerBookings,
@@ -26,9 +28,8 @@ import {
   ManagerStudyM,
   MEmployees,
 } from "./Dashboard/Manager";
-import { AMETProfie, AMLeadsOpen, AMProfile, AMSMOpen, AttamdanceManagement, Bookings, EMAttendance, Payment } from "./Dashboard/common";
-import LoadingOverlay from "./reuse/LoadingOverlay";
 import { TeacherDashboard, TTeachingNotes, TTNOpen } from "./Dashboard/Teacher";
+import LoadingOverlay from "./reuse/LoadingOverlay";
 
 const AppComponent = () => {
   const authContext = useContext(AuthContext);
@@ -54,6 +55,7 @@ const AppComponent = () => {
             <Route path="/admin/calendar-management" element={<AdminCalendarManage />} />
             <Route path="/admin/teaching-notes" element={<ATeachingNotes />} />
             <Route path="/admin/teaching-notes/:id" element={<ATNOpen />} />
+            <Route path="/admin/blog" element={<Blog />} />
             {/* -------------- manager -------------- */}
             <Route path="/manager/dashboard" element={<ManagerDashboard />} />
             <Route path="/manager/leads-bucket" element={<ManagerBookings />} />
@@ -77,8 +79,8 @@ const AppComponent = () => {
             <Route path="/dashboard/payment-open" element={<Payment />} />
             <Route path="/:role/leave-management" element={<AttamdanceManagement />} />
             <Route path="/:role/s-m/:id" element={<AMSMOpen />} />
-             {/* ----------- employee/manager ------------- */}
-             <Route path="/:role/attendance" element={<EMAttendance />} />
+            {/* ----------- employee/manager ------------- */}
+            <Route path="/:role/attendance" element={<EMAttendance />} />
             {/* ---------------- all ------------------ */}
             <Route path="/:role/password" element={<DashboardSetting />} />
             <Route path="/:role/profile" element={<AMETProfie />} />
@@ -91,10 +93,10 @@ const AppComponent = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login/:role" element={<Login />} />
-          <Route path="*" element={<Dashboard404 auth={false}/>} />
+          <Route path="*" element={<Dashboard404 auth={false} />} />
         </Routes>
       )}
-      <LoadingOverlay/>
+      <LoadingOverlay />
     </>
   );
 };
