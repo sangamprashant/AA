@@ -34,6 +34,7 @@ import { config } from '../../../../../../config';
 import { BlogPost } from '../../../../../../types/blog';
 import './Blog.css';
 import { AuthContext } from '../../../../../context/AuthProvider';
+import { uploadFileToFirebase } from '../../../../../../firebase';
 
 const Blog = () => {
     return (
@@ -72,6 +73,7 @@ const BlogAdd = () => {
     const [title, setTitle] = useState<string>("")
     const [description, setDescription] = useState<string>("")
     const [image, setImage] = useState<string | null>(null);
+    const [file, setFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(false)
 
     const editor = useEditor({
@@ -176,9 +178,13 @@ const BlogAdd = () => {
                 message.error('File size must be less than 500KB.');
                 return;
             }
+            setFile(file);
             const reader = new FileReader();
             reader.onload = () => {
                 setImage(reader.result as string);
+            };
+            reader.onerror = () => {
+                message.error('Error reading the file.');
             };
             reader.readAsDataURL(file);
         }
@@ -195,22 +201,23 @@ const BlogAdd = () => {
     };
 
     const handleUpload = async () => {
-
-        if (!title.trim() || !image || !description.trim()) {
+        if (!title.trim() || !image || !description.trim() || !file) {
             message.error('Please fill in all fields.');
             return;
         }
 
-        setLoading(true)
-
-        const reqBody = {
-            title: title.trim(),
-            image,
-            description: description.trim(),
-            content: editor.getHTML(),
-        };
+        setLoading(true);
 
         try {
+            // Upload image to Firebase
+            const imagePath = `blog_images/${Date.now()}_${file.name}`;
+            const imageUrl = await uploadFileToFirebase(file, imagePath);
+            const reqBody = {
+                title: title.trim(),
+                image: imageUrl,
+                description: description.trim(),
+                content: editor.getHTML(),
+            };
             const response = await axios.post(`${config.SERVER}/blog`, reqBody, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -224,9 +231,11 @@ const BlogAdd = () => {
                     description: 'Blog post created successfully.',
                 });
 
+                // Reset form fields
                 setTitle('');
                 setDescription('');
                 setImage('');
+                setFile(null); // Reset file
                 editor.commands.setContent('');
             }
         } catch (error: any) {
@@ -235,9 +244,8 @@ const BlogAdd = () => {
                 error.response?.data?.message || 'Failed to create blog post. Please try again.'
             );
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-
     };
 
     return (

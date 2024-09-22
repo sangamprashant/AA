@@ -77,7 +77,7 @@ const CommonCommONCOntext = {
         <img
           alt="pre number concepts in math - Matching"
           loading="lazy"
-          src="/content/class-1/numbers-1-1.png"
+          src="/content/class-1/numbers-1-1.jpg"
         />
       </p>
 
@@ -438,7 +438,7 @@ const CommonCommONCOntext = {
           <img
             alt="Classification of real numbers"
             loading="lazy"
-            src="/content/class-1/numbers-1-13.png"
+            src="/content/class-1/numbers-1-14.png"
           />
         </strong>
       </p>
@@ -1081,7 +1081,7 @@ const CommonCommONCOntext = {
 </ul>
 <p style="margin: 0cm 0cm 8pt 40px;"><img alt="Set of different girl s hair styles and colors black, blue, blonde, red, brown Premium Vector" class="max-width:100%" src="/content/data/7.png" style="width: 400px; max-width: 100%;"></p>
 <p style="margin: 0cm 0cm 8pt 40px;"><strong>2. Ordinal Data</strong> -&nbsp; It is a type of data that is named,&nbsp;ordered both, and a scale(range) is used. For example ranking in the class First, Second, Third. An example is shown in the form of an image given&nbsp;below:</p>
-<p style="margin: 0cm 0cm 8pt 40px;"><img alt="Vector illustration of three kids with medals standing on winners pedestal. Premium Vector" class="max-width:100%" src="/content/data/8.png" style="width: 400px; max-width: 100%;"></p>
+<p style="margin: 0cm 0cm 8pt 40px;"><img alt="Vector illustration of three kids with medals standing on winners pedestal. Premium Vector" class="max-width:100%" src="/content/data/8.jpg" style="width: 400px; max-width: 100%;"></p>
 <ul>
 <li style="margin: 0cm 0cm 8pt;">
 <h4><strong>Quantitative Data -&nbsp;</strong>As the name suggests it deals with quantity and quantity is related to numbers. It is also known as numeric data. For example the number of bananas in a dozen, the number of candies in a box, etc.<br>
@@ -1092,7 +1092,7 @@ const CommonCommONCOntext = {
 </ul>
 <p style="margin: 0cm 0cm 8pt 40px;"><img alt="Count orange on the tree Premium Vector" class="max-width:100%" src="/content/data/9.png" style="width: 350px; max-width: 100%;"></p>
 <p style="margin: 0cm 0cm 8pt 40px;"><strong>2.</strong> <strong>Continuous Data</strong> -&nbsp;This type of data takes specific values that can be measured and fall under a specific range such as weight, length, temperature, speed, etc. An example is shown in the form of an image given&nbsp;below:</p>
-<p style="margin: 0cm 0cm 8pt 40px;"><img alt="Height measure for little children Premium Vector" class="max-width:100%" src="/content/data/10.png" style="width: 350px; max-width: 100%;"></p>
+<p style="margin: 0cm 0cm 8pt 40px;"><img alt="Height measure for little children Premium Vector" class="max-width:100%" src="/content/data/10.jpg" style="width: 350px; max-width: 100%;"></p>
 <div id="Explain-Primary-And-Secondary-Data">
 <div id="pri">
 <div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Primary And Secondary Data</h2>

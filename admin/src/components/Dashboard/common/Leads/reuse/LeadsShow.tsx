@@ -314,7 +314,7 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
       });
       return;
     }
-  
+
     if (!selectedEmp) {
       notification.error({
         message: 'Missing Information',
@@ -322,7 +322,7 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
       });
       return;
     }
-  
+
     if (modalContent?.assignedEmployee._id === selectedEmp) {
       notification.warning({
         message: 'Employee is already assigned',
@@ -330,7 +330,7 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
       });
       return;
     }
-  
+
     try {
       const response = await axios.put(`${config.SERVER}/auth/update-employee-leads`, {
         bookingId: modalContent._id,
@@ -340,21 +340,21 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
           'Authorization': `Bearer ${token}`
         }
       });
-  
+
       if (response.data.success) {
-        setData(prevData => 
+        setData(prevData =>
           prevData.map(item =>
             item._id === modalContent._id
-              ? { ...item, assignedEmployee: { _id: selectedEmp, name: response.data.booking.updatedEmployee.name, email: response.data.booking.updatedEmployee.email } }
+              ? { ...item, assignedEmployee: { _id: selectedEmp, name: modalContent.assignedEmployee.name, email: modalContent.assignedEmployee.email } }
               : item
           )
         );
-  
+
         notification.success({
           message: 'Employee updated successfully',
           description: response.data.message || "The employee has been updated."
         });
-  
+
         // Close the modal
         handleEmpModalClose();
       }

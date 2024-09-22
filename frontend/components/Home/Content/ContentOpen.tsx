@@ -52,6 +52,11 @@ const ContentOpen: React.FC = () => {
     } else {
       fetchContentFromLocal();
     }
+
+    if (window !== undefined) {
+      window.scrollTo(0, 0)
+    }
+
   }, [id]);
 
   const fetchContentFromLocal = () => {

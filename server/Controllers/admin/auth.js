@@ -7,6 +7,7 @@ const Contact = require("../../Models/contact");
 const moment = require("moment-timezone");
 const moment_time = require("moment");
 const sendContactResponse = require("../../Mail/sendContactResponse");
+const mongoose = require("mongoose");
 
 const register = async (req, res) => {
   const { email, password, role } = req.body;
@@ -787,7 +788,7 @@ const updateLeadsEmployee = async (req, res) => {
         .json({ success: false, error: "Booking not found" });
     }
 
-    booking.assignedEmployee = newEmployeeId;
+    booking.assignedEmployee = employee;
     booking.stateHistory.push({
       state: booking.state,
       comment: "Employee reassigned",
