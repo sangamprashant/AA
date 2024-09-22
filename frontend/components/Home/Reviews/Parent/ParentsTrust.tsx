@@ -50,7 +50,7 @@ const ParentsTrust: React.FC = () => {
                   <img
                     src={`${reason.icon}?cache-control=max-age=31536000`}
                     alt=""
-                    width={80}
+                    width={80} loading="lazy"
                   />
                 </div>
                 <div className="text-container">

@@ -1,4 +1,4 @@
-process.env.TZ = 'Asia/Kolkata';
+process.env.TZ = "Asia/Kolkata";
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -10,11 +10,11 @@ const cookieParser = require("cookie-parser");
 const authenticateToken = require("./server/middlewares/authMiddleware");
 const trackVisitor = require("./server/middlewares/trackVisitor");
 const config = require("./server/config");
-const moment = require('moment-timezone');
+const moment = require("moment-timezone");
 
 const app = express();
 
-app.set('trust proxy', 1);
+app.set("trust proxy", 1);
 
 const allowedOrigins = [config.FRONTEND_DOMAIN, config.ADMIN_DOMAIN];
 
@@ -24,7 +24,7 @@ const corsOptions = {
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true,
@@ -33,7 +33,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(mongoSanitize());
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 
 // Rate limiting
@@ -58,8 +59,8 @@ mongoose.connection.on("error", (err) => {
 });
 
 const now = moment();
-console.log('Current Timezone:', process.env.TZ);
-console.log("Indian Time:", now.tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss'));
+console.log("Current Timezone:", process.env.TZ);
+console.log("Indian Time:", now.tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"));
 
 // routes
 app.use(trackVisitor);
@@ -69,6 +70,7 @@ app.use("/api/v1/contact", require("./server/Routers/public/contact"));
 app.use("/api/v1/payment", require("./server/Routers/public/paymet"));
 app.use("/api/v1/study-materials", require("./server/Routers/public/studyMaterials"));
 app.use("/api/v1/access-content", require("./server/Routers/public/access-data"));
+app.use("/api/v1/blog", require("./server/Routers/public/blog"));
 // v2
 app.use("/api/v2/auth", require("./server/Routers/admin/auth"));
 app.use("/api/v2/admin", require("./server/Routers/admin/admin"));
@@ -83,6 +85,7 @@ app.use("/api/v2/calendar", require("./server/Routers/admin/calendar"));
 app.use("/api/v2/subject", require("./server/Routers/admin/subjects"));
 app.use("/api/v2/teaching-notes", require("./server/Routers/admin/notes"));
 app.use("/api/v2/access-content", require("./server/Routers/admin/access-data"));
+app.use("/api/v2/blog", require("./server/Routers/admin/blog"));
 
 app.get("/api/v1/protected", authenticateToken, (req, res) => {
   res.status(200).json({
@@ -105,5 +108,4 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-
-// TODO: half-day leave only admin and manager cam give 
+// TODO: half-day leave only admin and manager cam give

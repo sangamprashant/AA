@@ -147,6 +147,7 @@ const ReviewStudent = () => {
                     src={`review/students/${member.photo}?cache-control=max-age=31536000`}
                     alt={member.name}
                     className="students-photo-review "
+                    loading="lazy"
                   />
                 </div>
                 <div className="comandSlider__item_text">

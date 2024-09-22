@@ -42,7 +42,7 @@ const itemVariants = {
 const Mentors = () => {
   return (
     <Section id="mentor" className="py-5">
-      <div className="row align-items-center">
+      <div className="row align-items-center m-0">
         <motion.div
           className="col-md-5"
           initial={{ opacity: 0, x: -100 }}

@@ -1,16 +1,18 @@
-"use client"
+"use client";
 import { useEffect } from "react";
 import "./mentors.css";
 
 const mentors = [
   {
-    name: "Ujjawal Kumar",
-    course: "B.Tech(Mechanical)",
+    id: 0,
+    name: "Mr. Ujjawal Kumar",
+    course: "B.Tech (Mechanical)",
     yearsOfExperience: "12+",
     hoursTaught: "13000+",
     imgSrc: "ujjawal.png",
   },
   {
+    id: 1,
     name: "Km. Kashish",
     course: "B.Sc (Maths), B.Ed",
     yearsOfExperience: "4+",
@@ -18,7 +20,8 @@ const mentors = [
     imgSrc: "kashish.png",
   },
   {
-    name: "Suryansh Kumar",
+    id: 2,
+    name: "Mr. Suryansh Kumar",
     course: "M.Sc (Maths)",
     yearsOfExperience: "4+",
     hoursTaught: "4000+",
@@ -27,22 +30,34 @@ const mentors = [
 ];
 
 const MentorsList = () => {
-
   useEffect(() => {
-    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      const interval = setInterval(() => {
+    const loadBootstrap = async () => {
+      if (typeof window !== "undefined") {
+        const { Carousel } = await import("bootstrap/dist/js/bootstrap.bundle.min.js");
+
         const carouselElement = document.getElementById("mentors-list-content");
         if (carouselElement) {
-          const bootstrap = (window as any).bootstrap;
-          if (bootstrap) {
-            const carousel = new bootstrap.Carousel(carouselElement);
-            carousel.next();
-          }
+          new Carousel(carouselElement, {
+            interval: 4000, 
+            pause: false,   
+            ride: "carousel"
+          });
         }
-      }, 3000);
+      }
+    };
 
-      return () => clearInterval(interval);
-    }
+    loadBootstrap();
+
+    return () => {
+      const carouselElement = document.getElementById("mentors-list-content");
+      if (carouselElement) {
+        const bootstrap = (window as any).bootstrap;
+        if (bootstrap) {
+          const carousel = bootstrap.Carousel.getInstance(carouselElement);
+          if (carousel) carousel.dispose();
+        }
+      }
+    };
   }, []);
 
   return (
@@ -52,7 +67,7 @@ const MentorsList = () => {
           {mentors.map((mentor, index) => (
             <div
               className={`carousel-item ${index === 0 ? "active" : ""}`}
-              key={index}
+              key={mentor.id}
             >
               <div className="row p-4">
                 <div className="row align-items-center">
@@ -63,6 +78,7 @@ const MentorsList = () => {
                         className="mentor-image blink img-fluid"
                         width={150}
                         alt={`${mentor.name}'s avatar`}
+                        loading="lazy"
                       />
                     </div>
                   </div>

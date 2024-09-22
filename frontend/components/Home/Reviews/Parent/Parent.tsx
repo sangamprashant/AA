@@ -55,10 +55,10 @@ const ReviewParent = () => {
         return 1;
       }
     }
-    
+
     return 1;
   };
-  
+
 
   const renderStars = (rating: number) => {
     const stars = [];
@@ -136,6 +136,7 @@ const ReviewParent = () => {
               whileInView={{ opacity: 1, y: 0, x: 0 }}
               transition={{ duration: 1, delay: 0 }}
               viewport={{ once: true }}
+              loading="lazy"
             />
             <motion.h5
               className="family-review-title m-0 p-0"
@@ -185,7 +186,7 @@ const ReviewParent = () => {
                     <img
                       src={`review/parents/${member.photo}?cache-control=max-age=31536000`}
                       alt={member.name}
-                      className="parent-image shadow"
+                      className="parent-image shadow" loading="lazy"
                     />
                     <div>
                       <h5 className="p-0 m-0">{member.name}</h5>

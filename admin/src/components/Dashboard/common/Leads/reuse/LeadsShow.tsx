@@ -1,6 +1,6 @@
 import NotificationImportantIcon from '@mui/icons-material/NotificationImportant';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Badge, Button, Form, Input, Modal, Pagination, Spin, message, notification } from "antd";
+import { Badge, Button, Form, Input, Modal, Pagination, Select, Spin, message, notification } from "antd";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -10,11 +10,18 @@ import { AuthContext } from "../../../../context/AuthProvider";
 import { useLeads } from "../../../../context/LeadsProvider";
 import { colors } from "../../exports";
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import TransferWithinAStationIcon from '@mui/icons-material/TransferWithinAStation';
 
 interface BookingTableProps {
   type: string;
   setTotalData: (val: number) => void;
   index: number;
+}
+
+interface employeesProps {
+  _id: string;
+  name: string;
+  email: string
 }
 
 const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
@@ -33,10 +40,17 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
   const [page, setPage] = useState<number>(1);
   const [reminder, setReminder] = useState<string>('');
   const limit = 10;
+  const [employees, setEmployees] = useState<employeesProps[]>([])
+  const [openModalEmp, setOpenModalEmp] = useState<boolean>(false);
+  const [selectedEmp, setSelectedEmp] = useState("")
 
   useEffect(() => {
     fetchData();
   }, [type, token, page, sort, reload, dateFilter, customDateRange, radioOptionsLeads]);
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
   const fetchData = async () => {
     try {
@@ -119,6 +133,30 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
     }
   };
 
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get(`${config.SERVER}/auth/admin-manager-get-employees`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      // Check if the request was successful
+      if (response.data.success) {
+        setEmployees(response.data.employees)
+      } else {
+        // Handle the scenario when the response is not successful
+        console.error('Error fetching employees:', response.data.error);
+        // Display error to the user or handle it appropriately
+      }
+    } catch (error) {
+      // Handle network errors or unexpected errors
+      console.error('An error occurred while fetching employees:', error);
+      // Optionally display an error message to the user or log it for debugging
+    }
+  };
+
   if (loading) {
     return (
       <div
@@ -186,6 +224,7 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
                       <NotificationImportantIcon />
                     </span>
                   </Badge>
+                  {(user?.role === "admin" || user?.role === "manager") && <span className='btn btn-sm text-white px-0' style={{ backgroundColor: colors[index % colors.length] }} onClick={() => handleEmpModalOpen(item)}><TransferWithinAStationIcon /></span>}
                 </div>
               </span>
             </div>
@@ -233,8 +272,98 @@ const BookingTable = ({ type, setTotalData, index }: BookingTableProps) => {
           />
         </Form.Item>
       </Modal>
+
+      <Modal
+        centered
+        title="Change emplyee of the lead."
+        open={openModalEmp}
+        onCancel={handleEmpModalClose}
+        onClose={handleEmpModalClose}
+        footer={[
+          <Button key="close" type='primary' danger onClick={handleEmpModalClose}>Close</Button>,
+          <Button key="Ok" type='primary' onClick={updateLeadsEmployee}>Update</Button>
+        ]}
+      >
+        <Form.Item label="Select an employee" required layout='vertical'>
+          <Select value={selectedEmp} onChange={(e) => setSelectedEmp(e)}>
+            {employees.map((emp, ind) => (<Select.Option value={emp._id} key={ind}>{emp.name}{" | "}{emp.email} </Select.Option>))}
+          </Select>
+        </Form.Item>
+
+      </Modal>
+
     </>
   );
+
+  function handleEmpModalOpen(data: Booking) {
+    setOpenModalEmp(true)
+    setModalContent(data);
+    setSelectedEmp(data.assignedEmployee._id)
+  }
+
+  function handleEmpModalClose() {
+    setOpenModalEmp(false)
+    setModalContent(null);
+  }
+
+  async function updateLeadsEmployee() {
+    if (!modalContent) {
+      notification.error({
+        message: 'Missing Information',
+        description: 'Please select a booking before assigning an employee.'
+      });
+      return;
+    }
+  
+    if (!selectedEmp) {
+      notification.error({
+        message: 'Missing Information',
+        description: 'Please select an employee to assign.'
+      });
+      return;
+    }
+  
+    if (modalContent?.assignedEmployee._id === selectedEmp) {
+      notification.warning({
+        message: 'Employee is already assigned',
+        description: ""
+      });
+      return;
+    }
+  
+    try {
+      const response = await axios.put(`${config.SERVER}/auth/update-employee-leads`, {
+        bookingId: modalContent._id,
+        newEmployeeId: selectedEmp
+      }, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+  
+      if (response.data.success) {
+        setData(prevData => 
+          prevData.map(item =>
+            item._id === modalContent._id
+              ? { ...item, assignedEmployee: { _id: selectedEmp, name: response.data.booking.updatedEmployee.name, email: response.data.booking.updatedEmployee.email } }
+              : item
+          )
+        );
+  
+        notification.success({
+          message: 'Employee updated successfully',
+          description: response.data.message || "The employee has been updated."
+        });
+  
+        // Close the modal
+        handleEmpModalClose();
+      }
+    } catch (err) {
+      console.error(err);
+      message.error("Failed to update employee assignment.");
+    }
+  }
+
 };
 
 export default BookingTable;

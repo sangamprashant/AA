@@ -9,6 +9,9 @@ const ClassContent: React.FC = () => {
   const [classId, setClassId] = useState<string>("");
 
   useEffect(() => {
+    if (window !== undefined) {
+      window.scrollTo(0, 0)
+    }
     const classIdFromParams = getClassIdFromParams();
     setClassId(classIdFromParams);
     receiveClassId(classIdFromParams);
@@ -22,7 +25,7 @@ const ClassContent: React.FC = () => {
     }
     return code;
   };
-  
+
 
   if (!classId) {
     return <p>Loading...</p>;

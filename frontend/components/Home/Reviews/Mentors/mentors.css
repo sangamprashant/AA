@@ -79,3 +79,8 @@
 .blink {
   animation: blink 1.5s infinite; /* Adjust animation duration as needed */
 }
+
+
+#mentors-list-content {
+  overflow: hidden; 
+}

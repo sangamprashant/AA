@@ -1,5 +1,6 @@
 import Footer from "../../Footer";
 import Section from "../../Reuse/Section";
+import Preparation from "./Preparation";
 
 const JEEE = () => {
   return (
@@ -676,6 +677,7 @@ const JEEE = () => {
             </section>
           </div>
         </div>
+        <Preparation />
       </Section>
       <Footer />
     </>

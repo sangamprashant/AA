@@ -45,7 +45,7 @@ const Navbar = () => {
                             alt="logo"
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1, duration: 1 }}
+                            transition={{ delay: 0.1, duration: 1 }} loading="lazy"
                         />
                     </Link>
                     <button
@@ -78,7 +78,7 @@ const Navbar = () => {
                                     onClick={handleNavItemClick}
                                 >
                                     <Image src="/navbar/megaphone.png" alt="" height={20} width={20} /> {" "}
-                                    <b>Book A Free Demo Classes</b>
+                                    <b>Book A Free Demo Class</b>
                                 </Link>
                             </motion.li>
                             <motion.li
@@ -154,7 +154,7 @@ const Navbar = () => {
                                 transition={{ delay: 0.1, duration: 0.7 }}
                             >
                                 <Link
-                                    className="nav-link btn theme-btn"
+                                    className="nav-link btn theme-btn btn-sm"
                                     href={`tel:+91${phone}`}
                                     onClick={handleNavItemClick}
                                 >
@@ -170,7 +170,7 @@ const Navbar = () => {
                                 transition={{ delay: 0.1, duration: 0.7 }}
                             >
                                 <Link
-                                    className="nav-link btn theme-btn"
+                                    className="nav-link btn theme-btn btn-sm"
                                     href={`mailto:${email}`}
                                     onClick={handleNavItemClick}
                                 >

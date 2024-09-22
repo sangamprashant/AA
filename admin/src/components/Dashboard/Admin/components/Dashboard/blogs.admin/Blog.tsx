@@ -1,46 +1,48 @@
-'use client';
-
-import { message, Tabs } from 'antd';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { EditorContent, useEditor } from '@tiptap/react';
+import { Button, message, notification, Table, Tabs } from 'antd';
 import AdminWrapper from '../../../AdminWrapper';
-import { useEditor, EditorContent } from '@tiptap/react';
 
 // TipTap Extensions
-import StarterKit from '@tiptap/starter-kit';
-import Document from '@tiptap/extension-document';
-import Paragraph from '@tiptap/extension-paragraph';
-import Text from '@tiptap/extension-text';
-import Heading from '@tiptap/extension-heading';
-import Bold from '@tiptap/extension-bold';
-import Italic from '@tiptap/extension-italic';
-import Underline from '@tiptap/extension-underline';
-import Strike from '@tiptap/extension-strike';
-import BulletList from '@tiptap/extension-bullet-list';
-import OrderedList from '@tiptap/extension-ordered-list';
-import ListItem from '@tiptap/extension-list-item';
-import Superscript from '@tiptap/extension-superscript';
-import Subscript from '@tiptap/extension-subscript';
 import Blockquote from '@tiptap/extension-blockquote';
+import Bold from '@tiptap/extension-bold';
+import BulletList from '@tiptap/extension-bullet-list';
 import CodeBlock from '@tiptap/extension-code-block';
-import Link from '@tiptap/extension-link';
-import Highlight from '@tiptap/extension-highlight';
 import { Color } from '@tiptap/extension-color';
+import Document from '@tiptap/extension-document';
+import Heading from '@tiptap/extension-heading';
+import Highlight from '@tiptap/extension-highlight';
+import Italic from '@tiptap/extension-italic';
+import Link from '@tiptap/extension-link';
+import ListItem from '@tiptap/extension-list-item';
+import OrderedList from '@tiptap/extension-ordered-list';
+import Paragraph from '@tiptap/extension-paragraph';
+import Placeholder from '@tiptap/extension-placeholder';
+import Strike from '@tiptap/extension-strike';
+import Subscript from '@tiptap/extension-subscript';
+import Superscript from '@tiptap/extension-superscript';
+import Text from '@tiptap/extension-text';
 import TextAlign from '@tiptap/extension-text-align';
 import { TextStyle } from '@tiptap/extension-text-style';
-import Placeholder from '@tiptap/extension-placeholder'
-// import Youtube from '@tiptap/extension-youtube'
+import Underline from '@tiptap/extension-underline';
+import Youtube from '@tiptap/extension-youtube';
+import StarterKit from '@tiptap/starter-kit';
 
-// Styles
-import './Blog.css'; // Custom styles for buttons and editor
-import { useState } from 'react';
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import { config } from '../../../../../../config';
+import { BlogPost } from '../../../../../../types/blog';
+import './Blog.css';
+import { AuthContext } from '../../../../../context/AuthProvider';
 
 const Blog = () => {
     return (
         <AdminWrapper>
             <BlogTopBar />
             <div className="px-1">
-                <Tabs defaultActiveKey="2">
+                <Tabs defaultActiveKey="1">
                     <Tabs.TabPane tab="View All" key="1">
-                        Blog View
+                        <BlogShow />
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Add New" key="2">
                         <BlogAdd />
@@ -63,10 +65,14 @@ const BlogTopBar = () => {
 };
 
 const BlogAdd = () => {
+    const globles = useContext(AuthContext)
+    if (!globles) return null
+    const { token } = globles
 
     const [title, setTitle] = useState<string>("")
     const [description, setDescription] = useState<string>("")
     const [image, setImage] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false)
 
     const editor = useEditor({
         extensions: [
@@ -166,20 +172,16 @@ const BlogAdd = () => {
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-            // Check if file size is less than 500KB
             if (file.size > 500 * 1024) {
                 message.error('File size must be less than 500KB.');
                 return;
             }
-
-            // Convert image to Base64
             const reader = new FileReader();
             reader.onload = () => {
                 setImage(reader.result as string);
             };
             reader.readAsDataURL(file);
         }
-
     };
 
     const addYoutubeVideo = () => {
@@ -188,10 +190,54 @@ const BlogAdd = () => {
         if (url) {
             editor.commands.setYoutubeVideo({
                 src: url,
-                width: 640,
-                height: 480,
             });
         }
+    };
+
+    const handleUpload = async () => {
+
+        if (!title.trim() || !image || !description.trim()) {
+            message.error('Please fill in all fields.');
+            return;
+        }
+
+        setLoading(true)
+
+        const reqBody = {
+            title: title.trim(),
+            image,
+            description: description.trim(),
+            content: editor.getHTML(),
+        };
+
+        try {
+            const response = await axios.post(`${config.SERVER}/blog`, reqBody, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.status === 201) {
+                notification.success({
+                    message: 'Blog created successfully',
+                    description: 'Blog post created successfully.',
+                });
+
+                setTitle('');
+                setDescription('');
+                setImage('');
+                editor.commands.setContent('');
+            }
+        } catch (error: any) {
+            console.error('Error uploading blog post:', error);
+            message.error(
+                error.response?.data?.message || 'Failed to create blog post. Please try again.'
+            );
+        } finally {
+            setLoading(false)
+        }
+
     };
 
     return (
@@ -200,7 +246,7 @@ const BlogAdd = () => {
                 <h5>Add Content</h5>
                 <form>
                     <div className="mb-3">
-                        <label htmlFor="title" className="form-label">
+                        <label htmlFor="title" className="form-label bold-text">
                             Title
                         </label>
                         <input
@@ -215,7 +261,7 @@ const BlogAdd = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="description" className="form-label">
+                        <label htmlFor="description" className="form-label bold-text">
                             Description
                         </label>
                         <textarea
@@ -228,27 +274,29 @@ const BlogAdd = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="image" className="form-label" >
+                        <label htmlFor="image" className="form-label bold-text" >
                             Image
                         </label>
                         <input name="image" className="form-control" type="file" required accept="image/*"
                             onChange={handleImageChange} />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="content" className="form-label">
+                        <label htmlFor="content" className="form-label bold-text">
                             Content
                         </label>
-                        {/* TipTap Editor and Toolbar */}
                         <div className="editor-toolbar mb-2 d-flex flex-wrap align-items-center">
-                            <input
-                                type="color"
-                                onInput={(event) => {
-                                    const target = event.target as HTMLInputElement;
-                                    editor.chain().focus().setColor(target.value).run();
-                                }}
-                                value={editor.getAttributes('textStyle').color || '#000000'} // Fallback to default color
-                                data-testid="setColor"
-                            />
+                            <div className="d-flex p-1 gap-2 rounded btn btn-outline-primary">
+                                <span>Text color</span>
+                                <input
+                                    type="color"
+                                    onInput={(event) => {
+                                        const target = event.target as HTMLInputElement;
+                                        editor.chain().focus().setColor(target.value).run();
+                                    }}
+                                    value={editor.getAttributes('textStyle').color || '#000000'}
+                                    data-testid="setColor"
+                                />
+                            </div>
                             {[
                                 { label: 'Bold', format: 'Bold' },
                                 { label: 'Italic', format: 'Italic' },
@@ -290,7 +338,7 @@ const BlogAdd = () => {
                                     {btn.label}
                                 </button>
                             ))}
-                            <button type="button" onClick={addYoutubeVideo}>Add YouTube video</button>
+                            <button type="button" className='btn btn-outline-primary m-1' onClick={addYoutubeVideo}>Add YouTube video</button>
                         </div>
                         <EditorContent editor={editor} className="editor-content" />
                     </div>
@@ -311,7 +359,127 @@ const BlogAdd = () => {
                         dangerouslySetInnerHTML={{ __html: editor.getHTML() }}
                     ></div>
                 </div>
+
+                <div className="text-end mt-2">
+                    <Button type='primary' onClick={handleUpload} loading={loading}>Add Blog</Button>
+                </div>
             </div>
+        </div>
+    );
+};
+
+const BlogShow: React.FC = () => {
+    const globles = useContext(AuthContext)
+    if (!globles) return null
+    const { token } = globles
+
+    const [blogs, setBlogs] = useState<BlogPost[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [page, setPage] = useState<number>(1);
+    const [hasMore, setHasMore] = useState<boolean>(true);
+
+    const fetchBlogs = async (pageNum: number) => {
+        try {
+            const response = await axios.get(`${config.SERVER}/blog?page=${pageNum}&limit=10`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const newBlogs: BlogPost[] = response.data.blogs;
+
+            if (newBlogs.length < 10) {
+                setHasMore(false);
+            }
+
+            setBlogs((prevBlogs) => [...prevBlogs, ...newBlogs]);
+            setLoading(false);
+        } catch (error: any) {
+            console.error('Error fetching blogs:', error);
+            notification.error({
+                message: 'Error',
+                description: error.response.data.message || 'Failed to load blogs. Please try again.',
+            });
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchBlogs(page);
+    }, [page]);
+
+    const loadMoreBlogs = () => {
+        if (hasMore) {
+            setPage((prevPage) => prevPage + 1);
+        }
+    };
+
+    const columns = [
+        {
+            title: 'Image',
+            dataIndex: 'image',
+            key: 'image',
+            render: (text: string) => <img src={text} alt="Blog" style={{ width: '100px', height: 'auto' }} />,
+        },
+        {
+            title: 'Title',
+            dataIndex: 'title',
+            key: 'title',
+        },
+        {
+            title: 'Description',
+            dataIndex: 'description',
+            key: 'description',
+        },
+        {
+            title: 'Action',
+            dataIndex: 'image',
+            key: 'image',
+            render: (_: any, data: BlogPost) => <Button type='link' danger icon={<DeleteOutlineIcon />} onClick={() => deleteBlog(data._id)} />,
+        },
+    ];
+
+    async function deleteBlog(id: string) {
+        try {
+
+            const response = await axios.delete(`${config.SERVER}/blog/${id}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.status === 200) {
+                setBlogs(blogs.filter((blog) => blog._id !== id));
+                notification.success({
+                    message: 'Success',
+                    description: 'Blog post deleted successfully.',
+                });
+            }
+
+        } catch (error) {
+
+            notification.error({
+                message: 'Error',
+                description: 'Failed to delete blog post. Please try again.',
+            });
+
+        }
+    }
+
+    return (
+        <div className='table-responsive'>
+            <Table
+                dataSource={blogs}
+                columns={columns}
+                rowKey="_id"
+                pagination={false}
+                loading={loading}
+            />
+            {hasMore && (
+                <Button onClick={loadMoreBlogs} type='primary' style={{ marginTop: '20px' }}>
+                    Load More
+                </Button>
+            )}
         </div>
     );
 };

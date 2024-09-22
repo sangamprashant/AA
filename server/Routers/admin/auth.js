@@ -2,7 +2,7 @@ const express = require("express");
 const authenticateToken = require("../../middlewares/authMiddleware");
 const {
   checkAuth,
-  register,
+  // register,
   login,
   BookingId,
   BookingType,
@@ -16,13 +16,15 @@ const {
   changePassword,
   bookingReminder,
   bookingCount,
+  adminManagerGetsThereEmployee,
+  updateLeadsEmployee,
 } = require("../../Controllers/admin/auth");
 const requireManagerOrAdmin = require("../../middlewares/requireManagerOrAdmin");
 const requireAdmin = require("../../middlewares/requireAdmin");
 
 const router = express.Router();
 
-router.post("/register", register);
+// router.post("/register", register);
 router.post("/login", login);
 router.get("/logout", authenticateToken, logout);
 router.post("/change-password", authenticateToken, changePassword);
@@ -37,5 +39,7 @@ router.get("/contacts", authenticateToken, ContactsByType);
 router.post("/contact/reply/:id", requireManagerOrAdmin, replyContact);
 router.delete("/contact/delete/:id", requireAdmin, deleteContact);
 router.get("/user-profile/:id", requireManagerOrAdmin, userProfileById);
+router.get("/admin-manager-get-employees", requireManagerOrAdmin, adminManagerGetsThereEmployee)
+router.put('/update-employee-leads',requireManagerOrAdmin,updateLeadsEmployee )
 
 module.exports = router;

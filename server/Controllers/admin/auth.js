@@ -459,7 +459,8 @@ const BookingType = async (req, res) => {
   const dateFilter = req.body.dateFilter;
   const customDateRange = req.body.customDateRange;
   const createdOrUpdated = req.body.createdOrUpdated || "createdAt";
-  const dateField = createdOrUpdated === "updatedAt" ? "updatedAt" : "createdAt";
+  const dateField =
+    createdOrUpdated === "updatedAt" ? "updatedAt" : "createdAt";
 
   if (dateFilter === "today") {
     query[dateField] = {
@@ -729,6 +730,85 @@ const bookingCount = async (req, res) => {
   }
 };
 
+const adminManagerGetsThereEmployee = async (req, res) => {
+  try {
+    if (req.user.role !== "admin" && req.user.role !== "manager") {
+      return res.status(403).json({ success: false, error: "Forbidden" });
+    }
+
+    let employees = null;
+
+    if (req.user.role === "admin") {
+      employees = await User.find({ role: "employee" }).select("name email");
+    } else if (req.user.role === "manager") {
+      employees = await User.find({ manager: req.user.id }).select(
+        "name email"
+      );
+    }
+
+    res.status(200).json({ success: true, employees });
+  } catch (error) {
+    console.error("Error fetching employees:", error);
+    res.status(500).json({ success: false, error: "Server Error" });
+  }
+};
+
+const updateLeadsEmployee = async (req, res) => {
+  const { bookingId, newEmployeeId } = req.body;
+
+  //TODO: deep check manager but lesstime
+  // const {id} = req.user.id
+
+  if (
+    !mongoose.Types.ObjectId.isValid(bookingId) ||
+    !mongoose.Types.ObjectId.isValid(newEmployeeId)
+  ) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Invalid booking or employee ID" });
+  }
+
+  try {
+    const booking = await Booking.findById(bookingId);
+    const employee = await User.findById(newEmployeeId).select("notifications");
+
+    if (!employee) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Employee not found" });
+    }
+
+    // a string message
+    employee.addNotification("You have been reassigned to a new booking");
+
+    if (!booking) {
+      return res
+        .status(404)
+        .json({ success: false, error: "Booking not found" });
+    }
+
+    booking.assignedEmployee = newEmployeeId;
+    booking.stateHistory.push({
+      state: booking.state,
+      comment: "Employee reassigned",
+      updatedBy: req.user._id,
+    });
+
+    await booking.save();
+
+    res.json({
+      success: true,
+      message: "Employee updated successfully",
+      booking,
+    });
+  } catch (error) {
+    console.error("Error updating employee:", error);
+    res
+      .status(500)
+      .json({ success: false, error: "Failed to update employee" });
+  }
+};
+
 module.exports = {
   login,
   register,
@@ -745,4 +825,6 @@ module.exports = {
   changePassword,
   bookingReminder,
   bookingCount,
+  adminManagerGetsThereEmployee,
+  updateLeadsEmployee,
 };

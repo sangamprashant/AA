@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Volkhov:wght@700&display=swap");
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "react-loading-skeleton/dist/skeleton.css";
 
 * {
   margin: 0;
@@ -1841,8 +1843,6 @@ tbody td {
   padding: 45px 0 75px 0;
 }
 
-
-
 .slider_section #customCarousel1 {
   width: 100%;
   position: unset;
@@ -1910,7 +1910,66 @@ tbody td {
   background-color: #ffbe33;
 }
 
-
 .hero-title {
   font-size: clamp(30px, 5vw, 60px) !important;
+}
+
+.horizontal-line {
+  background-color: var(--theme-color);
+  height: 15px;
+}
+
+.side-blog-container {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.side-blog {
+  margin-bottom: 1rem;
+  padding: .3rem 1rem;
+}
+
+.side-blog:hover {
+  color: #ffffff !important;
+  background-color: var(--theme-color);
+}
+
+.side-blog:hover h5,
+.side-blog:hover p {
+  color: #ffffff !important;
+}
+
+.side-blog img {
+  border-radius: 4px;
+}
+
+.side-blog h5 {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.side-blog p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.theme-bg {
+  background-color: var(--theme-color);
+  color: white;
+}
+
+.side-container-main {
+  border: 3px solid var(--theme-color);
+}
+
+.description-trim {
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }
