@@ -36,7 +36,7 @@ const BlogsRender = () => {
                   </h5>
                   <p className="card-text">{blog.description}</p>
                   <div className="text-end mt-2">
-                    <Link href={`/blog/${blog._id}`} className="btn theme-btn">
+                    <Link href={`/blog-open?title=${blog.title}&code=${blog._id}`} className="btn theme-btn">
                       Read More <NavigateNextIcon />
                     </Link>
                   </div>
