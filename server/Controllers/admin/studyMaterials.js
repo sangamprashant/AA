@@ -6,7 +6,10 @@ const getMaterials = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const skip = (page - 1) * limit;
 
-    const materials = await StudyMaterial.find().sort({ createdAt: -1 }).skip(skip).limit(limit);
+    const materials = await StudyMaterial.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
 
     res.status(200).json({
       materials,
@@ -19,22 +22,21 @@ const getMaterials = async (req, res) => {
   }
 };
 
-  
-  const getMaterialsById = async (req, res) => {
-    try {
-      const material = await StudyMaterial.findById(req.params.id);
-      res.status(200).json({
-        material,
-        success: true,
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: "Failed to get study material",
-        error,
-        success: false,
-      });
-    }
-  };
+const getMaterialsById = async (req, res) => {
+  try {
+    const material = await StudyMaterial.findById(req.params.id);
+    res.status(200).json({
+      material,
+      success: true,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to get study material",
+      error,
+      success: false,
+    });
+  }
+};
 
 const AddMaterial = async (req, res) => {
   try {
@@ -102,6 +104,32 @@ const updateMaterial = async (req, res) => {
   }
 };
 
+const deleteMaterial = async (req, res) => {
+  try {
+    const { id } = req.params; // Get the ID from the request parameters
+    const studyMaterial = await StudyMaterial.findByIdAndDelete(id); // Find and delete the study material
+    if (!studyMaterial) {
+      return res
+        .status(404)
+        .json({ message: "Study material not found", success: false });
+    }
+    res.status(200).json({
+      message: "Study material deleted successfully",
+      success: true,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to delete study material",
+      error,
+      success: false,
+    });
+  }
+};
+
 module.exports = {
-    getMaterials,AddMaterial,getMaterialsById,updateMaterial
+  getMaterials,
+  AddMaterial,
+  getMaterialsById,
+  updateMaterial,
+  deleteMaterial,
 };

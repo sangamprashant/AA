@@ -31,11 +31,11 @@ const AMSMOpen: React.FC = () => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const globals = useContext(AuthContext);
   if (!globals) return null;
-  const { user } = globals;
+  const { user, token } = globals;
 
   // Check if the role is neither 'admin' nor 'manager'
   if (role !== "admin" && role !== "manager") {
-    return <Dashboard404 auth={true}/>;
+    return <Dashboard404 auth={true} />;
   }
 
   useEffect(() => {
@@ -48,7 +48,13 @@ const AMSMOpen: React.FC = () => {
 
   const fetchMaterial = async () => {
     try {
-      const response = await fetch(`${config.SERVER}/study-materials/${id}`);
+      const response = await fetch(`${config.SERVER}/study-materials/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      });
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -77,9 +83,8 @@ const AMSMOpen: React.FC = () => {
           <div className="d-flex gap-2">
             {!isEdit ? (
               <Tooltip
-                title={`${
-                  user?.role === "admin" ? "Edit" : "Only admin can edit"
-                } the content`}
+                title={`${user?.role === "admin" ? "Edit" : "Only admin can edit"
+                  } the content`}
               >
                 <Button
                   icon={<ModeEditIcon />}

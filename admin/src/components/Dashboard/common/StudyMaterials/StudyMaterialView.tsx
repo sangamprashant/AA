@@ -32,7 +32,13 @@ const StudyMaterialView: React.FC = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `${config.SERVER}/study-materials?page=${page}&limit=10`
+        `${config.SERVER}/study-materials?page=${page}&limit=10`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      }
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
