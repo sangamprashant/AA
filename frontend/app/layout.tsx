@@ -108,11 +108,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo-32.jpg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo-16.jpg" />
         <link rel="apple-touch-icon" href="/logo-crop.png" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
+       
         <meta
           name="description"
           content="The A to Z Classes provides expert coaching and comprehensive resources for students in Class 1-12, designed to help them achieve academic excellence. Join us to access a wide range of interactive study materials, personalized learning plans, and in-depth exam preparation tools. Our coaching covers all major boards, including CBSE, ICSE, and State Boards, ensuring students receive the support they need to excel in their studies and competitive exams. With experienced faculty, regular assessments, and engaging online classes, we provide the ideal learning environment for students to thrive."
