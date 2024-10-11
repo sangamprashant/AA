@@ -29,6 +29,9 @@ const nextConfig = {
     return config;
   },
   productionBrowserSourceMaps: false,
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
 };
 
 export default nextConfig;

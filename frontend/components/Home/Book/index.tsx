@@ -1,4 +1,6 @@
 "use client"
+import { heroImg } from "@/assets/links";
+import { CountryOption } from "@/strings";
 import type { NotificationArgsProps } from "antd";
 import { Alert, AutoComplete, notification } from "antd";
 import axios from "axios";
@@ -6,8 +8,6 @@ import { motion } from "framer-motion";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { config } from "../../../config";
 import Section from "../../Reuse/Section";
-import { CountryOption } from "@/strings";
-// import Image from "next/image";
 
 type NotificationPlacement = NotificationArgsProps["placement"];
 
@@ -216,9 +216,8 @@ const BookClass = () => {
                     <Alert
                       message={alert.text}
                       type={alert.type}
-                      className={`opacity-${
-                        alert.type ? "100" : "0"
-                      } mt-4 w-100`}
+                      className={`opacity-${alert.type ? "100" : "0"
+                        } mt-4 w-100`}
                     />
                   </div>
                   <div className="col-md-6 text-end">
@@ -241,10 +240,10 @@ const BookClass = () => {
               viewport={{ once: true }}
             >
               <img
-                src="chat.gif?cache-control=max-age=31536000"
+                src={`${heroImg.chatPic}?cache-control=max-age=31536000`}
                 alt=""
                 style={{
-                  width:'100%'
+                  width: '100%'
                 }}
               />
             </motion.div>

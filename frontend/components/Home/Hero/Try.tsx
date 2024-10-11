@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { scrollToSection } from "../../Reuse/functions";
+import { hero } from "@/assets/links";
 
 const Try = () => {
   const [active, setActive] = React.useState(0);
@@ -80,7 +81,7 @@ const Try = () => {
       <div className="hero_area">
         <div className="bg-box">
           <video
-            src="/video.mp4?cache-control=max-age=31536000"
+            src={hero.heroVideo}
             autoPlay
             muted
             loop

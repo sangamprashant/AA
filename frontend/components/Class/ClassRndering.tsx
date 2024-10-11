@@ -1,8 +1,10 @@
 "use client";
 
+import { classes } from "@/assets/links";
+import { appName } from "@/strings";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
 import { useRouter } from "next/navigation"; // Next.js navigation
+import React, { useState } from "react";
 import Footer from "../Footer";
 import BookClass from "../Home/Book";
 import Section from "../Reuse/Section";
@@ -14,7 +16,6 @@ import Partner from "./Partner";
 import Price from "./Price";
 import Pricing from "./Pricing";
 import TimeLine from "./TimeLine";
-import { appName } from "@/strings";
 
 const ClassRendering = () => {
   const { classId } = useClassContext();
@@ -47,7 +48,7 @@ const ClassRendering = () => {
 
               <div className="col-lg-4 text-center">
                 <motion.img
-                  src={`/class/list/${image}?cache-control=max-age=31536000`}
+                  src={`${image}?cache-control=max-age=31536000`}
                   alt="Image Alt Text"
                   className="img-fluid"
                   initial={{ opacity: 0, x: -50, scale: 0.4 }}
@@ -78,10 +79,10 @@ const ClassRendering = () => {
   );
 
   async function handleImage(code: string) {
-    if (code === "1-4") setImage("1-4.webp");
-    else if (["5", "6", "7", "8"].includes(code)) setImage("5-8.png");
-    else if (["9", "10"].includes(code)) setImage("9-10.webp");
-    else if (["11", "12"].includes(code)) setImage("11-12.webp");
+    if (code === "1-4") setImage(classes.list.CLASS_LIST_1_4_WEP);
+    else if (["5", "6", "7", "8"].includes(code)) setImage(classes.list.CLASS_LIST_5_8_png);
+    else if (["9", "10"].includes(code)) setImage(classes.list.CLASS_LIST_9_10_WEP);
+    else if (["11", "12"].includes(code)) setImage(classes.list.CLASS_LIST_11_12_WEP);
   }
 };
 

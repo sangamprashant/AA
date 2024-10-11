@@ -2,6 +2,7 @@ import { Timeline } from "antd";
 import { motion } from "framer-motion";
 import Section from "../Reuse/Section";
 import { appName } from "@/strings";
+import { classes } from "@/assets/links";
 // import Image from "next/image";
 
 const TimeLine = () => {
@@ -40,7 +41,7 @@ const TimeLine = () => {
               style={{
                 width: "100%"
               }}
-              src="/class/timeline/timeline.gif?cache-control=max-age=31536000"
+              src={`${classes.timeline.CLASS_TIMELINE_timeline}?cache-control=max-age=31536000`}
               alt="Timeline"
             />
           </motion.div>

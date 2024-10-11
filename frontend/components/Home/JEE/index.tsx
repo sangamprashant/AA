@@ -1,7 +1,7 @@
+import { logoCrop } from "@/assets/links";
 import Link from "next/link";
 import Section from "../../Reuse/Section";
 import "./whatNext.css";
-import Image from "next/image";
 
 const WhatNext = () => {
   return (
@@ -11,9 +11,9 @@ const WhatNext = () => {
           <div className="col-md-4 left d-flex align-items-center">
             <div className="d-flex align-items-center justify-content-center flex-column py-5 my-auto">
               <div className="bg-white rounded-circle p-3 shadow mb-3 blink">
-                <Image
+                <img
                   alt=""
-                  src="/logo-crop.png"
+                  src={logoCrop}
                   width={100}
                   height={100}
                   loading="lazy"

@@ -1,12 +1,13 @@
 "use client"
+import { contentImg, loadingSvg } from "@/assets/links";
+import LoadingUI from "@/components/LoadingUI";
+import { AppContext } from "@/context/AppProvider";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Button, Form, Input, Modal, notification, Select } from "antd";
 import axios from "axios";
+import { useRouter } from 'next/navigation';
 import React, { useContext, useEffect, useState } from "react";
 import { config } from "../../../config";
-import { AppContext } from "@/context/AppProvider";
-import LoadingUI from "@/components/LoadingUI";
-import { useRouter } from 'next/navigation';
 // import Image from "next/image";
 
 interface FormValues {
@@ -202,7 +203,7 @@ const AccessModal: React.FC = () => {
                       disabled={loading}
                     >
                       {loading ? "Loading" : "Generate OTP"}
-                      {loading && <img src="/loading.svg" height={30} alt="" />}
+                      {loading && <img src={loadingSvg} height={30} alt="" />}
                     </Button>
                   </Form.Item>
                 </>
@@ -255,7 +256,7 @@ const AccessModal: React.FC = () => {
                   disabled={loading}
                 >
                   {loading ? "Loading" : "Submit OTP"}
-                  {loading && <img src="/loading.svg" height={30} alt="" />}
+                  {loading && <img src={loadingSvg} height={30} alt="" />}
                 </Button>
               </Form.Item>
             </Form>
@@ -422,9 +423,20 @@ interface ImageProps {
 }
 
 const Imagee = ({ url, h }: ImageProps) => {
+  const returnImageAcctoUrl = (u: string) => {
+    switch (u) {
+      case "class": return contentImg.ACCESS_class;
+      case "phone": return contentImg.ACCESS_phone;
+      case "email": return contentImg.ACCESS_email;
+      case "sent": return contentImg.ACCESS_sent;
+      case "otp": return contentImg.ACCESS_otp;
+      case "unlock": return contentImg.ACCESS_unlock;
+    }
+  }
+
   return (
     <div className="d-flex justify-content-center">
-      <img src={`/access/${url}.png`} alt="" height={h} />
+      <img src={returnImageAcctoUrl(url)} alt="" height={h} />
     </div>
   );
 };

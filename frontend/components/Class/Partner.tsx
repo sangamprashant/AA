@@ -1,5 +1,4 @@
-// import { appName } from "../Strings";
-
+import { classes } from "@/assets/links";
 import { appName } from "@/strings";
 import { Image } from "antd";
 
@@ -7,16 +6,18 @@ const Partner = () => {
   const data = [
     {
       text: "Aligned with the CBSE curriculum",
-      imgSrc: "class/partners/cbse.svg?cache-control=max-age=31536000",
+      imgSrc: `${classes.partners.CLASS_PARTNERS_cbse}?cache-control=max-age=31536000`,
     },
     {
       text: "Aligned with the ICSE curriculum",
-      imgSrc: "class/partners/icse.svg?cache-control=max-age=31536000",
+      imgSrc: `${classes.partners.CLASS_PARTNERS_icse}?cache-control=max-age=31536000`,
     },
   ];
 
   return (
-    <div id="class-partner">
+    <div id="class-partner" style={{
+      backgroundImage: `url(${classes.list.CLASS_LIST_partners})`
+    }}>
       <div className="d-flex justify-content-center">
         <div className="col-md-5">
           <div className="shadow p-4 rounded-4">
@@ -29,7 +30,7 @@ const Partner = () => {
             </p>
             <div>
               <Image
-                src="/class/list/verified.png?cache-control=max-age=31536000"
+                src={`${classes.list.CLASS_LIST_verified}?cache-control=max-age=31536000`}
                 alt="Verified"
                 height={50}
               />{" "}

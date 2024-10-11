@@ -1,10 +1,10 @@
-// import Image from "next/image";
+import { classes } from "@/assets/links";
 
 const Award = () => {
   return (
     <div id="class-award">
       <img
-        src="/class/awards.png?cache-control=max-age=31536000"
+        src={`${classes.award.CLASS_award}?cache-control=max-age=31536000`}
         alt="Award"
         className="class-award-image"
       />
@@ -20,7 +20,7 @@ const Award = () => {
           <div className="col-md-3">
             <div className="award-card">
               <img
-                src="/class/award/selection.png?cache-control=max-age=31536000"
+                src={`${classes.award.CLASS_AWARD_selection}?cache-control=max-age=31536000`}
                 alt="Selection"
               />
               <h3 className="award-title">Rigorous Selection</h3>
@@ -32,7 +32,7 @@ const Award = () => {
           <div className="col-md-3">
             <div className="award-card">
               <img
-                src="/class/award/training.png?cache-control=max-age=31536000"
+                src={`${classes.award.CLASS_AWARD_traning}?cache-control=max-age=31536000`}
                 alt="Training"
               />
               <h3 className="award-title">Comprehensive Training</h3>
@@ -44,7 +44,7 @@ const Award = () => {
           <div className="col-md-3">
             <div className="award-card">
               <img
-                src="/class/award/monitoring.png?cache-control=max-age=31536000"
+                src={`${classes.award.CLASS_AWARD_monitoring}?cache-control=max-age=31536000`}
                 alt="Monitoring"
               />
               <h3 className="award-title">Effective Monitoring</h3>
@@ -56,7 +56,7 @@ const Award = () => {
           <div className="col-md-3">
             <div className="award-card">
               <img
-                src="/class/award/upskill.png?cache-control=max-age=31536000"
+                src={`${classes.award.CLASS_AWARD_upskill}?cache-control=max-age=31536000`}
                 alt="Upskill"
               />
               <h3 className="award-title">Continuous Upskilling</h3>

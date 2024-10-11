@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Section from "../Reuse/Section";
 import { scrollToSection } from "../Reuse/functions";
 import { appName } from "@/strings";
+import { classes } from "@/assets/links";
 // import { appName } from "../Strings";
 
 const FreeClass = () => {
@@ -29,7 +30,7 @@ const FreeClass = () => {
               whileInView={{ rotate: 10 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: false }}
-              style={{ backgroundImage: "url(price/free-class.png)" }}
+              style={{ backgroundImage: `url(${classes.freeClass})` }}
             ></motion.div>
           </div>
           <div className="col-md-8 d-flex flex-column justify-content-between">

@@ -1,32 +1,31 @@
+import { classes } from "@/assets/links";
 import { appName } from "@/strings";
 import { motion } from "framer-motion";
-// import Image from "next/image";
-// import { appName } from "../Strings";
 
 const Pricing = () => {
   const items = [
     {
-      img: "price/online/class-online-1.svg?cache-control=max-age=31536000",
+      img: `${classes.price.PRICE_ONLINE_class_online1}?cache-control=max-age=31536000`,
       title: "Comprehensive Curriculum",
       text: "Our classes cover a wide range of subjects and topics, ensuring a well-rounded education.",
     },
     {
-      img: "price/online/class-online-2.svg?cache-control=max-age=31536000",
+      img: `${classes.price.PRICE_ONLINE_class_online2}?cache-control=max-age=31536000`,
       title: "Experienced Tutors",
       text: "Our tutors are highly qualified and experienced, providing personalized attention to each student.",
     },
     {
-      img: "price/online/class-online-3.svg?cache-control=max-age=31536000",
+      img: `${classes.price.PRICE_ONLINE_class_online3}?cache-control=max-age=31536000`,
       title: "Interactive Learning",
       text: "We use interactive tools and methods to make learning engaging and effective.",
     },
     {
-      img: "price/online/class-online-4.svg?cache-control=max-age=31536000",
+      img: `${classes.price.PRICE_ONLINE_class_online4}?cache-control=max-age=31536000`,
       title: "Regular Assessments",
       text: "Frequent tests and assessments help track progress and identify areas for improvement.",
     },
     {
-      img: "price/online/class-online-5.svg?cache-control=max-age=31536000",
+      img: `${classes.price.PRICE_ONLINE_class_online5}?cache-control=max-age=31536000`,
       title: "Flexible Scheduling",
       text: "Our classes are scheduled to fit the busy lives of students and parents, with options for weekends and evenings.",
     },
@@ -61,7 +60,7 @@ const Pricing = () => {
         </div>
         <motion.div
           className="pricing-class-img-section col-md-5"
-          style={{ backgroundImage: "url(price/pricing-bg.png)" }}
+          style={{ backgroundImage: `url(${classes.priceBg})` }}
         >
           <motion.video
             src="price/a-to-z-classes.mp4?cache-control=max-age=31536000"

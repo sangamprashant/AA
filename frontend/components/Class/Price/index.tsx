@@ -4,6 +4,7 @@ import Section from "../../Reuse/Section";
 import { useClassContext } from "../ClassContext";
 import MobilePrice from "./MobilePrice";
 import PriceChart from "./PriceChart";
+import { classes } from "@/assets/links";
 // import Image from "next/image";
 
 const Price = () => {
@@ -144,17 +145,17 @@ const Price = () => {
 
   const samplingImages = [
     {
-      src: "price/flexible.png",
+      src: classes.flexible,
       title: "Flexible & custom classes",
       desc: "Change teacher, class schedules, & plan leaves",
     },
     {
-      src: "price/user.png",
+      src: classes.classUser,
       title: "Dedicated relationship manager",
       desc: "Your point-of-contact for any assistance regarding online class 5 maths classes",
     },
     {
-      src: "price/cash.png",
+      src: classes.classUser,
       title: "No-questions-asked refund policy",
       desc: "Not satisfied? Get refund for the remaining classes",
     },

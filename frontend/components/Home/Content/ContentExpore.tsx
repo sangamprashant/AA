@@ -10,6 +10,7 @@ import { config } from "../../../config";
 import Loading from "../../Reuse/Loading";
 import Section from "../../Reuse/Section";
 import { ContentData } from "./HHH";
+import { studyMaterials } from "@/assets/links";
 
 interface StudyMaterial {
   _id: string;
@@ -125,7 +126,7 @@ const ContentExplore: React.FC = () => {
           onClick={() => setSelectedClass("")}
         >
           <img
-            src={`/home/study-materials/icon/all.png?cache-control=max-age=31536000`}
+            src={`${studyMaterials["all"]}?cache-control=max-age=31536000`}
             alt="Show All"
             height="35"
           />{" "}
@@ -139,8 +140,7 @@ const ContentExplore: React.FC = () => {
             onClick={() => setSelectedClass(`class ${index + 1}`)}
           >
             <img
-              src={`/home/study-materials/icon/${index + 1
-                }.png?cache-control=max-age=31536000`}
+              src={`${studyMaterials[(index+1).toString()]}?cache-control=max-age=31536000`}
               alt={`Class ${index + 1}`}
               height="35"
             />{" "}
@@ -203,10 +203,3 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
     </Link>
   );
 };
-
-
-const LoadingContent = () => {
-  return <>
-    <Loading />
-  </>
-}
