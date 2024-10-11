@@ -58,21 +58,6 @@ const Try = () => {
     scrollToSlide(active);
   }, [active]);
 
-  // const listItems = [
-  //   "Experienced and highly qualified instructors dedicated to student success.",
-  //   "Comprehensive and up-to-date curriculum covering all key areas of math.",
-  //   "Personalized learning plans tailored to individual student needs.",
-  //   "Interactive and engaging teaching methods to enhance understanding.",
-  //   "Proven track record of high student achievement and satisfaction.",
-  //   "State-of-the-art facilities and resources for an optimal learning environment.",
-  //   "Regular progress reports and parent-teacher meetings to ensure student growth.",
-  //   "Flexible scheduling options to accommodate students' busy lives.",
-  //   "Online and in-person classes to suit different learning preferences.",
-  //   "Affordable pricing plans to ensure access to quality education for all students.",
-  //   "Access to exclusive study materials and practice exams.",
-  //   "Supportive learning community fostering collaboration and teamwork.",
-  // ];
-
   const listItems = [
     "Highly qualified instructors",
     "Comprehensive math curriculum",
