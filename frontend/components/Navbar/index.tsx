@@ -1,7 +1,6 @@
 "use client"
 import { navbarImg } from "@/assets/links";
 import { email, phone } from "@/strings";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import NextTopLoader from 'nextjs-toploader';
@@ -30,23 +29,16 @@ const Navbar = () => {
 
     return (
         <>
-            <motion.nav
+            <nav
                 className="navbar navbar-expand-lg position-fixed w-100 sticky-top backdrop-nav no-print m-0"
                 data-navbar-on-scroll="data-navbar-on-scroll"
-                variants={navItemVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 0.1, duration: 0.7 }}
             >
                 <div className="container">
                     <Link className="navbar-brand" href="/">
-                        <motion.img
+                        <img
                             src={`${navbarImg["logo"]}?cache-control=max-age=31536000`}
                             height="60"
                             alt="logo"
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1, duration: 1 }} loading="lazy"
                         />
                     </Link>
                     <button
@@ -65,13 +57,9 @@ const Navbar = () => {
                             }`}
                     >
                         <ul className="navbar-nav ms-auto gap-2 align-items-center justify-content-start">
-                            <motion.li
+                            <li
                                 className="nav-item"
                                 key="free demo"
-                                variants={navItemVariants}
-                                initial="hidden"
-                                animate="visible"
-                                transition={{ delay: 0.1, duration: 0.7 }}
                             >
                                 <Link
                                     className="rainbow-text-nav"
@@ -81,14 +69,10 @@ const Navbar = () => {
                                     <Image src={`${navbarImg["megaphone"]}?cache-control=max-age=31536000`} alt="" height={20} width={20} /> {" "}
                                     <b>Book A Free Demo Class</b>
                                 </Link>
-                            </motion.li>
-                            <motion.li
+                            </li>
+                            <li
                                 className="nav-item"
                                 key="about-us"
-                                variants={navItemVariants}
-                                initial="hidden"
-                                animate="visible"
-                                transition={{ delay: 0.1, duration: 0.7 }}
                             >
                                 <Link
                                     className="nav-link"
@@ -97,14 +81,10 @@ const Navbar = () => {
                                 >
                                     Free Study Materials
                                 </Link>
-                            </motion.li>
-                            <motion.li
+                            </li>
+                            <li
                                 className="nav-item"
                                 key="about-us"
-                                variants={navItemVariants}
-                                initial="hidden"
-                                animate="visible"
-                                transition={{ delay: 0.1, duration: 0.7 }}
                             >
                                 <Link
                                     className="nav-link"
@@ -113,13 +93,9 @@ const Navbar = () => {
                                 >
                                     About Us
                                 </Link>
-                            </motion.li>
-                            <motion.li
+                            </li>
+                            <li
                                 className="nav-item"
-                                variants={navItemVariants}
-                                initial="hidden"
-                                animate="visible"
-                                transition={{ delay: 0.1, duration: 0.7 }}
                             >
                                 <Link
                                     href="/contact-us"
@@ -128,13 +104,9 @@ const Navbar = () => {
                                 >
                                     Contact Us
                                 </Link>
-                            </motion.li>
-                            <motion.li
+                            </li>
+                            <li
                                 className="nav-item"
-                                variants={navItemVariants}
-                                initial="hidden"
-                                animate="visible"
-                                transition={{ delay: 0.1, duration: 0.7 }}
                             >
                                 <Link
                                     href="/blog"
@@ -143,15 +115,11 @@ const Navbar = () => {
                                 >
                                     Our Blogs
                                 </Link>
-                            </motion.li>
+                            </li>
 
-                            <motion.li
+                            <li
                                 className="nav-item"
                                 key="mobile number"
-                                variants={navItemVariants}
-                                initial="hidden"
-                                animate="visible"
-                                transition={{ delay: 0.1, duration: 0.7 }}
                             >
                                 <Link
                                     className="nav-link btn theme-btn btn-sm"
@@ -160,14 +128,10 @@ const Navbar = () => {
                                 >
                                     +91 {phone}
                                 </Link>
-                            </motion.li>
-                            <motion.li
+                            </li>
+                            <li
                                 className="nav-item"
                                 key="Email"
-                                variants={navItemVariants}
-                                initial="hidden"
-                                animate="visible"
-                                transition={{ delay: 0.1, duration: 0.7 }}
                             >
                                 <Link
                                     className="nav-link btn theme-btn btn-sm"
@@ -176,18 +140,18 @@ const Navbar = () => {
                                 >
                                     {email}
                                 </Link>
-                            </motion.li>
+                            </li>
                         </ul>
                     </div>
                 </div>
-            </motion.nav>
+            </nav>
             <NextTopLoader
                 color="red"
                 initialPosition={0.08}
                 crawlSpeed={200}
                 height={4}
                 crawl={true}
-                showSpinner={true}
+                showSpinner={false}
                 easing="ease"
                 speed={100}
                 shadow="0 0 10px #2299DD,0 0 5px #2299DD"

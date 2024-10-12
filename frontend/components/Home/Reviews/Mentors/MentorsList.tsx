@@ -1,7 +1,6 @@
 "use client";
 import { reviewImg } from "@/assets/links";
 import { useEffect } from "react";
-import "./mentors.css";
 
 const mentors = [
   {

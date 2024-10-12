@@ -47,7 +47,7 @@ const ReviewParent = () => {
   }, []);
 
   const calculateSlidesToShow = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== undefined && window) {
       if (window.innerWidth > 768) {
         return 2;
       } else if (window.innerWidth > 576) {

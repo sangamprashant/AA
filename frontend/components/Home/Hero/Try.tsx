@@ -9,6 +9,7 @@ const Try = () => {
   const [active, setActive] = React.useState(0);
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') return ;
     // Browser-specific code here
     const carousel = document.querySelector("#customCarousel1");
     if (carousel) {

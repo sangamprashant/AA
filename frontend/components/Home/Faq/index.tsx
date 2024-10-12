@@ -3,7 +3,6 @@ import { Collapse, Space } from "antd";
 import Section from "../../Reuse/Section";
 import { useState } from "react";
 import "./faq.css";
-import { motion } from "framer-motion";
 import { appName, email } from "@/strings";
 import Link from "next/link";
 
@@ -270,34 +269,17 @@ const Faq = () => {
   return (
     <Section className="py-5">
       <div className="shadow p-5 rounded">
-        <motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: -50, x: -100 }}
-            whileInView={{ opacity: 1, y: 0, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-          >
+        <div>
+          <h2>
             We Love Solving Doubts.!
-          </motion.h2>
-          <motion.p
-            className="p-0 m-0"
-            initial={{ opacity: 0, y: -50 }}
-            whileInView={{ opacity: 1, y: 0, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-          >
+          </h2>
+          <p className="p-0 m-0">
             Our team will connect you with the Best Tutors
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
         <Space direction="vertical" style={{ width: "100%" }}>
           {faqData.map((item) => (
-            <motion.div
-              initial={{ opacity: 0, y: -50 }}
-              whileInView={{ opacity: 1, y: 0, x: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              key={item.data[0].key}
-            >
+            <div>
               <Collapse
                 activeKey={activeKey}
                 onChange={handlePanelChange}
@@ -309,7 +291,7 @@ const Faq = () => {
                   </Collapse.Panel>
                 ))}
               </Collapse>
-            </motion.div>
+            </div>
           ))}
         </Space>
       </div>

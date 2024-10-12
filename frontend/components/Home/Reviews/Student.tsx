@@ -47,7 +47,7 @@ const ReviewStudent = () => {
 
   // Function to calculate initial slides to show
   const calculateSlidesToShow = () => {
-    if (typeof window !== 'undefined') {
+    if (window && typeof window !== undefined) {
       if (window.innerWidth > 768) {
         return 3;
       } else if (window.innerWidth > 576) {
@@ -56,10 +56,10 @@ const ReviewStudent = () => {
         return 1;
       }
     }
-  
+
     return 1;
   };
-  
+
 
   const teamMembers = [
     {
