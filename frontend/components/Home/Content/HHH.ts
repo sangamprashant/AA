@@ -1,643 +1,472 @@
 "use client";
+
+import { studyContentImg } from "@/assets/links";
+
 const CommonCommONCOntext = {
   One_12: `
-      <p>
-        <strong>Numbers</strong> are an integral part of our everyday lives,
-        right from the number of hours we sleep at night to the number of rounds
-        we run around the racing track and much more. In math, numbers can be
-        even and odd numbers, prime and composite numbers, decimals, fractions,
-        rational and irrational numbers, natural numbers, integers, real
-        numbers, rational numbers, irrational numbers, and whole numbers. In
-        this chapter, we will get an introduction to the
-        <strong>different types of numbers</strong> and to all the concepts
-        related to them.
+      <p class="lead">
+        From how many hours we sleep at night to how many laps we do on a race
+        track, numbers are an essential part of our daily lives. In mathematics,
+        numbers include even and odd, prime and composite numbers, decimals,
+        fractions, rational and irrational numbers, natural numbers, integers,
+        real numbers, rational, irrational and integer numbers. In this chapter,
+        we will learn about the different types of numbers and all the concepts
+        associated with them.
       </p>
-      <div id="What-are-Numbers">
-        <h2>What are Numbers?</h2>
-      </div>
+
+      <h2>What are Numbers?</h2>
       <p>
-        A number is a basic component of mathematics. Numbers are used for
-        counting, measuring, keeping things in order, indexing, etc. We have
-        different types of numbers based on their properties such as natural
-        numbers, whole numbers, rational and irrational numbers, integers, real
-        numbers, complex numbers, even and odd numbers, etc. We can apply the
-        basic fundamental arithmetic operations of numbers and determine the
-        resulting number. Initially, tally marks were used before the use of
-        numbers. Let us now introduce the concept of numbers and understand
-        their different types and their properties.
+        Numbers are a fundamental part of mathematics. Numbers are used to
+        count, measure, order and index. We know different types of numbers
+        according to their nature such as natural numbers, integers, rational
+        and irrational numbers, whole numbers, real numbers, complex numbers,
+        even and odd numbers etc. We can apply basic arithmetic operations on
+        numbers and the resulting number is . Originally, tally paper was used
+        before numerals were used. Now let us introduce the concept of numbers
+        and understand its different types and properties.
       </p>
-      <h3>Definition of Numbers</h3>
+
+      <h3>Number Definition</h3>
       <p>
-        An arithmetic value that is expressed using a word, a symbol or a figure
-        that represents a quantity is called a number. Numbers are used in
-        counting and calculations.
+        Numbers are mathematical values ​​that are represented by words, symbols
+        or numbers that represent quantities. Numbers are used for counting and
+        calculations.
       </p>
-      <div id="Introduction-to-Numbers">
-        <h2>Introduction to Numbers</h2>
-      </div>
+
+      <h3>Introduction to Numbers</h3>
       <p>
-        Numbers form the basis of mathematics. We should befriend numbers in
-        order to understand math. Numbers are of various kinds. We have a long
-        list that includes ordinal numbers, consecutive numbers, odd numbers,
-        even numbers, natural numbers, whole numbers, integers, real numbers,
+        Numbers form the basis of mathematics. To understand mathematics you
+        need to become familiar with numbers. There are different types of
+        numbers. There is a long list including ordinals, consecutive numbers,
+        odd, even, natural numbers, whole numbers, integers, real numbers,
         rational numbers, irrational numbers, and complex numbers.
       </p>
       <p>
-        Along with numbers, we come across the interesting world of factors and
-        multiples. This world includes prime numbers, composite numbers,
-        co-prime numbers, perfect numbers (yes, numbers could be perfect!) HCF,
-        LCM, and prime factorization.
+        In addition to numbers, you will also encounter the interesting world of
+        divisors and multiples. This world includes primes, composite numbers,
+        coprimes, perfect numbers (yes, numbers can be perfect!), HCF, P/E, and
+        prime factorization.
       </p>
       <p>
-        Let us get started on our journey of numbers. You can go ahead and
-        explore all important topics in Numbers by selecting the topics from the
-        list given below:
-      </p>
-      <div id="Pre-number-Math">
-        <h2>Pre-number Math</h2>
-      </div>
-      <p>
-        Building pre-number math skills is a prerequisite to understanding
-        numbers. Pre-number skills like matching, sorting, classifying,
-        ordering, and comparing sets the stage to build a strong number sense.
-        Pre-number Math skills are built-in preschool years. Kids learn how to
-        stand before they start taking small steps. In the same way, the
-        pre-number concept is very important for them to start understanding
-        Mathematics. In this section, we will cover the different pre-number
-        concepts like Matching and Sorting, Comparing and Ordering ,
-        Classification, and Shapes and patterns.
-      </p>
-      <p>
-        <strong>Example:</strong> Observe the figure given below which shows 2
-        columns. The left column displays the numbers 1 to 4. The right column
-        displays rows of items. The numbers are matched to the quantities they
-        represent. This is an essential skill for children aged 3 to 4 years.
-      </p>
-      <p>
-        <img
-          alt="pre number concepts in math - Matching"
-          loading="lazy"
-          src="/content/class-1/numbers-1-1.jpg"
-        />
+        Start your numbers journey. You can explore all the important topics in
+        Numbers by choosing a topic from the list below.
       </p>
 
-      <div id="Number-Names">
-        <h2>Number Names</h2>
-      </div>
+      <h3>Math Before Number Building</h3>
       <p>
-        Number names are used to represent numbers in an alphabetical format. A
-        specific word is used to refer to each number. To write a number in
-        words in English, we should know the place value of each digit in the
-        number.
+        Building skills before number building is a prerequisite for
+        understanding numbers. Pre-quantification skills like allocating,
+        sorting, classifying, arranging and comparing are the foundation for a
+        deep understanding of numbers. Pre-school math skills are taught in
+        kindergarten. Children learn how to stand before they can take even a
+        small step. Similarly, pre-quantification concepts are very important
+        for children to start understanding mathematics. In this section, we
+        will discuss various pre-quantification concepts like allocating and
+        sorting, comparing and ordering, classifying, shapes and patterns, etc.
       </p>
+      <img
+        src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667839/numbers-1-1_anxphj.jpg"
+        alt=""
+        srcset=""
+        style="max-width: 500px; width: 100%"
+      />
+
+      <h3>Number Names</h3>
       <p>
-        <strong>Example: </strong>Observe the figure given below which shows
-        that 23 is written as 'twenty-three' in the number names form.
+        Number names are utilized to speak to numbers in an in sequential order
+        arrange. A particular word is utilized to allude to each number. To type
+        in a number in words in English, we ought to know the put esteem of each
+        digit within the number.
       </p>
+      <img
+        src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667843/numbers-1-2_kzoms9.png"
+        alt=""
+        srcset=""
+        style="max-width: 500px; width: 100%"
+      />
+
+      <h3>PEMDAS</h3>
       <p>
-        <img
-          alt="example of a number name"
-          loading="lazy"
-          src="/content/class-1/numbers-1-2.png"
-        />
+        The rules of PEMDAS layout the arrange of the operations and allow
+        structure to settled operations. In science, PEMDAS is an acronym that
+        stands for P- Brackets, E- Types, M- Increase, D- Division, A-
+        Expansion, and S- Subtraction.
+      </p>
+      <img
+        src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667843/numbers-1-3_hblevx.png"
+        alt=""
+        srcset=""
+        style="max-width: 500px; width: 100%"
+      />
+
+      <h3>Number Systems</h3>
+      <p>
+        The decimal number framework is the foremost commonly utilized number
+        framework . The digits to 9 are utilized to speak to numbers. A digit in
+        any given number includes a put esteem. The decimal number framework is
+        the standard framework for signifying integrability and non-integers. We
+        utilize the decimal number framework for the representation of Numbers
+        up to 2-Digits , Numbers up to 3-Digits , Numbers up to 4-Digits ,
+        Numbers up to 5-Digits , Numbers up to 6-Digits , Numbers up to 7-Digits
+        , Numbers up to 8-Digits , Numbers up to 9-Digits and Numbers up to
+        10-Digits ..
       </p>
 
-      <div id="PEMDAS">
-        <h2>PEMDAS</h2>
-      </div>
+      <h3>Sorts of Numbers</h3>
       <p>
-        The rules of PEMDAS outline the order of the operations and give
-        structure to nested operations. In mathematics, PEMDAS is an acronym
-        that stands for P- Parentheses, E- Exponents, M- Multiplication, D-
-        Division, A- Addition, and S- Subtraction.
-      </p>
-      <p>
-        <img
-          alt="Numbers: PEMDAS"
-          loading="lazy"
-          src="/content/class-1/numbers-1-3.png"
-        />
+        The diverse sorts of numbers depend on the properties that they have.
+        For illustration, normal numbers are checking numbers that begin from 1,
+        whereas, whole numbers begin from 0, prime numbers are as it were
+        detachable by 1 and the number itself, and so on. Let us learn more
+        almost the diverse sorts of numbers within the taking after areas.
       </p>
 
-      <div id="Number-Systems">
-        <h2>Number Systems</h2>
-      </div>
+      <h3>Numbers Chart</h3>
       <p>
-        The decimal number system is the most commonly used number system . The
-        digits 0 to 9 are used to represent numbers. A digit in any given number
-        has a place value. The decimal number system is the standard system for
-        denoting integers and non-integers. We use the decimal number system for
-        the representation of Numbers up to 2-Digits , Numbers up to 3-Digits ,
-        Numbers up to 4-Digits , Numbers up to 5-Digits , Numbers up to 6-Digits
-        , Numbers up to 7-Digits , Numbers up to 8-Digits , Numbers up to
-        9-Digits and Numbers up to 10-Digits .
+        There are distinctive sorts of numbers that are utilized, but the
+        foremost commonly utilized numbers can be classified as per their
+        special properties. Observe the numbers chart which appears the sorts of
+        numbers that are included beneath genuine numbers and all numbers
+        separated from real numbers are named as complex numbers.
       </p>
 
-      <h2>Types of Numbers</h2>
+      <h3>Cardinal Numbers and Ordinal Numbers</h3>
       <p>
-        The different types of numbers depend on the properties that they have.
-        For example, natural numbers are counting numbers that start from 1,
-        whereas, whole numbers start from 0, prime numbers are only divisible by
-        1 and the number itself, and so on. Let us learn more about the
-        different types of numbers in the following sections.
+        A cardinal number could be a number that indicates the tally of any
+        question. Any common number such as 1, 2, 3, etc., is alluded to as a
+        cardinal number, though, an ordinal number could be a number that
+        indicates the position or put of an protest. For illustration, 1st, 2nd,
+        3rd, 4th, 5th, etc. It shows the arrange of things or objects, such as
+        to begin with, moment, third, fourth, and so on.
       </p>
 
-      <h2>Numbers Chart</h2>
+      <h4>Illustration:</h4>
       <p>
-        There are different types of numbers that are used, but the most
-        commonly used numbers can be classified as per their unique properties.
-        Observe the numbers chart which shows the types of numbers that are
-        included under real numbers and all numbers apart from real numbers are
-        termed as complex numbers.
+        Watch the table given underneath which appears the contrast between
+        Cardinal numbers and Ordinal numbers. Ordinal numbers offer assistance
+        characterize the position of the children. Such as, Jim is the fourth
+        child from the cleared out.
       </p>
-      <p>
-        <img alt="Real Numbers Chart" src="/content/class-1/numbers-1-4.png" />
-      </p>
-      <div id="Cardinal-Numbers-and-Ordinal-Numbers">
-        <h2>Cardinal Numbers and Ordinal Numbers</h2>
-      </div>
-      <p>
-        A <b>cardinal number</b>
-        is a <b>number</b> that denotes the count of any object. Any natural
-        <b>number</b> such as 1, 2, 3, etc., is referred to as a
-        <b>cardinal number</b>, whereas, an <b>ordinal number</b> is a
-        <b>number</b> that denotes the position or place of an object. For
-        example, 1<sup>st</sup>, 2<sup>nd</sup>, 3<sup>rd</sup>, 4<sup>th</sup>,
-        5<sup>th</sup>, etc. It indicates the order of things or objects, such
-        as first, second, third, fourth, and so on.
-      </p>
-      <p>
-        <strong>Example: </strong>Observe the table given below which shows the
-        difference between Cardinal numbers and Ordinal numbers. Ordinal numbers
-        help define the position of the children. Such as, Jim is the fourth
-        child from the left.
-      </p>
-      <p>
-        <img
-          alt="cardinal numbers and ordinal numbers chart"
-          loading="lazy"
-          src="/content/class-1/numbers-1-5.png"
-        />
-      </p>
-      <div id="Consecutive-Numbers">
-        <h2>Consecutive Numbers</h2>
-      </div>
-      <p>
-        Consecutive numbers are numbers that follow each other in order from the
-        smallest number to the largest number. They usually have a difference of
-        1 between every two numbers.
-      </p>
-      <p>
-        <strong>Example:</strong> Observe the figure given below which shows a
-        list of consecutive numbers.
-      </p>
-      <p>
-        <img
-          alt="example of consecutive numbers"
-          loading="lazy"
-          src="/content/class-1/numbers-1-6.png"
-        />
-      </p>
-      <div id="Integers">
-        <h2>Integers</h2>
-      </div>
-      <p>
-        Integers are numbers that consist of whole numbers and negative numbers.
-        All integers are represented by the alphabet Z and do not have a decimal
-        or a fractional part. A number line is full of integers. On the left
-        side, you can find negative integers while on the right side you have
-        the positive ones. Don’t forget the zero in between!
-      </p>
-      <p>
-        <b>Z = { ...., -4, -3, -2, -1, 0 , 1, 2, 3, 4,....}</b>
-      </p>
+      <strike>cardinal numbers and ordinal numbers chart</strike>
 
-      <div id="Natural-Numbers-and-Whole-Numbers">
-        <h2>Natural Numbers and Whole Numbers</h2>
-      </div>
+      <h3>Sequential Numbers</h3>
       <p>
-        A natural number is a non-negative integer and is always greater than
-        zero. It is represented by the symbol N. It should be noted that whole
-        numbers do not contain any decimal or fractional part. They are
-        represented by the symbol W.
+        Sequential numbers are numbers that take after each other in arrange
+        from the littlest number to the biggest number. They ordinarily have a
+        distinction of 1 between each two numbers.
       </p>
+      <h4>Case:</h4>
       <p>
-        <img
-          alt="Natural numbers and whole numbers - Representation"
-          loading="lazy"
-          src="/content/class-1/numbers-1-7.png"
-        />
-      </p>
-
-      <div id="Even-Numbers-and-Odd-Numbers">
-        <h2>Even Numbers and Odd Numbers</h2>
-      </div>
-      <p>
-        Even numbers are those numbers that can be divided into two equal groups
-        or pairs and are exactly divisible by 2. For example, 2, 4, 6, 8, 10,
-        and so on. In other words, these are whole numbers that are exactly
-        divisible by 2.
-      </p>
-      <p>
-        <strong>Example:</strong> Observe the following figure which shows that
-        even numbers are completely divisible by 2.
-      </p>
-      <p>
-        <img
-          alt="example of even numbers"
-          loading="lazy"
-          src="/content/class-1/numbers-1-7.png"
-        />
-      </p>
-      <p>
-        Odd numbers are whole numbers that cannot be completely divided by 2.
-        These numbers cannot be arranged in pairs. Interestingly, all the whole
-        numbers except the multiples of 2 are odd numbers.
-      </p>
-      <p>
-        <strong>Example:</strong> Observe the following figure which shows that
-        odd numbers are not completely divisible by 2 and when they are divided
-        by 2 we get 1 as the remainder.
-      </p>
-      <p>
-        <strong>
-          <img
-            alt="example of odd numbers"
-            loading="lazy"
-            src="/content/class-1/numbers-1-9.png"
-          />
-        </strong>
-      </p>
-      <div id="Prime-Numbers-and-Composite-Numbers">
-        <h2>Prime Numbers and Composite Numbers</h2>
-      </div>
-      <p>
-        A prime number is a number that has exactly two factors, 1 and the
-        number itself. For example, 2, 5, 7, 11, and so on are prime numbers .
-        It can be said that any whole number greater than 1 that has exactly two
-        factors, 1 and itself is defined to be a prime number.
-      </p>
-      <p>
-        Well, now we know that a prime number has just two factors,1 and the
-        number itself.
-      </p>
-      <p>
-        A composite number is a number that has more than two factors, which
-        means it can be divided by the number 1 and itself, and at least one
-        more integer. It can also be said that any number greater than 1 that is
-        not a prime number, is defined to be a composite number. Composite
-        numbers always have more than 2 factors. For example, 6, 8, 9, 12, and
-        so on are composite numbers because these numbers have more than 2
-        factors.
-      </p>
-      <ul>
-        <li>Factors of 6 = 1, 2, 3, 6 (factors other than 1 and 6)</li>
-        <li>Factors of 8 = 1, 2, 4, 8 (factors other than 1 and 8)</li>
-        <li>Factors of 9 = 1, 3, 9 (factors other than 1 and 9)</li>
-        <li>Factors of 12 = 1, 2, 3, 4, 6, 12 (factors other than 1 and 12)</li>
-      </ul>
-      <div id="Co-prime-Numbers">
-        <h2>Co-prime Numbers</h2>
-      </div>
-      <p>
-        If a pair of numbers has no common factor apart from 1, then they are
-        called co-prime numbers . In other words, a set of numbers or integers
-        which have only 1 as their common factor, which means their highest
-        common factor (HCF) will be 1, are co-primes. These are also known as
-        mutually prime numbers or relatively prime numbers. Also, there should
-        be two numbers in order to form co-primes.
-      </p>
-      <p>
-        <strong>Example:</strong> The following figure shows two co-prime
-        numbers 8 and 15 that have only 1 as their common factor.
-      </p>
-      <p>
-        <strong>
-          <img
-            alt="example of co-prime numbers"
-            loading="lazy"
-            src="/content/class-1/numbers-1-10.png"
-          />
-        </strong>
-      </p>
-      <div id="Perfect-Numbers">
-        <h2>Perfect Numbers</h2>
-      </div>
-      <p>
-        Perfect numbers are the positive integers that are equal to the sum of
-        its factors except for the number itself. In other words, perfect
-        numbers are the positive integers that are the sum of their proper
-        divisors . The smallest perfect number is 6, which is the sum of its
-        proper divisors: 1, 2 and 3
-      </p>
-      <p>
-        <strong>Example:</strong> The following figure shows that 6 is a perfect
-        number because the sum of its factors (1,2,3) leads to 6.
-      </p>
-      <p>
-        <strong>
-          <img
-            alt="example of perfect numbers"
-            loading="lazy"
-            src="/content/class-1/numbers-1-11.png"
-          />
-        </strong>
-      </p>
-      <div id="Fractions-and-Decimals">
-        <h2>Fractions and Decimals</h2>
-      </div>
-      <p>
-        Fractions are a part of a whole. They are represented by numbers that
-        have two parts to them and they are separated by a fraction bar. There
-        is a number at the top, which is called the numerator , and the number
-        at the bottom is called the denominator .
-      </p>
-      <p>
-        <strong>Example:</strong> The following figure shows a fraction in which
-        1 is the numerator and 4 is the denominator.
-      </p>
-      <p>
-        <img
-          alt="representation of fractions in numbers"
-          loading="lazy"
-          src="/content/class-1/numbers-1-12.png"
-        />
-      </p>
-      <p>
-        Now that we already know about fractions and how it is represented, some
-        more fraction-related topics can be explored on pages like Equivalent
-        Fractions , Improper Fractions and Mixed Fractions, Addition and
-        Subtraction of Fractions , Multiplication of Fractions and Division of
-        Fractions.
-      </p>
-      <p>
-        What about Decimals? A decimal number has a whole number part and a
-        fractional part. These parts are separated by a decimal point.
-      </p>
-      <p>
-        <strong>Example:</strong> Observe the figure given below which shows a
-        decimal number that has a whole number part and a fractional part.
-      </p>
-      <p>
-        <strong>
-          <img
-            alt="example of decimal numbers"
-            loading="lazy"
-            src="/content/class-1/numbers-1-13.png"
-          />
-        </strong>
-      </p>
-      <p>
-        Decimals are really interesting. They have a whole number part and they
-        can also be represented as fractions. Some more decimal-related concepts
-        can be explored on pages like, Addition and Subtraction of Decimals ,
-        Multiplication of Decimals , and Division of Decimals.
-      </p>
-      <div id="Rational-Numbers-and-Irrational-Numbers">
-        <h2>Rational Numbers and Irrational Numbers</h2>
-      </div>
-      <p>
-        A rational number, denoted by Q, is represented in the form p/q, where q
-        is not equal to zero. Integers, Fractions, Decimals, Whole numbers, and
-        Natural numbers are all Rational numbers. For example, 1/2, - 4/5 are
-        rational numbers.
-      </p>
-      <p>
-        In order to get a better understanding of Rational numbers , other
-        topics related to rational numbers can be studied on pages like Decimal
-        Representation of Rational Numbers , and Operations on Rational Numbers
-        .
-      </p>
-      <p>
-        Now, Irrational Numbers are the numbers that cannot be represented using
-        integers in the p/q form. The set of irrational numbers is denoted by
-        Q'. For example, √5, √2, and so on are irrational numbers.
-      </p>
-      <p>
-        Irrational numbers cannot be represented as a simple fraction. Their
-        decimal expansion neither terminates nor becomes periodic. Some more
-        topics related to irrational numbers can be studied on pages like Square
-        Root of Two is Irrational , Decimal Representation of Irrational
-        Numbers, The exactness of Decimal Representation , Rationalize the
-        Denominator, Surds, and Conjugates and Rationalization.
-      </p>
-      <div id="Real-Numbers">
-        <h2>Real Numbers</h2>
-      </div>
-      <p>
-        Any number that can be found in the real world is a real number. Any
-        number that we can think of, except complex numbers, is a real number.
-        The set of real numbers is the union of the set of Rationals (Q) and
-        Irrationals (Q'). It is denoted by R. The set of real numbers, R = Q ∪
-        Q'. The following figure shows the relationship between real numbers,
-        rational numbers, irrational numbers, integers, whole numbers and
-        natural numbers.
-      </p>
-      <p>
-        <strong>
-          <img
-            alt="Classification of real numbers"
-            loading="lazy"
-            src="/content/class-1/numbers-1-14.png"
-          />
-        </strong>
-      </p>
-      <div id="Complex-Numbers">
-        <h2>Complex Numbers</h2>
-      </div>
-      <p>
-        A complex number is a number that can be expressed in the form (a + bi)
-        where a and b are real numbers, and i is a solution of the equation x
-        <sup>2</sup> = −1. Since no real number satisfies this equation, i is
-        called an imaginary number . Complex numbers have a real part and an
-        imaginary part. Wait, do you think Complex numbers are really complex?
-        Well, let us study them in detail to find out. In this section, we cover
-        different topics like Complex Numbers – Points in the Plane, A Complex
-        Number is a Point in the Plane, What is i? Magnitude and Argument,
-        Powers of iota , Addition, and Subtraction of Complex Numbers,
-        Multiplication of Complex Numbers, Conjugate of a Complex Number ,
-        Division of Complex Numbers, Addition, Subtraction, and Interpretation
-        of |z1-z2|.
-      </p>
-      <p>
-        <strong>Example:</strong> Observe the figure given below which shows
-        that a complex number consists of real numbers and an imaginary part.
-      </p>
-      <p>
-        <strong>
-          <img
-            alt="Representation of complex numbers"
-            loading="lazy"
-            src="/content/class-1/numbers-1-15.png"
-          />
-        </strong>
-      </p>
-      <div id="Factors-and-Multiples">
-        <h2>Factors and Multiples</h2>
-      </div>
-      <p>
-        Factors and multiples are the two key concepts that are studied
-        together. Factors are the numbers that divide the given number
-        completely without leaving any remainder, whereas the multiples are the
-        numbers that are multiplied by the other number to get specific numbers.
-      </p>
-      <p>
-        Factors of a given number are numbers that can perfectly divide that
-        given number.
-      </p>
-      <p>
-        <strong>Examples:</strong>
-      </p>
-      <ul>
-        <li>Factors of 6: 1, 2, 3, 6</li>
-        <li>Factors of 8: 1, 2, 4, 8</li>
-        <li>Factors of 14: 1, 2, 7, 14</li>
-        <li>Factors of 36: 1, 2, 3, 4, 6, 9, 18, 36</li>
-      </ul>
-      <p>
-        A multiple of a number is a number obtained by multiplying the given
-        number by another whole number.
-      </p>
-      <p>
-        <strong>Examples:</strong>
-      </p>
-      <ul>
-        <li>Multiples of 3: 3, 6, 9, 12, 15, ......</li>
-        <li>Multiples of 5: 5, 10, 15, 20, 25, .....</li>
-        <li>Multiples of 10: 10, 20, 30, 40, 50,...</li>
-        <li>Multiples of 12: 12, 24, 36, 48, 60, ....</li>
-      </ul>
-      <div id="Highest-Common-Factor-HCF">
-        <h2>Highest Common Factor (HCF)</h2>
-      </div>
-      <p>
-        The Highest Common Factor (HCF) of the two numbers is the largest whole
-        number which is a factor of both. It is also called the Greatest Common
-        Factor(GCF) .
-      </p>
-      <p>
-        <strong>Example: </strong>Observe the following figure which shows the
-        HCF of 15 and 21 which is 3.
-      </p>
-      <p>
-        <img
-          alt="highest common factor (HCF) of the two numbers"
-          loading="lazy"
-          src="/content/class-1/numbers-1-16.png"
-        />
-      </p>
-      <div id="Least-Common-Multiple-LCM">
-        <h2>Least Common Multiple (LCM)</h2>
-      </div>
-      <p>
-        When we consider two numbers, each will have its own set of multiples.
-        Some multiples will be common to both numbers. The smallest of these
-        common multiples is called the Least Common Multiple (LCM) of the two
+        Watch the figure given underneath which appears a list of sequential
         numbers.
       </p>
-      <p>
-        <strong>Example:</strong> Observe the following figure which shows the
-        LCM of 8 and 10 which is 40.
-      </p>
-      <p>
-        <strong>
-          <img
-            alt="least common multiple (LCM) of the two numbers"
-            loading="lazy"
-            src="/content/class-1/numbers-1-17.png"
-          />
-        </strong>
-      </p>
-      <div id="Prime-Factorization">
-        <h2>Prime Factorization</h2>
-      </div>
-      <p>
-        Prime factorization allows us to write any number as a product of prime
-        factors. It is a way of expressing a number as a product of its prime
-        factors. To do prime factorization, we need to break a number down to
-        its prime factors.
-      </p>
-      <p>
-        <strong>Example: </strong>Observe the figure given below which shows the
-        prime factorization of 12.
-      </p>
-      <p>
-        <img
-          alt="example of prime factorization of number 12"
-          loading="lazy"
-          src="/content/class-1/numbers-1-18.png"
-        />
-      </p>
-      <div id="Properties-of-Numbers">
-        <h2>Properties of Numbers</h2>
-      </div>
-      <p>The basic properties of numbers that are used in mathematics are:</p>
-      <ul>
-        <li>
-          Commutative Property: This property of numbers is applicable to
-          addition and multiplication. It is expressed as, a + b = b + a and a ×
-          b = b × a.
-        </li>
-        <li>
-          Associative Property: This property of numbers is applicable to
-          addition and multiplication. It is expressed as, a + (b + c) = (a + b)
-          + c and a × (b × c) = (a × b) × c.
-        </li>
-        <li>
-          Distributive Property: The product of the sum of two numbers and a
-          third number is equal to the sum of the product of each addend and the
-          third number. It is expressed as a × (b + c) = a × b + a × c.
-        </li>
-        <li>
-          Identity Property: We have an additive identity equal to 0 and a
-          multiplicative identity equal to 1. It is written as, a + 0 = a and a
-          × 1 = a.
-        </li>
-        <li>
-          Reflexive Property: This property implies that every number is equal
-          to itself. It is written as, for all a, a = a.
-        </li>
-        <li>
-          Symmetric Property: If a number x is equal to y, then y is equal to x.
-          It can be written as, x = y ⇒ y = x.
-        </li>
-        <li>
-          Transitive Property: If x is equal to y and y is equal to z, then we
-          can say that x = z. It is expressed as, x = y and y = z ⇒ x = z.
-        </li>
-        <li>
-          Inverse Property: When an arithmetic operation is applied between a
-          number and its inverse, we can get the identity. It is expressed as, a
-          + (-a) = 0 and a × (1/a) = 1.
-        </li>
-      </ul>
+      <strike>case of sequential numbers</strike>
 
+      <h3>Integrability</h3>
       <p>
-        <strong>Important Notes</strong>
+        Integrability are numbers that comprise of entirety numbers and negative
+        numbers. All integrability are spoken to by the letter set Z and do not
+        have a decimal or a fragmentary portion. A number line is full of
+        integrability. On the cleared out side, you'll find negative integers
+        while on the correct side you have the positive ones. Do not disregard
+        the zero in between!
       </p>
+      <p>Z = { ...., -4, -3, -2, -1, , 1, 2, 3, 4,....}</p>
+
+      <h3>Natural Numbers and Entirety Numbers</h3>
+      <p>
+        Natural Numbers and Entirety Numbers A common number may be a
+        non-negative numbers and is always greater than zero. It is spoken to by
+        the image N. It ought to be famous that entire numbers don't contain any
+        decimal or fragmentary portion. They are spoken to by the image W.
+      </p>
+
+      <h3>Common numbers and entirety numbers - Representation</h3>
+      <h4>Indeed Numbers and Odd Numbers</h4>
+      <p>
+        Indeed numbers are those numbers that can be partitioned into two rise
+        to bunches or sets and are precisely detachable by 2. For illustration,
+        2, 4, 6, 8, 10, and so on. In other words, these are entire numbers that
+        are precisely distinct by 2.
+      </p>
+      <h4>Case:</h4>
+      <p>
+        Watch the taking after figure which appears that indeed numbers are
+        totally detachable by 2.
+      </p>
+      <h4>case of indeed numbers</h4>
+      <p>
+        Odd numbers are entire numbers that cannot be totally partitioned by 2.
+        These numbers cannot be orchestrated in sets. Interests, all the
+        entirety numbers but the products of 2 are odd numbers.
+      </p>
+      <h4>Case:</h4>
+      <p>
+        Watch the taking after figure which appears that odd numbers are not
+        totally distinct by 2 and when they are isolated by 2 we get 1 as the
+        leftover portion.
+      </p>
+      <h4>illustration of odd numbers</h4>
+      <p>
+        Prime Numbers and Composite Numbers A prime number could be a number
+        that has precisely two components, 1 and the number itself. For
+        illustration, 2, 5, 7, 11, and so on are prime numbers . It can be said
+        that any entirety number more noteworthy than 1 that has precisely two
+        components, 1 and itself is characterized to be a prime number.
+      </p>
+      <p>
+        Well, presently we know that a prime number has fair two factors,1 and
+        the number itself. A composite number may be a number that has more than
+        two variables, which suggests it can be separated by the number 1 and
+        itself, and at slightest one more numbers. It can too be said that any
+        number more noteworthy than 1 that's not a prime number, is
+        characterized to be a composite number. Composite numbers continuously
+        have more than 2 variables. For illustration, 6, 8, 9, 12, and so on are
+        composite numbers since these numbers have more than 2 variables.
+      </p>
+      <pre>
+Variables of 6 = 1, 2, 3, 6 (variables other than 1 and 6)
+Components of 8 = 1, 2, 4, 8 (variables other than 1 and 8)
+Components of 9 = 1, 3, 9 (variables other than 1 and 9)
+Components of 12 = 1, 2, 3, 4, 6, 12 (variables other than 1 and 12)
+                    </pre
+      >
+
+      <h3>Co-prime Numbers</h3>
+      <p>
+        In the event that a match of numbers has no common figure separated from
+        1, at that point they are called co-prime numbers . In other words, a
+        set of numbers or integrability which have as it were 1 as their common
+        calculate, which suggests their most elevated common figure (HCF) will
+        be 1, are co-primes. These are too known as commonly prime numbers or
+        relatively prime numbers. Too, there ought to be two numbers in arrange
+        to create co-primes.
+      </p>
+      <h4>Case:</h4>
+      <p>
+        The taking after figure appears two co-prime numbers 8 and 15 that have
+        as it were 1 as their common figure.
+      </p>
+      <strike>case of co-prime numbers</strike>
+
+      <h3>Culminate Numbers</h3>
+      <p>
+        Idealize numbers are the positive integrability that are rise to to the
+        entirety of its components but for the number itself. In other words,
+        culminate numbers are the positive integrability that are the entirety
+        of their appropriate divisors . The littlest culminate number is 6,
+        which is the whole of its appropriate divisors: 1, 2 and 3
+      </p>
+      <h5>Illustration</h5>
+      <p>
+        The taking after figure appears that 6 could be a culminate number since
+        the entirety of its variables (1,2,3) leads to 6.
+      </p>
+      <strike>illustration of culminate numbers</strike>
+
+      <h3>Divisions and Decimals</h3>
+      <p>
+        Divisions are a portion of a entire. They are spoken to by numbers that
+        have two parts to them and they are isolated by a division bar. There's
+        a number at the best, which is called the numerator , and the number at
+        the foot is called the denominator .
+      </p>
+      <h4>Case:</h4>
+      <p>
+        The taking after figure appears a division in which 1 is the numerator
+        and 4 is the denominator.
+      </p>
+      <strike>representation of divisions in numbers</strike>
+
+      <h3>Complex Numbers</h3>
+      <p>
+        A complex number may be a number that can be communicated within the
+        frame (a + bi) where a and b are genuine numbers, and i could be a
+        arrangement of the condition x 2 = −1. Since no genuine number fulfills
+        this condition, i is called an fanciful number . Complex numbers have a
+        genuine portion and an imaginary portion. Hold up, do you think Complex
+        numbers are really complex? Well, let us think about them in detail to
+        find out. In this section, we cover distinctive subjects like Complex
+        Numbers – Focuses within the Plane, A Complex Number could be a Point
+        within the Plane, What is i? Size and Contention, Powers of particle ,
+        Expansion, and Subtraction of Complex Numbers, Increase of Complex
+        Numbers, Conjugate of a Complex Number , Division of Complex Numbers,
+        Addition, Subtraction, and Elucidation of |z1-z2|.
+      </p>
+      <h4>Case:</h4>
+      <p>
+        Watch the figure given underneath which appears that a complex number
+        comprises of genuine numbers and an nonexistent portion
+      </p>
+      <strike>Representation of complex numbers</strike>
+
+      <h3>Variables and Products</h3>
+      <p>
+        Variables and products are the two key concepts that are examined
+        together. Variables are the numbers that separate the given number
+        totally without clearing out any leftover portion, though the products
+        are the numbers that are duplicated by the other number to induce
+        particular numbers.
+      </p>
+      <p>
+        Components of a given number are numbers that can flawlessly partition
+        that given number.
+      </p>
+      <h5>Cases:</h5>
+      <pre>
+Components of 6:
+1, 2, 3, 6
+Components of 8:
+1, 2, 4, 8
+Variables of 14:
+1, 2, 7, 14
+Components of 36:
+1, 2, 3, 4, 6, 9, 18, 36
+</pre
+      >
+      <p>
+        A multiple of a number could be a number gotten by duplicating the given
+        number by another entirety number.
+      </p>
+      <h5>Cases:</h5>
+      <pre>
+Products of 3:
+3, 6, 9, 12, 15, ......
+Products of 5:
+5, 10, 15, 20, 25, .....
+Products of 10:
+10, 20, 30, 40, 50,...
+Products of 12:
+12, 24, 36, 48, 60, ....
+    </pre
+      >
+      <p>Most elevated Common Calculate (HCF)</p>
+      <p>
+        The Most elevated Common Calculate (HCF) of the two numbers is the
+        biggest entirety number which may be a figure of both. It is
+        additionally called the Most prominent Common Factor(GCF) .
+      </p>
+      <h5>Case:</h5>
+      <p>
+        Watch the following figure which appears the HCF of 15 and 21 which is
+        3.
+      </p>
+      <strike>most elevated common calculate (HCF) of the two numbers</strike>
+
+      <h3>Slightest Common Different (LCM)</h3>
+      <p>
+        When we consider two numbers, each will have its claim set of products.
+        A few products will be common to both numbers. The littlest of these
+        common products is called the Slightest Common Numerous (LCM) of the two
+        numbers.
+      </p>
+      <h5>Example:</h5>
+      <p>
+        Observe the taking after figure which appears the LCM of 8 and 10 which
+        is 40.
+      </p>
+      <strike>slightest common different (LCM) of the two numbers</strike>
+
+      <h3>Prime Factorization</h3>
+      <p>
+        Prime factorization permits us to write any number as a item of prime
+        components. It could be a way of communicating a number as a item of its
+        prime components. To do prime factorization, we got to break a number
+        down to its prime variables.
+      </p>
+      <h5>Case:</h5>
+      <p>
+        Watch the figure given underneath which appears the prime factorization
+        of 12
+      </p>
+      <strike
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi numquam
+        placeat eum exercitationem suscipit nihil.</strike
+      >
+
+      <h3>Properties of Numbers</h3>
+      <p>
+        The fundamental properties of numbers that are utilized in arithmetic
+        are:
+      </p>
+
+      <dl>
+        <dt>Commutative Property:</dt>
+        <dd>
+          This property of numbers pertains to addition and multiplication. It
+          is expressed as: a + b = b + a and a × b = b × a.
+        </dd>
+
+        <dt>Associative Property:</dt>
+        <dd>
+          This property of numbers pertains to addition and multiplication. It
+          is expressed as: a + (b + c) = (a + b) + c and a × (b × c) = (a × b) ×
+          c.
+        </dd>
+
+        <dt>Distributive Property:</dt>
+        <dd>
+          The product of the sum of two numbers and a third number is equal to
+          the sum of the product of each addend and the third number. It is
+          expressed as: a × (b + c) = a × b + a × c.
+        </dd>
+
+        <dt>Identity Property:</dt>
+        <dd>
+          There is an additive identity equal to 0 and a multiplicative identity
+          equal to 1. It is expressed as: a + 0 = a and a × 1 = a.
+        </dd>
+
+        <dt>Reflexive Property:</dt>
+        <dd>
+          This property states that each number is equal to itself. It is
+          expressed as: for all a, a = a.
+        </dd>
+
+        <dt>Symmetric Property:</dt>
+        <dd>
+          If a number x is equal to y, then y is also equal to x. It is
+          expressed as: if x = y, then y = x.
+        </dd>
+
+        <dt>Transitive Property:</dt>
+        <dd>
+          If x is equal to y and y is equal to z, then we can say that x is
+          equal to z. It is expressed as: if x = y and y = z, then x = z.
+        </dd>
+
+        <dt>Inverse Property:</dt>
+        <dd>
+          When an arithmetic operation is applied between a number and its
+          inverse, we get the identity. It is expressed as: a + (-a) = 0 and a ×
+          (1/a) = 1.
+        </dd>
+      </dl>
+
+      <h3>Critical Notes</h3>
       <ul>
         <li>
-          The numbers which start from 1 and go up to infinity are called
-          natural numbers.
+          The numbers which begin from 1 and go up to boundlessness are called
+          common numbers.
         </li>
-        <li>The numbers which start from zero are called whole numbers.</li>
+        <li>The numbers which begin from zero are called entire numbers.</li>
         <li>
-          Integers consist of positive and negative numbers along with zero.
-        </li>
-        <li>
-          Rational numbers are of the form p/q and consist of integers,
-          fractions, and ratios.
+          Integrability comprise of positive and negative numbers in conjunction
+          with zero.
         </li>
         <li>
-          Irrational Numbers are not expressed in the form of fractions or
-          ratios.
+          Judicious numbers are of the shape p/q and comprise of integrability,
+          divisions, and proportions.
         </li>
         <li>
-          Real numbers consist of natural numbers, whole numbers, rational
-          numbers, and irrational numbers.
+          Unreasonable Numbers are not communicated within the shape of
+          divisions or proportions.
         </li>
-      </ul>
-`,
+        <li>
+          Genuine numbers comprise of characteristic numbers, entirety numbers,
+          judicious numbers, and nonsensical numbers.
+        </li>
+      </ul>`,
   geometry: `
     <div id="learnSection" class="learnSection" style="height: max-content;">
 <p>Geometry (from the Ancient Greek: geo- "earth", -metron "measurement") is a branch of mathematics, that is primarily concerned with the shapes and sizes of the objects, their relative position, and the properties of space. There are many postulates and theorems applied by the Greek mathematician Euclid, who is often referred to as the “Father of Geometry”. Let us explore all the important topics in Geometry.</p>
@@ -1775,7 +1604,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 1",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1788,7 +1617,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 2",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1801,7 +1630,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 3",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1814,7 +1643,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 4",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1827,7 +1656,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 5",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1840,7 +1669,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 6",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1853,7 +1682,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 7",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1866,7 +1695,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 8",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1879,7 +1708,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 9",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1892,7 +1721,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 10",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1905,7 +1734,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 11",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1918,7 +1747,7 @@ const ContentData = [
     _id: "numbers",
     title: "Numbers",
     pdfUrl: "",
-    imageUrl: "/content/numbers.jpeg",
+    imageUrl: studyContentImg["numbers"],
     category: "class 12",
     free: true,
     content: CommonCommONCOntext.One_12,
@@ -1934,7 +1763,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+    imageUrl: studyContentImg["geometry"],
     category: "class 1",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -1947,7 +1776,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 2",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -1960,7 +1789,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 3",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -1973,7 +1802,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 4",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -1986,7 +1815,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 5",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -1999,7 +1828,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 6",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -2012,7 +1841,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 7",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -2025,7 +1854,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 8",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -2038,7 +1867,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 9",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -2051,7 +1880,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 10",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -2064,7 +1893,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 11",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -2077,7 +1906,7 @@ const ContentData = [
     _id: "geometry",
     title: "Geometry",
     pdfUrl: "",
-    imageUrl: "/content/geometry.jpeg",
+   imageUrl: studyContentImg["geometry"],
     category: "class 12",
     free: true,
     content: CommonCommONCOntext.geometry,
@@ -2093,7 +1922,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 1",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2106,7 +1935,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 2",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2119,7 +1948,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 3",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2132,7 +1961,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 4",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2145,7 +1974,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 5",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2158,7 +1987,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 6",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2171,7 +2000,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 7",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2184,7 +2013,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 8",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2197,7 +2026,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 9",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2210,7 +2039,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 10",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2223,7 +2052,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 11",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2236,7 +2065,7 @@ const ContentData = [
     _id: "measurement",
     title: "Measurement",
     pdfUrl: "",
-    imageUrl: "/content/measurnment.jpeg",
+    imageUrl: studyContentImg["measurement"],
     category: "class 12",
     free: true,
     content: CommonCommONCOntext.measurement,
@@ -2252,7 +2081,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 1",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2265,7 +2094,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 2",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2278,7 +2107,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 3",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2291,7 +2120,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 4",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2304,7 +2133,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 5",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2317,7 +2146,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 6",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2330,7 +2159,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 7",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2343,7 +2172,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 8",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2356,7 +2185,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 9",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2369,7 +2198,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 10",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2382,7 +2211,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 11",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2395,7 +2224,7 @@ const ContentData = [
     _id: "data",
     title: "Data",
     pdfUrl: "",
-    imageUrl: "/content/data.jpeg",
+    imageUrl: studyContentImg["data"],
     category: "class 12",
     free: true,
     content: CommonCommONCOntext.data,
@@ -2411,7 +2240,7 @@ const ContentData = [
     _id: "algebra",
     title: "Algebra",
     pdfUrl: "",
-    imageUrl: "/content/algebra.jpeg",
+    imageUrl: studyContentImg["algebra"],
     category: "class 6",
     free: true,
     content: CommonCommONCOntext.algebra,
@@ -2424,7 +2253,7 @@ const ContentData = [
     _id: "algebra",
     title: "Algebra",
     pdfUrl: "",
-    imageUrl: "/content/algebra.jpeg",
+    imageUrl: studyContentImg["algebra"],
     category: "class 7",
     free: true,
     content: CommonCommONCOntext.algebra,
@@ -2437,7 +2266,7 @@ const ContentData = [
     _id: "algebra",
     title: "Algebra",
     pdfUrl: "",
-    imageUrl: "/content/algebra.jpeg",
+    imageUrl: studyContentImg["algebra"],
     category: "class 8",
     free: true,
     content: CommonCommONCOntext.algebra,
@@ -2450,7 +2279,7 @@ const ContentData = [
     _id: "algebra",
     title: "Algebra",
     pdfUrl: "",
-    imageUrl: "/content/algebra.jpeg",
+    imageUrl: studyContentImg["algebra"],
     category: "class 9",
     free: true,
     content: CommonCommONCOntext.algebra,
@@ -2463,7 +2292,7 @@ const ContentData = [
     _id: "algebra",
     title: "Algebra",
     pdfUrl: "",
-    imageUrl: "/content/algebra.jpeg",
+    imageUrl: studyContentImg["algebra"],
     category: "class 10",
     free: true,
     content: CommonCommONCOntext.algebra,
@@ -2476,7 +2305,7 @@ const ContentData = [
     _id: "algebra",
     title: "Algebra",
     pdfUrl: "",
-    imageUrl: "/content/algebra.jpeg",
+    imageUrl: studyContentImg["algebra"],
     category: "class 11",
     free: true,
     content: CommonCommONCOntext.algebra,
@@ -2489,7 +2318,7 @@ const ContentData = [
     _id: "algebra",
     title: "Algebra",
     pdfUrl: "",
-    imageUrl: "/content/algebra.jpeg",
+    imageUrl: studyContentImg["algebra"],
     category: "class 12",
     free: true,
     content: CommonCommONCOntext.algebra,
@@ -2505,7 +2334,7 @@ const ContentData = [
     _id: "trigonometry",
     title: "Trigonometry",
     pdfUrl: "",
-    imageUrl: "/content/trigonometry.jpeg",
+    imageUrl: studyContentImg["trignometry"],
     category: "class 9",
     free: true,
     content: CommonCommONCOntext.trigonometry,
@@ -2518,7 +2347,7 @@ const ContentData = [
     _id: "trigonometry",
     title: "Trigonometry",
     pdfUrl: "",
-    imageUrl: "/content/trigonometry.jpeg",
+    imageUrl: studyContentImg["trignometry"],
     category: "class 10",
     free: true,
     content: CommonCommONCOntext.trigonometry,
@@ -2531,7 +2360,7 @@ const ContentData = [
     _id: "trigonometry",
     title: "Trigonometry",
     pdfUrl: "",
-    imageUrl: "/content/trigonometry.jpeg",
+    imageUrl: studyContentImg["trignometry"],
     category: "class 11",
     free: true,
     content: CommonCommONCOntext.trigonometry,
@@ -2544,7 +2373,7 @@ const ContentData = [
     _id: "trigonometry",
     title: "Trigonometry",
     pdfUrl: "",
-    imageUrl: "/content/trigonometry.jpeg",
+    imageUrl: studyContentImg["trignometry"],
     category: "class 12",
     free: true,
     content: CommonCommONCOntext.trigonometry,
@@ -2560,7 +2389,7 @@ const ContentData = [
     _id: "calculus",
     title: "Calculus",
     pdfUrl: "",
-    imageUrl: "/content/calculus.jpg",
+    imageUrl: studyContentImg["calculus"],
     category: "class 8",
     free: true,
     content: CommonCommONCOntext.calculus,
@@ -2573,7 +2402,7 @@ const ContentData = [
     _id: "calculus",
     title: "Calculus",
     pdfUrl: "",
-    imageUrl: "/content/calculus.jpg",
+    imageUrl: studyContentImg["calculus"],
     category: "class 9",
     free: true,
     content: CommonCommONCOntext.calculus,
@@ -2586,7 +2415,7 @@ const ContentData = [
     _id: "calculus",
     title: "Calculus",
     pdfUrl: "",
-    imageUrl: "/content/calculus.jpg",
+    imageUrl: studyContentImg["calculus"],
     category: "class 10",
     free: true,
     content: CommonCommONCOntext.calculus,
@@ -2599,7 +2428,7 @@ const ContentData = [
     _id: "calculus",
     title: "Calculus",
     pdfUrl: "",
-    imageUrl: "/content/calculus.jpg",
+    imageUrl: studyContentImg["calculus"],
     category: "class 11",
     free: true,
     content: CommonCommONCOntext.calculus,
@@ -2612,7 +2441,7 @@ const ContentData = [
     _id: "calculus",
     title: "Calculus",
     pdfUrl: "",
-    imageUrl: "/content/calculus.jpg",
+    imageUrl: studyContentImg["calculus"],
     category: "class 12",
     free: true,
     content: CommonCommONCOntext.calculus,
@@ -2628,7 +2457,7 @@ const ContentData = [
     _id: "comercial-maths",
     title: "Comercial Maths",
     pdfUrl: "",
-    imageUrl: "/content/comercial-maths.jpeg",
+    imageUrl: studyContentImg["comercial-maths"],
     category: "class 1",
     free: true,
     content: CommonCommONCOntext.ComercialMaths,
@@ -2641,7 +2470,7 @@ const ContentData = [
     _id: "comercial-maths",
     title: "Comercial Maths",
     pdfUrl: "",
-    imageUrl: "/content/comercial-maths.jpeg",
+    imageUrl: studyContentImg["comercial-maths"],
     category: "class 2",
     free: true,
     content: CommonCommONCOntext.ComercialMaths,
@@ -2654,7 +2483,7 @@ const ContentData = [
     _id: "comercial-maths",
     title: "Comercial Maths",
     pdfUrl: "",
-    imageUrl: "/content/comercial-maths.jpeg",
+    imageUrl: studyContentImg["comercial-maths"],
     category: "class 3",
     free: true,
     content: CommonCommONCOntext.ComercialMaths,
@@ -2667,7 +2496,7 @@ const ContentData = [
     _id: "comercial-maths",
     title: "Comercial Maths",
     pdfUrl: "",
-    imageUrl: "/content/comercial-maths.jpeg",
+    imageUrl: studyContentImg["comercial-maths"],
     category: "class 4",
     free: true,
     content: CommonCommONCOntext.ComercialMaths,
@@ -2680,7 +2509,7 @@ const ContentData = [
     _id: "comercial-maths",
     title: "Comercial Maths",
     pdfUrl: "",
-    imageUrl: "/content/comercial-maths.jpeg",
+    imageUrl: studyContentImg["comercial-maths"],
     category: "class 5",
     free: true,
     content: CommonCommONCOntext.ComercialMaths,
@@ -2693,7 +2522,7 @@ const ContentData = [
     _id: "comercial-maths",
     title: "Comercial Maths",
     pdfUrl: "",
-    imageUrl: "/content/comercial-maths.jpeg",
+    imageUrl: studyContentImg["comercial-maths"],
     category: "class 6",
     free: true,
     content: CommonCommONCOntext.ComercialMaths,
@@ -2706,7 +2535,7 @@ const ContentData = [
     _id: "comercial-maths",
     title: "Comercial Maths",
     pdfUrl: "",
-    imageUrl: "/content/comercial-maths.jpeg",
+    imageUrl: studyContentImg["comercial-maths"],
     category: "class 7",
     free: true,
     content: CommonCommONCOntext.ComercialMaths,
@@ -2719,7 +2548,7 @@ const ContentData = [
     _id: "comercial-maths",
     title: "Comercial Maths",
     pdfUrl: "",
-    imageUrl: "/content/comercial-maths.jpeg",
+    imageUrl: studyContentImg["comercial-maths"],
     category: "class 8",
     free: true,
     content: CommonCommONCOntext.ComercialMaths,

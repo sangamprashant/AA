@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Section from "../../Reuse/Section";
-// import Image from "next/image";
+import { contactUsImg } from "@/assets/links";
 
 const ContactHome = () => {
   return (
@@ -9,7 +9,7 @@ const ContactHome = () => {
         <div className="row">
           <div className="col-md-5 d-flex justify-content-center">
             <img
-              src="contactus/expert.webp?cache-control=max-age=31536000"
+              src={`${contactUsImg["home"]}?cache-control=max-age=31536000`}
               alt=""
               style={{
                 width:"100%"

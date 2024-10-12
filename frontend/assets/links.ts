@@ -2,6 +2,13 @@
 
 export const loadingSvg = "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667894/loading_p5nvoi.svg";
 export const logoCrop = "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667895/logo-crop_grwlrz.png"
+export const logoImg = "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667895/logo_riu1ad.png";
+export const welcomeGif ="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667902/welcome_yiypbm.gif"
+
+export const navbarImg: { [key: string]: string } = {
+  logo:'https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667871/logo_xtxdrq.png',
+  megaphone:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667871/megaphone_lxqat6.png",
+}
 
 const heroVideo = "https://res.cloudinary.com/dgf9aqq8o/video/upload/v1728667934/video_aioinf.mp4";
 
@@ -121,4 +128,69 @@ export const studyMaterials: { [key: string]: string } = {
   "12":'https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667864/12_phnkqb.png',
 };
 
+export const reviewImg: Record<string, { [key: string]: string }> = {
+  parent: {
+    main: "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667883/family_kqx7h3.png",
+    "josheph.jpg": "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667884/josheph_zp2qpo.jpg",
+    "sunita.jpg": "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667886/sunita_worpfs.jpg",
+    "meena.jpg": "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667886/meena_fj4myy.jpg",
+    "rajeev.jpg": "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667886/rajeev_sinmmz.jpg",
+    "anita.jpg": "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667884/anita_ecufv0.jpg",
+    "vikram.jpg": "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667888/vikram_o7y2nc.jpg",
+    "nisha.jpg": "https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667885/nisha_adwnkb.jpg"
+  },
+  trust :{
+    "satisfaction.png":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667887/satisfaction_gynsxn.png",
+    "screening.png":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667887/screening_pqvprt.png",
+    "student.png":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667888/student_datc3n.png",
+    "funding.png":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667886/funding_srsyyg.png",
+  },
+  mentor:{
+    "ujjawal.png":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667884/ujjawal_iqf3xs.png",
+    "kashish.png":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667882/kashish_tobuix.png",
+    "suryansh1.png":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667884/suryansh1_o3gkol.png",
+  },
+  student:{
+    "drishti.jpg":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667889/drishti_v5kriv.jpg",
+    "madhur.jpg":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667890/madhur_elxyvi.jpg",
+    "daksh.jpg":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667889/daksh_gcehek.jpg",
+    "arhan.jpg":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667888/arhan_zcdbui.jpg",
+    "sanya.jpg":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667890/sanya_jlueup.jpg",
+    "rajesh.jpg":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667890/rajesh_coidet.jpg",
+    "anjali.jpg":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667888/anjali_wzml7j.jpg",
+    "karan.jpg":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667890/karan_wrngmz.jpg",
+  }
+};
 
+export const  aboutUsImg: { [key: string]: string }  = {
+  teacher1:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667806/teacher1_n2bhee.jpg",
+  teacher2:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667806/teacher2_bivplt.jpg",
+  "map":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667805/map_fcp4ae.webp",
+  "banner-left":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667805/banner-left_e4jhiz.png",
+  "banner-right":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667805/banner-right_jgatch.png"
+}
+
+
+export const  contactUsImg: { [key: string]: string }  = {
+  "home":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667836/expert_atv9dp.webp",
+  "bg":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667834/bg_dlxr2k.jpg"
+}
+
+export const  pageNotFoundImg: { [key: string]: string }  = {
+  rocket:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667874/rocket_a8un0l.svg",
+  nodata:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667874/nodata_jbxcif.jpg",
+  earth:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667873/earth_qnkwxt.svg",
+  moon:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667873/moon_b5qwpu.svg",
+  astronaut:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667871/astronaut_e8cavx.svg"
+}
+
+export const studyContentImg: { [key: string]: string } = {
+  numbers:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667858/numbers_wwxrzh.jpg",
+  geometry:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667856/geometry_qgzgf3.jpg",
+  measurement:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667858/measurnment_fk3l4h.jpg",
+  data:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667854/data_xwc10i.jpg",
+  algebra :"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667836/algebra_moefhp.jpg",
+  trignometry:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667858/trigomentry_tl5sum.jpg",
+  calculus:"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667839/calculus_jt9oal.jpg",
+  "comercial-maths":"https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667847/comercial-maths_j9ofhn.jpg"
+}

@@ -1,4 +1,4 @@
-// import Image from "next/image";
+import { pageNotFoundImg } from "@/assets/links";
 import Link from "next/link";
 interface NoDataProps {
   heading: string;
@@ -10,7 +10,7 @@ const NoData = ({ heading, content }: NoDataProps) => {
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="text-center">
         <div className="mb-4">
-          <img src="/page/nodata.jpg" alt="No Data" className="img-fluid" />
+          <img src={pageNotFoundImg["nodata"]} alt="No Data" className="img-fluid" />
         </div>
         <h2 className="mb-3">{heading}</h2>
         <p className="lead">{content}</p>

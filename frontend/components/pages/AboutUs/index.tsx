@@ -1,4 +1,5 @@
 "use client"
+import { aboutUsImg } from "@/assets/links";
 import { motion } from "framer-motion";
 import React from "react";
 import CountUp from "react-countup";
@@ -8,7 +9,6 @@ import Footer from "../../Footer";
 import { featuresData } from "../../Home/Features";
 import Section from "../../Reuse/Section";
 import PageHeaders from "../PageHeaders";
-//   Image from "next/image";
 
 const AboutUs: React.FC = () => {
   const listItems = [
@@ -56,7 +56,7 @@ const AboutUs: React.FC = () => {
           <h1 className="text-center">What We Do</h1>
           <div className="row">
             <div className="col-md-6">
-              <img src="/aboutus/teacher1.jpg" alt="Expert" style={{
+              <img src={aboutUsImg["teacher1"]} alt="Expert" style={{
                 width: "100%"
               }} />
             </div>
@@ -117,7 +117,7 @@ const AboutUs: React.FC = () => {
               </p>
             </div>
             <div className="col-md-6">
-              <img src="/aboutus/teacher2.jpg" style={{
+              <img src={aboutUsImg["teacher2"]} style={{
                 width: "100%"
               }} alt="Expert" />
             </div>
@@ -143,7 +143,7 @@ const AboutUs: React.FC = () => {
           <div className="d-flex justify-content-center align-items-center mt-4">
             <div className="col-md-10">
               <img
-                src="/aboutus/map.webp"
+                src={aboutUsImg["map"]}
                 style={{
                   width: "100%"
                 }}

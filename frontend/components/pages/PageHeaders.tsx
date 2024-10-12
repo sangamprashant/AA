@@ -1,4 +1,4 @@
-// import Image from "next/image";
+import { aboutUsImg } from "@/assets/links";
 
 interface PageHeadersProps {
   title: string;
@@ -9,12 +9,12 @@ const PageHeaders = ({ title, description }: PageHeadersProps) => {
   return (
     <section id="about-us">
       <img
-        src="/aboutus/banner-left.png"
+        src={aboutUsImg["banner-left"]}
         alt=""
         className="about-us-left-image"
       />
       <img
-        src="/aboutus/banner-right.png"
+        src={aboutUsImg["banner-right"]}
         alt=""
         className="about-us-right-image"
       />

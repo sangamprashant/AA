@@ -1,6 +1,6 @@
 import React from "react";
 import Section from "../../../Reuse/Section";
-// import Image from "next/image";
+import { reviewImg } from "@/assets/links";
 
 interface TrustReason {
   icon: string;
@@ -10,25 +10,25 @@ interface TrustReason {
 
 const trustReasons: TrustReason[] = [
   {
-    icon: "/review/parents/trust/satisfaction.png",
+    icon: "satisfaction.png",
     title: "Highly Qualified Tutors",
     description:
       "We only select the best tutors from the topmost Universities. We do not compromise on the quality of our tutors; hence our tutoring is always the best.",
   },
   {
-    icon: "/review/parents/trust/screening.png",
+    icon: "screening.png",
     title: "Careful Tutor Screening",
     description:
       "All our tutors undergo a careful selection process. Each tutor is assessed individually and only those who we feel have the ability to offer high quality of tuition will be chosen.",
   },
   {
-    icon: "/review/parents/trust/student.png",
+    icon: "student.png",
     title: "Grade Improvement",
     description:
       "Our personalized 1-to-1 classes help students to improve grade. Your child receives all the attention they need from our 1-on-1 tutor to get the best grades in class.",
   },
   {
-    icon: "/review/parents/trust/funding.png",
+    icon: "funding.png",
     title: "Affordable",
     description:
       "There is no commission for using our service. This advantage makes the tuition more affordable for students by avoiding the extra charges that agencies often impose on top of the tutor's fee.",
@@ -48,7 +48,7 @@ const ParentsTrust: React.FC = () => {
               <div className="parent-trust-card">
                 <div className="icon">
                   <img
-                    src={`${reason.icon}?cache-control=max-age=31536000`}
+                    src={`${reviewImg.trust[reason.icon]}?cache-control=max-age=31536000`}
                     alt=""
                     width={80} loading="lazy"
                   />

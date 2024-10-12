@@ -10,6 +10,7 @@ import { config } from "../../../config";
 import Footer from "../../Footer";
 import Section from "../../Reuse/Section";
 import FerjiDetails from "./FerjiDetails";
+import { logoImg } from "@/assets/links";
 // import Image from "next/image";
   
 type NotificationType = "success" | "info" | "warning" | "error";
@@ -171,7 +172,7 @@ const Payment: React.FC = () => {
         <div className="payment-screen">
           <div className="d-flex p-3 text-white gap-3">
             <div className="bg-white rounded-4 p-1">
-              <img src="logo.png" alt="" height={70} />
+              <img src={logoImg} alt="" height={70} />
             </div>
             <div className="app-header">
               <h2 className="m-0">{appName}</h2>

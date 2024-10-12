@@ -1,10 +1,11 @@
 "use client"
+import { navbarImg } from "@/assets/links";
 import { email, phone } from "@/strings";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { useState } from "react";
-import NextTopLoader from 'nextjs-toploader';
 import Image from "next/image";
+import Link from "next/link";
+import NextTopLoader from 'nextjs-toploader';
+import { useState } from "react";
 
 const Navbar = () => {
     const [isNavCollapsed, setIsNavCollapsed] = useState(true);
@@ -40,7 +41,7 @@ const Navbar = () => {
                 <div className="container">
                     <Link className="navbar-brand" href="/">
                         <motion.img
-                            src="/navbar/logo.png?cache-control=max-age=31536000"
+                            src={`${navbarImg["logo"]}?cache-control=max-age=31536000`}
                             height="60"
                             alt="logo"
                             initial={{ opacity: 0, y: -20 }}
@@ -77,7 +78,7 @@ const Navbar = () => {
                                     href="/free-demo-class"
                                     onClick={handleNavItemClick}
                                 >
-                                    <Image src="/navbar/megaphone.png" alt="" height={20} width={20} /> {" "}
+                                    <Image src={`${navbarImg["megaphone"]}?cache-control=max-age=31536000`} alt="" height={20} width={20} /> {" "}
                                     <b>Book A Free Demo Class</b>
                                 </Link>
                             </motion.li>
@@ -94,7 +95,6 @@ const Navbar = () => {
                                     href="/free-study-material"
                                     onClick={handleNavItemClick}
                                 >
-                                    {/* <Image src="/navbar/megaphone.png" alt="" height={20} width={20} /> {" "} */}
                                     Free Study Materials
                                 </Link>
                             </motion.li>

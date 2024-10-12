@@ -1,10 +1,10 @@
 "use client"
+import { pageNotFoundImg } from "@/assets/links";
+import Link from "next/link";
 import React from "react";
 import Footer from "../Footer";
 import Section from "../Reuse/Section";
 import "./pagenotfound.css";
-import Link from "next/link";
-// import Image from "next/image";
 
 const PageNotFound = () => {
   const [rotate, setRotate] = React.useState("");
@@ -32,7 +32,7 @@ const PageNotFound = () => {
           <img
             alt=""
             className="object_rocket object_rocket-2"
-            src="/page/rocket.svg"
+            src={pageNotFoundImg["rocket"]}
             width={40}
           />
           <div className="row align-items-center justify-content-center h-100">
@@ -51,13 +51,13 @@ const PageNotFound = () => {
                 <div className={`earth-moon ${rotate} `}>
                   <img
                     className="object_earth "
-                    src="/page/moon.svg"
+                    src={pageNotFoundImg["moon"]}
                     width={100}
                     alt=""
                   />
                   <img
                     className="object_moon"
-                    src="/page/earth.svg"
+                    src={pageNotFoundImg["earth"]}
                     width={80}
                     alt=""
                   />
@@ -65,7 +65,7 @@ const PageNotFound = () => {
                 <div className="box_astronaut">
                   <img
                     className="object_astronaut"
-                    src="/page/astronaut.svg"
+                    src={pageNotFoundImg["astronaut"]}
                     width={140}
                     alt=""
                   />

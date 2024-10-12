@@ -7,6 +7,7 @@ import { socialMediaLinks } from "../Footer/SocialLinks";
 import { address, appName, email, phone } from "@/strings";
 import Loading from "./Loading";
 import NoData from "./NoData";
+import { logoImg } from "@/assets/links";
 // import Image from "next/image";
 
 interface Props {
@@ -216,7 +217,7 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
                     <thead>
                       <tr className="header">
                         <td>
-                          <img src="/logo.png" alt="Company Name" height={40} />
+                          <img src={logoImg} alt="Company Name" height={40} />
                         </td>
                         <td className="align-right">
                           <h2>INVOICE</h2>

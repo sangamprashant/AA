@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import Section from "../../Reuse/Section";
 import "./Review.css";
 import { motion } from "framer-motion";
+import { reviewImg } from "@/assets/links";
 
 const ReviewStudent = () => {
   useEffect(() => {
@@ -144,7 +145,7 @@ const ReviewStudent = () => {
               <div className="d-flex justify-content-center align-items-center gap-4">
                 <div className="comandSlider__item_photo spaceship">
                   <img
-                    src={`review/students/${member.photo}?cache-control=max-age=31536000`}
+                    src={`${reviewImg.student[member.photo]}?cache-control=max-age=31536000`}
                     alt={member.name}
                     className="students-photo-review "
                     loading="lazy"

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
-import TerserPlugin from "terser-webpack-plugin";
+import TerserPlugin from 'terser-webpack-plugin';
+import withPWA from 'next-pwa'; 
 
 const nextConfig = {
   typescript: {
@@ -10,6 +11,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   poweredByHeader: false,
+  productionBrowserSourceMaps: false,
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.optimization.minimizer.push(
@@ -28,10 +30,19 @@ const nextConfig = {
     }
     return config;
   },
-  productionBrowserSourceMaps: false,
   images: {
     domains: ['res.cloudinary.com'],
   },
 };
 
-export default nextConfig;
+// Use the ES module syntax to apply PWA config on top of nextConfig
+const pwaConfig = withPWA({
+  dest: 'public', // This is where the service worker will be generated
+  register: true,
+  skipWaiting: true,
+});
+
+export default {
+  ...pwaConfig,
+  ...nextConfig,
+};

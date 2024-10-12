@@ -1,4 +1,5 @@
 "use client";
+import { reviewImg } from "@/assets/links";
 import { useEffect } from "react";
 import "./mentors.css";
 
@@ -38,8 +39,8 @@ const MentorsList = () => {
         const carouselElement = document.getElementById("mentors-list-content");
         if (carouselElement) {
           new Carousel(carouselElement, {
-            interval: 4000, 
-            pause: false,   
+            interval: 4000,
+            pause: false,
             ride: "carousel"
           });
         }
@@ -74,7 +75,7 @@ const MentorsList = () => {
                   <div className="col-sm-12 d-flex justify-content-center mt-2">
                     <div className="mentor-image-container">
                       <img
-                        src={`review/mentors/${mentor.imgSrc}?cache-control=max-age=31536000`}
+                        src={`${reviewImg.mentor[mentor.imgSrc]}?cache-control=max-age=31536000`}
                         className="mentor-image blink img-fluid"
                         width={150}
                         alt={`${mentor.name}'s avatar`}
