@@ -12,8 +12,25 @@ const CommonCommONCOntext = {
       we will learn about the different types of numbers and all the concepts
       associated with them.
     </p>
+    <h1 class="text-center">Table of Contents</h1>
+      <ul class="list-group list-unstyled">
+        <li class="list-group-item"><a href="#what-are-numbers">What are Numbers?</a></li>
+        <li class="list-group-item"><a href="#number-definition">Number Definition</a></li>
+        <li class="list-group-item"><a href="#introduction-to-numbers">Introduction to Numbers</a></li>
+        <li class="list-group-item"><a href="#math-before-number-building">Math Before Number Building</a></li>
+        <li class="list-group-item"><a href="#number-names">Number Names</a></li>
+        <li class="list-group-item"><a href="#pemdas">PEMDAS</a></li>
+        <li class="list-group-item"><a href="#number-systems">Number Systems</a></li>
+        <li class="list-group-item"><a href="#sorts-of-numbers">Sorts of Numbers</a></li>
+        <li class="list-group-item"><a href="#numbers-chart">Numbers Chart</a></li>
+        <li class="list-group-item"><a href="#cardinal-and-ordinal-numbers">Cardinal and Ordinal Numbers</a></li>
+        <li class="list-group-item"><a href="#sequential-numbers">Sequential Numbers</a></li>
+        <li class="list-group-item"><a href="#integrability">Integrability</a></li>
+        <li class="list-group-item"><a href="#natural-and-entirety-numbers">Natural Numbers and Entirety Numbers</a></li>
+      </ul>
 
-    <h2>What are Numbers?</h2>
+
+      <h2 id="what-are-numbers">What are Numbers?</h2>
     <p>
       Numbers are a fundamental part of mathematics. Numbers are used to count,
       measure, order and index. We know different types of numbers according to
@@ -25,14 +42,14 @@ const CommonCommONCOntext = {
       different types and properties.
     </p>
 
-    <h3>Number Definition</h3>
+    <h3 id="number-definition">Number Definition</h3>
     <p>
       Numbers are mathematical values ​​that are represented by words, symbols
       or numbers that represent quantities. Numbers are used for counting and
       calculations.
     </p>
 
-    <h3>Introduction to Numbers</h3>
+    <h3 id="introduction-to-numbers">Introduction to Numbers</h3>
     <p>
       Numbers form the basis of mathematics. To understand mathematics you need
       to become familiar with numbers. There are different types of numbers.
@@ -51,7 +68,7 @@ const CommonCommONCOntext = {
       Numbers by choosing a topic from the list below.
     </p>
 
-    <h3>Math Before Number Building</h3>
+    <h3 id="math-before-number-building">Math Before Number Building</h3>
     <p>
       Building skills before number building is a prerequisite for understanding
       numbers. Pre-quantification skills like allocating, sorting, classifying,
@@ -70,7 +87,7 @@ const CommonCommONCOntext = {
       style="max-width: 500px; width: 100%"
     />
 
-    <h3>Number Names</h3>
+    <h3 id="number-names">Number Names</h3>
     <p>
       Number names are utilized to speak to numbers in an in sequential order
       arrange. A particular word is utilized to allude to each number. To type
@@ -84,7 +101,7 @@ const CommonCommONCOntext = {
       style="max-width: 500px; width: 100%"
     />
 
-    <h3>PEMDAS</h3>
+    <h3 id="pemdas">PEMDAS</h3>
     <p>
       The rules of PEMDAS layout the arrange of the operations and allow
       structure to settled operations. In science, PEMDAS is an acronym that
@@ -98,7 +115,7 @@ const CommonCommONCOntext = {
       style="max-width: 500px; width: 100%"
     />
 
-    <h3>Number Systems</h3>
+    <h3 id="number-systems">Number Systems</h3>
     <p>
       The decimal number framework is the foremost commonly utilized number
       framework . The digits to 9 are utilized to speak to numbers. A digit in
@@ -110,7 +127,7 @@ const CommonCommONCOntext = {
       to 8-Digits , Numbers up to 9-Digits and Numbers up to 10-Digits ..
     </p>
 
-    <h3>Sorts of Numbers</h3>
+    <h3 id="sorts-of-numbers">Sorts of Numbers</h3>
     <p>
       The diverse sorts of numbers depend on the properties that they have. For
       illustration, normal numbers are checking numbers that begin from 1,
@@ -119,7 +136,7 @@ const CommonCommONCOntext = {
       the diverse sorts of numbers within the taking after areas.
     </p>
 
-    <h3>Numbers Chart</h3>
+    <h3 id="numbers-chart">Numbers Chart</h3>
     <p>
       There are distinctive sorts of numbers that are utilized, but the foremost
       commonly utilized numbers can be classified as per their special
@@ -128,7 +145,7 @@ const CommonCommONCOntext = {
       real numbers are named as complex numbers.
     </p>
 
-    <h3>Cardinal Numbers and Ordinal Numbers</h3>
+    <h3 id="cardinal-and-ordinal-numbers">Cardinal and Ordinal Numbers</h3>
     <p>
       A cardinal number could be a number that indicates the tally of any
       question. Any common number such as 1, 2, 3, etc., is alluded to as a
@@ -152,7 +169,7 @@ const CommonCommONCOntext = {
       style="max-width: 500px; width: 100%"
     />
 
-    <h3>Sequential Numbers</h3>
+    <h3 id="sequential-numbers">Sequential Numbers</h3>
     <p>
       Sequential numbers are numbers that take after each other in arrange from
       the littlest number to the biggest number. They ordinarily have a
@@ -169,7 +186,7 @@ const CommonCommONCOntext = {
       style="max-width: 500px; width: 100%"
     />
 
-    <h3>Integrability</h3>
+    <h3 id="integrability">Integrability</h3>
     <p>
       Integrability are numbers that comprise of entirety numbers and negative
       numbers. All integrability are spoken to by the letter set Z and do not
@@ -180,7 +197,7 @@ const CommonCommONCOntext = {
     </p>
     <p>Z = { ...., -4, -3, -2, -1, , 1, 2, 3, 4,....}</p>
 
-    <h3>Natural Numbers and Entirety Numbers</h3>
+    <h3 id="natural-and-entirety-numbers">Natural Numbers and Entirety Numbers</h3>
     <p>
       Natural Numbers and Entirety Numbers A common number may be a non-negative
       numbers and is always greater than zero. It is spoken to by the image N.
@@ -492,8 +509,21 @@ Products of 12:
         judicious numbers, and nonsensical numbers.
       </li>
     </ul>`,
-  geometry: `
-  <p>
+  geometry: `<h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#what-is-geometry">What is Geometry?</a></li>
+        <li><a href="#euclidean-geometry">Euclidean Geometry</a></li>
+        <li><a href="#non-euclidean-geometry">Non-Euclidean Geometry</a></li>
+        <li><a href="#plane-geometry">Plane Geometry</a></li>
+        <li><a href="#angles">Angles in Geometry</a></li>
+        <li><a href="#plane-shapes">Plane Shapes in Geometry</a></li>
+        <li><a href="#solid-geometry">Solid Geometry</a></li>
+        <li><a href="#measurement">Measurement in Geometry</a></li>
+        <li><a href="#2d-analytical-geometry">2D Analytical Geometry</a></li>
+        <li><a href="#3d-geometry">3D Geometry</a></li>
+      </ol>
+
+      <p>
         Geometry, derived from the Greek words "geo" (earth) and "metron"
         (measurement), is a mathematical discipline focused on the properties of
         shapes, sizes, distances, and angles. It also explores spatial
@@ -512,7 +542,8 @@ Products of 12:
         <li class="list-group-item">3D Geometry</li>
       </ul>
 
-      <section>
+      <!-- Sections -->
+      <section id="what-is-geometry">
         <h2>What is Geometry?</h2>
         <p>
           Geometry studies various aspects of shapes, distances, and patterns in
@@ -527,12 +558,12 @@ Products of 12:
         </ul>
         <img
           src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667854/1_j8pyz7.png"
-          alt=""
+          alt="Geometry Types"
           style="max-width: 500px; width: 100%"
         />
       </section>
 
-      <section>
+      <section id="euclidean-geometry">
         <h2>Euclidean Geometry</h2>
         <p>
           Euclidean Geometry, named after the ancient Greek mathematician
@@ -547,31 +578,13 @@ Products of 12:
         </ul>
       </section>
 
-      <section>
-        <h3>Key Euclidean Postulates</h3>
-        <ul class="list-group mb-4">
-          <li class="list-group-item">
-            A straight line can be drawn from any point to another point.
-          </li>
-          <li class="list-group-item">
-            A straight line can be extended indefinitely in both directions.
-          </li>
-          <li class="list-group-item">
-            A circle can be drawn with any given point as its center.
-          </li>
-          <li class="list-group-item">All right angles are congruent.</li>
-          <li class="list-group-item">Parallel lines never intersect.</li>
-        </ul>
-      </section>
-
-      <section>
+      <section id="non-euclidean-geometry">
         <h2>Non-Euclidean Geometry</h2>
         <p>
           Non-Euclidean Geometry includes types like spherical and hyperbolic
           geometry, which deviate from Euclid’s postulates, particularly
           regarding the nature of parallel lines.
         </p>
-
         <ul class="list-group mb-4">
           <li class="list-group-item">
             <strong>Spherical Geometry:</strong> Focuses on planes on spherical
@@ -584,7 +597,7 @@ Products of 12:
         </ul>
       </section>
 
-      <section>
+      <section id="plane-geometry">
         <h2>Plane Geometry</h2>
         <p>
           Plane Geometry studies shapes on a flat, two-dimensional surface. It
@@ -593,7 +606,7 @@ Products of 12:
         </p>
       </section>
 
-      <section>
+      <section id="angles">
         <h2>Angles in Geometry</h2>
         <p>
           Angles form when two lines or rays intersect. Different types include
@@ -602,7 +615,7 @@ Products of 12:
         </p>
       </section>
 
-      <section>
+      <section id="plane-shapes">
         <h2>Plane Shapes in Geometry</h2>
         <p>
           Plane shapes are two-dimensional, such as triangles, quadrilaterals,
@@ -612,7 +625,7 @@ Products of 12:
         </p>
       </section>
 
-      <section>
+      <section id="solid-geometry">
         <h2>Solid Geometry</h2>
         <p>
           Solid geometry deals with three-dimensional objects like cubes,
@@ -621,7 +634,7 @@ Products of 12:
         </p>
       </section>
 
-      <section>
+      <section id="measurement">
         <h2>Measurement in Geometry</h2>
         <p>
           In geometry, measurement involves calculating distances, areas, and
@@ -631,11 +644,11 @@ Products of 12:
         <img
           src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667855/4_ldhysr.png"
           style="width: 100%; max-width: 500px"
-          alt=""
+          alt="Measurement in Geometry"
         />
       </section>
 
-      <section>
+      <section id="2d-analytical-geometry">
         <h2>2D Analytical Geometry</h2>
         <p>
           Also known as coordinate geometry, this field involves plotting
@@ -644,15 +657,14 @@ Products of 12:
         </p>
       </section>
 
-      <section>
+      <section id="3d-geometry">
         <h2>3D Geometry</h2>
         <p>
           3D geometry extends geometric principles to three-dimensional space.
           Each point in space is represented by three coordinates (x, y, z), and
           equations can define the lines, surfaces, and shapes in this space.
         </p>
-      </section>
-  `,
+      </section>`,
   measurement: `<p>
         Measurement is the process of comparing an unknown quantity with a
         standard, known value. The outcome is usually expressed as a numerical
@@ -826,93 +838,86 @@ Products of 12:
           alt=""
         />
       </section>`,
-  data: `
-<p>Data can take many forms. It might be input into a software program, or it could represent statistics like a country’s population figures. Even the information you're reading right now qualifies as data. In mathematics, data encompasses any form of information or fact. This might be a number, an observation, a letter, or any collective detail related to a subject.</p>
-        
-        <ul>
-            <li><strong>1. What is Data?</strong></li>
-            <li><strong>2. Types of Data</strong></li>
-            <li><strong>3. Primary vs. Secondary Data</strong></li>
+  data: `<ul>
+            <li><a href="#what-is-data">1. What is Data?</a></li>
+            <li><a href="#data-representation-methods">2. Data Representation Methods</a></li>
+            <ul>
+                <li><a href="#pictograph">Pictograph</a></li>
+                <li><a href="#pie-chart">Pie Chart</a></li>
+                <li><a href="#bar-graph">Bar Graph</a></li>
+                <li><a href="#line-graph">Line Graph</a></li>
+                <li><a href="#histogram">Histogram</a></li>
+            </ul>
+            <li><a href="#types-of-data">3. Types of Data</a></li>
+            <ul>
+                <li><a href="#qualitative-data">Qualitative Data</a></li>
+                <li><a href="#quantitative-data">Quantitative Data</a></li>
+            </ul>
+            <li><a href="#primary-secondary-data">4. Primary vs. Secondary Data</a></li>
         </ul>
 
-        <h4 class="mt-4">What is Data?</h4>
-        <p>Data refers to a collection of information obtained through various methods like observation, measurement, research, or analysis. It can include facts, numbers, names, and descriptions. For ease of understanding, data is often displayed in the form of charts, graphs, or tables. Data analysts often use data mining techniques to interpret the information gathered. For example, data can be represented as:</p>
-        
+        <!-- Content Sections -->
+        <h4 id="what-is-data" class="mt-4">What is Data?</h4>
+        <p>Data refers to a collection of information obtained through various methods like observation, measurement, research, or analysis. It can include facts, numbers, names, and descriptions. For ease of understanding, data is often displayed in the form of charts, graphs, or tables. Data analysts often use data mining techniques to interpret the information gathered.</p>
         <ul>
             <li>A sequence of numbers such as 1, 2, 3, 4, 5</li>
             <li>A list of student names from a class</li>
             <li>Characteristics like age, height, and weight</li>
         </ul>
-
-        <p>Data handling involves gathering, organizing, and presenting this information in a way that is meaningful to others. This is commonly done through graphs, such as:</p>
         
+        <h4 id="data-representation-methods" class="mt-4">Data Representation Methods</h4>
+
+        <h5 id="pictograph">Pictograph</h5>
+        <p>A pictograph uses pictures or symbols to represent information visually.</p>
+        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667848/1_mvkfbj.png" style="width: 100%; max-width: 500px;" alt="Pictograph">
+
+        <h5 id="pie-chart">Pie Chart</h5>
+        <p>Pie charts are circular graphs used to represent data proportionally.</p>
+        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667851/2_gxjzcq.png" style="width: 100%; max-width: 500px;" alt="Pie Chart">
+
+        <h5 id="bar-graph">Bar Graph</h5>
+        <p>A bar graph uses rectangular bars to visually represent data.</p>
+        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667851/3_imy8lu.png" style="width: 100%; max-width: 500px;" alt="Bar Graph">
+
+        <h5 id="line-graph">Line Graph</h5>
+        <p>Line graphs depict data changes over time.</p>
+        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667851/4_ioombn.png" style="width: 100%; max-width: 500px;" alt="Line Graph">
+
+        <h5 id="histogram">Histogram</h5>
+        <p>Histograms are a type of bar graph where rectangles are used to represent frequency data.</p>
+        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667851/4_ioombn.png" style="width: 100%; max-width: 500px;" alt="Histogram">
+
+        <h4 id="types-of-data" class="mt-4">Types of Data</h4>
+        <p>Data can be categorized based on its qualitative or quantitative nature.</p>
+
+        <h5 id="qualitative-data">Qualitative Data</h5>
+        <p>Qualitative data refers to descriptive information that can be observed but not measured.</p>
         <ul>
-            <li>Pictographs</li>
-            <li>Pie Charts</li>
-            <li>Bar Graphs</li>
-            <li>Line Graphs</li>
-            <li>Histograms</li>
+            <li><strong>Nominal Data:</strong> Used for labeling or categorizing without any specific order.</li>
+            <li><strong>Ordinal Data:</strong> Includes both labels and an inherent order.</li>
         </ul>
 
-        <h4 class="mt-4">Data Representation Methods</h4>
-        
-        <h5>Pictograph</h5>
-        <p>A pictograph uses pictures or symbols to represent information visually. Pictographs are commonly used in early stages of data handling to make it easier to interpret numbers and facts through visual elements.</p>
-        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667848/1_mvkfbj.png" style="width: 100%; max-width: 500px;" alt="">
-        
-        <h5>Pie Chart</h5>
-        <p>Pie charts are circular graphs used to represent data proportionally, with each slice of the pie representing a portion of the whole. Pie charts are useful for displaying discrete data and show how individual segments contribute to a total.</p>
-        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667851/2_gxjzcq.png" style="width: 100%; max-width: 500px;" alt="">
-        
-        <h5>Bar Graph</h5>
-        <p>A bar graph uses rectangular bars to visually represent data. The length of each bar corresponds to the value it represents, making it a useful tool for comparing independent data sets.</p>
-        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667851/3_imy8lu.png" style="width: 100%; max-width: 500px;" alt="">
-        
-        <h5>Line Graph</h5>
-        <p>Line graphs depict data changes over time, connecting individual data points with straight lines. These graphs are effective for tracking trends and making future predictions based on existing data.</p>
-        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667851/4_ioombn.png" style="width: 100%; max-width: 500px;" alt="">
-        
-        <h5>Histogram</h5>
-        <p>Histograms are a type of bar graph where rectangles are used to represent frequency data. The bars are adjacent to each other, with the height of each bar corresponding to the frequency of the data it represents.</p>
-        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667851/4_ioombn.png" style="width: 100%; max-width: 500px;" alt="">
-
-        <h4 class="mt-4">Types of Data</h4>
-        <p>Data can be categorized based on its qualitative or quantitative nature. Below are the two primary types of data:</p>
-        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667852/5_rnsmlb.png" style="width: 100%; max-width: 500px;" alt="">
-
-        <h5>Qualitative Data</h5>
-        <p>Qualitative data refers to descriptive information that can be observed but not measured. This might include things like gender, nationality, or eye color. It is often further divided into:</p>
-        <ul>
-            <li><strong>Nominal Data:</strong> Used for labeling or categorizing without any specific order. For example, gender or eye color.</li>
-            <li><strong>Ordinal Data:</strong> Includes both labels and an inherent order or ranking, such as first, second, or third place in a competition.</li>
-        </ul>
-        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667853/7_smhq9g.png" style="width: 100%; max-width: 500px;" alt="">
-
-        <h5>Quantitative Data</h5>
-        <p>Quantitative data involves numerical values that can be measured or counted. Examples include the number of bananas in a dozen or the number of students in a classroom. Quantitative data is further divided into:</p>
+        <h5 id="quantitative-data">Quantitative Data</h5>
+        <p>Quantitative data involves numerical values that can be measured or counted.</p>
         <ul>
             <li><strong>Discrete Data:</strong> Countable values, such as the number of students in a class.</li>
-            <li><strong>Continuous Data:</strong> Measurable quantities that can take any value within a range, such as height, weight, or temperature.</li>
+            <li><strong>Continuous Data:</strong> Measurable quantities that can take any value within a range.</li>
         </ul>
-        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667855/9_mvhxs2.png" style="width: 100%; max-width: 500px;" alt="">
 
-        <h4 class="mt-4">Primary and Secondary Data</h4>
-        
+        <h4 id="primary-secondary-data" class="mt-4">Primary and Secondary Data</h4>
+
         <h5>Primary Data</h5>
-        <p>Primary data is collected firsthand by the researcher or individual conducting the study. Examples include data gathered from experiments, interviews, or direct observations.</p>
+        <p>Primary data is collected firsthand by the researcher or individual conducting the study.</p>
 
         <h5>Secondary Data</h5>
-        <p>Secondary data, on the other hand, is data that has been collected by someone else and is used for analysis. Examples include data from books, newspapers, and reports.</p>
-
-        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667849/11_se5nmb.png" style="width: 100%; max-width: 500px;" alt="">
+        <p>Secondary data is data that has been collected by someone else and is used for analysis.</p>
 
         <h4 class="mt-4">Key Points to Remember:</h4>
         <ul>
             <li>The first step in data collection is observation.</li>
             <li>Knowing the type of data you're dealing with is essential for accurate recording.</li>
             <li>Using a combination of data types enhances the quality of any evaluation.</li>
-        </ul>
-`,
+        </ul>`,
   algebra: `
   <p class="lead">
         Algebra is a fundamental area of mathematics that focuses on expressing
@@ -1376,141 +1381,207 @@ Products of 12:
         <h2 id="conclusion" class="mt-4">Conclusion</h2>
         <p>Calculus is essential for understanding and solving problems in mathematics, science, and engineering. Its principles, including limits, derivatives, and integrals, provide powerful tools for analysis and optimization in various fields.</p>
   `,
-  ComercialMaths: `
-  <div id="learnSection" class="learnSection" style="height: max-content;">
-<p>Commercial math deals with all those concepts that people use in their everyday life. The word commercial itself means the economical world or something relating to buying or selling. It involves the concept of profit and loss, discounts, marked price, simple and compound interest, taxes, ratio and proportion, percentages, and everything that revolved around money. Let's learn about commercial math and all its sub-branches in math in detail in this lesson.</p>
-<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%;" class="">
-<tbody>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">1.</span></td>
-<td><a href="#introduction-to-commercial-math">Introduction to Commercial Math</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">2.</span></td>
-<td><a href="#Money">Money</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">3.</span></td>
-<td><a href="#Ratio">Ratio</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">4.</span></td>
-<td><a href="#proportion">Proportion</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">5. </span></td>
-<td><a href="#Unitary-Method">Unitary Method</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">6. </span></td>
-<td><a href="#Profit-and-Loss">Profit and Loss</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">7. </span></td>
-<td><a href="#Simple-Interest">Simple Interest</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">8. </span></td>
-<td><a href="#Compound-Interest">Compound Interest</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">9. </span></td>
-<td><a href="#Discounts">Discounts</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">10. </span></td>
-<td><a href="#Taxes">Taxes</a></td>
-</tr>
-</tbody>
-</table>
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Introduction to Commercial Math</span></h2>
-<p>Commercial math focuses on those aspects of mathematics that are used in everyday life. Consider an example<span style="background-color:null;">; Eva, your friend goes to a stationary shop to buy a notebook. The shopkeeper tells her that 12 notebooks will cost $200. She has to calculate the cost of 1 notebook. This requires an understanding of the unitary method. Let’s take another example; Ron goes to buy a cricket bat with his mother. One shop offers him a 25% discount on the bat. The other shop offers a free cricket ball with the bat. Ron wants to help his mother select the best deal. He should know how to calculate percentages and also understand the concept of discounts.&nbsp;</span></p>
-<p>In both these examples, we make use of commercial math concepts.<span style="color:null;"> You can go ahead and explore all important topics in Commercial Math by selecting the topics from this list below:</span></p>
-<table border="1" cellpadding="10" cellspacing="1" style="width:100%;">
-<tbody>
-<tr>
-<td style="vertical-align: middle;"><a>Money</a></td>
-<td style="vertical-align: middle;"><a>Profit and Loss</a></td>
-</tr>
-<tr>
-<td style="vertical-align: middle;"><a>Ratios</a></td>
-<td style="vertical-align: middle;"><a>Simple Interest</a></td>
-</tr>
-<tr>
-<td style="vertical-align: middle;"><a>Proportion</a></td>
-<td style="vertical-align: middle;"><a>Compound Interest</a></td>
-</tr>
-<tr>
-<td style="vertical-align: middle;"><a>Percentages</a></td>
-<td style="vertical-align: middle;"><a>Discounts</a></td>
-</tr>
-<tr>
-<td style="vertical-align: middle;"><a>Unitary Method</a></td>
-<td style="vertical-align: middle;"><a>Taxes</a></td>
-</tr>
-</tbody>
-</table>
-<div id="Money">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Money</span></h2>
-</div>
-<p>Money is what makes the world go round, and mathematics is the centripetal force that governs it. From simple transactions to banking, taxes, and discounts, everything that involves money, involves math! <a>Money</a> is a medium of exchange. We pay coins and notes in order to get services and commodities. You can now learn more about the process of <a>identifying denominations</a> and the concept of <a>decomposing money</a>.</p>
-<p>All transactions are done using the country’s system of money i.e. currency. Money is something that we all interact with in some way on a daily basis and we end up falling back on our math skills to handle that money reliably.</p>
-<p><img alt="sum of two 5 Rs. coins" src="/content/comercial-maths/1.png" style="max-width: 100%; width: 300px;"></p>
-<div id="Ratio">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Ratio</span></h2>
-</div>
-<p>A ratio tells us how much of the proportion of one thing to the other. The sequence (or order) in which the <span style="background-color:null;"><a>numbers</a>&nbsp;</span>in a ratio are written matters.&nbsp;The ratio is defined as the relation between the quantities of two or more objects and it indicates the amount of one object contained in the other. It is written in the form of a:b, where the first term, i.e 'a' is known as antecedent and the second term, i.e 'b' is known as consequent. Let's go ahead and learn about the concept of <a>Ratios</a>.</p>
-<p><strong>Example: </strong>1 tablespoon of lemon concentrate+ 5 tablespoon of water = a perfect lemonade. The ratio to get a perfect lemonade can be expressed as Lemon Concentrate: Water = 1:5.</p>
-<div id="proportion">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Proportion</span></h2>
-</div>
-<p>When two ratios are equivalent, they are said to be in proportion. Proportion is a mathematical comparison between two numbers.&nbsp; According to proportion, if two sets of given numbers are increasing or decreasing in the same ratio, then the ratios are said to be directly proportional to each other. Proportions are denoted using the symbol&nbsp; "::" or "=". Check out the examples of <a>Proportion</a> to understand the concept better.</p>
-<p><strong>Example: </strong>1:3 and 9:27 are equivalent ratios. They are in proportion. It is represented as 1:3::9:27. And is read as 1 is to 3 as 9 is to 27.</p>
-<div id="Percentages">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Percentages</span></h2>
-</div>
-<p>The percentage is defined as a given part or amount in every hundred. It is a fraction with 100 as the denominator and is represented by the symbol "%". The percentage is a fraction or a ratio in which the value of the whole is always 100. For example, if Sam scored 30% marks on his math test, it means that he scored 30 marks out of 100. It is written as 30/100 in the fraction form and 30:100 in terms of ratio. Percent means “out of 100”. If 20 out of 100 boxes are shaded, then we say that 20 percent or 20 of the boxes are shaded. You can now learn how to calculate <a>Percentages</a> and their applications with the help of examples.</p>
-<p><strong>Example: </strong>What is 30% of 750?</p>
-<p><strong>Solution:</strong> 30% of 750 = (30/100) × 750 = 225.</p>
-<div id="Unitary-Method">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2 id="unitary-method"><span style="color:null;">Unitary Method</span></h2>
-</div>
-<p>The unitary method, in essence, is all about finding the “per unit value”. The unitary method is a technique for solving a problem by first finding the value of a single unit, and then finding the necessary value by multiplying the single unit value. You can try solving some of the examples of the&nbsp;<a>Unitary Method</a> to understand the methods used in solving such problems.</p>
-<p><strong>Example: </strong>The cost of 4 lemons is $20. The cost of 1 lemon is 20/4 = $5. So, the cost of 10 lemons= 10 × 5 = $50.</p>
-<div id="Profit-and-Loss">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Profit and Loss</span></h2>
-</div>
-<p>Profit is the gain that is incurred when the Selling Price (SP) of a commodity is greater than its Cost Price (CP). Loss is incurred when the Selling Price (SP) of a commodity is less than its Cost Price (CP). <a>Profit and Loss</a> are the basic driving forces of the market, and here you will understand how to wield the power of mathematics and apply it to the commercial world.</p>
-<p><strong>Example:</strong></p>
-<p><img alt="formula of profit and loss" src="/content/comercial-maths/2.png" style="max-width: 100%; width: 300px;"></p>
-<div id="Simple-Interest">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Simple Interest</span></h2>
-</div>
-<p>Simple Interest is the interest that is calculated on the Principal Amount on a monthly, quarterly, or annual basis. Ever borrow money from a friend or relative and they said that you would have to return the amount after a year with 10% interest? The concept of <a>Simple Interest</a> will help you easily calculate the total amount you would need to repay them.</p>
-<p><strong>Example:</strong></p>
-<p><img alt="formula for simple interest" src="/content/comercial-maths/3.png" style="max-width: 100%; width: 400px;"></p>
-<div id="Compound-Interest">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Compound Interest</span></h2>
-</div>
-<p>Compound Interest is the interest that is calculated on the Principal Amount and the Interest that is obtained from the previous term. <a>Compound Interest</a> is usually charged by banks and insurance companies on the amount of loan taken by us from them.</p>
-<p><strong>Example:</strong></p>
-<p><img alt="formula for compound interest" src="/content/comercial-maths/4.png" style="max-width: 100%; width: 400px;"></p>
-<div id="Discounts">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Discounts</span></h2>
-</div>
-<p>Discount is a reduction in the price of a commodity. It is the difference between the selling price and market price. <a>Discounts</a> are probably the most frequent terms that come up during a shopping trip or any purchase that we make since they directly affect the amount of money involved.</p>
-<p><strong>Example:</strong></p>
-<p><img alt="formula for discounts" src="/content/comercial-maths/5.png" style="max-width: 100%; width: 300px;"></p>
-<div id="Taxes">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2><span style="color:null;">Taxes</span></h2>
-</div>
-<p>The government charges a fee on every item that is sold. This fee is meant to be spent on public welfare and is known as tax. The tax charged is always a percentage of the SP. You must have heard words like income tax, GST, service tax, etc in daily conversations. Let’s now try and understand how <a>Taxes</a> are levied on products.</p>
-<p><strong>Example: </strong>A packet of homemade chocolates costs $50. A service tax of 10% is charged. What will be the total bill amount?</p>
-<p><strong>Solution: </strong></p>
-<p>Cost Price= $50</p>
-<p>Service Tax= 50 × 10/100 = $5</p>
-<p>The total bill amount including taxes= Cost price + Tax = $50 + $5 = $55.</p>
-  `,
+  ComercialMaths: `<p class="text-justify">
+        Commercial math deals with all those concepts that individuals utilize
+        in their daily lives. The term 'commercial' itself implies the temperate
+        world or something relating to buying or selling. It includes the
+        concepts of profit and loss, discounts, marked price, simple and
+        compound interest, taxes, proportion and ratio, percentages, and
+        everything that revolves around money. Let's learn about commercial math
+        and all its sub-branches in detail in this lesson.
+      </p>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5>Table of Contents</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li>
+              <a href="#intro">1. Introduction to Commercial Math</a>
+            </li>
+            <li><a href="#money">2. Money</a></li>
+            <li><a href="#ratio">3. Ratio</a></li>
+            <li>
+              <a href="#proportion">4. Proportion</a>
+            </li>
+            <li><a href="#rates">5. Rates</a></li>
+            <li>
+              <a href="#unitary">6. Unitary Method</a>
+            </li>
+            <li>
+              <a href="#profit-loss">7. Profit and Loss</a>
+            </li>
+            <li>
+              <a href="#simple-interest">8. Simple Interest</a>
+            </li>
+            <li>
+              <a href="#compound-interest">9. Compound Interest</a>
+            </li>
+            <li>
+              <a href="#discounts">10. Discounts</a>
+            </li>
+            <li><a href="#taxes">11. Taxes</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="mt-4" id="intro">1. Introduction to Commercial Math</h2>
+      <p class="text-justify">
+        Commercial math focuses on those aspects of arithmetic that are used in
+        everyday life. For example, Eva, your friend, goes to a stationery store
+        to buy a notebook. The salesperson tells her that 12 notebooks will cost
+        $200. She needs to calculate the cost of 1 notebook. This requires an
+        understanding of the unitary method. Let's take another example: Ron
+        goes to buy a cricket bat with his mother. One shop offers him a 25%
+        discount on the bat, while another offers a free cricket ball with the
+        bat. Ron needs to help his mother choose the best deal. He should know
+        how to calculate percentages and understand the concept of discounts.
+      </p>
+      <p class="text-justify">
+        In both these examples, we use commercial math concepts. You'll continue
+        to explore all important topics in Commercial Math by selecting topics
+        from the list below:
+      </p>
+
+      <h2 class="mt-4" id="money">2. Money</h2>
+      <p class="text-justify">
+        Money is what makes the world go round, and arithmetic is the
+        centripetal force that governs it. From simple transactions to banking,
+        taxes, and discounts, everything that involves money involves math!
+        Money is a medium of exchange. We pay coins and notes to obtain services
+        and goods. You will now learn more about the process of identifying
+        categories and the concept of handling money.
+      </p>
+      <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667854/1_hx3usl.png" style="width: 100%; max-width: 500px;" alt="">
+
+      <h2 class="mt-4" id="ratio">3. Ratio</h2>
+      <p class="text-justify">
+        A ratio tells us how much of the quantity of one thing relates to
+        another. The order in which the numbers in a ratio are written matters.
+        A ratio is defined as the relationship between the quantities of two or
+        more objects, showing how much one object contains within the other. It
+        is written in the form of <strong>a:b</strong>, where the first term,
+        'a,' is called the antecedent, and the second term, 'b,' is called the
+        consequent.
+      </p>
+      <p class="text-justify">
+        For example: 1 tablespoon of lemon concentrate + 5 tablespoons of water
+        = a perfect lemonade. The ratio to create the perfect lemonade can be
+        expressed as Lemon Concentrate: Water = 1:5.
+      </p>
+
+      <h2 class="mt-4" id="proportion">4. Proportion</h2>
+      <p class="text-justify">
+        When two ratios are identical, they are said to be in proportion. A
+        proportion is a mathematical comparison between two numbers. According
+        to proportion, if two pairs of given numbers are increasing or
+        decreasing in the same ratio, then the ratios are said to be directly
+        proportional to each other. Proportions are denoted using the symbols
+        ":" or "=".
+      </p>
+      <p class="text-justify">
+        For example: 1:3 and 9:27 are equivalent ratios. They are in proportion
+        and represented as 1:3::9:27, which means 1 is to 3 as 9 is to 27.
+      </p>
+
+      <h2 class="mt-4" id="rates">5. Rates</h2>
+      <p class="text-justify">
+        The rate is defined as a given fraction or amount per hundred. It is a
+        fraction with 100 as the denominator and is represented by the symbol
+        "%". The rate is a fraction or a ratio in which the value of the whole
+        is always 100. For example, if Sam scored 30% on his math test, it means
+        he scored 30 marks out of 100. It can be written as 30/100 in fraction
+        form and 30:100 in terms of ratio.
+      </p>
+      <p class="text-justify">
+        You will now learn how to calculate rates and their applications with
+        the help of examples.
+      </p>
+      <p class="text-justify"><strong>Example:</strong> What is 30% of 750?</p>
+      <p class="text-justify">
+        <strong>Solution:</strong> 30% of 750 = (30/100) × 750 = 225.
+      </p>
+
+      <h2 class="mt-4" id="unitary">6. Unitary Method</h2>
+      <p class="text-justify">
+        The unitary method is about finding the “per unit value.” It is a method
+        of solving a problem by first finding the value of a single unit and
+        then determining the total value by multiplying the single unit value.
+        You can try understanding some examples of the Unitary Method to learn
+        the strategies used in solving such problems.
+      </p>
+      <p class="text-justify">
+        <strong>Example:</strong> The cost of 4 lemons is $20. The cost of 1
+        lemon is 20/4 = $5. So, the cost of 10 lemons = 10 × 5 = $50.
+      </p>
+
+      <h2 class="mt-4" id="profit-loss">7. Profit and Loss</h2>
+      <p class="text-justify">
+        Profit is the gain that occurs when the Selling Price (SP) of a product
+        is greater than its Cost Price (CP). Loss is incurred when the Selling
+        Price (SP) of a commodity is less than its Cost Price (CP). Profit and
+        Loss are the fundamental driving forces of the market, and here you will
+        learn how to apply the principles of arithmetic to the commercial world.
+      </p>
+      <p class="text-justify">
+        <strong>Formula for Profit:</strong> Profit = SP - CP
+      </p>
+      <p class="text-justify">
+        <strong>Formula for Loss:</strong> Loss = CP - SP
+      </p>
+      <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667846/2_heqtxk.png" style="width: 100%; max-width: 500px;" alt="">
+
+      <h2 class="mt-4" id="simple-interest">8. Simple Interest</h2>
+      <p class="text-justify">
+        Simple Interest is the interest that is calculated on the Principal
+        Amount on a monthly, quarterly, or yearly basis. Have you ever borrowed
+        money from a friend or family member who said that you would need to
+        return the amount after a year with 10% interest? The concept of Simple
+        Interest will help you easily calculate the total amount you would need
+        to reimburse them.
+      </p>
+      <p class="text-justify">
+        <strong>Formula for Simple Interest:</strong> SI = (P × R × T) / 100
+      </p>
+      <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667847/3_ttksek.png" style="width: 100%; max-width: 500px;" alt="">
+
+      <h2 class="mt-4" id="compound-interest">9. Compound Interest</h2>
+      <p class="text-justify">
+        Compound Interest is the interest that is calculated on the Principal
+        Amount and the interest that has been accumulated from previous terms.
+        Compound Interest is usually charged by banks and insurance companies on
+        the amount of loan taken by us from them.
+      </p>
+      <p class="text-justify">
+        <strong>Formula for Compound Interest:</strong> CI = P(1 + R/100)^T - P
+      </p>
+      <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667847/4_w2bpz0.png" style="width: 100%; max-width: 500px;" alt="">
+      
+
+      <h2 class="mt-4" id="discounts">10. Discounts</h2>
+      <p class="text-justify">
+        A discount is a reduction in the price of a product. It is the
+        difference between the selling price and the market price. Discounts are
+        perhaps the most common terms that come up during a shopping trip or any
+        purchase we make, as they directly affect the amount of money involved.
+      </p>
+      <p class="text-justify">
+        <strong>Formula for Discount:</strong> Discount = Marked Price - Selling
+        Price
+      </p>
+
+      <h2 class="mt-4" id="taxes">11. Taxes</h2>
+      <p class="text-justify">
+        The government charges a tax on each item that is sold. This tax is
+        meant to be spent on public welfare and is known as tax. The tax charged
+        is always a percentage of the SP. You must have heard terms like income
+        tax, GST, sales tax, etc., in daily conversations. Now let’s try to
+        understand how taxes are applicable to products.
+      </p>
+      <p class="text-justify">
+        <strong>Formula for Tax:</strong> Tax = SP × (Rate of Tax / 100)
+      </p>`,
 };
 
 const ContentData = [
