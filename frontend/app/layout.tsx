@@ -110,6 +110,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/logo-32.jpg" />
         <link rel="icon" type="image/png" sizes="32x32" href="/logo-16.jpg" />
+        <link rel="icon" type="image/png" sizes="64x64" href="/logo-64.png" />
+        <link rel="icon" type="image/png" sizes="128x128" href="/logo-128.png" />
+        <link rel="icon" type="image/png" sizes="256x256" href="/logo-256.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/logo-512.png" />
+
         <link rel="apple-touch-icon" href="/logo-crop.png" />
         <meta
           name="viewport"
