@@ -1231,218 +1231,151 @@ Products of 12:
        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667860/6_r0n3hs.png" alt="" style="width: 100%; max-width: 500px;">
   `,
   calculus: `
-  <div id="learnSection" class="learnSection">
-<p><strong>Calculus</strong> is one of the most important branches of mathematics that deals with rate of change and motion. The two major concepts that calculus is based on are derivatives and integrals.</p>
-<ul>
-<li>The derivative of a function is the measure of the rate of change of a function. It gives an explanation of the function at a specific point.</li>
-<li>The integral is the measure of the area under the curve of the function. It accumulates the discrete values of a function over a range of values.</li>
-</ul>
-<p>Calculus is also referred to as infinitesimal calculus or “the calculus of infinitesimals”. Infinitesimal numbers are quantities that have a value nearly equal to zero, but not exactly zero. Generally, classical calculus is the study of continuous changes of functions.</p>
-<table border="0" cellpadding="1" cellspacing="1" id="table-of-content" style="width: 100%;" class="">
-<tbody>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">1.</span></td>
-<td><a href="#what">What is Calculus?</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">2.</span></td>
-<td><a href="#topics">Calculus Topics</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">3.</span></td>
-<td><a href="#functions">Functions</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">4.</span></td>
-<td><a href="#diff">Differential Calculus</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">5.</span></td>
-<td><a href="#inte">Integral Calculus</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">6.</span></td>
-<td><a href="#formula">Calculus Formula</a></td>
-</tr>
-<tr>
-<td style="text-align: center"><span style="color: #0000ff">7.</span></td>
-<td><a href="#appl">Applications of Calculus</a></td>
-</tr>
-</tbody>
-</table>
-<div id="what">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>What is Calculus?</h2>
-</div>
-<p>Calculus focuses on some important topics covered in math such as differentiation, integration, limits, functions, and so on. Calculus, a branch of mathematics, deals with the study of the rate of change and it was developed by Newton and Leibniz.</p>
-<p><strong>Calculus Definition:</strong> Calculus in mathematics is generally used in mathematical models to obtain optimal solutions and thus helps in understanding the changes between the values related by a function. Calculus is broadly classified into two different sections:</p>
-<ul>
-<li>Differential Calculus</li>
-<li>Integral Calculus</li>
-</ul>
-<p><img alt="description of important calculus terms" src="/content/calculus/1.png" style="width: 400px;"></p>
-<p>Both differential calculus and integral calculus serve as a foundation for the higher branch of Mathematics known as “Analysis”, dealing with the impact of a slight change in the dependent variable, as it leads to zero, on the function.</p>
-<p><img alt="branches of calculus are differential calculus and the integral calculus" src="/content/calculus/2.png" style="width: 400px;"></p>
-<div id="topics">
-<h3>Precalculus</h3>
-<p><a>Precalculus</a> in mathematics is a course that includes <a>trigonometry</a> and <a>algebra</a> designed to prepare students for the study of calculus. In precalculus, we focus on the study of advanced mathematical concepts including functions and quantitative reasoning. Some important topics covered under precalculus are,</p>
-<ul>
-<li><b>Functions</b></li>
-<li><b>Inverse Functions</b></li>
-<li><b>Trigonometric Functions</b></li>
-<li><b>Complex Numbers</b></li>
-<li><b>Rational Function</b></li>
-</ul>
-<div id="functions">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Functions</h2>
-</div>
-<p>Functions in calculus represent the relationship between two variables, which are the independent variable and the dependent variable. Let’s consider the following diagram.</p>
-<p><img alt="explanation of function as a part of calculus" src="/content/calculus/3.png" style="width: 400px;"></p>
-<p><img alt="formula used in calculus" src="/content/calculus/4.png" style="width: 450px;"></p>
-<p>There is an INPUT, a function, and an OUTPUT. For example, suppose we want to make a pizza. We would need the following basic ingredients.</p>
-<ul>
-<li>Pizza Base</li>
-<li>Pizza Sauce</li>
-<li>Cheese</li>
-<li>Seasoning</li>
-</ul>
-<p>The above real-life example can be represented in the form of a function as explained below,</p>
-<p><img alt="example of a pizza showing relation between input and output. It is labelled as function example in calculus" src="/content/calculus/4.png" style="width: 400px;"></p>
-<p>Let’s take another example</p>
-<p>Suppose that: y = x<sup>2</sup></p>
-<table border="1">
-<thead>
-<tr>
-<th scope="col"><strong>Value of x</strong></th>
-<th scope="col"><strong>Value of y</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2</td>
-<td>4</td>
-</tr>
-<tr>
-<td>9</td>
-<td>81</td>
-</tr>
-<tr>
-<td>11</td>
-<td>121</td>
-</tr>
-</tbody>
-</table>
-<p>Using the diagram given above, we get:</p>
-<p><img alt="formula of function" src="/content/calculus/5.png" style="width: 400px;"></p>
-<p>We can see that the value of y <strong>depends</strong> on the value of x. We can conclude that, in calculus,</p>
-<ul>
-<li>INPUT (x) is independent of the OUTPUT (y)</li>
-<li>OUTPUT depends on the INPUT</li>
-<li>f(x) is responsible for the transformation of the INPUT to the OUTPUT and is called a "function"</li>
-</ul>
-<div id="diff">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Differential Calculus</h2>
-</div>
-<p>Differential calculus focuses on solving the problem of finding the <a>rate of change</a> of a function with respect to the other variables. To find the optimal solution, derivatives are used to calculate the <a>maxima and minima</a> values of a function. Differential helps in the study of the limit of a quotient, dealing with variables such as x and y, functions f(x), and the corresponding changes in the variables x and y. The notations dy and dx are known as differentials. The process used to find the derivatives is called <a>differentiation</a>. The derivative of a function, y with respect to variable x, is represented by dy/dx or f’(x).</p>
-<p><strong>Limits</strong></p>
-<p>Limit helps in calculating the degree of closeness to any value or the approaching term. A limit is normally expressed using the <a>limit formula</a> as,</p>
-<p>lim<sub>x→c</sub>f(x) = A</p>
-<p>This expression is read as “the limit of f of x as x approaches c equals A”.</p>
-<p><strong>Derivatives</strong></p>
-<p>Derivatives represent the <a>instantaneous rate of change</a> of a quantity with respect to the other. The derivative of a function is represented as:</p>
-<p>lim<sub>x→h</sub>[f(x + h) − f(x)]/h = A</p>
-<p><strong>Continuity</strong></p>
-<p>A function f(x) is said to be <a>continuous</a> at a particular point x = a, if the following three conditions are satisfied –</p>
-<ul>
-<li>f(a) is defined</li>
-<li>lim<sub>x→a</sub>f(x) exists</li>
-<li>lim<sub>x→a</sub>f(x) = f(a)</li>
-</ul>
-<p><strong>Continuity and Differentiability</strong></p>
-<p>A function is always continuous if it is differentiable at any point, whereas the vice-versa for this condition is not always true.</p>
-<div id="inte">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Integral Calculus</h2>
-</div>
-<p>Integral calculus is the study of integrals and the properties associated to them. It is helpful in:</p>
-<ul>
-<li>calculating f from f’ (i.e. from its derivative).</li>
-<li>calculating the <a>area under a curve</a> for any function.</li>
-</ul>
-<p><strong>Integration</strong></p>
-<p>Integration is the reverse process of differentiation. As differentiation can be understood as dividing a part into many small parts, integration can be said as a collection of small parts in order to form a whole. It is generally used for calculating areas.</p>
-<p><strong>Indefinite Integral</strong></p>
-<p>An <a>indefinite integral</a> does not have a specific boundary, i.e. no upper and lower limit is defined. Thus the integration value is always accompanied by a constant value (C). It is denoted as:</p>
-<p>∫ f(x) dx = F(x) + C, where F'(x) = f(x)</p>
-<p><strong>Definite Integral</strong></p>
-<p>A <a>definite integral</a> has a specific boundary or limit for the calculation of the function. The upper and lower limits of the independent variable of a function are specified. A definite integral is given mathematically as,</p>
-<p>∫<sub>a</sub><sup>b</sup> f(x) · dx = F(x)</p>
-<div id="formula">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Calculus Formula</h2>
-</div>
-<p>Calculus formulas can be broadly divided into the following six broad sets of formulas. The six broad formulas are related to limits, differentiation, <a>integration</a>, definite integrals, application of differentiation, and differential equations.</p>
-<p><strong>Limits Formulas:</strong> Limits formulas help in approximating the limit of a function at a given point.</p>
-<p>lim<sub>x→0</sub> (x<sup>n</sup> - a<sup>n</sup>)(x - a) = na<sup>(n - 1)</sup><br>
-lim<sub>x→0</sub> (sin x)/x = 1<br>
-lim<sub>x→0 </sub>(tan x)/x = 1<br>
-lim<sub>x→0 </sub>(e<sup>x</sup> - 1)/x = 1<br>
-lim<sub>x→0</sub> (a<sup>x</sup> - 1)/x = log<sub>e</sub>a<br>
-lim<sub>x→∞</sub> (1 + (1/x))<sup>x</sup> = e<br>
-lim<sub>x→0</sub> (1 + x)<sup>1/x</sup> = e<br>
-lim<sub>x→0 </sub>(1 + (a/x))<sup>x</sup> = e<sup>a</sup></p>
-<p><strong>Differentiation Formulas: </strong><a>Differentiation Formulas</a> are applicable to basic algebraic expressions, trigonometric ratios, inverse trigonometry, and exponential terms.</p>
-<p><a>d/dx (x<sup>n</sup>)</a> = nx<sup>n - 1 </sup><br>
-d/dx (Constant) = 0<br>
-<a>d/dx (e<sup>x</sup>)</a> = e<sup>x</sup><br>
-d/dx (a<sup>x</sup>) = a<sup>x</sup> · ln a<br>
-<a>d/dx (ln x)</a> = 1/x<br>
-<a>d/dx (sin x)</a> = cos x<br>
-<a>d/dx (cos x)</a> = -sin x<br>
-<a>d/dx (tan x)</a> = sec<sup>2</sup>x<br>
-<a>d/dx (cot x)</a> = -cosec<sup>2</sup>x<br>
-<a>d/dx (sec x)</a> = sec x · tan x<br>
-<a>d/dx (cosec x)</a> = -cosec x · cot x</p>
-<p><strong>Integration Formula:</strong> <a>Integrals formulas</a> can be derived from differentiation formulas, and are complimentary to differentiation formulas.</p>
-<p><a>∫ x<sup>n</sup> dx</a> = x<sup>n + 1</sup>/(n + 1) + C<br>
-<a>∫ 1 dx</a> = x + C<br>
-<a>∫ e<sup>x</sup> dx</a> = e<sup>x</sup> + C<br>
-<a>∫(1/x) dx</a> = ln |x| + C<br>
-∫ a<sup>x</sup> dx = (a<sup>x</sup>/log a) + C<br>
-<a>∫ cos x dx</a> = sin x + C<br>
-<a>∫ sin x dx</a> = -cos x + C<br>
-∫ sec<sup>2</sup>x dx = tan x + C<br>
-∫ cosec<sup>2</sup>x dx = -cot x + C<br>
-<a>∫ sec x tan x dx</a> = sec x + C<br>
-∫ cosec x cot x dx = -cosec x + C</p>
-<p><strong>Definite Integrals Formulas: </strong>Definite integrals are the basic integral formulas and are additionally having limits. There is an upper and a lower limit in definite integrals, that are helpful in finding the area within these limits.</p>
-<p>∫<sup>b</sup><sub>a</sub> f'(x) dx = f(b) - f(a), this is known as <a>fundamental theorem of calculus</a><br>
-∫<sup>b</sup><sub>a</sub> f(x) dx = ∫<sup>b</sup><sub>a</sub> f(t) dt<br>
-∫<sup>b</sup><sub>a</sub> f(x) dx = - ∫<sup>a</sup><sub>b</sub> f(x) dx<br>
-∫<sup>b</sup><sub>a</sub> f(x) dx = ∫<sup>c</sup><sub>a</sub> f(x) dx + ∫<sup>b</sup><sub>c</sub> f(x) dx<br>
-∫<sup>b</sup><sub>a</sub> f(x) dx = ∫<sup>b</sup><sub>a</sub> f(a + b - x) dx<br>
-∫<sup>a</sup><sub>0</sub> f(x) dx = ∫<sup>a</sup><sub>0</sub> f(a - x) dx<br>
-∫<sup>a</sup><sub>-a</sub> f(x) dx = 2∫<sup>a</sup><sub>0</sub> f(x) dx, f is an even function<br>
-∫<sup>a</sup><sub>-a</sub> f(x) dx = 0 , f is an odd function</p>
-<p><strong>Application of Differentiation Formulas:</strong> The application of differentiation formulas is useful for <a>approximation</a>, estimation of values, equations of <a>tangents and normals</a>, maxima and minima, and for finding the changes of numerous physical events.</p>
-<p>dy/dx = (dy/dt)/(dx/dt)<br>
-<a>Equation of a Tangent</a>: y - y<sub>1</sub> = dy/dx · (x - x<sub>1</sub>)<br>
-Equation of a Normal: y - y<sub>1</sub> = -1/(dy/dx) · (x - x<sub>1</sub>)</p>
-<p><strong>Differential Equations Formula: </strong><a>Differential equations</a> are equations involved with derivatives. In the general equation, we have the unknown variable 'x' and here we have the differentiation dy/dx as the variable of the equation.</p>
-<p><a>Homogeneous Differential Equation</a>: f(λx, λy) = λ<sup>n</sup>f(x, y)<br>
-<a>Linear Differential Equation</a>: dy/dx + Py = Q. The general solution of linear differential equation is y.e<sup>- </sup><sup>∫P dx </sup>= ∫(Q · e<sup>∫P dx</sup>) dx + C</p>
-<div id="appl">
-<div id="circle" style="background-color: rgb(225, 255, 246);"></div><h2>Applications of Calculus</h2>
-</div>
-<p>Calculus is a very important branch, a mathematical model that helps in:</p>
-<ul>
-<li>Analyzing a system to find an optimal solution to predict the future of any given condition for a function.</li>
-<li>Concepts of calculus play a major role in real life, either it is related to solve the area of complicated shapes, evaluating survey data, the safety of vehicles, business planning, credit card payment records, or finding the changing conditions of a system that affect us, etc.</li>
-<li>Calculus is a language of economists, biologists, architects, medical experts, statisticians. For example, Architects and engineers use different concepts of calculus in determining the size and shape of the construction structures.</li>
-<li>Calculus is used in modeling concepts like birth and death rates, radioactive decay, reaction rates, heat and light, motion, electricity, etc.</li>
-</ul>
-`,
+  <p class="lead">Analysis is one of the most important branches of mathematics that deals with rates of change and motion. The two main concepts underlying calculus are differentiation and integration.</p>
+ 
+        <!-- Table of Contents -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Table of Contents</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li><a href="#section1">1. What is Calculus?</a></li>
+                    <li><a href="#section2">2. Topics in Calculus</a></li>
+                    <li><a href="#section3">3. Functions</a></li>
+                    <li><a href="#section4">4. Calculus</a></li>
+                    <li><a href="#section5">5. Integral Calculus</a></li>
+                    <li><a href="#section6">6. Calculus Formulas</a></li>
+                    <li><a href="#section7">7. Applications of Calculus</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="section1" class="mt-4">1. What is Calculus?</h2>
+        <p>Calculus deals with important topics in mathematics such as differentiation, integration, limits, and functions. Calculus, a branch of mathematics, deals with the study of rates of change and was developed by Newton and Leibniz.</p>
+        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667837/1_t8cxhp.png" style="width: 100%; max-width: 500px;" alt="">
+        
+        <h3 class="mt-3">Definition of Calculus:</h3>
+        <p>In mathematics, calculus is usually used in mathematical models to arrive at optimal solutions and helps understand the changes between values related by functions. Calculus is broadly divided into two different branches:</p>
+        <ul>
+            <li>Calculus</li>
+            <li>Integration</li>
+        </ul>
+        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667838/2_dzuttg.png" style="width: 100%; max-width: 500px;" alt="">
+
+        <h2 id="section2" class="mt-4">2. Topics in Calculus</h2>
+        <ul>
+            <li>Functions</li>
+            <li>Calculus</li>
+            <li>Integral Calculus</li>
+            <li>Calculus Formulas</li>
+            <li>Applications of Calculus</li>
+        </ul>
+
+        <h2 id="section3" class="mt-4">3. Functions</h2>
+        <p>A function in calculus represents the relationship between two variables, an independent variable and a dependent variable. Consider the following diagram:</p>
+        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667839/3_ca09fd.png" style="width: 100%; max-width: 500px;" alt="">
+
+        <h3 class="mt-3">Explanation of Functions as Part of Calculus</h3>
+        <p>There is an INPUT, a FUNCTION, and an OUTPUT. Suppose you want to make a pizza. You need the following basic ingredients:</p>
+        <ul>
+            <li>Pizza dough</li>
+            <li>Pizza sauce</li>
+            <li>Cheese</li>
+            <li>Spices</li>
+        </ul>
+        <p>The above real-world example can be expressed in the form of a function as explained below:</p>
+
+        <h3 class="mt-3">Pizza Example</h3>
+        <p>Let us consider another example:</p>
+        <p>Let us say y = x<sup>2</sup></p>
+        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667839/5_ix2rsv.png" style="width: 100%; max-width: 500px;" alt="">
+
+        <table class="table table-bordered mt-2">
+            <thead>
+                <tr>
+                    <th>Value of x</th>
+                    <th>Value of y</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>81</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>121</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <img src="https://res.cloudinary.com/dgf9aqq8o/image/upload/v1728667838/4_fedhke.png" style="width: 100%; max-width: 500px;" alt="">
+        
+        <h2 id="section4" class="mt-4">4. Calculus</h2>
+        <p>Calculus focuses on solving problems to find the rate of change of a function with respect to another variable. To find the optimal solution, we use derivatives to calculate the maximum and minimum values of a function.</p>
+
+        <h3 class="mt-3">Limits</h3>
+        <p>Limits are useful for calculating the degree of closeness to a given value or approaching term. Limits are usually expressed using the limit formula:</p>
+        <p class="font-italic">lim<sub>x→c</sub> f(x) = A</p>
+
+        <h3 class="mt-3">Derivatives</h3>
+        <p>Derivatives represent the instantaneous rate of change of one quantity with respect to another. The derivative of a function is expressed as:</p>
+        <p class="font-italic">lim<sub>x→h</sub> [f(x + h) − f(x)]/h = A</p>
+
+        <h3 class="mt-3">Continuity</h3>
+        <p>A function f(x) is called continuous at x = a if the following three conditions are met:</p>
+        <ul>
+            <li>f(a) is defined</li>
+            <li>lim<sub>x→a</sub> f(x) exists</li>
+            <li>lim<sub>x→a</sub> f(x) = f(a)</li>
+        </ul>
+        
+        <h3 class="mt-3">Continuity and Differentiability</h3>
+        <p>A function is always continuous and differentiable at all points, but the converse condition is not always true.</p>
+
+        <h2 id="section5" class="mt-4">5. Integral Calculus</h2>
+        <p>Integral Calculus is the study of integrals and related properties. It is useful in:</p>
+        <ul>
+            <li>Calculating f from f ' (i.e., from its derivative).</li>
+            <li>Calculating the area under the curve of any function.</li>
+        </ul>
+
+        <h3 class="mt-3">Integration</h3>
+        <p>Integration is the inverse process of differentiation. Differentiation can be understood as dividing a part into many small parts, while integration is accumulating the small parts to make a whole. It is usually used to calculate areas.</p>
+
+        <h2 id="section6" class="mt-4">6. Calculus Formulas</h2>
+        <p>Calculus formulas can be broadly divided into six sets of formulas:</p>
+        <ul>
+            <li>Limit Formulas</li>
+            <li>Differential Formulas</li>
+            <li>Integral Formulas</li>
+            <li>Definite Integrals Formulas</li>
+            <li>Applications of Differentiation Formulas</li>
+            <li>Differential Equations Formulas</li>
+        </ul>
+
+        <h2 id="section7" class="mt-4">7. Applications of Calculus</h2>
+        <p>Calculus has numerous applications across various fields, including:</p>
+        <ul>
+            <li>Physics: To calculate motion, electricity, heat, light, harmonics, and waves.</li>
+            <li>Biology: To understand population dynamics, growth models, and spread of diseases.</li>
+            <li>Economics: To maximize profits and minimize costs through optimization.</li>
+            <li>Engineering: In the design of structures, machines, and systems.</li>
+        </ul>
+
+        <h2 id="conclusion" class="mt-4">Conclusion</h2>
+        <p>Calculus is essential for understanding and solving problems in mathematics, science, and engineering. Its principles, including limits, derivatives, and integrals, provide powerful tools for analysis and optimization in various fields.</p>
+  `,
   ComercialMaths: `
   <div id="learnSection" class="learnSection" style="height: max-content;">
 <p>Commercial math deals with all those concepts that people use in their everyday life. The word commercial itself means the economical world or something relating to buying or selling. It involves the concept of profit and loss, discounts, marked price, simple and compound interest, taxes, ratio and proportion, percentages, and everything that revolved around money. Let's learn about commercial math and all its sub-branches in math in detail in this lesson.</p>
