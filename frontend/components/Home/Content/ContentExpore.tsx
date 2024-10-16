@@ -35,7 +35,7 @@ const ContentExplore: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, []);
 
   useEffect(() => {
     if (content.length !== 0) {
