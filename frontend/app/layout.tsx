@@ -120,7 +120,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
-       
+
         <meta
           name="description"
           content="The A to Z Classes provides expert coaching and comprehensive resources for students in Class 1-12, designed to help them achieve academic excellence. Join us to access a wide range of interactive study materials, personalized learning plans, and in-depth exam preparation tools. Our coaching covers all major boards, including CBSE, ICSE, and State Boards, ensuring students receive the support they need to excel in their studies and competitive exams. With experienced faculty, regular assessments, and engaging online classes, we provide the ideal learning environment for students to thrive."
@@ -165,8 +165,33 @@ export default function RootLayout({
           name="twitter:image"
           content="/logo.png"
         />
+        {/* Add Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){
+                w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});
+                var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-5PXT2S32');
+            `,
+          }}
+        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {/* GTM NoScript Tag */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5PXT2S32"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         <div className="main">
           <AppProvider>
             <Navbar />
