@@ -43,6 +43,7 @@ const TimeLine = () => {
               }}
               src={`${classes.timeline.CLASS_TIMELINE_timeline}?cache-control=max-age=31536000`}
               alt="Timeline"
+              loading="lazy" 
             />
           </motion.div>
           <motion.div

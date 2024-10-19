@@ -33,7 +33,6 @@ const ClassList = ({ classNumber }: ClassListProps) => {
               alt={`Class ${classNumber}`}
               className="class-image"
               loading="lazy"
-
             />
             <div className="overlay">
               <a href="#" className="link-icon">

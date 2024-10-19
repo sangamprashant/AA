@@ -1,10 +1,10 @@
 // import { Link } from "react-router-dom";
+import { classes } from "@/assets/links";
 import Link from "next/link";
 import Section from "../../Reuse/Section";
 import { useClassContext } from "../ClassContext";
 import MobilePrice from "./MobilePrice";
 import PriceChart from "./PriceChart";
-import { classes } from "@/assets/links";
 // import Image from "next/image";
 
 const Price = () => {
@@ -223,7 +223,8 @@ const Price = () => {
                 <div key={index}>
                   <img
                     src={`${image.src}?cache-control=max-age=31536000`}
-                    alt={image.title} 
+                    alt={image.title}
+                    loading="lazy"
                   />
                   <p className="price-title">{image.title}</p>
                   <p className="price-desc">{image.desc}</p>
@@ -250,6 +251,7 @@ const Price = () => {
                   <img
                     src={`${image.src}?cache-control=max-age=31536000`}
                     alt={image.title}
+                    loading="lazy"
                   />
                   <p className="price-title">{image.title}</p>
                   <p className="price-desc">{image.desc}</p>

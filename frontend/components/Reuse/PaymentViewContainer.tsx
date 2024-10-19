@@ -217,7 +217,7 @@ const PaymentViewContainer = ({ payId, orderId }: Props) => {
                     <thead>
                       <tr className="header">
                         <td>
-                          <img src={logoImg} alt="Company Name" height={40} />
+                          <img src={logoImg} alt="Company Name" height={40} loading="lazy"  />
                         </td>
                         <td className="align-right">
                           <h2>INVOICE</h2>

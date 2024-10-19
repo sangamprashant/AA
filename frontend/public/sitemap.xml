@@ -14,6 +14,13 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Free Study Material Page -->
+  <url>
+    <loc>https://theatozclasses.com/free-study-material</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Contact Us Page -->
   <url>
     <loc>https://theatozclasses.com/contact-us</loc>
@@ -26,13 +33,6 @@
     <loc>https://theatozclasses.com/free-demo-class</loc>
     <lastmod>2024-09-13</lastmod>
     <priority>0.8</priority>
-  </url>
-
-  <!-- Free Study Material Page -->
-  <url>
-    <loc>https://theatozclasses.com/free-study-material</loc>
-    <lastmod>2024-09-13</lastmod>
-    <priority>0.7</priority>
   </url>
 
   <!-- JEE Page -->
@@ -59,6 +59,102 @@
   <!-- Terms Page -->
   <url>
     <loc>https://theatozclasses.com/terms</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Blog Page -->
+  <url>
+    <loc>https://theatozclasses.com/blog</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Access to Free Study Material -->
+  <url>
+    <loc>https://theatozclasses.com/free-study-material/access?code=numbers</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/free-study-material/access?code=geometry</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/free-study-material/access?code=measurement</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/free-study-material/access?code=data</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/free-study-material/access?code=algebra</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/free-study-material/access?code=trigonometry</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/free-study-material/access?code=calculus</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/free-study-material/access?code=comercial-maths</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Class Pages -->
+  <url>
+    <loc>https://theatozclasses.com/class?code=1-4</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/class?code=5</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/class?code=6</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/class?code=7</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/class?code=8</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/class?code=9</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/class?code=10</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/class?code=11</loc>
+    <lastmod>2024-09-13</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://theatozclasses.com/class?code=12</loc>
     <lastmod>2024-09-13</lastmod>
     <priority>0.5</priority>
   </url>

@@ -69,6 +69,7 @@ const ContentSide: React.FC<ContentSideProps> = ({ category }) => {
                 alt={material.title}
                 height={40}
                 width={40}
+                loading="lazy" 
                 className="rounded-circle object-fit-cover"
               />
               <p>{material.title}</p>

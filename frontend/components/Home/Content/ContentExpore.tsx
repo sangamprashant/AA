@@ -129,6 +129,7 @@ const ContentExplore: React.FC = () => {
             src={`${studyMaterials["all"]}?cache-control=max-age=31536000`}
             alt="Show All"
             height="35"
+            loading="lazy" 
           />{" "}
           Show All
         </button>
@@ -142,6 +143,7 @@ const ContentExplore: React.FC = () => {
             <img
               src={`${studyMaterials[(index+1).toString()]}?cache-control=max-age=31536000`}
               alt={`Class ${index + 1}`}
+              loading="lazy" 
               height="35"
             />{" "}
             Class {index + 1}
@@ -178,6 +180,7 @@ const CardContainer: React.FC<CardContainerProps> = ({ item }) => {
         src={`${item?.imageUrl}?cache-control=max-age=31536000`}
         className="card-img-top-content-explore"
         alt={item.title}
+        loading="lazy" 
       />
       <div className="card-body">
         <p className="m-0">

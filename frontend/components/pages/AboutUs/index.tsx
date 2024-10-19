@@ -58,7 +58,9 @@ const AboutUs: React.FC = () => {
             <div className="col-md-6">
               <img src={aboutUsImg["teacher1"]} alt="Expert" style={{
                 width: "100%"
-              }} />
+              }} 
+              loading="lazy" 
+              />
             </div>
             <div className="col-md-6">
               <p>
@@ -119,7 +121,7 @@ const AboutUs: React.FC = () => {
             <div className="col-md-6">
               <img src={aboutUsImg["teacher2"]} style={{
                 width: "100%"
-              }} alt="Expert" />
+              }} alt="Expert" loading="lazy"  />
             </div>
           </div>
         </article>
@@ -149,6 +151,7 @@ const AboutUs: React.FC = () => {
                 }}
                 alt="Map"
                 className="about-map-image"
+                loading="lazy" 
               />
             </div>
           </div>

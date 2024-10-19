@@ -12,11 +12,13 @@ const PageHeaders = ({ title, description }: PageHeadersProps) => {
         src={aboutUsImg["banner-left"]}
         alt=""
         className="about-us-left-image"
+        loading="lazy" 
       />
       <img
         src={aboutUsImg["banner-right"]}
         alt=""
         className="about-us-right-image"
+        loading="lazy" 
       />
       {/* <header id="contact-header-navbar"></header> */}
       <header id="about-header-content">

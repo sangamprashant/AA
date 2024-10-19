@@ -50,6 +50,7 @@ const Pricing = () => {
                 height={80}
                 alt={item.title}
                 className="pricing-class-item-image"
+                loading="lazy" 
               />
               <div>
                 <p className="pricing-class-item-title p-0 m-0">{item.title}</p>

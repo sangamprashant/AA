@@ -10,7 +10,7 @@ const NoData = ({ heading, content }: NoDataProps) => {
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="text-center">
         <div className="mb-4">
-          <img src={pageNotFoundImg["nodata"]} alt="No Data" className="img-fluid" />
+          <img src={pageNotFoundImg["nodata"]} alt="No Data" className="img-fluid" loading="lazy"  />
         </div>
         <h2 className="mb-3">{heading}</h2>
         <p className="lead">{content}</p>

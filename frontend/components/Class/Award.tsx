@@ -7,6 +7,7 @@ const Award = () => {
         src={`${classes.award.CLASS_award}?cache-control=max-age=31536000`}
         alt="Award"
         className="class-award-image"
+        loading="lazy" 
       />
       <div className="class-award-content">
         <h2 className="class-award-heading">Our Commitment to Quality</h2>
@@ -22,6 +23,7 @@ const Award = () => {
               <img
                 src={`${classes.award.CLASS_AWARD_selection}?cache-control=max-age=31536000`}
                 alt="Selection"
+                loading="lazy" 
               />
               <h3 className="award-title">Rigorous Selection</h3>
               <p className="award-text">
@@ -34,6 +36,7 @@ const Award = () => {
               <img
                 src={`${classes.award.CLASS_AWARD_traning}?cache-control=max-age=31536000`}
                 alt="Training"
+                loading="lazy" 
               />
               <h3 className="award-title">Comprehensive Training</h3>
               <p className="award-text">
@@ -46,6 +49,7 @@ const Award = () => {
               <img
                 src={`${classes.award.CLASS_AWARD_monitoring}?cache-control=max-age=31536000`}
                 alt="Monitoring"
+                loading="lazy" 
               />
               <h3 className="award-title">Effective Monitoring</h3>
               <p className="award-text">
@@ -58,6 +62,7 @@ const Award = () => {
               <img
                 src={`${classes.award.CLASS_AWARD_upskill}?cache-control=max-age=31536000`}
                 alt="Upskill"
+                loading="lazy" 
               />
               <h3 className="award-title">Continuous Upskilling</h3>
               <p className="award-text">

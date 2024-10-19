@@ -172,7 +172,7 @@ const Payment: React.FC = () => {
         <div className="payment-screen">
           <div className="d-flex p-3 text-white gap-3">
             <div className="bg-white rounded-4 p-1">
-              <img src={logoImg} alt="" height={70} />
+              <img src={logoImg} alt="" height={70} loading="lazy"  />
             </div>
             <div className="app-header">
               <h2 className="m-0">{appName}</h2>
@@ -282,7 +282,7 @@ const Payment: React.FC = () => {
                     >
                       {loading ? "Loading.." : `Proceed to Pay`}{" "}
                       {loading ? (
-                        <img src="/loading.svg" alt="" height={40} />
+                        <img src="/loading.svg" alt="" height={40} loading="lazy"  />
                       ) : (
                         <PaymentIcon fontSize="large" />
                       )}

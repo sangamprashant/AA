@@ -22,11 +22,6 @@ const Navbar = () => {
         setIsNavCollapsed(!isNavCollapsed);
     };
 
-    const navItemVariants = {
-        hidden: { opacity: 0, y: -20 },
-        visible: { opacity: 1, y: 0 },
-    };
-
     return (
         <>
             <nav
@@ -39,6 +34,7 @@ const Navbar = () => {
                             src={`${navbarImg["logo"]}?cache-control=max-age=31536000`}
                             height="60"
                             alt="logo"
+                            loading="lazy" 
                         />
                     </Link>
                     <button

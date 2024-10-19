@@ -203,7 +203,7 @@ const AccessModal: React.FC = () => {
                       disabled={loading}
                     >
                       {loading ? "Loading" : "Generate OTP"}
-                      {loading && <img src={loadingSvg} height={30} alt="" />}
+                      {loading && <img src={loadingSvg} height={30} alt="" loading="lazy" />}
                     </Button>
                   </Form.Item>
                 </>
@@ -256,7 +256,7 @@ const AccessModal: React.FC = () => {
                   disabled={loading}
                 >
                   {loading ? "Loading" : "Submit OTP"}
-                  {loading && <img src={loadingSvg} height={30} alt="" />}
+                  {loading && <img src={loadingSvg} height={30} alt="" loading="lazy"  />}
                 </Button>
               </Form.Item>
             </Form>
@@ -436,7 +436,7 @@ const Imagee = ({ url, h }: ImageProps) => {
 
   return (
     <div className="d-flex justify-content-center">
-      <img src={returnImageAcctoUrl(url)} alt="" height={h} />
+      <img src={returnImageAcctoUrl(url)} alt="" height={h} loading="lazy" />
     </div>
   );
 };

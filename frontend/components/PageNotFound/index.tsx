@@ -34,6 +34,7 @@ const PageNotFound = () => {
             className="object_rocket object_rocket-2"
             src={pageNotFoundImg["rocket"]}
             width={40}
+            loading="lazy" 
           />
           <div className="row align-items-center justify-content-center h-100">
             <div className="col-md-6">
@@ -54,12 +55,14 @@ const PageNotFound = () => {
                     src={pageNotFoundImg["moon"]}
                     width={100}
                     alt=""
+                    loading="lazy" 
                   />
                   <img
                     className="object_moon"
                     src={pageNotFoundImg["earth"]}
                     width={80}
                     alt=""
+                    loading="lazy" 
                   />
                 </div>
                 <div className="box_astronaut">
@@ -68,6 +71,7 @@ const PageNotFound = () => {
                     src={pageNotFoundImg["astronaut"]}
                     width={140}
                     alt=""
+                    loading="lazy" 
                   />
                 </div>
               </div>

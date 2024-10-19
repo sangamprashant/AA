@@ -11,6 +11,7 @@ const ContactHome = () => {
             <img
               src={`${contactUsImg["home"]}?cache-control=max-age=31536000`}
               alt=""
+              loading="lazy" 
               style={{
                 width:"100%"
               }}
