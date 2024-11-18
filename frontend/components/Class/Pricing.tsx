@@ -50,7 +50,7 @@ const Pricing = () => {
                 height={80}
                 alt={item.title}
                 className="pricing-class-item-image"
-                loading="lazy" 
+                loading="lazy"
               />
               <div>
                 <p className="pricing-class-item-title p-0 m-0">{item.title}</p>
@@ -63,16 +63,20 @@ const Pricing = () => {
           className="pricing-class-img-section col-md-5"
           style={{ backgroundImage: `url(${classes.priceBg})` }}
         >
-          <motion.video
-            src="price/a-to-z-classes.mp4?cache-control=max-age=31536000"
-            width="100%"
+          <motion.iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/sNywiSqYeGw?autoplay=1&mute=1&controls=0&modestbranding=1&loop=1&playlist=sNywiSqYeGw&disablekb=1&fs=0"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen={false} // Ensures the fullscreen button is not available
             className="pricing-class-video"
             initial={{ opacity: 0, x: -50, scale: 0.4 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: false }}
-            loop
-            muted
           />
         </motion.div>
       </div>
