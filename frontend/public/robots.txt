@@ -1,12 +1,10 @@
 User-agent: *
 Allow: /
-
 Disallow: /admin/
 Disallow: /login/
 Disallow: /api/
 
-Crawl-delay: 10
-
 Host: https://theatozclasses.com
 
 Sitemap: https://theatozclasses.com/sitemap.xml
+Sitemap: https://www.theatozclasses.com/sitemap.xml
